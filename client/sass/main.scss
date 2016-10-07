@@ -1,0 +1,55 @@
+@charset 'utf-8';
+
+@import 'utils/settings/colors';
+@import 'utils/settings/typography';
+@import 'utils/settings/spacing';
+@import 'utils/settings/breakpoints';
+@import 'utils/settings/container';
+
+@import 'utils/functions';
+
+@import 'utils/mixins/map';
+@import 'utils/mixins/clearfix';
+@import 'utils/mixins/breakpoints';
+@import 'utils/mixins/container';
+@import 'utils/mixins/prefix';
+@import 'utils/mixins/color';
+@import 'utils/mixins/typography';
+@import 'utils/mixins/layout';
+@import 'utils/mixins/animation';
+@import 'utils/mixins/remove-default';
+
+@import 'utils/placeholders';
+
+@import 'utils/helpers/layout';
+@import 'utils/helpers/spacing';
+@import 'utils/helpers/typography';
+@import 'utils/helpers/visual';
+@import 'utils/helpers/responsive';
+@import 'utils/helpers/mores';
+@import 'utils/helpers/flexbox';
+
+@import 'base/remove-default';
+@import 'base/base';
+@import 'base/typography';
+@import 'base/list';
+@import 'base/link';
+@import 'base/fonts';
+
+
+
+//app layout
+
+
+// common components
+@import 'components/divider';
+@import 'components/buttons';
+
+
+// eddy app components
+
+
+
+//eddy app pages
+@import "../components/landing-page/landingPage";
+@import "../components/signup/signUp";

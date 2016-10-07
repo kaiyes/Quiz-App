@@ -1,0 +1,18 @@
+.divider {
+    &_bottom {
+        position: relative;
+        &:after {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            
+            height: 1px;
+            width: 100%;
+            display: block;
+            
+            background-color:  map-deep-get($colors, "background", "divider");
+            
+            content: "";
+        }
+    }
+}
