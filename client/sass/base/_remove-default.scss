@@ -1,0 +1,33 @@
+
+.nav {
+    > li {
+        > a {
+            &:hover {
+                background: none; // remove hover style from nav link
+            }
+        }
+    }
+}
+
+
+// remove margin bottom because it conflicts with bootstrap clearfix
+.remove_mrgn--bottom {
+    margin-bottom: 0;
+
+    address, article, aside, blockquote,
+    canvas, dd, dl,
+    fieldset, figcaption, figure, footer,
+    form, h1, h2, h3,
+    h4, h5, h6, header, hgroup,
+    hr, main, nav, noscript,
+    ol, output, p, pre,
+    section, table, tfoot, ul,
+    video, div {
+        margin-bottom: 0;
+    }
+}
+
+// Override framework 7 default style
+.page {
+  background-color: map-deep-get($colors, "background", "white") !important;
+}

@@ -1,0 +1,27 @@
+.border_none {
+    border: none;
+	
+	&--imp {
+		border: none !important;
+	}
+}
+
+.bg_none {
+    background: none;
+	
+	&--imp {
+		background: none !important;
+	}
+}
+
+.outline_zero {
+	outline: 0;
+	
+	&--imp {
+		outline: 0 !important;
+	}
+}
+
+.make_round{
+	border-radius: 50%;
+}
