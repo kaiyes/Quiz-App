@@ -1,11 +1,9 @@
-
 Template.landingPage.events({
   "click #signupRoute": function(event, template){
-    event.preventDefault();
-    Router.go('/signUp');
+    Router.go('signUp');
   },
+
   "click #loginRoute": function(event, template){
-    event.preventDefault();
-    Router.go('/login');
-  }
+    Router.go('login');
+  },
 });
