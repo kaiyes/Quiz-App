@@ -1,0 +1,5 @@
+.eddy-navbar {
+  background-color: map-deep-get($colors, "background", "white") !important;
+  color: map-deep-get($colors, "primary", "base") !important;
+  box-shadow: 2px 2px 5px 2px map-deep-get($colors, "background", "border") !important;
+}

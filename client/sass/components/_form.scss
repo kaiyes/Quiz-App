@@ -1,0 +1,25 @@
+.eddy-form{
+  &--lists{
+    &:before, &:after{
+      background-color: transparent !important;
+    }
+  }
+
+  &--item-inner{
+    &:after{
+      background-color: transparent !important;
+    }
+  }
+
+
+  &--icon{
+    color: map-deep-get($colors, "primary", "base") !important;
+    font-size: 1.2rem;
+
+    &.fa-lock{
+      padding-right: 0.2rem;
+
+      font-size: 1.6rem;
+    }
+  }
+}
