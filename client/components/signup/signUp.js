@@ -1,6 +1,7 @@
 
 Template.signUp.events({
-  "click #signUpSuccess": function(event, template){
+  "submit #signUpForm": function(event, template){
+    event.preventDefault();
     Router.go('/course');
   }
 });
