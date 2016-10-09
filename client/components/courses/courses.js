@@ -25,8 +25,8 @@ Template.course.events({
       Meteor.users.update(
         { _id: Meteor.userId()},
         { $addToSet: { "profile.selectedCourses": this.courseName }});
-
-    Router.go('/profile');
     },
 
 });
+
+ 

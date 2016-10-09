@@ -14,7 +14,7 @@ Template.signUp.events({
       country:"",
       name:"",
       university:"",
-      nickname:"",
+      nickName:"",
       programme:"",
       selectedCourses:[],
     };

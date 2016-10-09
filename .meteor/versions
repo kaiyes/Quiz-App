@@ -21,6 +21,7 @@ caching-compiler@1.1.7
 caching-html-compiler@1.0.7
 callback-hook@1.0.9
 check@1.2.3
+cosio55:autoform-cloudinary@0.0.2
 ddp@1.2.5
 ddp-client@1.2.9
 ddp-common@1.2.6
@@ -69,6 +70,7 @@ modules-runtime@0.7.6
 momentjs:moment@2.10.6
 mongo@1.1.12
 mongo-id@1.0.5
+nekojira:cloudinary-jquery-upload@0.1.0
 nobutakaoshiro:framework7-ios-material@1.0.4
 npm-bcrypt@0.9.1
 npm-mongo@1.5.50
@@ -96,6 +98,7 @@ templating-compiler@1.2.15
 templating-runtime@1.2.15
 templating-tools@1.0.5
 tracker@1.1.0
+twbs:bootstrap@3.3.6
 ui@1.0.12
 underscore@1.0.9
 url@1.0.10

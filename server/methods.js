@@ -12,6 +12,7 @@ Meteor.methods({
         { _id: this.userId },
         { $set: { profile: profile }}
       );
+      console.log(profile);
     },
 
     removeUnusedInfo: function(){

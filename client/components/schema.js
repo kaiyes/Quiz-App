@@ -1,28 +1,31 @@
 UserInformation.attachSchema(new SimpleSchema({
 
-  /*image: {
-    type: String,
-    optional: true,
-    autoform: {
-      afFieldInput: {
-        type: 'cloudinary'
+    profilePicture: {
+      type: String,
+      optional: true,
+      autoform: {
+        afFieldInput: {
+          type: 'cloudinary'
+        }
       }
-    }
-  },*/
+    },
 
-  name: {
-    type: String,
+    name: {
+      type: String,
+    },
+
+    programme: {
+      type: String,
+    },
+
+    university: {
+     type: String,
+     allowedValues: ['UH', 'NSU'],
   },
 
-  nickName: {
-   type: String,
-   allowedValues: ['warrior', 'lion'],
-},
-
-  age: {
-    type: Number,
-    max: 150,
-    optional:true,
+    nickName: {
+     type: String,
+     allowedValues: ['warrior', 'lion'],
   },
 
   country:{
@@ -31,17 +34,23 @@ UserInformation.attachSchema(new SimpleSchema({
     allowedValues: ['bd', 'uk'],
   },
 
+  age: {
+    type: Number,
+    max: 60,
+    optional:true,
+  },
+
   createdBy: {
-  type: String,
-  autoValue: function() {
-    if (this.isInsert) {
-      console.log("id inserted :  " + this.userId);
-      return this.userId;
-    } else {
-      console.log("no userId entered");;
+    type: String,
+    autoValue: function() {
+      if (this.isInsert) {
+        console.log("id inserted :  " + this.userId);
+        return this.userId;
+      } else {
+        console.log("no userId entered");;
+      }
     }
   }
-}
 
 }));
 
@@ -60,20 +69,23 @@ UserInformation.allow({
     },
   });
 
-  AutoForm.addHooks('details', {
+  AutoForm.addHooks('userInformation', {
     onSuccess: function() {
        var userInfo = UserInformation.findOne({ createdBy: Meteor.userId()});
+
        var profile = {
          "age": userInfo.age,
          "name": userInfo.name,
          "nickName": userInfo.nickName,
          "country": userInfo.country,
+         "programme": userInfo.programme,
+         "university": userInfo.university,
          "totalPoints": 10,
          "gamePoints": 10,
        }
 
       Meteor.call('addToProfile', profile);
       Meteor.call("removeUnusedInfo");
-      Router.go('/topics');
+      Router.go('/homePage');
     }
   });
