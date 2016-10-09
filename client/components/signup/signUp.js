@@ -24,7 +24,7 @@ Template.signUp.events({
             if (error) {
               console.log(error.reason);
             } else {
-              Router.go('/profile')
+              Router.go('/profile');
             };
           });
        }
@@ -33,4 +33,5 @@ Template.signUp.events({
     $('[name = password]').val('');
     $('[name = email]').val('');
   },
+
 });

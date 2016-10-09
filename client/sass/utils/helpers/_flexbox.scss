@@ -1,4 +1,4 @@
-.display-flex{
+%display_flex{
   display: -webkit-flex !important;
   display: -ms-flex !important;
   display: flex !important;
@@ -6,15 +6,19 @@
 
 .flex-direction{
   &--row{
+    @extend %display_flex;
     flex-direction: row !important;
   }
   &--row-reverse{
+    @extend %display_flex;
     flex-direction: row-reverse !important;
   }
   &--column{
+    @extend %display_flex;
     flex-direction: column !important;
   }
   &--column-reverse{
+    @extend %display_flex;
     flex-direction: reverse !important;
   }
 }
@@ -73,9 +77,12 @@
     flex: none !important;
   }
   &--1{
-    flex: 1 !important;
+    flex-grow: 1 !important;
   }
   &--2{
-    flex: 2 !important;
+    flex-grow: 2 !important;
+  }
+  &--3{
+    flex-grow: 3 !important;
   }
 }
