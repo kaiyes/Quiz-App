@@ -56,6 +56,7 @@ UserInformation.attachSchema(new SimpleSchema({
 
 
 UserInformation.allow({
+
     insert: function(userId, doc) {
     return !! userId;
     },
@@ -82,10 +83,12 @@ UserInformation.allow({
          "university": userInfo.university,
          "totalPoints": 10,
          "gamePoints": 10,
+         "selectedCourses": Meteor.user().profile.selectedCourses,
+         "image": userInfo.profilePicture,
        }
 
       Meteor.call('addToProfile', profile);
       Meteor.call("removeUnusedInfo");
-      Router.go('/homePage');
+      //Router.go('/homePage');
     }
   });
