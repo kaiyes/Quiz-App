@@ -13,6 +13,10 @@ Template.signUp.events({
       age: "",
       country:"",
       name:"",
+      university:"",
+      nickname:"",
+      programme:"",
+      selectedCourses:[],
     };
 
     Meteor.call("addUser", email,password, profile, function(error,result){
@@ -24,7 +28,7 @@ Template.signUp.events({
             if (error) {
               console.log(error.reason);
             } else {
-              Router.go('/profile');
+              Router.go('/course');
             };
           });
        }

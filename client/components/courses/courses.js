@@ -1,8 +1,13 @@
-// Template.course.events({
-//   "click #next": function(event, template){
-//     Router.go('/profile');
+Template.course.helpers({
+  courses: function(){
+    return Courses.find();
+  },
+
+});
+
 
 Template.course.events({
+
   "click .select-course": function(event, template){
     if ($(event.target).hasClass('select-course')) {
         $('.select-course').removeClass('.select-course');
@@ -12,5 +17,16 @@ Template.course.events({
       $('.select-course').removeClass('.select-course');
       $(event.target).parents('.select-course').toggleClass('eddy-courses--selected')
     }
-  }
+  },
+
+  "click #course": function(){
+    let selectedCourses = Meteor.user().profile.selectedCourses;
+    console.log(selectedCourses);
+      Meteor.users.update(
+        { _id: Meteor.userId()},
+        { $addToSet: { "profile.selectedCourses": this.courseName }});
+
+    Router.go('/profile');
+    },
+
 });
