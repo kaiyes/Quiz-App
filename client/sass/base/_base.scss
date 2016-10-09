@@ -27,7 +27,7 @@
 
 html {
 	position: relative;
-	
+
 	box-sizing: border-box;
 	min-height: 100%; //[1]
 	overflow-x: hidden;
@@ -44,10 +44,10 @@ html {
 }
 
 body {
-    @include type-style();
+  @include type-style('', '', '', $color: map-deep-get($colors, "foreground", "light-black"));
 
-	background-color: map-deep-get($colors, "background", "base");
-	
+	background-color: map-deep-get($colors, "background", "white");
+
 	overflow: auto;
 }
 
