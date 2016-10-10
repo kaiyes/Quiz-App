@@ -9,7 +9,7 @@ Template.login.events({
         if (error) {
           console.log(error.reason);
         } else {
-          Router.go('/course');
+          Router.go('/homePage');
         };
       });
     $('[name="listName"]').val('');

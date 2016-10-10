@@ -89,6 +89,6 @@ UserInformation.allow({
 
       Meteor.call('addToProfile', profile);
       Meteor.call("removeUnusedInfo");
-      //Router.go('/homePage');
+      Router.go('/homePage');
     }
   });
