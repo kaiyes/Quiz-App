@@ -1,0 +1,40 @@
+.eddy-searchbar {
+  background-color: map-deep-get($colors, "background", "white") !important;
+  @extend %box_shadow;
+
+  input[type=search] {
+    background-image: url(assets/search.svg) !important;
+    background-size: 1.8rem 1.8rem !important;
+    background-position: 95% center !important;
+    border: 1px solid map-deep-get($colors, "primary", "base") !important;
+
+    color: map-deep-get($colors, "foreground", "light-black") !important;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: map-deep-get($colors, "foreground", "light-black") !important;
+      text-align: center;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: map-deep-get($colors, "foreground", "light-black") !important;
+      text-align: center;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: map-deep-get($colors, "foreground", "light-black") !important;
+      text-align: center;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: map-deep-get($colors, "foreground", "light-black") !important;
+      text-align: center;
+    }
+
+  }
+}
+
+.eddy-courses{
+  &--sorting {
+    color: map-deep-get($colors, "primary", "base") !important;
+  }
+  &--selected {
+    color: map-deep-get($colors, "primary", "base") !important;
+  }
+}

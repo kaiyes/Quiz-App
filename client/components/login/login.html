@@ -8,7 +8,7 @@
             <div class="navbar eddy-navbar">
               <div class="navbar-inner">
                   <div class="left">
-                      <a href="#" class="link icon-only">
+                      <a href="{{pathFor 'home'}}" class="link icon-only">
                           <i class="fa fa-chevron-left" aria-hidden="true"></i>
                       </a>
                   </div>
@@ -31,7 +31,7 @@
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input autocomplete="off" required type="email" placeholder="Student Email">
+                          <input id="email" autocomplete="on" required type="email" placeholder="Student Email">
                         </div>
                       </div>
                     </div>
@@ -43,7 +43,7 @@
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input autocomplete="off" required type="password" placeholder="Password">
+                          <input id="password" autocomplete="on" required type="password" placeholder="Password">
                         </div>
                       </div>
                     </div>
