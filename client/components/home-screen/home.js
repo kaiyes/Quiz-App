@@ -1,11 +1,7 @@
-
-Template.homePage.helpers({
-
-
-});
-
 Template.homePage.events({
-  "click #foo": function(event, template){
-
-  }
+  "click #list": function(event, template){
+    console.log(this.toString());
+    var topicName = Session.set("topicName", this.toString());
+    Router.go('/courseDetails');
+ },
 });

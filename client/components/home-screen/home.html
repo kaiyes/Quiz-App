@@ -1,18 +1,18 @@
 <template name="homePage">
   <h1> homepage </h1>
-  {{#with currentUser.profile}}
-      <img src="{{image}}" alt="Smiley face" height="42" width="42">
-      {{image}} <br>
-      {{country}} <br>
-      {{name}} <br>
-      {{nickName}} <br>
-      {{programme}} <br>
-      {{totalPoints}} <br>
-      {{university}} <br>
-      {{age}} <br>
-      {{#each selectedCourses}}
-          {{this}}
-      {{/each}}
+      <img src="{{currentUser.profile.image}}" alt="Smiley face" height="42" width="42">
+      {{currentUser.profile.country}}
+      {{currentUser.profile.name}}
+      {{currentUser.profile.nickName}}
+      {{currentUser.profile.programme}}
+      {{currentUser.profile.totalPoints}}
+      {{currentUser.profile.university}}
+      {{currentUser.profile.age}} <br><br><br>
 
-  {{/with}}
+      <ul>
+        {{#each currentUser.profile.selectedCourses}}
+          <li id="list">{{this}} </li>
+        {{/each}}
+      </ul>
+
 </template>
