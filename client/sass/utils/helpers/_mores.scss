@@ -3275,7 +3275,7 @@
 }
 
 .border {
-    border: 1px solid rgba(0, 0, 0, 0.12)
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
 
 .border-top {
@@ -5339,6 +5339,9 @@ strong {
     margin-bottom: 96px !important
 }
 
+.top-initial {
+  top: initial !important;
+}
 .top-0{
     top: 0;
 }

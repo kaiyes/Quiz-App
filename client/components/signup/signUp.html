@@ -2,39 +2,48 @@
   <div class="views">
     <div class="view view-main">
       <div class="pages">
-        <div data-page="index" class="page">
+        <div class="page">
           <div class="page-content">
-            <!-- Top Navbar-->
-            <div class="navbar">
+            <!-- Top Navbar -->
+            <div class="navbar eddy-navbar">
               <div class="navbar-inner">
                   <div class="left">
-                      <a href="#" class="link icon-only">
-                          <i class="icon icon-back"></i>
+                      <a  class="link icon-only">
+                          <i id="back" class="fa fa-chevron-left" aria-hidden="true"></i>
                       </a>
                   </div>
-                  <div class="center">WELCOME TO EDDY</div>
+                  <div class="center">
+                    <h2 class="font-size-fixed-14 margin-0">WELCOME TO EDDY</h2>
+                  </div>
+                  <div class="right">
+                    <a class="open-panel link icon-only"></a>
+                  </div>
               </div>
             </div>
-            <!-- /End of Top Navbar-->
-            <div class="list-block">
-              <form name="signUpForm">
-                <ul>
+            <!-- /End of Top Navbar -->
+            <div class="list-block margin-top-170 padding-h-20">
+              <form name="signUpForm" autocomplete="off" class="eddy-form" id="signUpForm">
+                <ul class="eddy-form--lists">
                   <li>
                     <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-email"></i></div>
-                      <div class="item-inner">
-                        <div class="item-input">
-                          <input required type="email" placeholder="Student Email">
+                      <div class="item-media width-15">
+                        <i class="fa fa-envelope-o eddy-form--icon" aria-hidden="true"></i>
+                      </div>
+                      <div class="item-inner eddy-form--item-inner">
+                        <div class="item-input border-bottom">
+                          <input id="email" autocomplete="on" required type="email" placeholder="Student Email">
                         </div>
                       </div>
                     </div>
                   </li>
                   <li>
                     <div class="item-content">
-                      <div class="item-media"><i class="icon icon-form-password"></i></div>
-                      <div class="item-inner">
-                        <div class="item-input">
-                          <input required type="email" placeholder="Password">
+                      <div class="item-media width-15">
+                        <i class="fa fa-lock eddy-form--icon" aria-hidden="true"></i>
+                      </div>
+                      <div class="item-inner eddy-form--item-inner">
+                        <div class="item-input border-bottom">
+                          <input id="password" autocomplete="off" required type="password" placeholder="Password">
                         </div>
                       </div>
                     </div>
@@ -58,5 +67,4 @@
       </div>
     </div>
   </div>
-
 </template>

@@ -53,3 +53,12 @@
 %border_radius_100 {
     border-radius: 100%;
 }
+
+/// @name border_radius_100
+/// @author Sabbir Ahmed
+/// @access Public
+%box_shadow{
+	-webkit-box-shadow: 2px 2px 5px 2px map-deep-get($colors, "background", "border") !important;
+  -moz-box-shadow: 2px 2px 5px 2px map-deep-get($colors, "background", "border") !important;
+  box-shadow: 2px 2px 5px 2px map-deep-get($colors, "background", "border") !important;
+}

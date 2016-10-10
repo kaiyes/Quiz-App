@@ -1,0 +1,8 @@
+.eddy-toolbar {
+  background-color: map-deep-get($colors, "background", "white") !important;
+  color: map-deep-get($colors, "foreground", "light-black") !important;
+
+  -webkit-box-shadow: 0 55px 10px 60px map-deep-get($colors, "background", "border") !important;
+  -moz-box-shadow: 0 55px 10px 60px map-deep-get($colors, "background", "border") !important;
+  box-shadow: 0 55px 10px 60px map-deep-get($colors, "background", "border") !important;
+}

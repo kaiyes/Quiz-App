@@ -1,22 +1,25 @@
 a {
     //@include font-weight-color(700);
-    color: map-deep-get($colors, "primary", "base");  
-    
-    text-decoration: none;
-    
+    color: map-deep-get($colors, "primary", "base") !important;
+
+    text-decoration: none !important;
+
     transition: color 0.2s linear 0.1s;
-    
+
     &:hover {
         @include mix-color( map-deep-get($colors, "foreground", "base"), 'black-mix', 5%);
-        
+
         transition: color 0.2s linear 0.1s;
+        text-decoration: none !important;
     }
-    
+
     &:active {
         @include mix-color( map-deep-get($colors, "foreground", "base"), 'black-mix', 10%);
+        text-decoration: none !important;
     }
-    
+
     &:focus {
         outline: 0;
+        text-decoration: none !important;
     }
 }
