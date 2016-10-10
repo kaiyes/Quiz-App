@@ -1,4 +1,5 @@
 <template name="community">
+<<<<<<< HEAD
   <div class="views">
     <div class="view view-main">
       <div class="navbar eddy-navbar">
@@ -33,7 +34,9 @@
               </div>
               <div id="tab2" class="tab">
                 <div class="content-block">
-                  Chapters
+                  {{#each chapters}}
+                    {{this.chapters}}
+                  {{/each}}
                 </div>
               </div>
               <div id="tab3" class="tab">
