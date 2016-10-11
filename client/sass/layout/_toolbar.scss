@@ -11,24 +11,22 @@
     font-size: 1.8rem !important;
 
     &__noti {
-      position: relative;
-
-      -webkit-transform: rotate(20deg) !important;
-      -ms-transform: rotate(20deg) !important;
-      transform: rotate(20deg) !important;
+      //position: relative;
+      overflow: visible !important;
+      i {
+        -webkit-transform: rotate(20deg) !important;
+        -ms-transform: rotate(20deg) !important;
+        transform: rotate(20deg) !important;
+      }
 
       &--badge {
         position: absolute;
-        right: 2.2rem;
+        //right: 2.2rem;
         top: -1rem;
 
         color: map-deep-get($colors, "primary", "base") !important;
         font-size: 1rem !important;
         font-weight: 700;
-
-        -webkit-transform: rotate(-20deg);
-        -ms-transform: rotate(-20deg);
-        transform: rotate(-20deg);
       }
     }
   }
