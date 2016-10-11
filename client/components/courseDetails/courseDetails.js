@@ -12,5 +12,6 @@ Template.courseDetails.onRendered(function() {
 Template.courseDetails.helpers({
   selectedCourse(){
     return Session.get('topicName');
-  }
+  },
+
 });
