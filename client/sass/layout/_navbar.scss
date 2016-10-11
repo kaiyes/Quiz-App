@@ -2,4 +2,20 @@
   background-color: map-deep-get($colors, "background", "white") !important;
   color: map-deep-get($colors, "primary", "base") !important;
   @extend %box_shadow;
+
+  &--sub{
+    box-shadow: 0 1px 10px 2px map-deep-get($colors, "background", "border") !important;
+    background: map-deep-get($colors, "background", "white") !important;
+
+    &--item {
+      color: map-deep-get($colors, "foreground", "light-black") !important;
+      font-size: 1.2rem !important;
+
+      opacity: 0.56;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
 }
