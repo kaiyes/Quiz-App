@@ -31,3 +31,21 @@
 .page {
   background-color: map-deep-get($colors, "background", "white") !important;
 }
+
+.card {
+  -moz-box-shadow:    inset 0 -2px 4px rgba(0,0,0,.12) !important;
+  -webkit-box-shadow: inset 0 -2px 4px rgba(0,0,0,.12) !important;
+   box-shadow:         inset 0 -2px 4px rgba(0,0,0,.12) !important;
+
+   &-header {
+     &:after {
+       background-color: transparent !important;
+     }
+   }
+
+   &-footer {
+     &:before {
+       //background-color: transparent !important;
+     }
+   }
+}

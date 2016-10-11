@@ -1,7 +1,8 @@
 <template name="chapters">
   <div class="">
-    {{#each chapters}}
-      {{this.chapters}}
+    <h1> chapters</h1>
+    {{#each chapters.chapters}}
+      <li id="list">{{this}}</li>
     {{/each}}
   </div>
 </template>

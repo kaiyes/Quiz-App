@@ -4,7 +4,7 @@
   @extend %box_shadow;
 
   &--sub{
-    box-shadow: 0 1px 10px 2px map-deep-get($colors, "background", "border") !important;
+    box-shadow: 0 1px 8px 2px map-deep-get($colors, "background", "border") !important;
     background: map-deep-get($colors, "background", "white") !important;
 
     &--item {
@@ -14,6 +14,9 @@
       opacity: 0.56;
 
       &.active {
+        background: transparent !important;
+        border: none !important;
+
         opacity: 1;
       }
     }

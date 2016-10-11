@@ -1,7 +1,7 @@
 Template.courseDetails.onRendered(function() {
   $(document).ready(function() {
-    if(Framework7.prototype.device.android) {
-      $('.eddy-tabs').addClass('margin-top-115');
+    if (Framework7.prototype.device.android) {
+      $('.eddy-tabs').addClass('margin-top-105');
     }else {
       $('.eddy-tabs').addClass('margin-top-110');
     }
@@ -16,9 +16,8 @@ Template.courseDetails.onRendered(function() {
 });
 
 Template.courseDetails.helpers({
-
-});
-
-Template.courseDetails.events({
+  selectedCourse(){
+    return Session.get('topicName');
+  },
 
 });
