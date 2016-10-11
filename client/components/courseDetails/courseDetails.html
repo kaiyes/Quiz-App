@@ -23,31 +23,31 @@
         </div>
         <div class="subnavbar eddy-navbar--sub">
           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center full-width">
-            <a href="#tab1" class="button tab-link eddy-navbar--sub--item active">COMMUNITY</a>
-            <a href="#tab2" class="button tab-link eddy-navbar--sub--item">CHAPTERS</a>
+            <a href="#tab1" class="button tab-link eddy-navbar--sub--item">COMMUNITY</a>
+            <a href="#tab2" class="button tab-link eddy-navbar--sub--item active">CHAPTERS</a>
             <a href="#tab3" class="button tab-link eddy-navbar--sub--item">STATISTICS</a></div>
         </div>
       </div>
       <div class="pages">
         <div class="page with-subnavbar">
           <div class="page-content">
-            <div class="tabs eddy-tabs padding-bottom-35">
-              <div id="tab1" class="tab active">
-                <div class="content-block padding-0">
-                    {{>community}}
+              <div class="tabs eddy-tabs padding-bottom-35">
+                <div id="tab1" class="tab">
+                  <div class="content-block padding-0">
+                      {{>community}}
+                  </div>
+                </div>
+                <div id="tab2" class="tab active">
+                  <div class="content-block">
+                      {{>chapters}}
+                  </div>
+                </div>
+                <div id="tab3" class="tab">
+                  <div class="content-block">
+                    {{>stats}}
+                  </div>
                 </div>
               </div>
-              <div id="tab2" class="tab">
-                <div class="content-block">
-                    {{>chapters}}
-                </div>
-              </div>
-              <div id="tab3" class="tab">
-                <div class="content-block">
-                  {{>stats}}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

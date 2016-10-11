@@ -6,12 +6,12 @@ Template.courseDetails.onRendered(function() {
       $('.eddy-tabs').addClass('margin-top-110');
     }
 
-    $('.eddy-navbar--sub--item').click(function() {
-      $('.eddy-navbar--sub--item').removeClass('active');
-      $(this).addClass('active');
-      $('.tab').removeClass('active');
-      $($(this).attr('href')).addClass('active');
-    })
+    // $('.eddy-navbar--sub--item').click(function() {
+    //   $('.eddy-navbar--sub--item').removeClass('active');
+    //   $(this).addClass('active');
+    //   $('.tab').removeClass('active');
+    //   $($(this).attr('href')).addClass('active');
+    // })
   })
 });
 
