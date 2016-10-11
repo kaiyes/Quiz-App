@@ -31,6 +31,7 @@
 
     &--submit{
       min-width: 3.6rem !important;
+      border: none !important;
       border-radius: 50% !important;
 
       color: map-deep-get($colors, "primary", "base") !important;
@@ -47,6 +48,7 @@
       position: relative;
 
       min-width: 36px !important;
+      border: none !important;
       border-radius: 50% !important;
 
       color: map-deep-get($colors, "foreground", "eddy-grey") !important;
@@ -62,7 +64,7 @@
       }
     }
     &--play-btn {
-
+      border: none !important;
     }
   }
 }

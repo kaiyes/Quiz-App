@@ -8,6 +8,8 @@
     background: map-deep-get($colors, "background", "white") !important;
 
     &--item {
+      border: none !important;
+
       color: map-deep-get($colors, "foreground", "light-black") !important;
       font-size: 1.2rem !important;
 
@@ -15,8 +17,7 @@
 
       &.active {
         background: transparent !important;
-        border: none !important;
-
+        
         opacity: 1;
       }
     }
