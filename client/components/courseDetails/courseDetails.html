@@ -1,6 +1,63 @@
 <template name="courseDetails">
-  <h1> course Home Page</h1>
-    {{>community}}
+  <div class="views">
+    <div class="view view-main">
+      <div class="navbar eddy-navbar">
+        <div class="navbar-inner">
+            <div class="left">
+                <a href="{{pathFor 'homePage'}}" class="link icon-only">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+            </div>
+            <div class="center">
+              <h2 class="font-size-fixed-14 margin-0">
+                {{#with selectedCourse}}
+                   {{this}}
+                {{/with}}
+
+              </h2>
+            </div>
+            <div class="right">
+              <a href="#" class="open-panel link icon-only"></a>
+            </div>
+        </div>
+        <div class="subnavbar">
+          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center full-width">
+            <a href="#tab1" class="button tab-link active">COMMUNITY</a>
+            <a href="#tab2" class="button tab-link">CHAPTERS</a>
+            <a href="#tab3" class="button tab-link">STATISTICS</a></div>
+        </div>
+      </div>
+      <div class="pages">
+        <div class="page with-subnavbar">
+          <div class="page-content">
+            <div class="tabs eddy-tabs padding-bottom-35">
+              <div id="tab1" class="tab active">
+                <div class="content-block">
+                    {{>community}}
+                </div>
+              </div>
+              <div id="tab2" class="tab">
+                <div class="content-block">
+
+                </div>
+              </div>
+              <div id="tab3" class="tab">
+                <div class="content-block">
+                  {{>stats}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar position-absolute top-initial eddy-toolbar">
+        <div class="toolbar-inner flex-direction--row flex-justify-content--flex-end">
+          <a href="#" class="button ripple border_none--imp">NEXT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
     {{>chapters}}
-    {{>stats}}
+
 </template>
