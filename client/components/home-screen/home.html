@@ -1,18 +1,96 @@
 <template name="homePage">
-  <h1> homepage </h1>
-      <img src="{{currentUser.profile.image}}" alt="Smiley face" height="42" width="42">
+      {{!-- <img src="{{currentUser.profile.image}}" alt="Smiley face" height="42" width="42"> --}}
       {{currentUser.profile.country}}
       {{currentUser.profile.name}}
       {{currentUser.profile.nickName}}
       {{currentUser.profile.programme}}
       {{currentUser.profile.totalPoints}}
       {{currentUser.profile.university}}
-      {{currentUser.profile.age}} <br><br><br>
+      {{currentUser.profile.age}}
 
-      <ul>
-        {{#each currentUser.profile.selectedCourses}}
-          <li id="list">{{this}} </li>
-        {{/each}}
-      </ul>
+      <div class="views">
+        <div class="view view-main">
+          <div class="navbar eddy-navbar">
+            <div class="navbar-inner">
+                <div class="center">
+                  <h2 class="font-size-fixed-14 margin-0">
+                    TEST
+                  </h2>
+                  <h2 class="font-size-fixed-14 margin-0">
+                    TEST
+                  </h2>
+                  <h2 class="font-size-fixed-14 margin-0">
+                    TEST
+                  </h2>
+                </div>
+            </div>
+          </div>
+          <div class="pages">
+            <div class="page with-subnavbar">
+              <div class="page-content">
+                <ul>
+                  {{#each currentUser.profile.selectedCourses}}
+                    <li id="list">{{this}} </li>
+                  {{/each}}
+                </ul>
+
+                <div class="list-block margin-top-100">
+                  <ul>
+                    <li class="swipeout">
+                      <div class="swipeout-content item-content">
+                        <div class="item-media">
+                            <img class="make-round" src="http://placehold.it/35x35" alt="icon">
+                        </div>
+                        <div class="item-inner padding-v-20">
+                          <div class="item-title">
+                              <h4 class="margin-0 font-size-fixed-12">MKTC 7501 <span>?</span></h4>
+                              <h5 class="margin-0 font-size-fixed-12 opacity-80">Foundation of marketing</h5>
+                          </div>
+                          <div class="item-after">
+                            <span>20 <sup>{{quizRankFormat 20}}</sup></span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swipeout-actions-left">
+                        <a href="#">I need help</a>
+                        <a href="#">I can help</a>
+                      </div>
+                    </li>
+                    <li class="item-content">
+                      <div class="item-media">
+                          <img class="make-round" src="http://placehold.it/35x35" alt="icon">
+                      </div>
+                      <div class="item-inner">
+                        <div class="item-title">
+                          <h4 class="margin-0 font-size-fixed-12">MKTC 7501 <span>1</span></h4>
+                          <h5 class="margin-0 font-size-fixed-12 opacity-80">Foundation of marketing</h5>
+                        </div>
+                        <div class="item-after">
+                          <span>33 <sup>{{quizRankFormat 33}}</sup></span>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="toolbar position-absolute top-initial eddy-toolbar">
+            <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center">
+              <span class="button ripple border_none--imp eddy-toolbar--icon">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </span>
+              <span class="button ripple border_none--imp eddy-toolbar--icon">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </span>
+              <span class="button ripple border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+
+                <span class="eddy-toolbar--icon__noti--badge">5</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
 
 </template>
