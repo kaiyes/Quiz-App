@@ -1,0 +1,8 @@
+.eddy-quiz {
+  &--option{
+    background-color: map-deep-get($colors, 'primary', 'base');
+  }
+  &--players{
+    background-color: map-deep-get($colors, 'primary', 'base');
+  }
+}
