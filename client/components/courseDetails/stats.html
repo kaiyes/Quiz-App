@@ -1,3 +1,16 @@
 <template name="stats">
-  <h1>stats</h1>  
+  <h1>stats</h1>
+    {{#each showMessages}}
+       <li id="list"> {{body}}
+         <button id="button"> comment </button>
+
+            {{#if $.Session.equals "showComments" "Show"}}
+                <input  type="text">
+            {{/if}}
+
+            {{#if $.Session.equals "showComments" "Hide"}}
+
+            {{/if}}
+        </li>
+    {{/each}}
 </template>

@@ -39,247 +39,39 @@
           <div class="pages">
             <div class="page with-subnavbar">
               <div class="page-content">
-
-                <!-- <ul>
-                  {{#each currentUser.profile.selectedCourses}}
-                    <li id="list">{{this}} </li>
-                  {{/each}}
-                </ul> -->
-
                 <div class="list-block eddy-home margin-0">
                   <ul class="eddy-home--quizes margin-v-70">
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                MKTC 7501
-                                <span class="eddy-badge eddy-badge__primary">?</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
+                    {{#each currentUser.profile.selectedCourses}}
+                      <li class="swipeout eddy-home--quiz">
+                        <div class="swipeout-content item-content eddy-home--quiz--content">
+                          <div class="item-media eddy-home--quiz--icon-wrap">
+                              <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
                           </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>1 <sup>{{quizRankFormat 1}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                ECON 2501
-                                <span class="eddy-badge eddy-badge__primary">i</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>20 <sup>{{quizRankFormat 20}}</sup></span>
+                          <div class="item-inner padding-v-20">
+                            <div class="item-title">
+                                <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
+                                  ECON 2501
+                                  <span class="eddy-badge eddy-badge__primary">i</span>
+                                </h4>
+                                <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">{{this}}</h5>
+                            </div>
+                            <div class="item-after eddy-home--quiz--rank">
+                              <span>2 <sup>{{quizRankFormat 2}}</sup></span>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
+                        <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
+                          <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
+                            <span class="eddy-badge">?</span>
+                            <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
+                          </a>
+                          <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
+                            <span class="eddy-badge">i</span>
+                            <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
+                          </a>
                         </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                MKTC 7501
-                                <span class="eddy-badge eddy-badge__primary">?</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>1 <sup>{{quizRankFormat 1}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                ECON 2501
-                                <span class="eddy-badge eddy-badge__primary">i</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>20 <sup>{{quizRankFormat 20}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                MKTC 7501
-                                <span class="eddy-badge eddy-badge__primary">?</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>1 <sup>{{quizRankFormat 1}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                ECON 2501
-                                <span class="eddy-badge eddy-badge__primary">i</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>20 <sup>{{quizRankFormat 20}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                MKTC 7501
-                                <span class="eddy-badge eddy-badge__primary">?</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>1 <sup>{{quizRankFormat 1}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
-                    <li class="swipeout eddy-home--quiz">
-                      <div class="swipeout-content item-content eddy-home--quiz--content">
-                        <div class="item-media eddy-home--quiz--icon-wrap">
-                            <img class="make-round eddy-home--quiz--icon" src="http://placehold.it/35x35" alt="icon">
-                        </div>
-                        <div class="item-inner padding-v-20">
-                          <div class="item-title">
-                              <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
-                                ECON 2501
-                                <span class="eddy-badge eddy-badge__primary">i</span>
-                              </h4>
-                              <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">Foundation of marketing</h5>
-                          </div>
-                          <div class="item-after eddy-home--quiz--rank">
-                            <span>20 <sup>{{quizRankFormat 20}}</sup></span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">?</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
-                        </a>
-                        <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                          <span class="eddy-badge">i</span>
-                          <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
-                        </a>
-                      </div>
-                    </li>
+                      </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
