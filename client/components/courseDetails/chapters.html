@@ -1,44 +1,14 @@
 <template name="chapters">
   <div class="eddy-chapters text-center">
     {{#each chapters.chapters}}
-      <li id="list">{{this}}</li>
-    {{/each}}
-
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 1</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
+    <div id="list" class="eddy-chapters--list padding-v-20 cur-pointer">
+      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">
+        CHAPTER 1
+      </h4>
+      <p  class="margin-0 eddy-chapters--list--name">
+        {{this}}
       </p>
     </div>
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 2</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
-      </p>
-    </div>
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 3</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
-      </p>
-    </div>
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 4</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
-      </p>
-    </div>
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 5</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
-      </p>
-    </div>
-    <div class="eddy-chapters--list padding-v-20 cur-pointer">
-      <h4 class="margin-0 eddy-chapters--list--index font-size-fixed-12">CHAPTER 6</h4>
-      <p class="margin-0 eddy-chapters--list--name">
-        Chapter Name
-      </p>
-    </div>
+   {{/each}}
   </div>
 </template>

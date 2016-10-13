@@ -19,6 +19,10 @@ Meteor.methods({
       UserInformation.remove({ createdBy: this.userId });
     },
 
+    insertPost: function(payload){
+      Posts.insert(payload);
+    },
+
     increaseTotalPoints: function () {
       Meteor.users.update(
         { _id: this.userId },

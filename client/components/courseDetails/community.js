@@ -1,3 +1,11 @@
+Template.registerHelper('getTimePosted', date => {
+  if (date) {
+    console.log(moment(new Date(date)).fromNow(true));
+    return moment(new Date(date)).fromNow(true);
+  }
+});
+
+
 Template.community.onRendered(function() {
   $(document).ready(function() {
     $('.eddy-comment-btn').click(function() {
@@ -10,10 +18,24 @@ Template.community.onRendered(function() {
 });
 
 Template.community.helpers({
-
+    posts(){
+      return Posts.find();
+    }
 });
 
 Template.community.events({
-  "click #foo": function(event, template){
+  "submit form": function(event, template){
+    event.preventDefault();
+     var text = event.target.text.value;
+
+    let payload = {
+      body : text,
+      createdBy: Meteor.user(),
+      createdAt: new Date(),
+      likes:0,
+      reply:[],
+    };
+    Meteor.call('insertPost', payload);
+    console.log(Posts.find().fetch());
   }
 });
