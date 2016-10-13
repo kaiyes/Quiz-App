@@ -5,16 +5,15 @@ Template.registerHelper('getTimePosted', date => {
   }
 });
 
-
 Template.community.onRendered(function() {
-  $(document).ready(function() {
-    $('.eddy-comment-btn').click(function() {
-      $(this).parent().parent().parent().siblings('.eddy-community--post--comment-section').removeClass('hide');
+    $(document).ready(function() {
+      // $('.eddy-comment-btn').click(function() {
+      //   $(this).parent().parent().parent().siblings('.eddy-community--post--comment-section').removeClass('hide');
+      // });
+      $('.eddy-comment-reply-btn').click(function() {
+        $(this).parent().parent().parent().siblings('.eddy-community--post--comments--reply').removeClass('hide');
+      });
     });
-    $('.eddy-comment-reply-btn').click(function() {
-      $(this).parent().parent().parent().siblings('.eddy-community--post--comments--reply').removeClass('hide');
-    });
-  })
 });
 
 Template.community.helpers({
@@ -37,5 +36,13 @@ Template.community.events({
     };
     Meteor.call('insertPost', payload);
     console.log(Posts.find().fetch());
-  }
+  },
+
+  "click #comment": function(event, template){
+    event.preventDefault();
+    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comment-section').removeClass('hide');
+    console.log($(event.target).parents('post-'+this._id));
+  },
+
+
 });
