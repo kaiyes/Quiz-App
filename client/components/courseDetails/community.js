@@ -5,16 +5,6 @@ Template.registerHelper('getTimePosted', date => {
   }
 });
 
-Template.community.onRendered(function() {
-    $(document).ready(function() {
-      // $('.eddy-comment-btn').click(function() {
-      //   $(this).parent().parent().parent().siblings('.eddy-community--post--comment-section').removeClass('hide');
-      // });
-      $('.eddy-comment-reply-btn').click(function() {
-        $(this).parent().parent().parent().siblings('.eddy-community--post--comments--reply').removeClass('hide');
-      });
-    });
-});
 
 Template.community.helpers({
     posts(){
@@ -44,5 +34,9 @@ Template.community.events({
     console.log($(event.target).parents('post-'+this._id));
   },
 
+  "click #reply": function(event, template){
+    event.preventDefault();
+    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comments--reply').removeClass('hide');
+  },
 
 });
