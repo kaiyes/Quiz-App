@@ -1,0 +1,22 @@
+.eddy-badge {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5rem;
+  border: 1px solid map-deep-get($colors, 'foreground', 'white');
+  border-radius: 50%;
+
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.5rem;
+
+  &__primary {
+    width: 1rem;
+    height: 1rem;
+    border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
+
+    font-size: .7rem;
+    color: map-deep-get($colors, 'primary', 'base') !important;
+    line-height: 1rem;
+  }
+}

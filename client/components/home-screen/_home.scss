@@ -1,18 +1,40 @@
-.swipeout-opened {
-  .swipeout-content{
-    //transform: translate3d(100%, 0px, 0px) !important;
-  }
-}
+// .swipeout-opened {
+//   .swipeout-content{
+//     transform: translate3d(100%, 0px, 0px) !important;
+//   }
+// }
+//
+// .swipeout-actions-opened {
+//   width: 100%;
+//   left: 100% !important;
+//   a {
+//     &:first-child {
+//       transform: translate3d(0px, 0px, 0px) !important;
+//     }
+//     &:last-child {
+//       transform: translate3d(100%, 0px, 0px) !important;
+//     }
+//   }
+// }
 
-.swipeout-actions-opened {
-  //width: 100%;
-  //left: 100% !important;
-  a {
-    &:first-child {
-      //transform: translate3d(0px, 0px, 0px) !important;
+.eddy-home {
+  &--quiz {
+    &--content{
+      &__swiped {
+        a{
+          background-color: map-deep-get($colors, 'primary', 'base') !important;
+          color: map-deep-get($colors, 'foreground', 'white') !important;
+        }
+      }
     }
-    &:last-child {
-      //transform: translate3d(100%, 0px, 0px) !important;
+
+    &--number{
+      color: map-deep-get($colors, 'primary', 'base');
+    }
+    &--rank{
+      font-size: 1rem;
+      color: map-deep-get($colors, 'primary', 'base') !important;
+      font-weight: bold;
     }
   }
 }

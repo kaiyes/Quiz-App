@@ -4,6 +4,16 @@ Template.homePage.events({
     Session.set("topicName", this.toString());
     Router.go('/courseDetails');
  },
+ "click #showProfileInfo": function(event, template) {
+   $('#showProfileInfo').hide();
+   $('.eddy-home--profile-info').removeClass('hide');
+   $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
+ },
+ "click #hideProfileInfo": function(event, template) {
+   $('#showProfileInfo').show();
+   $('.eddy-home--profile-info').addClass('hide');
+   $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
+ }
 });
 
 Template.homePage.helpers({
