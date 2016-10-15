@@ -21,9 +21,10 @@ Template.community.events({
       body : text,
       createdBy: Meteor.user(),
       createdAt: new Date(),
-      likes:0,
+      likes:[],
       reply:[],
     };
+
     Meteor.call('insertPost', payload);
     console.log(Posts.find().fetch());
   },
@@ -31,12 +32,18 @@ Template.community.events({
   "click #comment": function(event, template){
     event.preventDefault();
     $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comment-section').removeClass('hide');
-    console.log($(event.target).parents('post-'+this._id));
   },
 
   "click #reply": function(event, template){
     event.preventDefault();
     $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comments--reply').removeClass('hide');
   },
+
+  "click #like": function(event, template){
+    event.preventDefault();
+    console.log(this);
+    Meteor.call('like', this._id, Meteor.userId());
+  },
+
 
 });

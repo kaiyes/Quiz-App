@@ -23,6 +23,16 @@ Meteor.methods({
       Posts.insert(payload);
     },
 
+    like: function (id,liker) {
+    let likerData = {
+      likes: liker
+    };
+    Posts.update(
+        { _id: id },
+        { $addToSet: likerData}
+      );
+    },
+
     increaseTotalPoints: function () {
       Meteor.users.update(
         { _id: this.userId },
@@ -36,4 +46,6 @@ Meteor.methods({
         { $inc: { "profile.gamePoints": 10 }}
       );
     },
+
+
 });
