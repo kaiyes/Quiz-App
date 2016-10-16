@@ -1,8 +1,69 @@
+%player_rank {
+  position: absolute;
+  right: -8px;
+  top: -2px;
+
+  font-size: 10px;
+}
 .eddy-quiz {
-  &--option{
+  z-index: 1;
+
+  &--option-btn{
     background-color: map-deep-get($colors, 'primary', 'base');
+    color: map-deep-get($colors, 'foreground', 'white');
+  }
+  &--option {
+    position: absolute;
+    top: -100%;
+
+    width: 100%;
+    background-color: map-deep-get($colors, 'primary', 'base');
+    color: map-deep-get($colors, 'foreground', 'white');
+
+    z-index: 2;
+
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  &--level{
+    position: relative;
+    bottom: 1rem;
+
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: 5px solid map-deep-get($colors, 'foreground', 'white');
+
+    line-height: 2.6rem;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
   }
   &--players{
     background-color: map-deep-get($colors, 'primary', 'base');
+    color: map-deep-get($colors, 'foreground', 'white');
+
+    &--profile-img {
+      box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
+    }
+
+    &--me {
+
+    }
+    &--opponent {
+
+    }
+    &--rank {
+      @extend %player_rank;
+
+      &__opponent {
+        @extend %player_rank;
+
+        right: inherit !important;
+        left: -8px !important;
+      }
+    }
   }
 }
