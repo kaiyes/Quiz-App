@@ -64,6 +64,10 @@
         font-size: 1rem !important;
       }
     }
+
+    &--liked{
+      color: map-deep-get($colors, "primary", "base") !important;
+    }
     &--play-btn {
       border: none !important;
     }

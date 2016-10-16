@@ -20,3 +20,34 @@
     line-height: 1rem;
   }
 }
+
+.eddy-rank {
+  //position: relative;
+
+  display: inline-block;
+  background-color: map-deep-get($colors, 'foreground', 'white');
+  width: 4em;
+  height: 4rem;
+  border: 6px solid map-deep-get($colors, 'primary', 'base') !important;
+  border-radius: 50%;
+
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  line-height: 3rem;
+
+  &--badge {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+
+    font-size: 25px;
+    color: #a9e3d5;
+
+    z-index: -1;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}

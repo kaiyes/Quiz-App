@@ -1,0 +1,10 @@
+.eddy-quiz-result {
+  &--player-photo {
+    box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
+  }
+  &--rank{
+    position: relative;
+    
+    z-index: 1;
+  }
+}

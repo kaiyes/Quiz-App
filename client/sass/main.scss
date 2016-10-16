@@ -47,6 +47,7 @@
 @import 'components/buttons';
 @import 'components/form';
 @import 'components/badge';
+@import 'components/circular_progress_bar';
 
 
 // eddy app components
@@ -62,3 +63,4 @@
 @import "../components/courseDetails/chapters";
 @import "../components/home-screen/home";
 @import "../components/quiz-page/quiz";
+@import "../components/quiz-page/quiz-result";

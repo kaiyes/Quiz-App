@@ -1,0 +1,61 @@
+@mixin circle($size) {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  left: calc(50% - #{$size/2});
+  top: calc(50% - #{$size/2});
+  width: $size;
+  height: $size;
+}
+
+$size: 55px;
+.eddy-progress {
+  &--wrapper{
+    margin: 0 auto;
+
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    background-color: #E5E5E5;
+    position: relative;
+
+    &.gt-50 {
+      background-color: map-deep-get($colors, 'primary', 'base');
+    }
+  }
+
+  &--bar {
+    @include circle($size);
+    clip: rect(0, $size, $size, #{$size/2});
+    &--fill {
+      @include circle($size);
+      clip: rect(0, #{$size/2}, $size, 0);
+      background-color: map-deep-get($colors, 'primary', 'base');
+      transform: rotate(60deg);
+    }
+    .gt-50 & {
+      clip: rect(0, #{$size/2}, $size, 0);
+      .eddy-progress--bar--fill {
+        clip: rect(0, $size, $size, #{$size/2});
+        background-color: #E5E5E5;
+      }
+    }
+  }
+
+  &--percents {
+    @include circle(#{$size/1.4});
+    background: #fff;
+    text-align: center;
+    display: table;
+    span {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: map-deep-get($colors, 'foreground', 'light-black');
+    }
+    &--wrapper {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+}
