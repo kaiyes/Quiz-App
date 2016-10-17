@@ -3,7 +3,7 @@
 /// @access public
 
 @mixin mix-color($color1, $key, $amount) {
-	color: mix($color1, map-get($colors-mix, $key), $amount);  
+	color: mix($color1, map-get($colors-mix, $key), $amount) !important;  
 }
 
 /// @name mix-bg
@@ -11,5 +11,5 @@
 /// @access public
 
 @mixin mix-bg($bg, $key, $amount) {
-	background-color: mix($bg, map-get($colors-mix, $key), $amount);  
+	background-color: mix($bg, map-get($colors-mix, $key), $amount) !important;
 }

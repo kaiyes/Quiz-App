@@ -4,7 +4,13 @@
   }
   &--rank{
     position: relative;
-    
+
     z-index: 1;
+  }
+
+  &--questions {
+    &--no {
+      color: map-deep-get($colors, 'primary', 'base');
+    }
   }
 }
