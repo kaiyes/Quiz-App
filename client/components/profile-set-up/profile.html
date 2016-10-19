@@ -1,6 +1,18 @@
 <template name="profile">
   <h1>profile page </h1>
-  {{>  quickForm collection="UserInformation" id="userInformation" type="insert" omitFields="createdBy"}}
+  <!-- {{>  quickForm collection="UserInformation" id="userInformation" type="insert" omitFields="createdBy"}} -->
 
+
+    {{#autoForm collection="UserInformation" id="userInformation" type="insert" omitFields="createdBy"}}
+
+         {{> afQuickField name='profilePicture'}}
+         {{> afQuickField name='name'}}
+         {{> afQuickField name='programme'}}
+         {{> afQuickField name='university'}}
+         {{> afQuickField name='nickName'}}
+         {{> afFieldInput name="country"}}
+
+     <button type="submit" class="btn btn-primary">Submit</button>
+    {{/autoForm}}
 
 </template>
