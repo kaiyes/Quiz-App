@@ -56,6 +56,24 @@
           border: 2px solid map-deep-get($colors, "primary", "base") !important;
         }
     }
+    &--login-button{
+        @extend  %button-common;
+
+        &:hover {
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+        }
+
+        &:active {
+          //background:  map-deep-get($colors, "primary", "base") !important;
+          color: map-deep-get($colors, "primary", "base") !important;
+        }
+
+        &:focus {
+          //background:  map-deep-get($colors, "primary", "base") !important;
+          color: map-deep-get($colors, "primary", "base") !important;
+        }
+    }
 	&--primary-button-revert{
         @extend  %button-revert;
 

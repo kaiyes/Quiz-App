@@ -44,10 +44,8 @@ html {
 }
 
 body {
-  color: map-deep-get($colors, "foreground", "light-black");
-
+	@include type-style($font-family-base, 400, $font-size-base, map-deep-get($colors, "foreground", "light-black"));
 	background-color: map-deep-get($colors, "background", "white");
-
 	overflow: auto;
 }
 
