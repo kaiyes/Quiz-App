@@ -45,5 +45,21 @@ Template.community.events({
     Meteor.call('like', this._id, Meteor.userId());
   },
 
+  "focus .eddy-community--post-area--input__reply": function(event, template) {
+      $(".page-content").animate({
+            scrollTop: $('#post-'+ this._id).height() * $('#post-'+ this._id).index()
+          },"slow");
+
+          console.log($('#post-'+ this._id).height());
+          console.log($('#post-'+ this._id).height() * $('#post-'+ this._id).index());
+  }
+  ,
+  "blur .eddy-community--post-area--input__reply": function(event, template) {
+    if($(event.target).hasClass('eddy-community--post-area--input__reply')) {
+      //$(".page-content").animate({ scrollTop: ($(".page-content").offset().top += 100 )}, "slow");
+    }
+    $('.eddy-toolbar').show();
+  }
+
 
 });
