@@ -12,6 +12,11 @@ UserInformation.attachSchema(new SimpleSchema({
 
     name: {
       type: String,
+      label: "Number of copies *",
+      autoform: {
+        'label-type': 'floating',
+        placeholder: 'First Name'
+      }
     },
 
     programme: {
