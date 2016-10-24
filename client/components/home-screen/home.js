@@ -6,12 +6,12 @@ Template.homePage.events({
  },
  "click #showProfileInfo": function(event, template) {
    $('#showProfileInfo').hide();
-   $('.eddy-home--profile-info').removeClass('hide');
+   $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
  },
  "click #hideProfileInfo": function(event, template) {
-   $('#showProfileInfo').show();
-   $('.eddy-home--profile-info').addClass('hide');
+   $('#showProfileInfo').fadeIn();
+   $('.eddy-home--profile-info').css({'margin-top': '-172px', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
  }
 });

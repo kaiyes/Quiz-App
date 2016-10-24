@@ -2,7 +2,7 @@
       <!-- {{currentUser.profile.country}} -->
       <div class="views">
         <div class="view view-main">
-          <div class="eddy-home--profile-info hide">
+          <div class="eddy-home--profile-info">
             <div class="padding-top-30 flex-direction--column flex-justify-content--flex-start flex-align-items--center">
               <div class="">
                 <img width="65" height="65" class="make-round eddy-home--profile-photo" src="{{currentUser.profile.image}}" alt="Profile Photo">
@@ -37,7 +37,7 @@
                       <li id="list" class="swipeout eddy-home--quiz">
                         <div class="swipeout-content item-content eddy-home--quiz--content">
                           <div class="item-media eddy-home--quiz--icon-wrap">
-                              <img class="make-round eddy-home--quiz--icon " width="35" height="35" src="http://placehold.it/35x35" alt="icon">
+                              <img class="make-round eddy-home--quiz--icon " width="35" height src="http://placehold.it/35x35" alt="icon">
                           </div>
                           <div class="item-inner padding-v-20">
                             <div class="item-title">
@@ -73,8 +73,21 @@
               </div>
             </div>
           </div>
-          
-          {{> toolbar}}
+          <div class="toolbar position-absolute top-initial eddy-toolbar">
+            <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center">
+              <span class="button ripple border_none--imp eddy-toolbar--icon">
+                <i class="fa fa-cog" aria-hidden="true"></i>
+              </span>
+              <span class="button ripple border_none--imp eddy-toolbar--icon">
+                <i class="fa fa-home" aria-hidden="true"></i>
+              </span>
+              <span class="button ripple border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti">
+                <i class="fa fa-bell-o" aria-hidden="true"></i>
+
+                <span class="eddy-toolbar--icon__noti--badge">5</span>
+              </span>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -18,6 +18,9 @@
 // }
 
 .eddy-home {
+  &--profile-info {
+    margin-top: -172px;
+  }
   &--quiz {
     &--content{
       &__swiped {
