@@ -1,0 +1,124 @@
+.eddy-profile {
+  .form-group {
+    margin-left: 3rem;
+    margin-right: 3rem;
+
+    label {
+      display: none;
+    }
+
+    input, select {
+      padding-left: 5px;
+      border-top: none !important;
+      border-left: none !important;
+      border-right: none !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+      border-radius: 0;
+      box-shadow: none !important;
+    }
+
+    select {
+      padding-left: 0 !important;
+
+      color: #999999;
+    }
+
+    &:nth-of-type(5) {
+      margin-top: 4rem;
+    }
+
+    &:nth-of-type(7) {
+      select {
+        border-bottom: none !important;
+      }
+    }
+
+    &:nth-of-type(8) {
+      padding: 0 !important;
+      margin: 0 !important;
+
+      position: fixed;
+      bottom: 0;
+
+      width: 100%;
+      box-shadow: 0 55px 10px 60px #ebebeb !important;
+
+      button{
+        padding: 14px;
+
+        background: map-deep-get($colors, 'foreground', 'white') !important;
+        width: 100%;
+        border: none !important;
+
+        color: map-deep-get($colors, 'primary', 'base') !important;
+      }
+    }
+
+    &:nth-of-type(1) {
+      padding-bottom: 2rem;
+
+      margin-bottom: 4rem;
+
+      @extend %display_flex;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+
+
+      label {
+        padding-left: 5px;
+
+        padding-top: 1.5rem;
+        display: block !important;
+        flex: 1 !important;
+
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: #999999;
+      }
+      .afCloudinary {
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+
+        .afCloudinary-thumbnail {
+          text-align: center;
+
+          img {
+            width: 7.6rem;
+            height: 7.6rem;
+            border-radius: 50%;
+          }
+        }
+
+        .js-remove {
+          font-size: 1.2rem;
+        }
+
+        button {
+          width: 5.6rem;
+          height: 5.6rem;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          border-radius: 50%;
+          box-shadow: 0 10px 20px rgba(0,0,0,.19),0 6px 6px rgba(0,0,0,.23);
+          background-color: map-deep-get($colors, 'primary', 'base');
+
+          color: map-deep-get($colors, 'foreground', 'white');
+          font-size: 1rem;
+
+          -webkit-box-align: flex-end;
+          -ms-flex-align: flex-end;
+          -webkit-align-items: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

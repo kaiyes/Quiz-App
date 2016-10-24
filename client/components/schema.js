@@ -12,50 +12,66 @@ UserInformation.attachSchema(new SimpleSchema({
 
     name: {
       type: String,
-      label: "Number of copies *",
       autoform: {
         'label-type': 'floating',
-        placeholder: 'First Name'
+        placeholder : 'Name *'
       }
+    },
+
+    university: {
+       type: String,
+       allowedValues: ['UH', 'NSU'],
     },
 
     programme: {
       type: String,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Programme *'
+      }
+    },
+    nickName: {
+       type: String,
+       allowedValues: ['warrior', 'lion'],
+       optional:true,
+       autoform: {
+         'label-type': 'floating',
+         placeholder : 'Nickname'
+       }
     },
 
-    university: {
-     type: String,
-     allowedValues: ['UH', 'NSU'],
-  },
+    age: {
+      type: Number,
+      max: 60,
+      optional:true,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Age'
+      }
+    },
 
-    nickName: {
-     type: String,
-     allowedValues: ['warrior', 'lion'],
-  },
+    country:{
+      type: String,
+      optional:true,
+      allowedValues: ['bd', 'uk'],
+      optional:true,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Country'
+      }
+    },
 
-  country:{
-    type: String,
-    optional:true,
-    allowedValues: ['bd', 'uk'],
-  },
-
-  age: {
-    type: Number,
-    max: 60,
-    optional:true,
-  },
-
-  createdBy: {
-    type: String,
-    autoValue: function() {
-      if (this.isInsert) {
-        console.log("id inserted :  " + this.userId);
-        return this.userId;
-      } else {
-        console.log("no userId entered");;
+    createdBy: {
+      type: String,
+      autoValue: function() {
+        if (this.isInsert) {
+          console.log("id inserted :  " + this.userId);
+          return this.userId;
+        } else {
+          console.log("no userId entered");;
+        }
       }
     }
-  }
 
 }));
 
