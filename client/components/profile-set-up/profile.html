@@ -3,12 +3,12 @@
   {{>  quickForm collection="UserInformation" id="userInformation" type="insert" omitFields="createdBy"}}
 
 <!--
-    {{#autoForm collection="UserInformation" id="userInformation" type="insert" omitFields="createdBy"}}
+    {{#autoForm collection="UserInformation" id="userInormation" type="insert" omitFields="createdBy"}}
 
          {{> afQuickField name='profilePicture'}}
-         {{> afQuickField name='name'}}
-         {{> afQuickField name='programme'}}
-         {{> afQuickField name='university'}}
+         {{> afQuickField name='name' }}
+         {{> afQuickField name='programme' id="nameDesign"}}
+         {{> afQuickField name='university' class='form-control' placeholder="this is how you do placeholders from autoform"}}
          {{> afQuickField name='nickName'}}
          {{> afFieldInput name="country"}}
 
