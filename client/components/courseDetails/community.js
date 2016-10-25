@@ -5,6 +5,22 @@ Template.registerHelper('getTimePosted', date => {
   }
 });
 
+Template.community.onRendered(function() {
+  $(document).ready(function() {
+    $(document)
+      .on("focus", ".eddy-community--post-area--input__reply", function(){
+        var outerHeight = 0;
+        $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
+          outerHeight += $(this).outerHeight() + 10;
+        });
+
+        $(".page-content").animate({
+          scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
+        },"slow");
+      })
+  })
+});
+
 
 Template.community.helpers({
     posts(){
@@ -43,23 +59,5 @@ Template.community.events({
     event.preventDefault();
     console.log(this);
     Meteor.call('like', this._id, Meteor.userId());
-  },
-
-  "focus .eddy-community--post-area--input__reply": function(event, template) {
-      $(".page-content").animate({
-            scrollTop: $('#post-'+ this._id).height() * $('#post-'+ this._id).index()
-          },"slow");
-
-          console.log($('#post-'+ this._id).height());
-          console.log($('#post-'+ this._id).height() * $('#post-'+ this._id).index());
   }
-  ,
-  "blur .eddy-community--post-area--input__reply": function(event, template) {
-    if($(event.target).hasClass('eddy-community--post-area--input__reply')) {
-      //$(".page-content").animate({ scrollTop: ($(".page-content").offset().top += 100 )}, "slow");
-    }
-    $('.eddy-toolbar').show();
-  }
-
-
 });
