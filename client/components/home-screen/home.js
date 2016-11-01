@@ -30,5 +30,9 @@ Template.homePage.helpers({
           return "rd";
       }
       return "th";
-    }
+    },
+
+  userInfo(){
+    return UserInformation.findOne({ createdBy: Meteor.userId()});
+  }
 });
