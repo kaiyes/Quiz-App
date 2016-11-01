@@ -1,5 +1,4 @@
 Template.signUp.events({
-
   "click #back": function(event, template){
     Router.go('/');
   },

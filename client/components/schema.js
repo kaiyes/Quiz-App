@@ -12,45 +12,66 @@ UserInformation.attachSchema(new SimpleSchema({
 
     name: {
       type: String,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Name *'
+      }
+    },
+
+    university: {
+       type: String,
+       allowedValues: ['UH', 'NSU'],
     },
 
     programme: {
       type: String,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Programme *'
+      }
+    },
+    nickName: {
+       type: String,
+       allowedValues: ['warrior', 'lion'],
+       optional:true,
+       autoform: {
+         'label-type': 'floating',
+         placeholder : 'Nickname'
+       }
     },
 
-    university: {
-     type: String,
-     allowedValues: ['UH', 'NSU'],
-  },
+    age: {
+      type: Number,
+      max: 60,
+      optional:true,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Age'
+      }
+    },
 
-    nickName: {
-     type: String,
-     allowedValues: ['warrior', 'lion'],
-  },
+    country:{
+      type: String,
+      optional:true,
+      allowedValues: ['bd', 'uk'],
+      optional:true,
+      autoform: {
+        'label-type': 'floating',
+        placeholder : 'Country'
+      }
+    },
 
-  country:{
-    type: String,
-    optional:true,
-    allowedValues: ['bd', 'uk'],
-  },
-
-  age: {
-    type: Number,
-    max: 60,
-    optional:true,
-  },
-
-  createdBy: {
-    type: String,
-    autoValue: function() {
-      if (this.isInsert) {
-        console.log("id inserted :  " + this.userId);
-        return this.userId;
-      } else {
-        console.log("no userId entered");;
+    createdBy: {
+      type: String,
+      autoValue: function() {
+        if (this.isInsert) {
+          console.log("id inserted :  " + this.userId);
+          return this.userId;
+        } else {
+          console.log("no userId entered");;
+        }
       }
     }
-  }
 
 }));
 
@@ -72,23 +93,13 @@ UserInformation.allow({
 
   AutoForm.addHooks('userInformation', {
     onSuccess: function() {
-       var userInfo = UserInformation.findOne({ createdBy: Meteor.userId()});
+      Router.go('/homePage');
+    }
+  });
 
-       var profile = {
-         "age": userInfo.age,
-         "name": userInfo.name,
-         "nickName": userInfo.nickName,
-         "country": userInfo.country,
-         "programme": userInfo.programme,
-         "university": userInfo.university,
-         "totalPoints": 10,
-         "gamePoints": 10,
-         "selectedCourses": Meteor.user().profile.selectedCourses,
-         "image": userInfo.profilePicture,
-       }
 
-      Meteor.call('addToProfile', profile);
-      Meteor.call("removeUnusedInfo");
+  AutoForm.addHooks('updateInfo', {
+    onSuccess: function() {
       Router.go('/homePage');
     }
   });
