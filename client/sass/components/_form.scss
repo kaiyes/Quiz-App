@@ -14,9 +14,9 @@
 
   &--icon{
     color: map-deep-get($colors, "primary", "base") !important;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 
-    &.fa-lock{
+    &.lnr-lock{
       padding-right: 0.2rem;
 
       font-size: 1.6rem;

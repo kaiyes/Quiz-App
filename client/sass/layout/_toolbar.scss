@@ -8,12 +8,12 @@
 
   &--icon{
     color: map-deep-get($colors, "foreground", "light-black") !important;
-    font-size: 1.8rem !important;
+    font-size: 2rem !important;
 
     &__noti {
       //position: relative;
       overflow: visible !important;
-      i {
+      div {
         -webkit-transform: rotate(20deg) !important;
         -ms-transform: rotate(20deg) !important;
         transform: rotate(20deg) !important;
@@ -21,7 +21,7 @@
 
       &--badge {
         position: absolute;
-        //right: 2.2rem;
+        left: 2.7rem;
         top: -1rem;
 
         color: map-deep-get($colors, "primary", "base") !important;
