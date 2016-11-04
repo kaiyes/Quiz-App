@@ -1,0 +1,5 @@
+.eddy-result-exp {
+  &__title {
+    color: map-deep-get($colors, "primary", "base");
+  }
+}

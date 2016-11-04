@@ -1,4 +1,5 @@
 <template name="quizResult">
+  {{> resultExplanation}}
   <div class="views">
     <div class="view view-main">
       <div class="navbar eddy-navbar">
@@ -9,7 +10,7 @@
                 </a>
             </div>
             <div class="center full-width text-center">
-              <h2 class="font-size-fixed-14 margin-0">
+              <h2 class="font-size-fixed-14 margin-0 full-width">
                   YOU WON :)
               </h2>
             </div>
@@ -144,7 +145,7 @@
                     </div>
                   </div>
 
-                  <a href="#" class="link text-bold text-center display-block padding-8">
+                  <a href="#" data-popup=".popup-explanation" class="link text-bold text-center display-block padding-8 open-popup font-size-fixed-14">
                     EXPLANATION
                   </a>
                 </div>
@@ -153,8 +154,6 @@
           </div>
         </div>
       </div>
-
-
       {{> toolbar}}
     </div>
   </div>

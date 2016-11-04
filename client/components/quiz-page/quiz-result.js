@@ -12,3 +12,7 @@ Template.quizResult.onRendered(function() {
     });
   });
 });
+
+Template.quizResult.events({
+
+});
