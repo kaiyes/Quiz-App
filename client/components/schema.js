@@ -93,6 +93,20 @@ UserInformation.allow({
 
   AutoForm.addHooks('userInformation', {
     onSuccess: function() {
+      var userInfo = UserInformation.findOne({ createdBy: Meteor.userId()});
+      var profile = {
+        "age": userInfo.age,
+        "name": userInfo.name,
+        "nickName": userInfo.nickName,
+        "country": userInfo.country,
+        "programme": userInfo.programme,
+        "university": userInfo.university,
+        "totalPoints": 10,
+        "gamePoints": 10,
+        "selectedCourses": Meteor.user().profile.selectedCourses,
+        "image": userInfo.profilePicture,
+    };
+      Meteor.call('addToProfile', profile);
       Router.go('/homePage');
     }
   });
@@ -100,6 +114,20 @@ UserInformation.allow({
 
   AutoForm.addHooks('updateInfo', {
     onSuccess: function() {
+      var userInfo = UserInformation.findOne({ createdBy: Meteor.userId()});
+      var profile = {
+        "age": userInfo.age,
+        "name": userInfo.name,
+        "nickName": userInfo.nickName,
+        "country": userInfo.country,
+        "programme": userInfo.programme,
+        "university": userInfo.university,
+        "totalPoints": 10,
+        "gamePoints": 10,
+        "selectedCourses": Meteor.user().profile.selectedCourses,
+        "image": userInfo.profilePicture,
+    };
+      Meteor.call('addToProfile', profile);
       Router.go('/homePage');
     }
   });
