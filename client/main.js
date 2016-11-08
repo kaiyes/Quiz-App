@@ -1,9 +1,9 @@
 Meteor.startup(function(){
-  var myApp = new Framework7({
+   myApp = new Framework7({
       materialRipple: true,
-      materialRippleElements: '.ripple, a.link, a.item-link, .button, .modal-button, .tab-link, .label-radio, .label-checkbox, .actions-modal-button, a.searchbar-clear, .floating-button',
+      materialRippleElements: true,
       fastClicks: true
   });
-  var $$ = Dom7;
+   $$ = Dom7;
 
 });
