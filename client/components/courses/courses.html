@@ -33,8 +33,8 @@
                <ul class="eddy-courses">
                  <li class="list-group-title eddy-courses--sorting">A</li>
                  {{#each courses}}
-                   <li class="cur-pointer select-course">
-                     <a class="item-link">
+                   <li id="course" class="cur-pointer select-course">
+                    <a class="item-link">
                      <div class="item-content">
                        <div class="item-inner">
                          <div class="item-title">
@@ -42,7 +42,7 @@
                              <div class="eddy-courses--codes width-100 font-size-fixed-14 text-bold">
                                {{number}}
                              </div>
-                             <div id="course" class="flex--1 text-ellipsis font-size-fixed-14">
+                             <div class="flex--1 text-ellipsis font-size-fixed-14">
                                {{courseName}}
                              </div>
                            </div>
