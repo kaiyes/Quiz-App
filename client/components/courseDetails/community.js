@@ -6,19 +6,17 @@ Template.registerHelper('getTimePosted', date => {
 });
 
 Template.community.onRendered(function() {
-  $(document).ready(function() {
-    $(document)
-      .on("focus", ".eddy-community--post-area--input__reply", function(){
-        var outerHeight = 0;
-        $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
-          outerHeight += $(this).outerHeight() + 10;
-        });
-
-        $(".page-content").animate({
-          scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
-        },"slow");
-      })
-  })
+    // $(document)
+    //   .on("focus", ".eddy-community--post-area--input__reply", function(){
+    //     var outerHeight = 0;
+    //     $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
+    //       outerHeight += $(this).outerHeight() + 10;
+    //     });
+    //
+    //     $(".page-content").animate({
+    //       scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
+    //     },"slow");
+    //   })
 });
 
 

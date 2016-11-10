@@ -58,9 +58,7 @@ Template.profile.events({
   //           scrollTop: $('.form-group:nth-of-type(6)').height() * 6 + 10
   //         },"slow");
   // },
-  // "click .form-group:nth-of-type(7)": function(event, template) {
-  //     $(".page-content").animate({
-  //           scrollTop: $('.form-group:nth-of-type(7)').height() * 7 + 15
-  //         },"slow");
-  // }
+  "click .form-group:nth-of-type(7)": function(event, template) {
+    console.log(this);
+  }
 });
