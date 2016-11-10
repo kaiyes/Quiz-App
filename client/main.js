@@ -1,6 +1,7 @@
 Meteor.startup(function(){
    myApp = new Framework7({
-      fastClicks: true
+      fastClicks: true,
+      materialRipple:true,
     });
    $$ = Dom7;
 
