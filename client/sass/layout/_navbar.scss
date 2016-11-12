@@ -17,9 +17,14 @@
 
       &.active {
         background: transparent !important;
-        
+
         opacity: 1;
       }
     }
+  }
+
+  &--challenge {
+    box-shadow: none !important;
+    border: none !important;
   }
 }
