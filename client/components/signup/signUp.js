@@ -1,14 +1,14 @@
 Template.signUp.onRendered(function() {
-    // $('.eddy-form--lists .item-input:nth-of-type(1)').click(function() {
-    //   $(".page-content").animate({
-    //     scrollTop: 170
-    //   },"slow");
-    // });
-    // $('.eddy-form--lists .item-input:nth-of-type(2)').click(function() {
-    //   $(".page-content").animate({
-    //     scrollTop: 214
-    //   },"slow");
-    // });
+    $('.eddy-form--lists .item-input:nth-of-type(1)').click(function() {
+      $(".page-content").animate({
+        scrollTop: 170
+      },"slow");
+    });
+    $('.eddy-form--lists .item-input:nth-of-type(2)').click(function() {
+      $(".page-content").animate({
+        scrollTop: 214
+      },"slow");
+    });
 });
 
 Template.signUp.events({
