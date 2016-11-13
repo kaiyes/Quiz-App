@@ -37,4 +37,8 @@
   &--selected {
     color: map-deep-get($colors, "primary", "base") !important;
   }
+
+  .item-inner {
+    background-image: none !important;
+  }
 }
