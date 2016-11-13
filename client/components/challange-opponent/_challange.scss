@@ -1,0 +1,42 @@
+.eddy-challenge {
+  &__list {
+    &:after {
+      //background-color: transparent !important;
+    }
+
+    .item-link {
+      .item-inner {
+        background-image: none !important;
+
+        &:after {
+          background-color: transparent !important;
+        }
+      }
+    }
+
+    li {
+      &:nth-of-type(even) {
+        background: rgba(0, 0 ,0, 0.05);
+      }
+      .item-inner {
+        &:after {
+          background-color: transparent !important;
+        }
+        &.active-state {
+          background: rgba(0, 0 ,0, 0.08)!important;
+        }
+      }
+    }
+  }
+
+  &__random-op-btn {
+    position: fixed;
+
+    padding: .8rem !important;
+
+    width: 100%;
+    background-color: map-deep-get($colors, "primary", "base");
+
+    z-index: 50;
+  }
+}

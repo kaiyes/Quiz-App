@@ -4,6 +4,7 @@ Template.homePage.events({
     Router.go('/courseDetails');
  },
  "click #showProfileInfo": function(event, template) {
+   $('#showProfileInfo').slideUp();
    $('#showProfileInfo').hide(); 
    $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');

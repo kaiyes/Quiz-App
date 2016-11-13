@@ -1,5 +1,4 @@
 Template.courseDetails.onRendered(function() {
-  $(document).ready(function() {
     if (Framework7.prototype.device.android) {
       $('.eddy-tabs').addClass('margin-top-105');
     }else {
@@ -12,7 +11,6 @@ Template.courseDetails.onRendered(function() {
     //   $('.tab').removeClass('active');
     //   $($(this).attr('href')).addClass('active');
     // })
-  })
 });
 
 Template.courseDetails.helpers({

@@ -41,19 +41,26 @@
         }
 
         &:active {
-            background:  map-deep-get($colors, "primary", "base") !important;
-            color: map-deep-get($colors, "buttons", "white") !important;
+          //  background:  map-deep-get($colors, "primary", "base") !important;
+          //  color: map-deep-get($colors, "buttons", "white") !important;
         }
 
         &:focus {
-            background:  map-deep-get($colors, "primary", "base") !important;
-            color: map-deep-get($colors, "buttons", "white") !important;
+          //  background:  map-deep-get($colors, "primary", "base") !important;
+          //  color: map-deep-get($colors, "buttons", "white") !important;
         }
 
         &__white-color {
           color: map-deep-get($colors, "primary", "base") !important;
 
           border: 2px solid map-deep-get($colors, "primary", "base") !important;
+
+          &--challenge {
+            padding-top: 1rem;
+            padding-bottom: 0.8rem;
+            padding-left: 1.2rem;
+            padding-right: 1.2rem;
+          }
         }
     }
     &--login-button{

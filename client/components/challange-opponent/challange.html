@@ -1,7 +1,7 @@
 <template name="challengeOpponent">
   <div class="views">
     <div class="view view-main">
-      <div class="navbar eddy-navbar">
+      <div class="navbar eddy-navbar eddy-navbar--challenge">
         <div class="navbar-inner">
             <div class="left">
                 <a href="{{pathFor 'homePage'}}" class="link icon-only">
@@ -21,12 +21,17 @@
         </div>
       </div>
       <div class="pages">
-        <div class="page">
+        <div class="page eddy-challenge">
           <div class="page-content">
-            <div class="margin-top-70">
-              <div class="list-block">
-                <ul>
-                  <li class="item-content padding-left-0">
+            <div class="eddy-challenge-mrgn-top flex-direction--column">
+              <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center">
+                <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-20 font-size-fixed-10 text-bold">
+                    RANDOM OPPONENT
+                </button>
+              </div>
+              <div class="list-block flex--1 padding-top-16">
+                <ul class="eddy-challenge__list">
+                  <li class="item-content padding-left-0 cur-pointer">
                     <div class="item-inner padding-h-20">
                       <div class="item-title">
                         <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
@@ -41,7 +46,7 @@
                       </div>
                     </div>
                   </li>
-                  <li class="item-content padding-left-0">
+                  <li class="item-content padding-left-0 cur-pointer">
                     <div class="item-inner padding-h-20">
                       <div class="item-title">
                         <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
