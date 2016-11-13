@@ -24,6 +24,7 @@ Template.login.events({
         if (error) {
           console.log(error.reason);
         } else {
+          toastr.success("Log In Successful");
           Router.go('/homePage');
         };
       });

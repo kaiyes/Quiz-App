@@ -1,11 +1,17 @@
+Template.homePage.onRendered(function() {
+  sAlert.success('Your message',{effect: 'slide'});
+});
+
 Template.homePage.events({
   "click #list": function(event, template){
-    Session.set("topicName", this.toString());
-    Router.go('/courseDetails');
+    // Session.set("topicName", this.toString());
+    // Router.go('/courseDetails');
+    console.log("clicked");
+    toastr.warning("works");
  },
  "click #showProfileInfo": function(event, template) {
    $('#showProfileInfo').slideUp();
-   $('#showProfileInfo').hide(); 
+   $('#showProfileInfo').hide();
    $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
  },
@@ -13,7 +19,8 @@ Template.homePage.events({
    $('#showProfileInfo').slideDown();
    $('.eddy-home--profile-info').css({'margin-top': '-172px', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
- }
+ },
+
 });
 
 Template.homePage.helpers({
