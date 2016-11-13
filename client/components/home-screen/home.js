@@ -1,13 +1,7 @@
-Template.homePage.onRendered(function() {
-  sAlert.success('Your message',{effect: 'slide'});
-});
-
 Template.homePage.events({
   "click #list": function(event, template){
-    // Session.set("topicName", this.toString());
-    // Router.go('/courseDetails');
-    console.log("clicked");
-    toastr.warning("works");
+    Session.set("topicName", this.toString());
+    Router.go('/courseDetails');
  },
  "click #showProfileInfo": function(event, template) {
    $('#showProfileInfo').slideUp();

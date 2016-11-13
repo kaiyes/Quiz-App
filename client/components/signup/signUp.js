@@ -33,13 +33,14 @@ Template.signUp.events({
 
     Meteor.call("addUser", email,password, profile, function(error,result){
       if (error) {
-        console.log(error.reason);
+        toastr.error(error.reason);
       } else {
         Meteor.loginWithPassword(email, password,
           function(error) {
             if (error) {
-              console.log(error.reason);
+              toastr.error(error.reason);
             } else {
+              toastr.success("Signup Successful");
               Router.go('/course');
             };
           });

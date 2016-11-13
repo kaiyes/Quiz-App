@@ -22,7 +22,7 @@ Template.login.events({
     Meteor.loginWithPassword(email, password,
       function(error) {
         if (error) {
-          console.log(error.reason);
+          toastr.error(error.reason);
         } else {
           toastr.success("Log In Successful");
           Router.go('/homePage');

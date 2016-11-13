@@ -107,6 +107,7 @@ UserInformation.allow({
         "image": userInfo.profilePicture,
     };
       Meteor.call('addToProfile', profile);
+      toastr.success("created Profile");
       Router.go('/homePage');
     }
   });
@@ -128,6 +129,7 @@ UserInformation.allow({
         "image": userInfo.profilePicture,
     };
       Meteor.call('addToProfile', profile);
+      toastr.success("Updated Profile");
       Router.go('/homePage');
     }
   });
