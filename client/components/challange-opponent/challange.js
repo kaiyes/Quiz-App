@@ -8,7 +8,8 @@ Template.challengeOpponent.onRendered(function() {
 
 Template.challengeOpponent.helpers({
   players: function(){
-    return Meteor.users.find();
+    let topicName = Session.get('topicName');
+    return Meteor.users.find({'profile.selectedCourses':topicName, _id: {$ne: Meteor.userId()}});
   }
 });
 
