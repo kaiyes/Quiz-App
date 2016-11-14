@@ -21,8 +21,12 @@
 
               <div class="margin-top-80 full-width">
                 <button type="button" href="#" class="eddy-play-first__btn flex-direction--row eddy--sqr-buttons__plan__primary button button-fill button-raised border-r-20 full-width">
-                  <span class="eddy-play-first__badge">1</span>
-                  <span class="flex--1">PLAY FIRST</span>
+                  <span class="eddy-play-first__badge">
+                      {{#with time}}
+                          {{this}}
+                      {{/with}}
+                  </span>
+                  <span id="play" class="flex--1">PLAY FIRST</span>
                 </button>
               </div>
         </div>

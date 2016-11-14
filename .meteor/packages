@@ -58,6 +58,7 @@ cosio55:autoform-cloudinary
 #######################################################
 momentjs:moment
 raix:handlebar-helpers
+flyandi:reactive-countdown
 
 
 #######################################################
