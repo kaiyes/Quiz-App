@@ -1,7 +1,20 @@
 .eddy-chapters {
-  &--list {
+  &__list {
     &:nth-of-type(even) {
       background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    &__index {
+      color: #494949;
+    }
+    &__name {
+      color: #757575;
+    }
+
+    .item-link {
+      &.active-state {
+        background: rgba(0, 0 ,0, 0.08)!important;
+      }
     }
   }
 }
