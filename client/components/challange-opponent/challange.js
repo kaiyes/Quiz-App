@@ -15,8 +15,7 @@ Template.challengeOpponent.helpers({
 
 Template.challengeOpponent.events({
   "click #player": function(event, template){
-    console.log(Session.get('chapter'));
-    console.log(Session.get('topicName'));
-    Router.go('/quiz');
+    Session.set('playerInfo', this);
+    Router.go('/playFirst');
   },
 });
