@@ -1,8 +1,9 @@
-var countdown = new ReactiveCountdown(120);
+var countdown = new ReactiveCountdown(5);
 
 Template.playFirst.onRendered(function(){
   countdown.start(function() {
-    console.log("works");
+    toastr.error("Match Failed");
+    Router.go('/homePage');
   });
 });
 
