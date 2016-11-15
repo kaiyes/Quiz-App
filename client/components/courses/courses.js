@@ -20,11 +20,12 @@ Template.course.events({
   },
 
   "click #course": function(){
+    event.preventDefault();
+    toastr.success(`added ${this.courseName}`);
     let selectedCourses = Meteor.user().profile.selectedCourses;
     console.log(selectedCourses);
       Meteor.users.update(
         { _id: Meteor.userId()},
         { $addToSet: { "profile.selectedCourses": this.courseName }});
     },
-
 });

@@ -5,7 +5,7 @@ Template.homePage.events({
  },
  "click #showProfileInfo": function(event, template) {
    $('#showProfileInfo').slideUp();
-   $('#showProfileInfo').hide(); 
+   $('#showProfileInfo').hide();
    $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
  },
@@ -13,7 +13,8 @@ Template.homePage.events({
    $('#showProfileInfo').slideDown();
    $('.eddy-home--profile-info').css({'margin-top': '-172px', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
- }
+ },
+
 });
 
 Template.homePage.helpers({

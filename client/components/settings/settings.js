@@ -18,6 +18,7 @@ Template.settings.events({
 
   "click #logout": function(event, template){
     Meteor.logout(function(){
+      toastr.warning("Logged Out");
       Router.go('/');
     });
   },

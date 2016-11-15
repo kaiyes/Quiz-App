@@ -1,0 +1,20 @@
+.eddy-play-first{
+  &__badge {
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    color: map-deep-get($colors, 'primary', 'base');
+    background: map-deep-get($colors, 'foreground', 'white');
+    text-align: center;
+    border-radius: 50%;
+    font-size: 12px;
+  }
+
+  &__btn {
+    padding-left: 8px !important;
+
+    height: 35px !important;
+
+    line-height: 24px !important;
+  }
+}

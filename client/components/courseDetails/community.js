@@ -1,6 +1,5 @@
 Template.registerHelper('getTimePosted', date => {
   if (date) {
-    console.log(moment(new Date(date)).fromNow(true));
     return moment(new Date(date)).fromNow(true);
   }
 });

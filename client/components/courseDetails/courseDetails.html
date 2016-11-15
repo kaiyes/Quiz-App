@@ -1,6 +1,17 @@
 <template name="courseDetails">
   <div class="views">
     <div class="view view-main">
+      <div class="eddy-courseDetails__select-topic">
+        <div id="closeTopicList" class="flex-direction--row flex-justify-content--flex-end">
+          <span class="lnr lnr-cross font-size-fixed-18 padding-20" aria-hidden="true"></span>
+        </div>
+        <ul class="text-center eddy-courseDetails__select-topic__lists">
+          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">PRINCIPLES OF ECONOMICS</a></li>
+          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">FOUNDATIONS OF ECONOMICS</a></li>
+          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">INTERNATIONAL BUSINESS</a></li>
+          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">CORPORATE FINANCE</a></li>
+        </ul>
+      </div>
       <div class="navbar eddy-navbar">
         <div class="navbar-inner">
             <div class="left">
@@ -16,7 +27,7 @@
               </h2>
             </div>
             <div class="right">
-              <a href="#" class="open-panel link icon-only">
+              <a id="openTopicList" href="#" class="open-panel link icon-only">
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
               </a>
             </div>
