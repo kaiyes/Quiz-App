@@ -1,3 +1,11 @@
+Template.quiz.onRendered(function(){
+  Session.set('quizStarted', "started");
+});
+
+Template.quiz.onDestroyed(function () {
+  Session.set('quizStarted', null);
+});
+
 Template.quiz.events({
   "click .eddy-quiz--option-btn": function(event, template){
     event.stopPropagation();

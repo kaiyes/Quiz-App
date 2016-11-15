@@ -1,9 +1,13 @@
-var countdown = new ReactiveCountdown(5);
+var countdown = new ReactiveCountdown(3);
 
 Template.playFirst.onRendered(function(){
   countdown.start(function() {
-    toastr.error("Match Failed");
-    Router.go('/homePage');
+    if (Session.equals('quizStarted','started')) {
+      console.log("timer was stopped");
+    } else {
+      toastr.error("Match Failed");
+      Router.go('/homePage');
+    }
   });
 });
 
@@ -19,6 +23,10 @@ Template.playFirst.helpers({
 
 Template.playFirst.events({
   "click #play": function(event, instance){
-    console.log(countdown.get());
-  }
+    Router.go('/quiz');
+  },
+  "click #cross": function(event, instance){
+    toastr.error("Match Failed");
+    Router.go('/homePage');
+  },
 });
