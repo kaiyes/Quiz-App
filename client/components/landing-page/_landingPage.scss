@@ -7,15 +7,15 @@
     left: 50%;
 
     -webkit-transform: translate(-50%, -40%);
-    -mz-transform: translate(-50%, -40%);
+    -moz-transform: translate(-50%, -40%);
     -ms-transform: translate(-50%, -40%);
     transform: translate(-50%, -40%);
 
-    color: map-deep-get($colors, "foreground", "white") !important;
+    @include type-style($font-family-eddy-montserratbold, 700, 5rem, map-deep-get($colors, "foreground", "white"));
   }
 
   &--toolbar{
-    bottom: 5rem !important;
+    bottom: 7rem !important;
 
     background-color: map-deep-get($colors, "primary", "base") !important;
 
