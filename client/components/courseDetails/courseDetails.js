@@ -47,7 +47,9 @@ Template.courseDetails.events({
   },
   "click #list": function(event, template){
     Session.set("topicName", this.toString());
-    Router.go('/courseDetails');
+    $('.eddy-courseDetails__select-topic').removeClass('opened');
+    $('.pages').removeClass('opacity-50');
+    $('.toolbar').removeClass('opacity-30');
  },
 
 });
