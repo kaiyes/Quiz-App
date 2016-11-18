@@ -6,10 +6,11 @@
           <span class="lnr lnr-cross font-size-fixed-18 padding-20" aria-hidden="true"></span>
         </div>
         <ul class="text-center eddy-courseDetails__select-topic__lists">
-          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">PRINCIPLES OF ECONOMICS</a></li>
-          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">FOUNDATIONS OF ECONOMICS</a></li>
-          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">INTERNATIONAL BUSINESS</a></li>
-          <li class="padding-v-10 cur-pointer"><a class="eddy-courseDetails__select-topic__list">CORPORATE FINANCE</a></li>
+          {{#each currentUser.profile.selectedCourses}}
+            <li id="list" class="padding-v-10 cur-pointer">
+              <a class="eddy-courseDetails__select-topic__list">{{this}}</a>
+            </li>
+          {{/each}}
         </ul>
       </div>
       <div class="navbar eddy-navbar">
