@@ -21,14 +21,16 @@ Template.community.onRendered(function() {
 
 Template.community.helpers({
     posts(){
-      return Posts.find();
+      let topicName = Session.get('topicName');
+      return Posts.find({topicName:topicName});
     }
 });
 
 Template.community.events({
   "submit form": function(event, template){
     event.preventDefault();
-     var text = event.target.text.value;
+     let text = event.target.text.value;
+     let topicName = Session.get('topicName');
 
     let payload = {
       body : text,
@@ -36,10 +38,11 @@ Template.community.events({
       createdAt: new Date(),
       likes:[],
       reply:[],
+      topicName:topicName
     };
 
     Meteor.call('insertPost', payload);
-    console.log(Posts.find().fetch());
+    $('[name="text"]').val('');
   },
 
   "click #comment": function(event, template){
