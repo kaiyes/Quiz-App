@@ -5,10 +5,12 @@
     }
 
     &__index {
-      color: #494949;
+      padding-top: 5px;
+      @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, #595959);
     }
     &__name {
-      color: #757575;
+      padding-top: 5px;
+      @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #595959);
     }
 
     .item-link {
