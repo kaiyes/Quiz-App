@@ -7,7 +7,7 @@
     border: 1px solid map-deep-get($colors, "primary", "base") !important;
     outline: none;
 
-    color: map-deep-get($colors, "foreground", "light-black") !important;
+    @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
 }
 
 %button-revert{
@@ -19,7 +19,7 @@
     border: 1px solid map-deep-get($colors, "primary", "base") !important;
     outline: none;
 
-    color: map-deep-get($colors, "buttons", "white") !important;
+    @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "buttons", "white"));
 }
 
 %button-secondary{
@@ -28,7 +28,7 @@
     background-color:  map-deep-get($colors, "buttons", "white") !important;
     border: 1px solid map-deep-get($colors, "buttons", "dark-red") !important;
 
-    color: map-deep-get($colors, "buttons", "dark-red") !important;
+    @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "buttons", "dark-red"));
 }
 
 .eddy{

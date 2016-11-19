@@ -1,4 +1,8 @@
 .eddy-navbar {
+  &:after {
+    background-color: transparent !important;
+  }
+
   background-color: map-deep-get($colors, "background", "white") !important;
   color: map-deep-get($colors, "primary", "base") !important;
   @extend %box_shadow;
