@@ -21,40 +21,70 @@ Template.community.onRendered(function() {
 
 Template.community.helpers({
     posts(){
-      return Posts.find();
-    }
+      let topicName = Session.get('topicName');
+      return Posts.find({topicName:topicName});
+    },
+
 });
 
 Template.community.events({
-  "submit form": function(event, template){
+  "submit  #post": function(event, template){
     event.preventDefault();
-     var text = event.target.text.value;
+     let text = event.target.text.value;
+     let topicName = Session.get('topicName');
 
     let payload = {
       body : text,
       createdBy: Meteor.user(),
       createdAt: new Date(),
       likes:[],
-      reply:[],
+      comments:[],
+      topicName:topicName
     };
 
     Meteor.call('insertPost', payload);
-    console.log(Posts.find().fetch());
+    $('[name="text"]').val('');
   },
 
-  "click #comment": function(event, template){
+  "submit #commentForm": function(event, template){
     event.preventDefault();
-    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comment-section').removeClass('hide');
+    let comment = event.target.comment.value;
+    let commentPayload = {
+      body : comment,
+      createdBy: Meteor.user(),
+      createdAt: new Date(),
+      likes:[],
+      postId:this._id,
+    };
+    console.log(commentPayload);
+    Meteor.call('insertComment', commentPayload);
+    $('[name="comment"]').val('');
   },
 
-  "click #reply": function(event, template){
+  "click #openCommenting": function(event, template){
     event.preventDefault();
-    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comments--reply').removeClass('hide');
+    let value = Session.get('showComments');
+    if (value==="Show") {
+      Session.set("showComments", "hide");
+      console.log(Session.get('showComments'));
+    } else {
+      Session.set("showComments", "Show");
+      console.log(Session.get('showComments'));
+    }
   },
 
   "click #like": function(event, template){
     event.preventDefault();
     console.log(this);
     Meteor.call('like', this._id, Meteor.userId());
-  }
+  },
+
+  "click #commentLike": function(event, template){
+    event.preventDefault();
+    console.log(this.postId);
+    console.log(this.body);
+    Meteor.call('likeAcomment', this.postId, this.body, Meteor.userId());
+  },
+
+
 });

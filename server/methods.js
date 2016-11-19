@@ -23,6 +23,11 @@ Meteor.methods({
       Posts.insert(payload);
     },
 
+    insertComment: function(commentPayload){
+      Posts.update({ _id: commentPayload.postId },
+         { $push: { comments: commentPayload }});
+    },
+
     like: function (id,liker) {
     let likerData = {
       likes: liker
@@ -31,6 +36,17 @@ Meteor.methods({
         { _id: id },
         { $addToSet: likerData}
       );
+    },
+
+    likeAcomment: function (id,body,liker) {
+    let likerData = { likes: liker };
+    //let post = Posts.findOne({ _id: id , "comments.body":body });
+    //console.log(post);
+
+    Posts.update(
+      { _id: id , "comments.body":body},
+      {$addToSet: {"comments.$.likes": likerData }}
+     );
     },
 
     increaseTotalPoints: function () {
