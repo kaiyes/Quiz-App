@@ -7,20 +7,20 @@
            <div class="navbar-inner">
                <div class="left">
                    <a href="{{pathFor 'login'}}" class="link icon-only">
-                       <span  class="lnr lnr-chevron-left" aria-hidden="true"></span>
+                       <i class="zmdi zmdi-chevron-left font-size-fixed-34"></i>
                    </a>
                </div>
                <div class="center full-width text-center">
-                 <h2 class="font-size-fixed-14 margin-0 full-width">CREATE, SELECT YOUR COURSES</h2>
+                 <h2 class="margin-0 full-width eddy-navbar__title">CREATE, SELECT YOUR COURSES</h2>
                </div>
-               <div class="right">
+               <div class="right margin-left-0">
                  <a href="#" class="open-panel link icon-only"></a>
                </div>
            </div>
          </div>
          <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init eddy-searchbar">
-           <div class="searchbar-input">
-             <input type="search" placeholder="Search" class="border-r-15">
+           <div class="searchbar-input height-40">
+             <input type="search" placeholder="Search" class="border-r-20 padding-5">
            </div>
          </form>
          <div class="searchbar-overlay"></div>
@@ -36,13 +36,13 @@
                    <li id="course" class="cur-pointer select-course">
                     <a class="item-link">
                      <div class="item-content">
-                       <div class="item-inner">
+                       <div class="item-inner padding-right-0">
                          <div class="item-title">
-                           <div class="item-title flex-direction--row">
-                             <div class="eddy-courses--codes width-100 font-size-fixed-14 text-bold">
-                               {{number}}
+                           <div class="item-title flex-direction--row flex-align-items--center">
+                             <div class="eddy-courses__codes width-120">
+                              {{number}}
                              </div>
-                             <div class="flex--1 text-ellipsis font-size-fixed-14">
+                             <div class="flex--1 text-ellipsis eddy-courses__name">
                                {{courseName}}
                              </div>
                            </div>
@@ -56,9 +56,9 @@
              </div>
            </div>
          </div>
-       <div class="toolbar position-absolute top-initial eddy-toolbar">
+       <div class="toolbar position-absolute top-initial eddy-toolbar eddy-toolbar--course">
          <div class="toolbar-inner flex-direction--row flex-justify-content--flex-end">
-           <a href="{{pathFor 'profile'}}" class="button ripple border_none--imp">NEXT</a>
+           <a href="{{pathFor 'profile'}}" class="button ripple border_none--imp eddy-toolbar--course__next padding-right-15">NEXT</a>
          </div>
        </div>
      </div>
