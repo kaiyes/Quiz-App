@@ -1,4 +1,4 @@
-var countdown = new ReactiveCountdown(3);
+var countdown = new ReactiveCountdown(120);
 
 Template.playFirst.onRendered(function(){
   countdown.start(function() {

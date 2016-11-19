@@ -16,6 +16,23 @@ Template.challengeOpponent.helpers({
 Template.challengeOpponent.events({
   "click #player": function(event, template){
     Session.set('playerInfo', this);
+
+    let notificationData = {
+      challanger: Meteor.user(),
+      challanged: Session.get('playerInfo'),
+      when: new Date(),
+      topic: Session.get('topicName'),
+      chapter: Session.get('chapter'),
+    };
+
+    Meteor.call("insertNotification",notificationData, function(error, result){
+      if(error){
+        toastr.error(error.reason);
+      }
+      if(result){
+        toastr.success("invited player");
+      }
+    });
     Router.go('/playFirst');
   },
 });
