@@ -32,31 +32,16 @@
                   </div>
                   <div class="card-content">
                       <div class="card-content-inner">
+                      {{#each notifications}}
                         <div class="list-block">
                           <ul>
                             <li class="item-content padding-left-0">
                               <div class="item-inner padding-h-20">
                                 <div class="item-title">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                                    <img class="make-round" width="30" height="30" src="http://placehold.it/30x30" alt="Player Photo" />
+                                    <img class="make-round" width="30" height="30" src="{{challanger.profile.image}}" alt="Player Photo" />
                                     <p class="font-size-fixed-12 padding-left-10 margin-0">
-                                      ROB
-                                    </p>
-                                  </div>
-                                </div>
-                                <div class="item-after">
-                                  <i class="fa fa-close cur-pointer margin-right-30" aria-hidden="true"></i>
-                                  <i class="fa fa-check cur-pointer" aria-hidden="true"></i>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="item-content padding-left-0">
-                              <div class="item-inner padding-h-20">
-                                <div class="item-title">
-                                  <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                                    <img class="make-round" width="30" height="30" src="http://placehold.it/30x30" alt="Player Photo" />
-                                    <p class="font-size-fixed-12 padding-left-10 margin-0">
-                                      ROB
+                                    {{challanger.profile.name}}
                                     </p>
                                   </div>
                                 </div>
@@ -68,6 +53,7 @@
                             </li>
                           </ul>
                         </div>
+                      {{/each}}
                       </div>
                   </div>
               </div>
@@ -95,38 +81,8 @@
                             Sabbir likes your comment.
                           </p>
                         </div>
-                        <div class="border-bottom padding-h-20 padding-v-10">
-                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="http://placehold.it/30x30" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
-                                    ECON 2501
-                                  </h4>
-                              </div>
-                              <div class="font-size-fixed-10 opacity-70">
-                                10 min ago
-                              </div>
-                          </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
-                            Sabbir likes your comment.
-                          </p>
-                        </div>
-                        <div class="border-bottom padding-h-20 padding-v-10">
-                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="http://placehold.it/30x30" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
-                                    ECON 2501
-                                  </h4>
-                              </div>
-                              <div class="font-size-fixed-10 opacity-70">
-                                10 min ago
-                              </div>
-                          </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
-                            Sabbir likes your comment.
-                          </p>
-                        </div>
+
+
                       </div>
                   </div>
               </div>

@@ -46,7 +46,7 @@ Template.courseDetails.events({
     $('.toolbar').removeClass('opacity-30');
   },
   "click #list": function(event, template){
-    Session.set("topicName", this.toString());
+    Session.set("chapter", this.toString());
     $('.eddy-courseDetails__select-topic').removeClass('opened');
     $('.pages').removeClass('opacity-50');
     $('.toolbar').removeClass('opacity-30');

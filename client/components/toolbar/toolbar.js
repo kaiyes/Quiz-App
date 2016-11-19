@@ -15,3 +15,11 @@ Template.toolbar.onRendered(function() {
       }
   });
 });
+
+Template.toolbar.helpers({
+  notification: function(){
+   return Notification.find({
+      "challanged._id": Meteor.userId(),
+    }).count();
+  }
+});
