@@ -32,15 +32,16 @@
                   </div>
                   <div class="card-content">
                       <div class="card-content-inner">
+                      {{#each notifications}}
                         <div class="list-block">
                           <ul>
                             <li class="item-content padding-left-0">
                               <div class="item-inner padding-h-20">
                                 <div class="item-title">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                                    <img class="make-round" width="30" height="30" src="http://placehold.it/30x30" alt="Player Photo" />
+                                    <img class="make-round" width="30" height="30" src="{{challanger.profile.image}}" alt="Player Photo" />
                                     <p class="font-size-fixed-12 padding-left-10 margin-0">
-                                      ROB
+                                    {{challanger.profile.name}}
                                     </p>
                                   </div>
                                 </div>
@@ -52,6 +53,7 @@
                             </li>
                           </ul>
                         </div>
+                      {{/each}}
                       </div>
                   </div>
               </div>
