@@ -29,8 +29,8 @@
 
     }
     &__list {
-      font-size: 1.4rem !important;
-      color: #a7a7a7 !important;
+      text-transform: uppercase;;
+      @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #a7a7a7);
       &:hover {
         color: map-deep-get($colors, 'primary', 'base') !important;
       }
