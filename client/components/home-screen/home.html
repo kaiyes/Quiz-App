@@ -6,27 +6,27 @@
             <div class="padding-top-30 flex-direction--column flex-justify-content--flex-start flex-align-items--center">
 
                 <div class="">
-                  <img width="65" height="65" class="make-round eddy-home--profile-photo" src="{{currentUser.profile.image}}" alt="Profile Photo">
+                  <img width="80" height="80" class="make-round eddy-home--profile-photo" src="{{currentUser.profile.image}}" alt="Profile Photo">
                 </div>
                   <div class="full-width">
-                    <h3 class="margin-0 font-size-fixed-14 text-center padding-left-15 margin-top-10">
-                      <span class="padding-right-15">{{currentUser.profile.name}}</span>
+                    <h3 class="margin-0 font-size-fixed-14 text-center padding-left-15 margin-top-10 eddy-home--profile-info__name_age">
+                      <span class="padding-h-15">{{currentUser.profile.name}}</span>
                       <span class="font-weight-400">  {{currentUser.profile.age}}</span>
                     </h3>
-                    <h5 class="margin-0 font-size-fixed-12 font-weight-500 text-center">{{currentUser.profile.nickName}} </h5>
-                    <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center">{{currentUser.profile.programme}}</h5>
-                    <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center">  {{currentUser.profile.university}}</h5>
+                    <h5 class="margin-0 text-center eddy-home--profile-info__nickname padding-v-5">{{currentUser.profile.nickName}} </h5>
+                    <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center eddy-home--profile-info__programme">{{currentUser.profile.programme}}</h5>
+                    <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center eddy-home--profile-info__university padding-v-5">  {{currentUser.profile.university}}</h5>
                   </div>
 
-              <div id="hideProfileInfo" class="text-center full-width display-block padding-15 cur-pointer">
-                <span  class="lnr lnr-chevron-up" aria-hidden="true"></span>
+              <div id="hideProfileInfo" class="text-center full-width display-block padding-5 cur-pointer">
+                <i class="zmdi zmdi-chevron-up font-size-fixed-40 eddy-navbar__profile_hide_show"></i>
               </div>
             </div>
           </div>
           <div id="showProfileInfo" class="navbar eddy-navbar cur-pointer">
             <div class="navbar-inner">
                 <div class="text-center full-width display-block">
-                  <span  class="lnr lnr-chevron-down" aria-hidden="true"></span>
+                  <i class="zmdi zmdi-chevron-down font-size-fixed-40 eddy-navbar__profile_hide_show"></i>
                 </div>
             </div>
           </div>
@@ -40,17 +40,18 @@
                        <a class="item-link cur-pointer">
                         <div class="swipeout-content item-content eddy-home--quiz--content">
                           <div class="item-media eddy-home--quiz--icon-wrap">
-                              <img class="make-round eddy-home--quiz--icon" width="35" height="35" src="http://placehold.it/35x35" alt="icon">
+                              <img class="width-55 eddy-home--quiz--icon" src="/assets/icon_2.png" alt="icon">
                           </div>
                           <div class="item-inner padding-v-20">
                             <div class="item-title">
                                 <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                   ECON 2501
                                   <span class="eddy-badge eddy-badge__primary">
-                                    <span  class="lnr lnr-question-circle" aria-hidden="true"></span>
+                                    <i class="zmdi zmdi-help-outline"></i>
+                                    <!-- <i class="zmdi zmdi-info-outline"></i> -->
                                   </span>
                                 </h4>
-                                <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz--topic">{{this}}</h5>
+                                <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{this}}</h5>
                             </div>
                             <div class="item-after eddy-home--quiz--rank">
                               <span>2 <sup>{{quizRankFormat 2}}</sup></span>
@@ -60,13 +61,13 @@
                         <div class="swipeout-actions-left eddy-home--quiz--content__swiped">
                           <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
                             <span class="eddy-badge">
-                              <span  class="lnr lnr-question-circle" aria-hidden="true"></span>
+                              <i class="zmdi zmdi-help-outline"></i>
                             </span>
-                            <p class="margin-0 font-size-fixed-12 padding-top-5">I need help</p>
+                            <p class="margin-0 font-size-fixed-14 padding-top-5">I need help</p>
                           </a>
                           <a href="#" class="flex-direction--column flex-justify-content--center flex-align-items--center">
-                            <span class="eddy-badge">i</span>
-                            <p class="margin-0 font-size-fixed-12 padding-top-5">I can help</p>
+                            <i class="zmdi zmdi-info-outline"></i>
+                            <p class="margin-0 font-size-fixed-14 padding-top-5">I can help</p>
                           </a>
                         </div>
                        </a>

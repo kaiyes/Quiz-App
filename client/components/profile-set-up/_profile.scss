@@ -17,10 +17,31 @@
       box-shadow: none !important;
     }
 
+    input {
+      @include type-style($font-family-eddy-montserrathairline, 400, 1.4rem, #000000);
+
+      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000000 !important;
+        font-size: 1.4rem;
+      }
+      &::-moz-placeholder { /* Firefox 19+ */
+        color: #000000 !important;
+        font-size: 1.4rem;
+      }
+      &:-ms-input-placeholder { /* IE 10+ */
+        color: #000000 !important;
+        font-size: 1.4rem;
+      }
+      &:-moz-placeholder { /* Firefox 18- */
+        color: #000000 !important;
+        font-size: 1.4rem;
+      }
+    }
+
     select {
       padding-left: 0 !important;
 
-      color: #999999;
+      @include type-style($font-family-eddy-montserrathairline, 400, 1.4rem, #000000);
     }
 
     &:nth-of-type(5) {
@@ -50,7 +71,7 @@
         width: 100%;
         border: none !important;
 
-        color: map-deep-get($colors, 'primary', 'base') !important;
+        @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, map-deep-get($colors, 'primary', 'base'));
       }
     }
 
@@ -73,9 +94,8 @@
         display: block !important;
         flex: 1 !important;
 
-        font-size: 1.4rem;
         font-weight: normal;
-        color: #999999;
+        @include type-style($font-family-eddy-montserrathairline, 400, 1.4rem, #000000);
       }
       .afCloudinary {
         flex-direction: row !important;

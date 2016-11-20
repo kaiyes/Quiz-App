@@ -16,7 +16,7 @@
     // height: 1rem;
     // border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
     //
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: map-deep-get($colors, 'primary', 'base') !important;
     //line-height: 1rem;
   }
@@ -27,22 +27,22 @@
 
   display: inline-block;
   background-color: map-deep-get($colors, 'foreground', 'white');
-  width: 4em;
-  height: 4rem;
-  border: 6px solid map-deep-get($colors, 'primary', 'base') !important;
+  width: 5.5rem;
+  height: 5.5rem;
+  border: 8px solid map-deep-get($colors, 'primary', 'base') !important;
   border-radius: 50%;
 
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  line-height: 3rem;
+  line-height: 4rem;
 
   &--badge {
     position: absolute;
     top: 75%;
     left: 50%;
 
-    font-size: 25px;
+    font-size: 50px;
     color: #a9e3d5;
 
     z-index: -1;

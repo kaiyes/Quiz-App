@@ -1,4 +1,7 @@
 .eddy-navbar {
+  &__title {
+    @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, map-deep-get($colors, "primary", "base"));
+  }
   &:after {
     background-color: transparent !important;
   }
@@ -14,15 +17,12 @@
     &--item {
       border: none !important;
 
-      color: map-deep-get($colors, "foreground", "light-black") !important;
-      font-size: 1.2rem !important;
-
-      opacity: 0.56;
+      @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, map-deep-get($colors, "foreground", "light-black"));
 
       &.active {
         background: transparent !important;
 
-        opacity: 1;
+        font-family: $font-family-base !important;
       }
     }
   }
@@ -30,5 +30,9 @@
   &--challenge {
     box-shadow: none !important;
     border: none !important;
+  }
+
+  &__profile_hide_show {
+    color: #595959 !important;
   }
 }

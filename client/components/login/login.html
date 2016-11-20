@@ -9,11 +9,11 @@
               <div class="navbar-inner">
                   <div class="left">
                       <a href="{{pathFor 'home'}}" class="link icon-only">
-                          <span class="lnr lnr-chevron-left" aria-hidden="true"></span>
+                          <i class="zmdi zmdi-chevron-left font-size-fixed-34"></i>
                       </a>
                   </div>
                   <div class="center full-width text-center">
-                    <h2 class="font-size-fixed-14 margin-0 full-width">WELCOME BACK SANA</h2>
+                    <h2 class="margin-0 full-width eddy-navbar__title">WELCOME BACK SANA</h2>
                   </div>
                   <div class="right">
                     <a href="#" class="open-panel link icon-only"></a>
@@ -31,7 +31,7 @@
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input id="email" autocomplete="off" required type="email" placeholder="Student Email">
+                          <input id="email" class="eddy-form--item-inner__input" autocomplete="off" required type="email" placeholder="Student Email">
                         </div>
                       </div>
                     </div>
@@ -39,16 +39,16 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media width-15">
-                        <span class="lnr lnr-lock eddy-form--icon" aria-hidden="true"></span>
+                        <i class="zmdi zmdi-lock-outline eddy-form--icon"></i>
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input id="password" autocomplete="off" required type="password" placeholder="Password">
+                          <input id="password" class="eddy-form--item-inner__input" autocomplete="off" required type="password" placeholder="Password">
                         </div>
                       </div>
                     </div>
                     <div class="flex-direction--row flex-justify-content--flex-end padding-h-16">
-                      <a id="forgotPassRoute" href="#"> <i>forgot password?</i> </a>
+                      <a id="forgotPassRoute" class="eddy-form__forgot-pass-text" href="#"> forgot password? </a>
                     </div>
                   </li>
                 </ul>
@@ -58,7 +58,7 @@
                       <input type="submit"
                              name="name"
                              value="SIGN IN"
-                             class="width-auto font-size-fixed-10 button button-round eddy--login-button border-r-20 padding-h-24 margin-top-50">
+                             class="width-auto button-round eddy--login-button border-r-25 padding-h-40 padding-v-15 margin-top-50 font-size-fixed-12">
                     </div>
                   </div>
                 </div>
