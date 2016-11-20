@@ -25,14 +25,7 @@ Template.challengeOpponent.events({
       chapter: Session.get('chapter'),
     };
 
-    Meteor.call("insertNotification",notificationData, function(error, result){
-      if(error){
-        toastr.error(error.reason);
-      }
-      if(result){
-        toastr.success("invited player");
-      }
-    });
+    Meteor.call("insertChallangeNotification",notificationData);
     Router.go('/playFirst');
   },
 });

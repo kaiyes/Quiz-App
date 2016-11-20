@@ -22,7 +22,7 @@ Template.community.onRendered(function() {
 Template.community.helpers({
     posts(){
       let topicName = Session.get('topicName');
-      return Posts.find({topicName:topicName});
+      return Posts.find({ topicName:topicName });
     },
 
 });
@@ -43,6 +43,7 @@ Template.community.events({
     };
 
     Meteor.call('insertPost', payload);
+    Meteor.call('insertPostNotification', topicName, Meteor.user());
     $('[name="text"]').val('');
   },
 

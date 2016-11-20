@@ -12,11 +12,6 @@ Meteor.methods({
         { _id: this.userId },
         { $set: { profile: profile }}
       );
-      console.log(profile);
-    },
-
-    removeUnusedInfo: function(){
-      UserInformation.remove({ createdBy: this.userId });
     },
 
     insertPost: function(payload){
@@ -29,34 +24,38 @@ Meteor.methods({
     },
 
     like: function (id,liker) {
-    let likerData = {
-      likes: liker
-    };
-    Posts.update(
-        { _id: id },
-        { $addToSet: likerData}
-      );
+    let likerData = { likes: liker };
+    Posts.update({ _id: id },{ $addToSet: likerData });
     },
 
     likeAcomment: function (id,body,liker) {
     let likerData = { likes: liker };
+
     Posts.update(
       { _id: id , "comments.body":body},
       {$addToSet: {"comments.$.likes": likerData }}
      );
     },
 
-    insertNotification: function (notificationData) {
-
+    insertChallangeNotification: function (notificationData) {
       Notification.insert({
         challanger: notificationData.challanger,
         challanged: notificationData.challanged,
         when: notificationData.when,
         topic: notificationData.topic,
         chapter: notificationData.chapter,
+        type: "challange"
       });
     },
 
+    insertPostNotification: function (topicName, user) {
+      Notification.insert({
+        topic: topicName,
+        when: new Date(),
+        type: "post",
+        createdBy: user,
+      });
+    },
 
     increaseTotalPoints: function () {
       Meteor.users.update(
