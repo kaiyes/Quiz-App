@@ -49,12 +49,14 @@ Template.community.events({
   "submit #commentForm": function(event, template){
     event.preventDefault();
     let comment = event.target.comment.value;
+    let topicName = Session.get('topicName');
     let commentPayload = {
       body : comment,
       createdBy: Meteor.user(),
       createdAt: new Date(),
       likes:[],
       postId:this._id,
+      topic: topicName,
     };
     Meteor.call('insertComment', commentPayload);
     $('[name="comment"]').val('');
@@ -79,7 +81,8 @@ Template.community.events({
 
   "click #commentLike": function(event, template){
     event.preventDefault();
-    Meteor.call('likeAcomment', this.postId, this.body, Meteor.userId());
+    console.log(this);
+    Meteor.call('likeAcomment', this, Meteor.user());
   },
 
 

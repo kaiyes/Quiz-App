@@ -46,13 +46,21 @@ Meteor.methods({
       });
     },
 
-    likeAcomment: function (id,body,liker) {
-    let likerData = { likes: liker };
+    likeAcomment: function ( commentData, liker ) {
 
     Posts.update(
-      { _id: id , "comments.body":body},
-      {$addToSet: {"comments.$.likes": likerData }}
+      { _id: commentData.postId , "comments.body":commentData.body},
+      {$addToSet: {"comments.$.likes": liker }}
      );
+
+     Notification.insert({
+       commentCreator: commentData.createdBy.profile.name,
+       topic: commentData.topic,
+       when: new Date(),
+       type: "commentLike",
+       liker: liker,
+     });
+
     },
 
     insertChallangeNotification: function (notificationData) {

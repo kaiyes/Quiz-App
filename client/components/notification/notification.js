@@ -21,6 +21,13 @@ Template.notification.helpers({
      });
   },
 
+  likesOnComment: function(){
+    return Notification.find({
+      type: "commentLike",
+      commentCreator: Meteor.user().profile.name
+     });
+  },
+
 });
 
 Template.notification.events({

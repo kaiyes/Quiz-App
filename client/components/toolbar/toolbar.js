@@ -17,11 +17,6 @@ Template.toolbar.onRendered(function() {
 });
 
 Template.toolbar.helpers({
-  notification: function(){
-   return Notification.find({
-      "challanged._id": Meteor.userId(),
-    }).count();
-  },
 
   notificationAll: function(){
     let topicsChosen = Meteor.user().profile.selectedCourses;
@@ -31,7 +26,8 @@ Template.toolbar.helpers({
       [
         { "challanged._id": Meteor.userId(), type: "challange" },
         { topic: { $in: topicsChosen }, type: "post"},
-        { type: "like", postCreator: Meteor.user().profile.name }
+        { type: "like", postCreator: Meteor.user().profile.name },
+        { type: "commentLike", commentCreator: Meteor.user().profile.name }
       ]
     }).count();
   },
