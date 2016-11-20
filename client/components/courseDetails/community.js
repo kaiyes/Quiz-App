@@ -76,14 +76,11 @@ Template.community.events({
 
   "click #like": function(event, template){
     event.preventDefault();
-    console.log(this);
     Meteor.call('like', this._id, Meteor.userId());
   },
 
   "click #commentLike": function(event, template){
     event.preventDefault();
-    console.log(this.postId);
-    console.log(this.body);
     Meteor.call('likeAcomment', this.postId, this.body, Meteor.userId());
   },
 

@@ -8,10 +8,9 @@ Template.notification.helpers({
   },
 
   postNotifications: function(){
-    Notification.find({
-      $or:
-      [{ "challanged._id": Meteor.userId(), type: "challange" },
-       { topic: { $in: topicsChosen }, type: "post"}]
+    let topicsChosen = Meteor.user().profile.selectedCourses;
+    return Notification.find({
+      topic: { $in: topicsChosen }, type: "post"
     });
   },
 
