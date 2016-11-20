@@ -6,13 +6,13 @@
               <div class="card-content-inner">
                 <ul class="eddy-community--post-area">
                   <li>
-                    <div class="item-content padding-left-0">
-                      <div class="item-inner padding-right-0">
+                    <div class="item-content">
+                      <div class="item-inner">
                         <div class="item-input">
                             <form id="post" class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                                <input required id="post" class="eddy-community--post-area--input border-r-25 padding-10 height-auto" type="text" name="text" placeholder="Write something...">
+                                <input required id="post" class="eddy-community--post-area--input border-r-20 padding-left-15" type="text" name="text" placeholder="Write something...">
                                 <button type="submit" class="button eddy-community--post-area--submit">
-                                    <i class="zmdi zmdi-mail-send"></i>
+                                    <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </div>
@@ -23,18 +23,17 @@
               </div>
           </div>
       </div>
-
     {{#each posts}}
       <div id="post-{{_id}}" class="eddy-community--post">
         <div class="card margin-h-0 margin-bottom-0">
             <div class="card-header">
               <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                   <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
-                    <img width="45" height="45" class="make-round" src="{{createdBy.profile.image}}" alt="profile photo">
-                    <h4 class="eddy-community--post__username margin-0 font-size-fixed-14 padding-left-10">{{createdBy.profile.name}}</h4>
+                    <img width="30" height="30" class="make-round" src="{{createdBy.profile.image}}" alt="profile photo">
+                    <h4 class="margin-0 font-size-fixed-12 padding-left-10">{{createdBy.profile.name}}</h4>
                   </div>
                   <div class="">
-                    <span class="font-size-fixed-12 opacity-60">{{getTimePosted createdAt}} ago</span>
+                    <span class="font-size-fixed-10 opacity-60">{{getTimePosted createdAt}} ago</span>
                   </div>
               </div>
             </div>
@@ -47,37 +46,30 @@
             </div>
             <div class="card-footer flex-direction--row flex-justify-content--space-between flex-align-items--center">
               <div class="flex-direction--row">
-
                 <button id="like" type="button" class="button eddy-community--post--like-cmnt-btn">
-
                     {{#if  $eq this.likes.length 0}}
-                      <i class="zmdi zmdi-favorite"></i>
+                      <i class="fa fa-heart" aria-hidden="true"></i>
                        {{else}}
-                       <i class="zmdi zmdi-favorite eddy-community--post--liked"></i>
+                      <i class="fa fa-heart eddy-community--post--liked" aria-hidden="true"></i>
                        <span>{{this.likes.length}}</span>
                     {{/if}}
-
                 </button>
-
-
                 <button type="button" id="openCommenting" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn">
                     {{#if  $eq this.comments.length 0}}
-                      <i class="zmdi zmdi-comment"></i>
+                      <i class="fa fa-comment" aria-hidden="true"></i>
                        {{else}}
-                       <i class="zmdi zmdi-comment"></i>
+                       <i class="fa fa-comment" aria-hidden="true"></i>
                        <span>{{this.comments.length}}</span>
                     {{/if}}
                 </button>
               </div>
               <div class="">
-                <button type="button" class="button button eddy-community--post--play-btn">
-                    <span>PLAY</span>
+                <button type="button" class="button button eddy-community--post--play-btn color-gray">
+                    <span class="text-bold opacity-60">PLAY</span>
                 </button>
               </div>
             </div>
         </div>
-
-
           {{#each this.comments}}
             <div class="eddy-community--post--comment-section {{$.Session.get 'showComments'}}">
               <div>
@@ -85,17 +77,17 @@
                     <div class="card-header">
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                           <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
-                            <img width="45" height="45"  class="make-round" src="{{createdBy.profile.image}}" alt="profile photo">
-                            <h4 class="margin-0 eddy-community--post__username font-size-fixed-14 padding-left-10">{{createdBy.profile.name}}</h4>
+                            <img width="30" height="30"  class="make-round" src="{{createdBy.profile.image}}" alt="profile photo">
+                            <h4 class="margin-0 font-size-fixed-12 padding-left-10">{{createdBy.profile.name}}</h4>
                           </div>
                           <div class="">
-                            <span class="font-size-fixed-12 opacity-60">{{getTimePosted createdAt}}</span>
+                            <span class="font-size-fixed-10 opacity-60">{{getTimePosted createdAt}}</span>
                           </div>
                       </div>
                     </div>
                     <div class="card-content">
                         <div class="card-content-inner">
-                          <p class="margin-0 opacity-80">
+                          <p class="margin-0">
                             {{body}}
                           </p>
                         </div>
@@ -104,19 +96,18 @@
                       <div class="flex-direction--row">
                         <button type="button" id="commentLike" class="button eddy-community--post--like-cmnt-btn">
                           {{#if  $eq this.likes.length 0}}
-                            <i class="zmdi zmdi-favorite"></i>
+                            <i class="fa fa-heart" aria-hidden="true"></i>
                              {{else}}
-                            <i class="zmdi zmdi-favorite eddy-community--post--liked" aria-hidden="true"></i>
+                            <i class="fa fa-heart eddy-community--post--liked" aria-hidden="true"></i>
                              <span>{{this.likes.length}}</span>
                           {{/if}}
                         </button>
                         <button type="button" id="reply" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-reply-btn">
-                            <i class="zmdi zmdi-mail-reply"></i>
+                            <i class="fa fa-reply" aria-hidden="true"></i>
                         </button>
                       </div>
                     </div>
                 </div>
-
               </div>
             </div>
           {{/each}}
@@ -125,17 +116,17 @@
                 <div class="card-content-inner">
                   <ul class="eddy-community--post-area">
                     <li>
-                      <div class="item-content padding-left-0">
-                        <div class="item-inner padding-right-0">
+                      <div class="item-content">
+                        <div class="item-inner">
                           <div class="item-input">
                               <form id="commentForm" class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                                  <input required class="eddy-community--post-area--input eddy-community--post-area--input__reply border-r-25 padding-10 height-auto"
+                                  <input required class="eddy-community--post-area--input eddy-community--post-area--input__reply border-r-20 padding-left-15"
                                     type="text"
                                     name="comment"
                                     autofocus>
                                   <button type="submit"
                                           class="button eddy-community--post-area--submit eddy-community--post-area--submit__reply">
-                                      <i class="zmdi zmdi-mail-send"></i>
+                                      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                   </button>
                               </form>
                           </div>
@@ -148,7 +139,6 @@
           </div>
       </div>
     {{/each}}
-
     </div>
   </div>
 </template>

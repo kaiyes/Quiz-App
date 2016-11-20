@@ -64,6 +64,7 @@
                     </h4>
                   </div>
                   <div class="card-content">
+                    {{!-- {{#each postNotifications}} --}}
                       <div class="card-content-inner padding-0">
                         <div class="border-bottom padding-h-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
@@ -74,16 +75,15 @@
                                   </h4>
                               </div>
                               <div class="font-size-fixed-10 opacity-70">
-                                10 min ago
+                                {{getTimePosted createdAt}}
                               </div>
                           </div>
                           <p class="font-size-fixed-12 margin-bottom-0">
                             Sabbir likes your comment.
                           </p>
                         </div>
-
-
                       </div>
+                    {{!-- {{/each}} --}}
                   </div>
               </div>
             </div>
