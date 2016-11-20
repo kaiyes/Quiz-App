@@ -43,7 +43,6 @@ Template.community.events({
     };
 
     Meteor.call('insertPost', payload);
-    Meteor.call('insertPostNotification', topicName, Meteor.user());
     $('[name="text"]').val('');
   },
 
@@ -57,7 +56,6 @@ Template.community.events({
       likes:[],
       postId:this._id,
     };
-    console.log(commentPayload);
     Meteor.call('insertComment', commentPayload);
     $('[name="comment"]').val('');
   },
@@ -76,7 +74,7 @@ Template.community.events({
 
   "click #like": function(event, template){
     event.preventDefault();
-    Meteor.call('like', this._id, Meteor.userId());
+    Meteor.call('like', this._id, Meteor.user());
   },
 
   "click #commentLike": function(event, template){

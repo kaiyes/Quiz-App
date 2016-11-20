@@ -16,6 +16,13 @@ Meteor.methods({
 
     insertPost: function(payload){
       Posts.insert(payload);
+
+      Notification.insert({
+        topic: payload.topicName,
+        when: new Date(),
+        type: "post",
+        createdBy: payload.createdBy,
+      });
     },
 
     insertComment: function(commentPayload){
@@ -26,6 +33,17 @@ Meteor.methods({
     like: function (id,liker) {
     let likerData = { likes: liker };
     Posts.update({ _id: id },{ $addToSet: likerData });
+
+    let post = Posts.findOne({ _id:id });
+
+      Notification.insert({
+        postId: id,
+        postCreator: post.createdBy.profile.name,
+        topic: post.topicName,
+        when: new Date(),
+        type: "like",
+        liker: liker,
+      });
     },
 
     likeAcomment: function (id,body,liker) {
@@ -48,28 +66,20 @@ Meteor.methods({
       });
     },
 
-    insertPostNotification: function (topicName, user) {
-      Notification.insert({
-        topic: topicName,
-        when: new Date(),
-        type: "post",
-        createdBy: user,
-      });
-    },
-
-    increaseTotalPoints: function () {
-      Meteor.users.update(
-        { _id: this.userId },
-        { $inc: { "profile.totalPoints": 10 }}
-      );
-    },
-
-    increaseGamePoints: function () {
-      Meteor.users.update(
-        { _id: this.userId },
-        { $inc: { "profile.gamePoints": 10 }}
-      );
-    },
-
 
 });
+
+
+// increaseTotalPoints: function () {
+//   Meteor.users.update(
+//     { _id: this.userId },
+//     { $inc: { "profile.totalPoints": 10 }}
+//   );
+// },
+//
+// increaseGamePoints: function () {
+//   Meteor.users.update(
+//     { _id: this.userId },
+//     { $inc: { "profile.gamePoints": 10 }}
+//   );
+// },

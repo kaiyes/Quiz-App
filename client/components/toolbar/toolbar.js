@@ -28,8 +28,11 @@ Template.toolbar.helpers({
 
     return Notification.find({
       $or:
-      [{ "challanged._id": Meteor.userId(), type: "challange" },
-       { topic: { $in: topicsChosen }, type: "post"}]
+      [
+        { "challanged._id": Meteor.userId(), type: "challange" },
+        { topic: { $in: topicsChosen }, type: "post"},
+        { type: "like", postCreator: Meteor.user().profile.name }
+      ]
     }).count();
   },
 

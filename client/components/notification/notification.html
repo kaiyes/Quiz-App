@@ -64,6 +64,7 @@
                     </h4>
                   </div>
                   <div class="card-content">
+
                     {{#each postNotifications}}
                       <div class="card-content-inner padding-0">
                         <div class="border-bottom padding-h-20 padding-v-10">
@@ -79,11 +80,33 @@
                               </div>
                           </div>
                           <p class="font-size-fixed-12 margin-bottom-0">
-                            {{createdBy.profile.name}} {{type}}d in {{topic}}
+                            {{createdBy.profile.name}} {{type}}ed in {{topic}}
                           </p>
                         </div>
                       </div>
                     {{/each}}
+
+                    {{#each likeNotifications}}
+                      <div class="card-content-inner padding-0">
+                        <div class="border-bottom padding-h-20 padding-v-10">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="{{liker.profile.image}}" alt="icon">
+                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
+                                    {{topic}}
+                                  </h4>
+                              </div>
+                              <div class="font-size-fixed-10 opacity-70">
+                                {{getTimePosted when}} ago
+                              </div>
+                          </div>
+                          <p class="font-size-fixed-12 margin-bottom-0">
+                            {{liker.profile.name}} {{type}}d your post in {{topic}}
+                          </p>
+                        </div>
+                      </div>
+                    {{/each}}
+
                   </div>
               </div>
             </div>

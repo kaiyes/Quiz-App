@@ -14,6 +14,13 @@ Template.notification.helpers({
     });
   },
 
+  likeNotifications: function(){
+    return Notification.find({
+      type: "like",
+      postCreator: Meteor.user().profile.name
+     });
+  },
+
 });
 
 Template.notification.events({
