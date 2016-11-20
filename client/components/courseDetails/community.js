@@ -52,10 +52,11 @@ Template.community.events({
     let topicName = Session.get('topicName');
     let commentPayload = {
       body : comment,
-      createdBy: Meteor.user(),
+      commenter: Meteor.user(),
       createdAt: new Date(),
       likes:[],
       postId:this._id,
+      postCreator:this.createdBy,
       topic: topicName,
     };
     Meteor.call('insertComment', commentPayload);

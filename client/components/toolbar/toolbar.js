@@ -24,10 +24,11 @@ Template.toolbar.helpers({
     return Notification.find({
       $or:
       [
-        { "challanged._id": Meteor.userId(), type: "challange" },
-        { topic: { $in: topicsChosen }, type: "post"},
+        { type: "challange", "challanged._id": Meteor.userId(),  },
+        { type: "post", topic: { $in: topicsChosen }, },
         { type: "like", postCreator: Meteor.user().profile.name },
-        { type: "commentLike", commentCreator: Meteor.user().profile.name }
+        { type: "commentLike", commentCreator: Meteor.user().profile.name },
+        { type: "comment", postCreator: Meteor.user() }
       ]
     }).count();
   },

@@ -28,6 +28,14 @@ Meteor.methods({
     insertComment: function(commentPayload){
       Posts.update({ _id: commentPayload.postId },
          { $addToSet: { comments: commentPayload }});
+
+       Notification.insert({
+         postCreator: commentPayload.postCreator,
+         topic: commentPayload.topic,
+         when: new Date(),
+         type: "comment",
+         commenter: commentPayload.commenter,
+       });
     },
 
     like: function (id,liker) {
@@ -54,7 +62,7 @@ Meteor.methods({
      );
 
      Notification.insert({
-       commentCreator: commentData.createdBy.profile.name,
+       commentCreator: commentData.commenter.profile.name,
        topic: commentData.topic,
        when: new Date(),
        type: "commentLike",
@@ -64,6 +72,7 @@ Meteor.methods({
     },
 
     insertChallangeNotification: function (notificationData) {
+
       Notification.insert({
         challanger: notificationData.challanger,
         challanged: notificationData.challanged,

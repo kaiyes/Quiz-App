@@ -28,6 +28,13 @@ Template.notification.helpers({
      });
   },
 
+  commentNotification: function(){
+    return Notification.find({
+      type: "comment",
+      postCreator: Meteor.user(),
+     });
+  },
+
 });
 
 Template.notification.events({
