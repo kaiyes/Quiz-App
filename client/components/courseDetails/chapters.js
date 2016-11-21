@@ -10,6 +10,6 @@ Template.chapters.events({
   "click #list": function(event, template){
      Session.set("chapter", this.toString())
      Router.go('/challengeOpponent');
-    
+
   }
 });

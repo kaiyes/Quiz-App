@@ -23,9 +23,9 @@ Meteor.startup(function(){
       "hideMethod": "fadeOut"
     };
 
-   var courseCount = Courses.find().count();
-   if (courseCount<=0) {
-     Courses.insert({ "courseName": "science", "chapters":['biology', 'maths']});
-     Courses.insert({ "courseName": "art", "chapters":['history', 'ভূগোল']})
-   }
+  //  var courseCount = Courses.find().count();
+  //  if (courseCount<=0) {
+  //    Courses.insert({ "courseName": "science", "chapters":['biology', 'maths']});
+  //    Courses.insert({ "courseName": "art", "chapters":['history', 'ভূগোল']})
+  //  }
 });

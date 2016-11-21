@@ -45,3 +45,14 @@ Template.quiz.events({
     Router.go('/quiz-result');
   }
 });
+
+// QuestionBank.insert({
+//   question:"how many rakat for Dhuhor sunnah",
+//   rightAnswer:"6",
+//   firstAnswer:"2",
+//   secondAnswer:"4",
+//   thirdAnswer:"6",
+//   fourthAnswer:"8",
+//   chapter:"maths",
+//   explanation:"The marketing mix refers to the set of actions, or tactics that a company uses to promise its brand or product in the market.The 4Ps make up a typical marketing mix - Price. Product. Promotion and Place.However nowadays the marketing mix increasingly includes several others Ps like Packaging.Positioning. People and even Politics as virtual mix elements.",
+// })
