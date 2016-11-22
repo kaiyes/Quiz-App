@@ -5,11 +5,11 @@
         <div class="navbar-inner">
             <div class="left">
                 <a href="{{pathFor 'homePage'}}" class="link icon-only">
-                  <span class="lnr lnr-chevron-left" aria-hidden="true"></span>
+                  <i class="zmdi zmdi-chevron-left font-size-fixed-34 eddy-navbar--challenge__back"></i>
                 </a>
             </div>
             <div class="center full-width text-center">
-              <h2 class="font-size-fixed-14 margin-0 full-width">
+              <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar--challenge__heading">
                    {{$.Session.get 'chapter'}}
               </h2>
             </div>
@@ -24,26 +24,28 @@
         <div class="page eddy-challenge">
           <div class="page-content">
             <div class="eddy-challenge-mrgn-top flex-direction--column">
-              <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center">
-                <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-20 font-size-fixed-10 text-bold">
+              <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center height-70">
+                <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-12">
                     RANDOM OPPONENT
                 </button>
               </div>
-              <div class="list-block flex--1 padding-top-16">
+              <div class="list-block flex--1 padding-top-35">
                 <ul class="eddy-challenge__list">
                   {{#each players}}
                     <li id="player" class="item-content padding-left-0 cur-pointer">
                       <div class="item-inner padding-h-20">
                         <div class="item-title">
                           <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                            <img class="make-round" width="30" height="30" src="{{profile.image}}" alt="Player Photo" />
-                            <p class="font-size-fixed-12 padding-left-10 margin-0">
+                            <img class="make-round" width="45" height="45" src="{{profile.image}}" alt="Player Photo" />
+                            <p class="font-size-fixed-14 padding-left-10 margin-0 eddy-community--post__username">
                                {{profile.name}}
                             </p>
                           </div>
                         </div>
                         <div class="item-after">
-                          <i class="fa fa-play-circle-o cur-pointer" aria-hidden="true"></i>
+                          <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                          <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                          <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
                         </div>
                       </div>
                     </li>

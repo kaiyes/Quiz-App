@@ -30,6 +30,15 @@
   &--challenge {
     box-shadow: none !important;
     border: none !important;
+
+    &__heading {
+      color: #494949 !important;
+      font-family: $font-family-eddy-montserratlight!important;
+    }
+
+    &__back {
+      color: #494949 !important;
+    }
   }
 
   &__profile_hide_show {

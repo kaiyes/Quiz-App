@@ -1,8 +1,8 @@
 .eddy-play-first{
   &__badge {
     display: inline-block;
-    width: 23px;
-    height: 23px;
+    width: 28px;
+    height: 28px;
     color: map-deep-get($colors, 'primary', 'base');
     background: map-deep-get($colors, 'foreground', 'white');
     text-align: center;
@@ -13,8 +13,9 @@
   &__btn {
     padding-left: 8px !important;
 
-    height: 35px !important;
+    height: 40px !important;
 
-    line-height: 24px !important;
+    line-height: 29px !important;
+    font-family: $font-family-eddy-montserratbold !important;
   }
 }

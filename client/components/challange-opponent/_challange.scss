@@ -32,11 +32,15 @@
   &__random-op-btn {
     position: fixed;
 
-    padding: .8rem !important;
+    padding: 1rem !important;
 
     width: 100%;
     background-color: map-deep-get($colors, "primary", "base");
 
     z-index: 50;
+  }
+
+  &__user-info {
+    color: map-deep-get($colors, "primary", "base");
   }
 }
