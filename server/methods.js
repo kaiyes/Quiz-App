@@ -58,7 +58,7 @@ Meteor.methods({
 
     Posts.update(
       { _id: commentData.postId , "comments.body":commentData.body},
-      {$addToSet: {"comments.$.likes": liker }}
+      { $addToSet: {"comments.$.likes": liker }}
      );
 
      Notification.insert({
@@ -81,6 +81,10 @@ Meteor.methods({
         chapter: notificationData.chapter,
         type: "challange"
       });
+    },
+
+    removeChallangeNotification: function (notificationId) {
+      Notification.remove({ _id: notificationId });
     },
 
 
