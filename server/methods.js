@@ -73,19 +73,10 @@ Meteor.methods({
 
     insertChallangeNotification: function (notificationData) {
 
-      Notification.insert({
-        challanger: notificationData.challanger,
-        challanged: notificationData.challanged,
-        when: notificationData.when,
-        topic: notificationData.topic,
-        chapter: notificationData.chapter,
-        type: "challange"
-      });
-
       let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
       let questions = _.sample(array, 6);
 
-     QuizRooms.insert({
+     let quizRoom = QuizRooms.insert({
          challanger: notificationData.challanger,
          challanged: notificationData.challanged,
          createdAt: new Date(),
@@ -94,9 +85,22 @@ Meteor.methods({
          questions:questions,
        });
 
+       console.log(quizRoom);
+
+      Notification.insert({
+        challanger: notificationData.challanger,
+        challanged: notificationData.challanged,
+        when: notificationData.when,
+        topic: notificationData.topic,
+        chapter: notificationData.chapter,
+        type: "challange",
+        quizRoomId: quizRoom,
+      });
+
     },
 
-    removeChallangeNotification: function (notificationId) {
+    removeChallangeNotification: function (notificationId,quizRoomId) {
+      QuizRooms.remove({ _id: quizRoomId });
       Notification.remove({ _id: notificationId });
     },
 

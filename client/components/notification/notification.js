@@ -40,10 +40,10 @@ Template.notification.helpers({
 Template.notification.events({
 
   "click #acceptChallange": function(event, template){
-     Meteor.call("createQuizRoom", this);
+     Router.go(`/quiz/${this.quizRoomId}`);
   },
 
   "click #denyChallange": function(event, template){
-    Meteor.call("removeChallangeNotification", this._id);
+    Meteor.call("removeChallangeNotification", this._id, this.quizRoomId);
   },
 });
