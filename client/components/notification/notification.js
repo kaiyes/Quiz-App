@@ -40,10 +40,10 @@ Template.notification.helpers({
 Template.notification.events({
 
   "click #acceptChallange": function(event, template){
-    Meteor.call("removeChallangeNotification", this._id);
+    console.log(this);
   },
 
   "click #denyChallange": function(event, template){
-    console.log(this);
+    Meteor.call("removeChallangeNotification", this._id);
   },
 });

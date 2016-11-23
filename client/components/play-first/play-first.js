@@ -27,6 +27,12 @@ Template.playFirst.events({
   },
   "click #cross": function(event, instance){
     toastr.error("Match Failed");
-    Router.go('/homePage');
+    let notificationData = Session.get('challangeNotification');
+    Meteor.call("removeChallangeNotificationFromTimerPage", notificationData);
+     Router.go('/homePage');
   },
+});
+
+Template.quiz.onDestroyed(function () {
+  Session.set('challangeNotification', null);
 });

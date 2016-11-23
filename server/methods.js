@@ -87,6 +87,13 @@ Meteor.methods({
       Notification.remove({ _id: notificationId });
     },
 
+    removeChallangeNotificationFromTimerPage: function (notificationData) {
+      let notification = Notification.findOne({
+        when: notificationData.when,
+       });
+       Notification.remove({ _id: notification._id });
+    },
+
 
 });
 
