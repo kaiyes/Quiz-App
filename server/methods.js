@@ -81,6 +81,19 @@ Meteor.methods({
         chapter: notificationData.chapter,
         type: "challange"
       });
+
+      let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
+      let questions = _.sample(array, 6);
+
+     QuizRooms.insert({
+         challanger: notificationData.challanger,
+         challanged: notificationData.challanged,
+         createdAt: new Date(),
+         challangerRoomPoints: 0,
+         challangedRoomPoints:0,
+         questions:questions,
+       });
+
     },
 
     removeChallangeNotification: function (notificationId) {
@@ -91,9 +104,10 @@ Meteor.methods({
       let notification = Notification.findOne({
         when: notificationData.when,
        });
-       Notification.remove({ _id: notification._id });
+       if (notification) {
+          Notification.remove({ _id: notification._id });
+       };
     },
-
 
 });
 

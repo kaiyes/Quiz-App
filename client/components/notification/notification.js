@@ -40,7 +40,7 @@ Template.notification.helpers({
 Template.notification.events({
 
   "click #acceptChallange": function(event, template){
-    console.log(this);
+     Meteor.call("createQuizRoom", this);
   },
 
   "click #denyChallange": function(event, template){

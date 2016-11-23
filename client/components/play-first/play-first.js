@@ -25,10 +25,11 @@ Template.playFirst.events({
   "click #play": function(event, instance){
     Router.go('/quiz');
   },
+  
   "click #cross": function(event, instance){
     toastr.error("Match Failed");
-    let notificationData = Session.get('challangeNotification');
-    Meteor.call("removeChallangeNotificationFromTimerPage", notificationData);
+     let notificationData = Session.get('challangeNotification');
+     Meteor.call("removeChallangeNotificationFromTimerPage", notificationData);
      Router.go('/homePage');
   },
 });

@@ -24,6 +24,7 @@ Template.challengeOpponent.events({
       topic: Session.get('topicName'),
       chapter: Session.get('chapter'),
     };
+
     Session.set('challangeNotification', notificationData);
     Meteor.call("insertChallangeNotification",notificationData);
     Router.go('/playFirst');
