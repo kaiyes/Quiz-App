@@ -1,0 +1,19 @@
+.eddy-noti {
+  &__cat_heading {
+    @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, map-deep-get($colors, "primary", "base"));
+  }
+  &__challenge__username {
+    text-transform: uppercase;
+    @include type-style($font-family-base, 400, 1.2rem, #464646);
+  }
+
+  &__challenge__acpt-deny {
+    color: map-deep-get($colors, "primary", "base");
+  }
+  &__news_content {
+    @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #494949);
+  }
+  &__news_time {
+    @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #494949);
+  }
+}

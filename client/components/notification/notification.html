@@ -2,7 +2,7 @@
   <div class="popup popup-notification tablet-fullscreen">
     <div class="views">
       <div class="view view-main">
-        <div class="navbar eddy-navbar">
+        <div class="navbar eddy-navbar eddy-navbar__noti">
           <div class="navbar-inner">
               <div class="left">
                   <a href="#" class="link icon-only">
@@ -10,13 +10,13 @@
                   </a>
               </div>
               <div class="center full-width text-center">
-                <h2 class="font-size-fixed-14 margin-0 full-width">
+                <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar__noti__title">
                     NOTIFICATIONS
                 </h2>
               </div>
               <div class="right">
                 <a href="#" class="close-popup link icon-only">
-                  <i class="fa fa-close" aria-hidden="true"></i>
+                  <i class="zmdi zmdi-close font-size-fixed-20 eddy-navbar__noti__close"></i>
                 </a>
               </div>
           </div>
@@ -26,7 +26,7 @@
             <div class="page-content">
               <div class="card margin-0 margin-top-70">
                   <div class="card-header padding-0 border-bottom">
-                    <h4 class="font-size-fixed-14 padding-h-20 margin-0">
+                    <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
                       CHALLENGES
                     </h4>
                   </div>
@@ -39,15 +39,19 @@
                               <div class="item-inner padding-h-20">
                                 <div class="item-title">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                                    <img class="make-round" width="30" height="30" src="{{challanger.profile.image}}" alt="Player Photo" />
-                                    <p class="font-size-fixed-12 padding-left-10 margin-0">
+                                    <img class="make-round" width="45" height="45" src="{{challanger.profile.image}}" alt="Player Photo" />
+                                    <p class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{challanger.profile.name}}
                                     </p>
                                   </div>
                                 </div>
                                 <div class="item-after">
-                                  <i id="denyChallange" class="fa fa-close cur-pointer margin-right-30 close-popup" aria-hidden="true"></i>
-                                  <i id="acceptChallange" class="fa fa-check cur-pointer close-popup" aria-hidden="true"></i>
+                                  <span id="denyChallange">
+                                    <i class="zmdi zmdi-close font-size-fixed-24 cur-pointer margin-right-30 close-popup eddy-noti__challenge__acpt-deny"></i>
+                                  </span>
+                                  <span id="acceptChallange">
+                                    <i class="zmdi zmdi-check font-size-fixed-24 cur-pointer close-popup eddy-noti__challenge__acpt-deny"></i>
+                                  </span>
                                 </div>
                               </div>
                             </li>
@@ -59,7 +63,7 @@
               </div>
               <div class="card margin-0 margin-top-20">
                   <div class="card-header padding-0 border-bottom">
-                    <h4 class="font-size-fixed-14 padding-h-20 margin-0">
+                    <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
                       NEWS
                     </h4>
                   </div>
@@ -67,19 +71,19 @@
 
                     {{#each postNotifications}}
                       <div class="card-content-inner padding-0">
-                        <div class="border-bottom padding-h-20 padding-v-10">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="/assets/icon_2.png" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
                                   </h4>
                               </div>
-                              <div class="font-size-fixed-10 opacity-70">
+                              <div class="opacity-70 eddy-noti__news_time">
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
                             {{createdBy.profile.name}} {{type}}ed in {{topic}}
                           </p>
                         </div>
@@ -88,19 +92,19 @@
 
                     {{#each likeNotifications}}
                       <div class="card-content-inner padding-0">
-                        <div class="border-bottom padding-h-20 padding-v-10">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="/assets/icon_2.png" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
                                   </h4>
                               </div>
-                              <div class="font-size-fixed-10 opacity-70">
+                              <div class="opacity-70 eddy-noti__news_time">
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
                             {{liker.profile.name}} {{type}}d your post in {{topic}}
                           </p>
                         </div>
@@ -109,19 +113,19 @@
 
                     {{#each likesOnComment}}
                       <div class="card-content-inner padding-0">
-                        <div class="border-bottom padding-h-20 padding-v-10">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="/assets/icon_2.png" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
                                   </h4>
                               </div>
-                              <div class="font-size-fixed-10 opacity-70">
+                              <div class="opacity-70 eddy-noti__news_time">
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
                             {{liker.profile.name}} liked your comment in {{topic}}
                           </p>
                         </div>
@@ -130,19 +134,19 @@
 
                     {{#each commentNotification}}
                       <div class="card-content-inner padding-0">
-                        <div class="border-bottom padding-h-20 padding-v-10">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
-                                  <img class="make-round eddy-home--quiz--icon" width="30" height="30" src="/assets/icon_2.png" alt="icon">
-                                  <h4 class="margin-0 padding-left-10 font-size-fixed-14 eddy-home--quiz--number">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
                                   </h4>
                               </div>
-                              <div class="font-size-fixed-10 opacity-70">
+                              <div class="opacity-70 eddy-noti__news_time">
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0">
+                          <p class="ffont-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
                             {{commenter.profile.name}} {{type}}ed on your post in {{topic}}
                           </p>
                         </div>

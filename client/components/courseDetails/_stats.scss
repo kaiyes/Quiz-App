@@ -35,6 +35,7 @@
     }
 
     &__username {
+      text-transform: uppercase;
       @include type-style($font-family-base, 400, 1.2rem, #464646);
     }
 

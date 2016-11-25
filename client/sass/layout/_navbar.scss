@@ -54,4 +54,12 @@
       color: #494949;
     }
   }
+
+  &__noti__title {
+    color: #494949 !important;
+    font-family: $font-family-eddy-montserratbold !important;
+  }
+  &__noti__close {
+    color: #494949;
+  }
 }
