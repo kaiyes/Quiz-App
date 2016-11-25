@@ -7,8 +7,8 @@
   box-shadow: 0 55px 10px 60px map-deep-get($colors, "background", "border") !important;
 
   &--icon{
-    color: map-deep-get($colors, "foreground", "light-black") !important;
-    font-size: 2rem !important;
+    color: #737373 !important;
+    font-size: 2.5rem !important;
 
     &__noti {
       //position: relative;
@@ -22,7 +22,7 @@
       &--badge {
         position: absolute;
         //left: 4.2rem;
-        top: -1rem;
+        top: -.8rem;
 
         color: map-deep-get($colors, "primary", "base") !important;
         font-size: 1rem !important;

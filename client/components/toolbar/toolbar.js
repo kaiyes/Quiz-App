@@ -8,7 +8,7 @@ Template.toolbar.events({
 Template.toolbar.onRendered(function() {
 
     if (Framework7.prototype.device.android) {
-        $('.eddy-toolbar--icon__noti--badge').css('right', '2rem');
+        $('.eddy-toolbar--icon__noti--badge').css({'right': '1rem', 'top': '-1rem'});
       }
       else {
         $('.eddy-toolbar--icon__noti--badge').css('left', '3.2rem');
