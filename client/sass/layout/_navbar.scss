@@ -44,4 +44,14 @@
   &__profile_hide_show {
     color: #595959 !important;
   }
+
+  &--quiz {
+    &__heading {
+      font-family: $font-family-eddy-montserratbold !important;
+    }
+
+    &__close {
+      color: #494949;
+    }
+  }
 }

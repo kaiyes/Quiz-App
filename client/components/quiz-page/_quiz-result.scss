@@ -10,7 +10,19 @@
 
   &--questions {
     &--no {
-      color: map-deep-get($colors, 'primary', 'base');
+      line-height: 40px;
+      @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, map-deep-get($colors, 'primary', 'base'));
     }
+  }
+
+  &__player-name {
+    padding-top: 1rem;
+
+    font-size: 1.6rem;
+    color: #494949;
+  }
+  &__player-score {
+    font-size: 3rem;
+    color: #494949;
   }
 }

@@ -11,8 +11,10 @@
 }
 
 %button-revert{
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
 
     background:  map-deep-get($colors, "primary", "base") !important;
 
@@ -51,8 +53,15 @@
         }
 
         &__white-color {
-          color: map-deep-get($colors, "primary", "base") !important;
+          padding-top: 1.4rem;
+          padding-bottom: 1.4rem;
+          padding-left: 2rem !important;
+          padding-right: 2rem !important;
 
+          color: map-deep-get($colors, "primary", "base") !important;
+          text-align: center;
+
+          display: block;
           border: 2px solid map-deep-get($colors, "primary", "base") !important;
 
           &--challenge {
@@ -125,13 +134,18 @@
     }
 
     &--sqr-buttons{
+      padding-top: 1.5rem;
+      padding-bottom: 1.1rem;
+
+      display: block !important;
       background: map-deep-get($colors, "background", "border") !important;
       box-shadow: 0 1px 2px rgba(0,0,0,.12) !important;
       border-radius: 0 !important;
 
-      color: map-deep-get($colors, "foreground", "light-black") !important;
-      font-weight: bold;
-      font-size: 10px !important;
+      @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, #494949);
+      text-align: center;
+
+      cursor: pointer;
 
       &__price {
         &:focus {

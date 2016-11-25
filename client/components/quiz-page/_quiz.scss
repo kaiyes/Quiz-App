@@ -3,13 +3,19 @@
   right: -8px;
   top: -2px;
 
-  font-size: 10px;
+  @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #fff);
 }
 .eddy-quiz {
   z-index: 1;
 
-  &--option-btn{
+  &__vs{
     background-color: map-deep-get($colors, 'primary', 'base');
+  }
+
+  &__question {
+    @include type-style($font-family-eddy-montserratlight, 400, 2rem, #494949);
+  }
+  &--option-btn{
     color: map-deep-get($colors, 'foreground', 'white');
   }
   &--option {
@@ -31,18 +37,16 @@
     position: relative;
     bottom: 1rem;
 
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 5rem;
+    height: 5rem;
     border-radius: 50%;
-    border: 5px solid map-deep-get($colors, 'foreground', 'white');
+    border: 8px solid map-deep-get($colors, 'foreground', 'white');
 
-    line-height: 2.6rem;
+    line-height: 3.6rem;
     text-align: center;
-    font-size: 12px;
-    font-weight: bold;
+    @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, #fff);
   }
   &--players{
-    background-color: map-deep-get($colors, 'primary', 'base');
     color: map-deep-get($colors, 'foreground', 'white');
 
     &--profile-img {

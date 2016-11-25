@@ -7,14 +7,14 @@
             <div class="page-content">
                 <div class="flex-direction--column full-height">
                   <div class="flex--1">
-                    <div class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-15">
+                    <div class="flex-direction--row flex-justify-content--flex-end padding-top-20 padding-right-25">
                       <a href="#" class="close-popup link icon-only">
-                        <i class="fa fa-close" aria-hidden="true"></i>
+                        <i class="zmdi zmdi-close eddy-result-exp__close font-size-fixed-24"></i>
                       </a>
                     </div>
-                    <div class="eddy-result-exp text-center margin-top-100 padding-h-20">
-                      <h4 class="eddy-result-exp__title font-size-fixed-14 margin-0">MARKETING MIX</h4>
-                      <p class="font-size-fixed-12 line-height-bigger">
+                    <div class="eddy-result-exp margin-top-60 padding-h-30">
+                      <h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">MARKETING MIX</h4>
+                      <p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">
                         The marketing mix refers to the set of actions, or tactics that a company uses to promise its brand or product in the market. The 4Ps make up a typical marketing mix - Price. Product.
                         Promotion and Place. However nowadays the marketing mix increasingly includes several others Ps like Packaging. Positioning. People and even Politics as virtual mix elements.
                       </p>
@@ -24,16 +24,22 @@
                     <div class="card-footer flex-direction--row flex-justify-content--space-between flex-align-items--center">
                       <div class="flex-direction--row">
                         <button type="button" class="button eddy-community--post--like-cmnt-btn">
-                            <i class="fa fa-heart" aria-hidden="true"></i>
+                            <i class="zmdi zmdi-favorite"></i>
+
+                            {{!
+                              use commented code for like done case
+                              <i class="zmdi zmdi-favorite eddy-community--post--liked"></i>
+                            }}
+
                         </button>
 
                         <button type="button" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn">
-                            <i class="fa fa-comment" aria-hidden="true"></i>
+                            <i class="zmdi zmdi-comment"></i>
                         </button>
                       </div>
                       <div class="">
-                        <button type="button" class="button eddy-community--post--play-btn color-gray">
-                            <span class="text-bold opacity-60">SOURCE</span>
+                        <button type="button" class="button eddy-community--post--play-btn">
+                            <span>SOURCE</span>
                         </button>
                       </div>
                     </div>
