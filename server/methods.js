@@ -70,32 +70,37 @@ Meteor.methods({
     },
 
     insertChallangeNotification: function (notificationData) {
-
       let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
       let questions = _.sample(array, 6);
 
-     let quizRoom = QuizRooms.insert({
-         challanger: notificationData.challanger,
-         challanged: notificationData.challanged,
-         createdAt: new Date(),
-         challangerRoomPoints: 0,
-         challangedRoomPoints:0,
-         questions:questions,
-         challangerStarted: true,
-         clallangedStarted: false,
-       });
+       let quizRoom = QuizRooms.insert({
+           challanger: notificationData.challanger,
+           challanged: notificationData.challanged,
+           createdAt: new Date(),
+           challangerRoomPoints: 0,
+           challangedRoomPoints:0,
+           questions:questions,
+           challangerStarted: true,
+           challangedStarted: false,
+         });
 
-      Notification.insert({
-        challanger: notificationData.challanger,
-        challanged: notificationData.challanged,
-        when: notificationData.when,
-        topic: notificationData.topic,
-        chapter: notificationData.chapter,
-        type: "challange",
-        quizRoomId: quizRoom,
-      });
-
+        Notification.insert({
+          challanger: notificationData.challanger,
+          challanged: notificationData.challanged,
+          when: notificationData.when,
+          topic: notificationData.topic,
+          chapter: notificationData.chapter,
+          type: "challange",
+          quizRoomId: quizRoom,
+        });
     },
+
+    updateOpponent: function (quizRoomId) {
+       QuizRooms.update(
+         { _id:quizRoomId },
+         { $set:{ challangedStarted: true }}
+       );
+     },
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
       QuizRooms.remove({ _id: quizRoomId });
@@ -114,17 +119,6 @@ Meteor.methods({
            QuizRooms.remove({ _id: quizRoomId });
         };
     },
-
-    removeChallangeNotificationFromTimerPage: function (notificationData) {
-      let notification = Notification.findOne({
-        when: notificationData.when,
-       });
-       if (notification) {
-          Notification.remove({ _id: notification._id });
-       };
-    },
-
-
 
 });
 

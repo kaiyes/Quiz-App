@@ -4,15 +4,16 @@ Template.quiz.onRendered(function(){
   Session.set('quizStarted', "started");
     //Router.go('/homePage');
       // sixSecondTimer.start(function() {
-        console.log("works");
       // });
 
 });
 
-
 Template.quiz.onDestroyed(function () {
+  Session.set('challangeNotification', null);
   Session.set('quizStarted', null);
+  Session.set('didAccept', null);
 });
+
 
 Template.quiz.helpers({
   quizRoom: function(){
