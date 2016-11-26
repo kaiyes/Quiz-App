@@ -1,10 +1,31 @@
+var sixSecondTimer = new ReactiveCountdown(6);
+
 Template.quiz.onRendered(function(){
   Session.set('quizStarted', "started");
+    //Router.go('/homePage');
+      // sixSecondTimer.start(function() {
+        console.log("works");
+      // });
+
 });
+
 
 Template.quiz.onDestroyed(function () {
   Session.set('quizStarted', null);
 });
+
+Template.quiz.helpers({
+  quizRoom: function(){
+    let quizRoomId = Router.current().params._id;
+    return QuizRooms.findOne({ _id: quizRoomId });
+  },
+
+  timer: function(){
+    return sixSecondTimer.get();
+  }
+});
+
+
 
 Template.quiz.events({
   "click .eddy-quiz--option-btn": function(event, template){

@@ -2,6 +2,8 @@
   <div class="views">
     <div class="view view-main">
       <div class="pages">
+
+      {{#with quizRoom}}
         <div class="page">
             <div class="eddy-quiz flex-direction--column full-height position-relative">
               <div class="eddy-quiz--option padding-h-40 flex-direction--row flex-justify-content--space-between flex-align-items--center height-100">
@@ -17,6 +19,9 @@
                     </span>
                   </div>
               </div>
+
+
+
               <div class="">
                 <div class="text-center full-width display-block eddy-quiz--option-btn padding-top-10 cur-pointer">
                     <span class="lnr lnr-chevron-down" aria-hidden="true"></span>
@@ -24,19 +29,23 @@
                 <div class="padding-h-50 padding-bottom-5 eddy-quiz--players flex-direction--row flex-justify-content--space-between flex-align-items--center">
                   <div class="text-center eddy-quiz--players--me position-relative">
                     <span class="eddy-quiz--players--rank">2</span>
-                    <img width="45" height="45" class="make-round eddy-quiz--players--profile-img" src="http://placehold.it/45x45" alt="Profile Photo">
+                    <img width="45" height="45" class="make-round eddy-quiz--players--profile-img"
+                    src="{{challanger.profile.image}}" alt="Profile Photo">
                     <p class="margin-0 font-size-fixed-12">
-                      SANA
+                      {{challanger.profile.name}}
                     </p>
                   </div>
                   <div class="eddy-quiz--level">
-                    6
+                    {{#with timer}}
+                        {{this}}
+                    {{/with}}
                   </div>
                   <div class="text-center eddy-quiz--players--opponent position-relative">
                     <span class="eddy-quiz--players--rank__opponent">?</span>
-                    <img width="45" height="45" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img" src="http://placehold.it/45x45" alt="Profile Photo">
+                    <img width="45" height="45" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
+                    src="{{challanged.profile.image}}" alt="Profile Photo">
                     <p class="margin-0 font-size-fixed-12">
-                      SALLY
+                      {{challanged.profile.name}}
                     </p>
                   </div>
                 </div>
@@ -55,7 +64,9 @@
                 </div>
               </div>
             </div>
-        </div>
+          </div>
+         {{/with}}
+
       </div>
     </div>
   </div>

@@ -23,13 +23,20 @@ Template.playFirst.helpers({
 
 Template.playFirst.events({
   "click #play": function(event, instance){
-    Router.go('/quiz');
+    let sessionData = Session.get('challangeNotification');
+    let time = sessionData.when;
+    let handle = Notification.findOne({ when: time.when });
+    Router.go(`/quiz/${handle.quizRoomId}`);
   },
-  
+
   "click #cross": function(event, instance){
-    toastr.error("Match Failed");
+     toastr.error("Match Failed");
      let notificationData = Session.get('challangeNotification');
-     Meteor.call("removeChallangeNotificationFromTimerPage", notificationData);
+     let notification = Notification.findOne({
+       when: notificationData.when,
+      });
+      console.log(notification);
+      Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
      Router.go('/homePage');
   },
 });
