@@ -55,20 +55,18 @@ Meteor.methods({
     },
 
     likeAcomment: function ( commentData, liker ) {
+      Posts.update(
+        { _id: commentData.postId , "comments.body":commentData.body},
+        { $addToSet: {"comments.$.likes": liker }}
+       );
 
-    Posts.update(
-      { _id: commentData.postId , "comments.body":commentData.body},
-      { $addToSet: {"comments.$.likes": liker }}
-     );
-
-     Notification.insert({
-       commentCreator: commentData.commenter.profile.name,
-       topic: commentData.topic,
-       when: new Date(),
-       type: "commentLike",
-       liker: liker,
-     });
-
+       Notification.insert({
+         commentCreator: commentData.commenter.profile.name,
+         topic: commentData.topic,
+         when: new Date(),
+         type: "commentLike",
+         liker: liker,
+       });
     },
 
     insertChallangeNotification: function (notificationData) {
@@ -83,9 +81,9 @@ Meteor.methods({
          challangerRoomPoints: 0,
          challangedRoomPoints:0,
          questions:questions,
+         challangerStarted: true,
+         clallangedStarted: false,
        });
-
-       console.log(quizRoom);
 
       Notification.insert({
         challanger: notificationData.challanger,
@@ -101,7 +99,20 @@ Meteor.methods({
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
       QuizRooms.remove({ _id: quizRoomId });
-      Notification.remove({ _id: notificationId });
+
+      let notification = Notification.findOne({
+        _id: notificationId,
+       });
+       if (notification) {
+          Notification.remove({ _id: notificationId });
+       };
+
+       let quizRoom = QuizRooms.findOne({
+         _id: quizRoomId,
+        });
+        if (quizRoom) {
+           QuizRooms.remove({ _id: quizRoomId });
+        };
     },
 
     removeChallangeNotificationFromTimerPage: function (notificationData) {
@@ -112,6 +123,8 @@ Meteor.methods({
           Notification.remove({ _id: notification._id });
        };
     },
+
+
 
 });
 

@@ -9,7 +9,10 @@ Template.challengeOpponent.onRendered(function() {
 Template.challengeOpponent.helpers({
   players: function(){
     let topicName = Session.get('topicName');
-    return Meteor.users.find({'profile.selectedCourses':topicName, _id: {$ne: Meteor.userId()}});
+    return Meteor.users.find({
+      'profile.selectedCourses':topicName,
+      _id: { $ne: Meteor.userId() }
+    });
   }
 });
 

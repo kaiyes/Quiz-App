@@ -72,6 +72,7 @@
         border: none !important;
 
         @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, map-deep-get($colors, 'primary', 'base'));
+        text-transform: uppercase;
       }
     }
 

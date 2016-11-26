@@ -5,7 +5,6 @@ Template.editProfile.helpers({
 });
 
 Template.editProfile.onRendered(function() {
-  $(document).ready(function() {
     $(".eddy-profile .form-group:nth-of-type(3) select option:nth-child(1)").html('University *');
     $(".eddy-profile .form-group:nth-of-type(5) select option:nth-child(1)").html('Nickname');
     $(".eddy-profile .form-group:nth-of-type(7) select option:nth-child(1)").html('Country');
@@ -25,8 +24,8 @@ Template.editProfile.onRendered(function() {
         scrollTop: outerHeight + $(this).outerHeight()
       },"slow");
     });
-  })
 });
+
 
 Template.editProfile.events({
 

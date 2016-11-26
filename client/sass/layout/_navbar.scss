@@ -1,6 +1,7 @@
 .eddy-navbar {
   &__title {
     @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, map-deep-get($colors, "primary", "base"));
+    text-transform: uppercase;
   }
   &:after {
     background-color: transparent !important;

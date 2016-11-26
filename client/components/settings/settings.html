@@ -2,7 +2,7 @@
   <div class="popup popup-settings tablet-fullscreen">
     <div class="views">
       <div class="view view-main">
-        <div class="navbar eddy-navbar">
+        <div class="navbar eddy-navbar eddy-navbar__noti">
           <div class="navbar-inner">
               <div class="left">
                   <a href="#" class="link icon-only">
@@ -10,54 +10,54 @@
                   </a>
               </div>
               <div class="center full-width text-center">
-                <h2 class="font-size-fixed-14 margin-0 full-width">
+                <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar__noti__title">
                     SETTINGS
                 </h2>
               </div>
               <div class="right">
                 <a href="#" class="close-popup link icon-only">
-                  <i class="fa fa-close" aria-hidden="true"></i>
+                  <i class="zmdi zmdi-close font-size-fixed-20 eddy-navbar__noti__close"></i>
                 </a>
               </div>
           </div>
         </div>
         <div class="pages">
           <div class="page">
-            <div class="page-content">
-              <div class="list-block margin-top-140">
+            <div class="page-content eddy-settings">
+              <div class="list-block margin-top-110">
                 <ul>
-                  <li class="item-content cur-pointer">
+                  <li class="item-content cur-pointer padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-heart-o" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-favorite-outline eddy-settings__list__icons"></i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">TELL A FRIEND</div>
+                      <div class="item-title eddy-settings__list">TELL A FRIEND</div>
                     </div>
                   </li>
-                  <li id="mantra" class="item-content cur-pointer close-popup">
+                  <li id="mantra" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-star-o" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-star-outline eddy-settings__list__icons"></i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">MANTRA</div>
+                      <div class="item-title eddy-settings__list">MANTRA</div>
                     </div>
                   </li>
-                  <li id="editProfile" class="item-content cur-pointer close-popup">
+                  <li id="editProfile" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-user" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-account-o eddy-settings__list__icons"></i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">
+                      <div class="item-title eddy-settings__list">
                         EDIT PROFILE
                       </div>
                     </div>
                   </li>
-                  <li class="item-content">
+                  <li class="item-content padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-volume-up" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-volume-up eddy-settings__list__icons"></i>
                     </div>
-                    <div class="item-inner">
-                      <div class="item-title">SOUNDS</div>
+                    <div class="item-inner padding-right-30">
+                      <div class="item-title eddy-settings__list">SOUNDS</div>
                       <div class="item-after">
                         <div class="item-input">
                           <label class="label-switch">
@@ -68,12 +68,14 @@
                       </div>
                     </div>
                   </li>
-                  <li class="item-content">
-                    <div class="item-media">
-                      <i class="fa fa-bell-o" aria-hidden="true"></i>
+                  <li class="item-content padding-left-30">
+                    <div class="item-media eddy-toolbar--icon__noti">
+                      <div>
+                        <i class="zmdi zmdi-notifications-none eddy-settings__list__icons"></i>
+                      </div>
                     </div>
-                    <div class="item-inner">
-                      <div class="item-title">NOTIFICATIONS</div>
+                    <div class="item-inner padding-right-30">
+                      <div class="item-title eddy-settings__list">NOTIFICATIONS</div>
                       <div class="item-after">
                         <div class="item-input">
                           <label class="label-switch">
@@ -84,28 +86,28 @@
                       </div>
                     </div>
                   </li>
-                  <li id="help" class="item-content cur-pointer close-popup">
+                  <li id="help" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-info-circle" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-info-outline eddy-settings__list__icons"></i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">HELP</div>
+                      <div class="item-title eddy-settings__list">HELP</div>
                     </div>
                   </li>
-                  <li class="item-content cur-pointer close-popup">
+                  <li class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-lock" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-lock-outline eddy-settings__list__icons"></i>
                     </div>
                     <div id="privacy" class="item-inner">
-                      <div  class="item-title">PRIVACY</div>
+                      <div  class="item-title eddy-settings__list">PRIVACY</div>
                     </div>
                   </li>
-                  <li id="logout" class="item-content cur-pointer close-popup">
+                  <li id="logout" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
-                      <i class="fa fa-times-circle" aria-hidden="true"></i>
+                      <i class="zmdi zmdi-close-circle-o eddy-settings__list__icons"></i>
                     </div>
                     <div class="item-inner">
-                      <div class="item-title">LOGOUT</div>
+                      <div class="item-title eddy-settings__list">LOGOUT</div>
                     </div>
                   </li>
                 </ul>
