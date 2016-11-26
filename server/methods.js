@@ -99,7 +99,20 @@ Meteor.methods({
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
       QuizRooms.remove({ _id: quizRoomId });
-      Notification.remove({ _id: notificationId });
+
+      let notification = Notification.findOne({
+        _id: notificationId,
+       });
+       if (notification) {
+          Notification.remove({ _id: notificationId });
+       };
+
+       let quizRoom = QuizRooms.findOne({
+         _id: quizRoomId,
+        });
+        if (quizRoom) {
+           QuizRooms.remove({ _id: quizRoomId });
+        };
     },
 
     removeChallangeNotificationFromTimerPage: function (notificationData) {

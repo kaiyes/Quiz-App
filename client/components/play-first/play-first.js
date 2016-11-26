@@ -31,13 +31,19 @@ Template.playFirst.events({
 
   "click #cross": function(event, instance){
      toastr.error("Match Failed");
+     Router.go('/homePage');
      let notificationData = Session.get('challangeNotification');
      let notification = Notification.findOne({
        when: notificationData.when,
       });
+      let quizRoom = QuizRooms.findOne({
+        _id: notification.quizRoomId,
+       });
       console.log(notification);
-      Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
-     Router.go('/homePage');
+      console.log(quizRoom);
+      if (notification && quizRoom) {
+         Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
+      }
   },
 });
 
