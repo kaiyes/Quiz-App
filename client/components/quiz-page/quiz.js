@@ -1,29 +1,102 @@
 var sixSecondTimer = new ReactiveCountdown(6);
 
-Template.quiz.onRendered(function(){
-  Session.set('quizStarted', "started");
-    //Router.go('/homePage');
-      // sixSecondTimer.start(function() {
-      // });
-
+Template.quiz.onRendered(function(event, instance){
+  Session.set('question', 0);
+    sixSecondTimer.start(function() {
+      Session.set('question',1);
+      sixSecondTimer.start(function() {
+        Session.set('question',2);
+        sixSecondTimer.start(function() {
+          Session.set('question',3);
+            sixSecondTimer.start(function() {
+              Session.set('question',4);
+                sixSecondTimer.start(function() {
+                  Session.set('question',5);
+                    sixSecondTimer.start(function() {
+                       Router.go('/quiz-result')
+                      });
+                  });
+              });
+          });
+      });
+  });
 });
 
 Template.quiz.onDestroyed(function () {
   Session.set('challangeNotification', null);
-  Session.set('quizStarted', null);
   Session.set('didAccept', null);
+  Session.set('question',null);
 });
 
 
 Template.quiz.helpers({
+
   quizRoom: function(){
     let quizRoomId = Router.current().params._id;
     return QuizRooms.findOne({ _id: quizRoomId });
   },
 
-  timer: function(){
+  timerCount: function(){
     return sixSecondTimer.get();
+  },
+
+  timer: function() {
+    let quizRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+
+    if (Session.get('question')===0) {
+      return quizRoom.questions[0];
+    };
+    if (Session.get('question')===1) {
+      return quizRoom.questions[1];
+    };
+    if (Session.get('question')===2) {
+      return quizRoom.questions[2];
+    };
+    if (Session.get('question')===3) {
+      return quizRoom.questions[3];
+    };
+    if (Session.get('question')===4) {
+      return quizRoom.questions[4];
+    };
+    if (Session.get('question')===5) {
+      return quizRoom.questions[5];
+    };
+
   }
+  // timer: function(){
+  //   let quizRoomId = Router.current().params._id;
+  //   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+
+    // if (Session.get('quizStarted')==="started") {
+    //   sixSecondTimer.start(function() {
+    //    console.log(quizRoom.questions[0]);
+    //    return quizRoom.questions[0];
+          // sixSecondTimer.start(function() {
+          //   console.log(quizRoom.questions[1]);
+          //   return quizRoom.questions[1];
+          //     sixSecondTimer.start(function() {
+          //       console.log(quizRoom.questions[2]);
+          //       return quizRoom.questions[2];
+          //         sixSecondTimer.start(function() {
+          //           console.log(quizRoom.questions[3]);
+          //           return quizRoom.questions[3];
+          //             sixSecondTimer.start(function() {
+          //               console.log(quizRoom.questions[4]);
+          //               return quizRoom.questions[4];
+          //                 sixSecondTimer.start(function() {
+          //                   console.log(quizRoom.questions[5]);
+          //                   Session.set('quizStarted', null);
+          //                   return quizRoom.questions[5];
+          //                 });
+          //             });
+          //         });
+          //     });
+          // });
+      // });
+  //   }
+  // },
+
 });
 
 
@@ -78,3 +151,11 @@ Template.quiz.events({
 //   chapter:"maths",
 //   explanation:"The marketing mix refers to the set of actions, or tactics that a company uses to promise its brand or product in the market.The 4Ps make up a typical marketing mix - Price. Product. Promotion and Place.However nowadays the marketing mix increasingly includes several others Ps like Packaging.Positioning. People and even Politics as virtual mix elements.",
 // })
+
+
+    // sixSecondTimer.start(function() {
+    //   return quizRoom.question[0];
+    //     sixSecondTimer.start(function() {
+    //         return quizRoom.question[1];
+    //     });
+    // });

@@ -2,10 +2,9 @@
   <div class="views">
     <div class="view view-main">
       <div class="pages">
-
-      {{#with quizRoom}}
         <div class="page">
             <div class="eddy-quiz flex-direction--column full-height position-relative">
+
               <div class="eddy-quiz--option padding-h-40 flex-direction--row flex-justify-content--space-between flex-align-items--center height-100">
                   <div class="">
                     <span class="font-size-fixed-12">SURRENDER ?</span>
@@ -21,7 +20,7 @@
               </div>
 
 
-
+            {{#with quizRoom}}
               <div class="">
                 <div class="text-center full-width display-block eddy-quiz--option-btn padding-top-10 cur-pointer">
                     <span class="lnr lnr-chevron-down" aria-hidden="true"></span>
@@ -36,7 +35,7 @@
                     </p>
                   </div>
                   <div class="eddy-quiz--level">
-                    {{#with timer}}
+                    {{#with timerCount}}
                         {{this}}
                     {{/with}}
                   </div>
@@ -50,22 +49,35 @@
                   </div>
                 </div>
               </div>
-              <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
-                <div class="eddy-quiz--question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
-                    <p>
-                      What is part of the Marketing Mix?
-                    </p>
-                </div>
-                <div class="padding-h-20 padding-bottom-20">
-                  <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price button button-fill button-raised margin-top-10">PRICE</a>
-                  <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan button button-fill button-raised margin-top-10">PLAN</a>
-                  <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place button button-fill button-raised margin-top-10">PLACE</a>
-                  <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product button button-fill button-raised margin-top-10">PRODUCT</a>
-                </div>
-              </div>
+             {{/with}}
+
+                {{#with timer}}
+                  <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
+                    <div class="eddy-quiz--question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
+                        <p>
+                          {{question}}
+                        </p>
+                    </div>
+                    <div class="padding-h-20 padding-bottom-20">
+                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price button button-fill button-raised margin-top-10">
+                        {{firstAnswer}}
+                      </a>
+                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan button button-fill button-raised margin-top-10">
+                        {{secondAnswer}}
+                      </a>
+                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place button button-fill button-raised margin-top-10">
+                        {{thirdAnswer}}
+                      </a>
+                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product button button-fill button-raised margin-top-10">
+                        {{fourthAnswer}}
+                      </a>
+                    </div>
+                  </div>
+                {{/with}}
+
             </div>
           </div>
-         {{/with}}
+
 
       </div>
     </div>

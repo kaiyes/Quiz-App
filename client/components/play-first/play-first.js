@@ -1,14 +1,18 @@
-var countdown = new ReactiveCountdown(6);
+var countdown = new ReactiveCountdown(10);
+
+Template.playFirst.onCreated(function(){
+    Session.set('shouldTimerStart', true);
+});
 
 Template.playFirst.onRendered(function(){
 
   countdown.start(function() {
-    let didQuizStart = Session.get('quizStarted');
-    if (didQuizStart ==="started") {
-      console.log("timer was stopped");
-    } else {
+    if (Session.get('shouldTimerStart')) {
       toastr.error("Match Failed");
+      console.log("timer in play first ended");
       Router.go('/homePage');
+    } else {
+      console.log("Routing Shouldn't happen");
     }
   });
 
@@ -75,6 +79,6 @@ Template.playFirst.events({
 
 Template.playFirst.onDestroyed(function () {
   Session.set('challangeNotification', null);
-  Session.set('quizStarted', null);
+  Session.set('shouldTimerStart', false);
   Session.set('didAccept', null);
 });
