@@ -12,11 +12,12 @@
 
   &__btn {
     padding-left: 8px !important;
+    padding-top: 4px;
 
-    height: 40px !important;
+    height: 42px !important;
     border: 1px solid map-deep-get($colors, 'primary', 'base');
 
-    line-height: 29px !important;
+    line-height: 30px !important;
     font-family: $font-family-eddy-montserratbold !important;
     outline: none;
   }

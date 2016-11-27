@@ -7,7 +7,8 @@
 
   &--item-inner{
     &__input {
-      @include type-style($font-family-eddy-montserrathairline, 400, 1.6rem, #000000);
+      @include type-style($font-family-eddy-montserrathairline, 600, 1.6rem, #000000);
+      opacity: 0.8;
 
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #696969 !important;
