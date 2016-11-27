@@ -1,7 +1,11 @@
 <template name="playFirst">
   <div class="full-height">
     <div class="flex-direction--row flex-justify-content--flex-end cur-pointer">
-      <span id="cross" class="lnr lnr-cross font-size-fixed-24 padding-20 text-bold" aria-hidden="true"></span>
+      <span id="cross" class="lnr lnr-cross font-size-fixed-24 padding-20 text-bold" aria-hidden="true">
+        {{#with opponentStarted}}
+            <span>{{this}}</span>
+        {{/with}}
+      </span>
     </div>
 
     {{#with userInfo}}
@@ -31,6 +35,7 @@
               </div>
         </div>
     {{/with}}
+
 
   </div>
 </template>

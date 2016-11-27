@@ -8,6 +8,8 @@
     outline: none;
 
     @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
+
+    cursor: pointer;
 }
 
 %button-revert{

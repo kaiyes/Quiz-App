@@ -8,31 +8,39 @@ Template.notification.helpers({
   },
 
   postNotifications: function(){
-    let topicsChosen = Meteor.user().profile.selectedCourses;
-    return Notification.find({
-      topic: { $in: topicsChosen }, type: "post"
-    });
+    if (Meteor.user()) {
+      let topicsChosen = Meteor.user().profile.selectedCourses;
+      return Notification.find({
+        topic: { $in: topicsChosen }, type: "post"
+      });
+    }
   },
 
   likeNotifications: function(){
-    return Notification.find({
-      type: "like",
-      postCreator: Meteor.user().profile.name
-     });
+    if (Meteor.user()) {
+      return Notification.find({
+        type: "like",
+        postCreator: Meteor.user().profile.name
+       });
+    }
   },
 
   likesOnComment: function(){
-    return Notification.find({
-      type: "commentLike",
-      commentCreator: Meteor.user().profile.name
-     });
+    if (Meteor.user()) {
+      return Notification.find({
+        type: "commentLike",
+        commentCreator: Meteor.user().profile.name
+       });
+    }
   },
 
   commentNotification: function(){
-    return Notification.find({
-      type: "comment",
-      postCreator: Meteor.user(),
-     });
+    if (Meteor.user()) {
+      return Notification.find({
+        type: "comment",
+        postCreator: Meteor.user(),
+       });
+    }
   },
 
 });
@@ -40,6 +48,7 @@ Template.notification.helpers({
 Template.notification.events({
 
   "click #acceptChallange": function(event, template){
+     Meteor.call("updateOpponent", this.quizRoomId);
      Router.go(`/quiz/${this.quizRoomId}`);
   },
 
