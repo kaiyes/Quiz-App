@@ -29,7 +29,12 @@
                   <div class="text-center eddy-quiz--players--me position-relative">
                     <span class="eddy-quiz--players--rank">2</span>
                     <img width="55" height="55" class="make-round eddy-quiz--players--profile-img"
-                    src="{{challanger.profile.image}}" alt="Profile Photo">
+                    src="{{#if challanger.profile.imagel}}
+                            {{challanger.profile.image}}
+                          {{else}}
+                            http://placehold.it/85x85
+                          {{/if}}"
+                    alt="Profile Photo">
                     <p class="margin-0 font-size-fixed-14 padding-5">
                       {{challanger.profile.name}}
                     </p>
@@ -42,7 +47,12 @@
                   <div class="text-center eddy-quiz--players--opponent position-relative">
                     <span class="eddy-quiz--players--rank__opponent">?</span>
                     <img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
-                    src="{{challanged.profile.image}}" alt="Profile Photo">
+                    src="{{#if challanged.profile.imagel}}
+                            {{challanged.profile.image}}
+                          {{else}}
+                            http://placehold.it/85x85
+                          {{/if}}"
+                    alt="Profile Photo">
                     <p class="margin-0 font-size-fixed-14 padding-5">
                       {{challanged.profile.name}}
                     </p>

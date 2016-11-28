@@ -1,4 +1,4 @@
-var countdown = new ReactiveCountdown(10);
+var countdown = new ReactiveCountdown(120);
 
 Template.playFirst.onCreated(function(){
     Session.set('shouldTimerStart', true);

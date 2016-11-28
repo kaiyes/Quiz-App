@@ -36,7 +36,13 @@
                       <div class="item-inner padding-h-20">
                         <div class="item-title">
                           <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                            <img class="make-round" width="45" height="45" src="{{profile.image}}" alt="Player Photo" />
+                            <img class="make-round" width="45" height="45"
+                            src="{{#if profile.image}}
+                                    {{profile.image}}
+                                {{else}}
+                                    http://placehold.it/85x85
+                                {{/if}}"
+                            alt="Player Photo" />
                             <p class="font-size-fixed-14 padding-left-10 margin-0 eddy-community--post__username">
                                {{profile.name}}
                             </p>

@@ -62,40 +62,7 @@ Template.quiz.helpers({
     if (Session.get('question')===5) {
       return quizRoom.questions[5];
     };
-
-  }
-  // timer: function(){
-  //   let quizRoomId = Router.current().params._id;
-  //   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
-
-    // if (Session.get('quizStarted')==="started") {
-    //   sixSecondTimer.start(function() {
-    //    console.log(quizRoom.questions[0]);
-    //    return quizRoom.questions[0];
-          // sixSecondTimer.start(function() {
-          //   console.log(quizRoom.questions[1]);
-          //   return quizRoom.questions[1];
-          //     sixSecondTimer.start(function() {
-          //       console.log(quizRoom.questions[2]);
-          //       return quizRoom.questions[2];
-          //         sixSecondTimer.start(function() {
-          //           console.log(quizRoom.questions[3]);
-          //           return quizRoom.questions[3];
-          //             sixSecondTimer.start(function() {
-          //               console.log(quizRoom.questions[4]);
-          //               return quizRoom.questions[4];
-          //                 sixSecondTimer.start(function() {
-          //                   console.log(quizRoom.questions[5]);
-          //                   Session.set('quizStarted', null);
-          //                   return quizRoom.questions[5];
-          //                 });
-          //             });
-          //         });
-          //     });
-          // });
-      // });
-  //   }
-  // },
+  },
 
 });
 
@@ -125,19 +92,23 @@ Template.quiz.events({
 
   "click .eddy--sqr-buttons__price": function(event, template) {
     event.preventDefault();
-    Router.go('/quiz-result');
+    //Router.go('/quiz-result');
+    toastr.success("feature coming soon");
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
-    Router.go('/quiz-result');
+    //Router.go('/quiz-result');
+    toastr.success("feature coming soon");
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
     event.preventDefault();
-    Router.go('/quiz-result');
+    //Router.go('/quiz-result');
+    toastr.success("feature coming soon");
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
     event.preventDefault();
-    Router.go('/quiz-result');
+    //Router.go('/quiz-result');
+    toastr.success("feature coming soon");
   }
 });
 
