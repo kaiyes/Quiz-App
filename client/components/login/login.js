@@ -23,6 +23,7 @@ Template.login.events({
           toastr.error(error.reason);
         } else {
           toastr.success("Log In Successful");
+          Accounts._autoLoginEnabled = true;
           Router.go('/homePage');
         };
       });

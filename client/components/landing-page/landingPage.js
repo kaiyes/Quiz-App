@@ -9,3 +9,11 @@ Template.landingPage.events({
     Router.go('login');
   },
 });
+
+Template.landingPage.onCreated(function() {
+  var currentLoginToken = Accounts._storedLoginToken();
+    if (currentLoginToken) {
+        Accounts.loginWithToken(currentLoginToken);
+        Router.go('/homePage');
+    }
+  });
