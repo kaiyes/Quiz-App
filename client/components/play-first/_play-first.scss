@@ -20,5 +20,9 @@
     line-height: 30px !important;
     font-family: $font-family-eddy-montserratbold !important;
     outline: none;
+
+    &.active-state {
+      background: #d9d9d9 !important;
+    }
   }
 }

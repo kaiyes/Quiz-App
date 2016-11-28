@@ -40,8 +40,8 @@
         @extend  %button-common;
 
         &:hover {
-            background:  map-deep-get($colors, "primary", "base") !important;
-            color: map-deep-get($colors, "buttons", "white") !important;
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            //color: map-deep-get($colors, "buttons", "white") !important;
         }
 
         &:active {
@@ -66,6 +66,10 @@
           display: block;
           border: 2px solid map-deep-get($colors, "primary", "base") !important;
 
+          &.active-state {
+            background: #d9d9d9 !important;
+          }
+
           &--challenge {
             padding: 1.5rem !important;
 
@@ -77,6 +81,10 @@
             }
             &:active {
               border: 1px solid #fff !important;
+            }
+
+            &.active-state {
+              background: #d9d9d9 !important;
             }
           }
         }
@@ -98,6 +106,9 @@
           //background:  map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "primary", "base") !important;
         }
+        &.active-state {
+          background: #d9d9d9 !important;
+        }
     }
 	&--primary-button-revert{
         @extend  %button-revert;
@@ -115,6 +126,10 @@
         &:focus {
             @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
 	          color: map-deep-get($colors, "buttons", "white") !important;
+        }
+
+        &.active-state {
+          background: rgba(81, 200, 172, 0.5) !important;
         }
     }
     &--secondary-button{
@@ -150,69 +165,103 @@
       cursor: pointer;
 
       &__price {
+        &.active-state {
+          background: #d9d9d9 !important;
+        }
         &:focus {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:active {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:hover {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
       }
       &__plan {
+        &.active-state {
+          background: rgba(81, 200, 172, 0.5) !important;
+        }
+
         &__primary {
           background-color: map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "foreground", "white") !important;
+
+          &.active-state {
+            background: rgba(81, 200, 172, 0.5) !important;
+          }
         }
 
         &:focus {
-          background-color: map-deep-get($colors, "primary", "base") !important;
+          //background-color: map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:active {
-          background-color: map-deep-get($colors, "primary", "base") !important;
+          //background-color: map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:hover {
-          background-color: map-deep-get($colors, "primary", "base") !important;
+          //background-color: map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "foreground", "white") !important;
         }
       }
       &__place {
+        &.active-state {
+          background: #d9d9d9 !important;
+        }
         &:focus {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:active {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:hover {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
       }
       &__product {
+        &.active-state {
+          background: #d9d9d9 !important;
+        }
         &__primary {
           background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          color: #ffffff !important;
+
+          &.active-state {
+            background: rgba(73, 73, 73, 00.5) !important;
+          }
+
+          &:focus {
+            //background-color: #494949 !important;
+            color: map-deep-get($colors, "foreground", "white") !important;
+          }
+          &:active {
+            //background-color: #494949 !important;
+            color: map-deep-get($colors, "foreground", "white") !important;
+          }
+          &:hover {
+            //background-color: #494949 !important;
+            color: map-deep-get($colors, "foreground", "white") !important;
+          }
         }
 
         &:focus {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:active {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
         &:hover {
-          background-color: #494949 !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
+          //background-color: #494949 !important;
+          //color: map-deep-get($colors, "foreground", "white") !important;
         }
       }
     }

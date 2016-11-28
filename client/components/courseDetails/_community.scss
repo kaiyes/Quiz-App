@@ -32,7 +32,13 @@
     }
 
     &--submit{
+      margin-left: 10px !important;
+      margin-bottom: 8px !important;
+
+      padding: 0 !important;
+
       min-width: 3.6rem !important;
+      height: 3.6rem !important;
       border: none !important;
       border-radius: 50% !important;
 
@@ -40,7 +46,7 @@
       font-size: 1.8rem !important;
 
       i{
-        padding-left: 15px;
+        //padding-left: 15px;
 
         font-size: 25px;
 

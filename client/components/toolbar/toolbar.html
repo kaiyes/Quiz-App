@@ -1,25 +1,24 @@
 <template name="toolbar">
   <div class="toolbar position-absolute top-initial eddy-toolbar">
-    <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center padding-h-25 padding-top-5">
-      <span data-popup=".popup-settings" class="button ripple border_none--imp eddy-toolbar--icon open-popup">
-
-        <span class="lnr lnr-cog"></span>
+    <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center padding-h-25">
+      <span data-popup=".popup-settings" class="border_none--imp eddy-toolbar--icon open-popup text-center">
+        <span class="lnr lnr-cog iconic-tap--small"></span>
       </span>
 
-      <span id="home" class="button ripple border_none--imp eddy-toolbar--icon">
-        <span class="lnr lnr-home" aria-hidden="true"></span>
+      <span id="home" class="border_none--imp eddy-toolbar--icon text-center">
+        <span class="lnr lnr-home iconic-tap--small" aria-hidden="true"></span>
       </span>
 
-      <span data-popup=".popup-notification" class="button ripple border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup">
+      <span data-popup=".popup-notification" class="border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup">
 
        {{#with notificationAll}}
         {{#if $eq this 0 }}
-          <div>
-            <span class="lnr lnr-alarm" aria-hidden="true"></span>
+          <div class="text-center">
+            <span class="lnr lnr-alarm iconic-tap--small" aria-hidden="true"></span>
           </div>
            {{else}}
-           <div>
-             <span class="lnr lnr-alarm" aria-hidden="true"></span>
+           <div class="text-center">
+             <span class="lnr lnr-alarm iconic-tap--small" aria-hidden="true"></span>
            </div>
            <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
           {{/if}}

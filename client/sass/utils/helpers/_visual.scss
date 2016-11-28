@@ -1,6 +1,6 @@
 .border_none {
     border: none;
-	
+
 	&--imp {
 		border: none !important;
 	}
@@ -8,7 +8,7 @@
 
 .bg_none {
     background: none;
-	
+
 	&--imp {
 		background: none !important;
 	}
@@ -16,7 +16,7 @@
 
 .outline_zero {
 	outline: 0;
-	
+
 	&--imp {
 		outline: 0 !important;
 	}
@@ -24,4 +24,28 @@
 
 .make_round{
 	border-radius: 50%;
+}
+
+.iconic-tap {
+  display: inline-block;
+  height: 4.4rem !important;
+  width: 4.4rem !important;
+  border-radius: 50%;
+
+  line-height: 4.4rem !important;
+  &.active-state {
+    background: rgba(81, 200, 172, 0.5) !important;
+  }
+
+  &--small {
+    display: inline-block;
+    height: 3.6rem !important;
+    width: 3.6rem !important;
+    border-radius: 50%;
+
+    line-height: 3.6rem !important;
+    &.active-state {
+      background: rgba(81, 200, 172, 0.5) !important;
+    }
+  }
 }

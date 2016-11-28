@@ -52,7 +52,7 @@
             </div>
             <div class="card-footer flex-direction--row flex-justify-content--space-between flex-align-items--center">
               <div class="flex-direction--row">
-                <button id="like" type="button" class="button eddy-community--post--like-cmnt-btn">
+                <button id="like" type="button" class="button eddy-community--post--like-cmnt-btn iconic-tap--small">
                     {{#if  $eq this.likes.length 0}}
                       <i class="zmdi zmdi-favorite"></i>
                        {{else}}
@@ -60,7 +60,7 @@
                        <span>{{this.likes.length}}</span>
                     {{/if}}
                 </button>
-                <button type="button" id="openCommenting" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn">
+                <button type="button" id="openCommenting" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn iconic-tap--small">
                     {{#if  $eq this.comments.length 0}}
                       <i class="zmdi zmdi-comment"></i>
                        {{else}}
@@ -107,7 +107,7 @@
                     </div>
                     <div class="card-footer">
                       <div class="flex-direction--row">
-                        <button type="button" id="commentLike" class="button eddy-community--post--like-cmnt-btn">
+                        <button type="button" id="commentLike" class="button eddy-community--post--like-cmnt-btn iconic-tap--small">
                           {{#if  $eq this.likes.length 0}}
                             <i class="zmdi zmdi-favorite"></i>
                              {{else}}
@@ -115,7 +115,7 @@
                              <span>{{this.likes.length}}</span>
                           {{/if}}
                         </button>
-                        <button type="button" id="reply" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-reply-btn">
+                        <button type="button" id="reply" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-reply-btn iconic-tap--small">
                             <i class="zmdi zmdi-mail-reply"></i>
                         </button>
                       </div>
