@@ -1,0 +1,90 @@
+<template name="newProfile">
+   <div class="views">
+     <div class="view view-main" data-page="home">
+       <div class="pages navbar-fixed">
+         <div data-page="home" class="page">
+            <div class="navbar eddy-navbar">
+               <div class="navbar-inner">
+                   <div class="left">
+                       <a href="{{pathFor 'homePage'}}" class="link icon-only iconic-tap">
+                           <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
+                       </a>
+                   </div>
+                   <div class="center full-width text-center">
+                     <h2 class="margin-0 full-width eddy-navbar__title">TELL US ABOUT YOURSELF</h2>
+                   </div>
+                   <div class="right">
+                     <a href="#" class="open-panel link icon-only"></a>
+                   </div>
+               </div>
+             </div>
+            <div class="page-content">
+              <div class="eddy-profile padding-top-20 padding-bottom-45">
+                <form id="profileInfo">
+                  <div class="form-group eddy-profile__upload-section border-bottom">
+                      <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                        <p class="control-label eddy-profile__pptxt">Profile picture</p>
+                        <div>
+                            <label class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
+
+                          {{!
+                            --Use the commented section to show uploaded photo as well as when photo shows, hide the above label
+                          --}}
+                          {{!--
+                            <div class="text-center">
+                              <img class="make-round" width="85" height="85" src="http://placehold.it/85x85" alt="Profile photo" />
+                              <a href="#" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
+                            </div>
+                          --}}
+                            <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
+                        </div>
+                      </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" id="name" placeholder="Name *" required name="name" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <select name="university" id="university" required autocomplete="off" class="form-control">
+                      <option value="">University *</option>
+                      <option value="AUST">AUST</option>
+                      <option value="BUET">BUET</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="text" placeholder="Programme *" name="programme" id="programme" required class="form-control">
+                  </div>
+
+                  <div class="form-group margin-top-40">
+                    <select label-type="floating" placeholder="Nickname" name="nickName" id="Nickname" autocomplete="off" class="form-control">
+                      <option value="">Nickname</option>
+                      <option value="warrior">warrior</option>
+                      <option value="lion">lion</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="number" placeholder="Age" name="age" id="age" class="form-control">
+                  </div>
+
+                  <div class="form-group">
+                    <select label-type="floating" placeholder="Country" name="country" id="country" autocomplete="off" class="form-control">
+                      <option value="">Country</option>
+                      <option value="bd">bd</option>
+                      <option value="uk">uk</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group eddy-profile__submit">
+                    <button type="submit" class="btn btn-primary">DONE</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+         </div>
+        </div>
+     </div>
+   </div>
+</template>

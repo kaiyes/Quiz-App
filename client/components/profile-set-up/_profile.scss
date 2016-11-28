@@ -4,7 +4,7 @@
     margin-right: 3rem;
 
     label {
-      display: none;
+      //display: none;
     }
 
     input, select {
@@ -89,14 +89,14 @@
 
 
       label {
-        padding-left: 5px;
-
-        padding-top: 1.5rem;
-        display: block !important;
-        flex: 1 !important;
-
-        font-weight: normal;
-        @include type-style($font-family-eddy-montserrathairline, 400, 1.4rem, #000000);
+        // padding-left: 5px;
+        //
+        // padding-top: 1.5rem;
+        // display: block !important;
+        // flex: 1 !important;
+        //
+        // font-weight: normal;
+        // @include type-style($font-family-eddy-montserrathairline, 400, 1.4rem, #000000);
       }
       .afCloudinary {
         flex-direction: row !important;
