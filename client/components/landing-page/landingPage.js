@@ -11,9 +11,13 @@ Template.landingPage.events({
 });
 
 Template.landingPage.onCreated(function() {
-  var currentLoginToken = Accounts._storedLoginToken();
-    if (currentLoginToken) {
-        Accounts.loginWithToken(currentLoginToken);
-        Router.go('/homePage');
+  // var currentLoginToken = localStorage.key(Accounts._storeLoginToken);
+  //     if (currentLoginToken) {
+  //         Accounts.loginWithToken(currentLoginToken);
+  //         Router.go('/homePage');
+  //     }
+
+  if (Meteor.userId()) {
+      Router.go('/homePage');
     }
   });
