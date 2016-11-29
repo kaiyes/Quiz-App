@@ -25,17 +25,22 @@
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                         <p class="control-label eddy-profile__pptxt">Profile picture</p>
                         <div>
-                            <label class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
+
 
                           {{!
                             --Use the commented section to show uploaded photo as well as when photo shows, hide the above label
                           --}}
-                          {{!--
+
+
+                          {{#if res.url}}
                             <div class="text-center">
-                              <img class="make-round" width="85" height="85" src="http://placehold.it/85x85" alt="Profile photo" />
+                              <img class="make-round" width="85" height="85" src="{{res.url}}" alt="Profile photo" />
                               <a href="#" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
                             </div>
-                          --}}
+                          {{/if}}
+
+
+                            <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
                             <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
                         </div>
                       </div>
@@ -54,11 +59,11 @@
                   </div>
 
                   <div class="form-group">
-                    <input type="text" placeholder="Programme *" name="programme" id="programme" required class="form-control">
+                    <input type="text" id="programme" placeholder="Programme *" name="programme"  required class="form-control">
                   </div>
 
                   <div class="form-group margin-top-40">
-                    <select label-type="floating" placeholder="Nickname" name="nickName" id="Nickname" autocomplete="off" class="form-control">
+                    <select label-type="floating" id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off" class="form-control">
                       <option value="">Nickname</option>
                       <option value="warrior">warrior</option>
                       <option value="lion">lion</option>
@@ -66,11 +71,11 @@
                   </div>
 
                   <div class="form-group">
-                    <input type="number" placeholder="Age" name="age" id="age" class="form-control">
+                    <input type="number" id="age" placeholder="Age" name="age"  class="form-control">
                   </div>
 
                   <div class="form-group">
-                    <select label-type="floating" placeholder="Country" name="country" id="country" autocomplete="off" class="form-control">
+                    <select label-type="floating" id="country" placeholder="Country" name="country"  autocomplete="off" class="form-control">
                       <option value="">Country</option>
                       <option value="bd">bd</option>
                       <option value="uk">uk</option>

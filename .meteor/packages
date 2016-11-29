@@ -50,9 +50,7 @@ chrismbeckett:toastr
 
 aldeed:simple-schema
 aldeed:collection2
-aldeed:autoform
-cosio55:autoform-cloudinary
-
+lepozepo:cloudinary
 
 #######################################################
 #                Utility                              #

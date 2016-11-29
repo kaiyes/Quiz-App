@@ -17,10 +17,42 @@ Template.newProfile.onRendered(function() {
 
 Template.newProfile.events({
 
-  "click .eddy-profile .form-group:nth-of-type(1) .afCloudinary button": function(event, template) {
-    //$('.eddy-profile .form-group:nth-of-type(1) .afCloudinary .js-remove').html('<i class="fa fa-close" aria-hidden="true"></i>');
-  }
-  ,
+
+  'submit form': function() {
+    event.preventDefault();
+    let name = document.querySelector("#name").value;
+    let university = document.querySelector("#university").value;
+    let programme = document.querySelector("#programme").value;
+    let nickname = document.querySelector("#nickname").value;
+    let age = document.querySelector("#age").value;
+    let country = document.querySelector("#country").value;
+    let imageUrl  = Session.get('image');
+
+    profile = {
+      age: age,
+      country: country,
+      name: name,
+      university: university,
+      nickName: nickname,
+      programme: programme,
+      image:imageUrl
+    };
+
+    console.log(profile);
+  },
+
+  'change input[type="file"]' ( event, template ) {
+    let imageData = event.currentTarget.files[0];
+    console.log(imageData);
+    Cloudinary.upload(imageData, {}, function(err, res) {
+        console.log(res.url);
+        Session.set('image', res.url);
+        console.log("Upload Error: " + err);
+        return console.log("Upload Result: " + res);
+      });
+
+  },
+
   "click .eddy-profile .form-group:nth-of-type(1) .afCloudinary .js-remove": function(event, template) {
     //$('.eddy-profile .form-group:nth-of-type(1) .afCloudinary button').html('<i class="fa fa-plus" aria-hidden="true"></i>');
   },
@@ -50,7 +82,5 @@ Template.newProfile.events({
             scrollTop: $('.form-group:nth-of-type(6)').height() * 6 + 10
           },"slow");
   },
-  "click .form-group:nth-of-type(7)": function(event, template) {
-    console.log(this);
-  }
+
 });

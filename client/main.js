@@ -23,6 +23,10 @@ Meteor.startup(function(){
       "hideMethod": "fadeOut"
     };
 
+    Cloudinary.config({
+      cloud_name: 'jahanara',
+    });
+
   //  var courseCount = Courses.find().count();
   //  if (courseCount<=0) {
   //    Courses.insert({ "courseName": "science", "chapters":['biology', 'maths']});

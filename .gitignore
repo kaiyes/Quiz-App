@@ -1,4 +1,5 @@
 node_modules/
 .DS_Store
-settings.json
+settings-production.json
+settings-dev.json
 mobile-config.js
