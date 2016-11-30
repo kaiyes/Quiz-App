@@ -25,24 +25,15 @@
                      <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                        <p class="control-label eddy-profile__pptxt">Profile picture</p>
                        <div>
-
-
-                         {{!
-                           --Use the commented section to show uploaded photo as well as when photo shows, hide the above label
-                         --}}
-
-
-                         {{#if res.url}}
-                           <div class="text-center">
-                             <img class="make-round" width="85" height="85" src="{{res.url}}" alt="Profile photo" />
-                             <a href="#" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
-                           </div>
-                         {{/if}}
-
-
                            <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
                            <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
                        </div>
+                       {{#if $.Session.get 'image'}}
+                         <div class="text-center">
+                           <img class="make-round" width="85" height="85" src="{{$.Session.get 'image'}}" alt="Profile photo" />
+                           <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
+                         </div>
+                       {{/if}}
                      </div>
                  </div>
 

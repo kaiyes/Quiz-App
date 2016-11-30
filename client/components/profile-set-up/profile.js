@@ -23,9 +23,17 @@ Template.profile.events({
       Cloudinary.upload(imageData, {}, function(err, res) {
           console.log(res.url);
           Session.set('image', res.url);
+          Session.set('imageId', res.public_id);
           console.log("Upload Error: " + err);
-          return console.log("Upload Result: " + res);
+          return console.log("Upload Result: " + res.public_id);
         });
+    },
+
+    "click #remove": function(event, template) {
+      console.log("clicked remove");
+      console.log(Session.get('imageId'));
+      Cloudinary["delete"](Session.get('imageId'));
+      Session.set('image', null);
     },
 
   'submit form': function() {
@@ -86,4 +94,8 @@ Template.profile.events({
             scrollTop: $('.form-group:nth-of-type(6)').height() * 6 + 10
           },"slow");
   },
+});
+
+Template.profile.onDestroyed(function () {
+  Session.set('image', null);
 });
