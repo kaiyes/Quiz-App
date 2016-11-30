@@ -3,3 +3,4 @@ node_modules/
 settings-production.json
 settings-dev.json
 mobile-config.js
+settings.json
