@@ -23,7 +23,7 @@ Meteor.startup(function(){
       "hideMethod": "fadeOut"
     };
 
-    Cloudinary.config({
+    $.cloudinary.config({
       cloud_name: 'jahanara',
     });
 
