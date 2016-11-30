@@ -35,10 +35,14 @@ Template.newProfile.events({
       university: university,
       nickName: nickname,
       programme: programme,
-      image:imageUrl
+      selectedCourses: Meteor.user().profile.selectedCourses,
+      "totalPoints": 0,
+      image:imageUrl,
+      createdAt: new Date(),
+      createdBy: Meteor.userId(),
     };
 
-    console.log(profile);
+    Meteor.call("addToProfile", profile);
   },
 
   'change input[type="file"]' ( event, template ) {
