@@ -8,10 +8,16 @@ Meteor.methods({
      },
 
     addToProfile: function(profile){
-      UserInformation.insert(profile);
       Meteor.users.update(
         { _id: this.userId },
         { $set: { profile: profile }}
+      );
+    },
+
+    removePhoto:function(){
+      Meteor.users.update(
+        { _id: this.userId },
+        {  $set: { "profile.image": " ", "profile.imageId": " " } }
       );
     },
 

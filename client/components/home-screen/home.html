@@ -6,7 +6,14 @@
             <div class="padding-top-30 flex-direction--column flex-justify-content--flex-start flex-align-items--center">
 
                 <div class="">
-                  <img width="80" height="80" class="make-round eddy-home--profile-photo" src="{{currentUser.profile.image}}" alt="Profile Photo">
+                  <img width="80" height="80" class="make-round eddy-home--profile-photo"
+                  src="
+                  {{#if createdBy.profile.image}}
+                      {{createdBy.profile.image}}
+                  {{else}}
+                      http://placehold.it/85x85
+                  {{/if}}
+                  " alt="Profile Photo">
                 </div>
                   <div class="full-width">
                     <h3 class="margin-0 font-size-fixed-14 text-center padding-left-15 margin-top-10 eddy-home--profile-info__name_age">

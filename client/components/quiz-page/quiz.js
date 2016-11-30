@@ -45,21 +45,27 @@ Template.quiz.helpers({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
 
     if (Session.get('question')===0) {
+      toastr.success("question 1");
       return quizRoom.questions[0];
     };
     if (Session.get('question')===1) {
+      toastr.success("question 2");
       return quizRoom.questions[1];
     };
     if (Session.get('question')===2) {
+      toastr.success("question 3");
       return quizRoom.questions[2];
     };
     if (Session.get('question')===3) {
+      toastr.success("question 4");
       return quizRoom.questions[3];
     };
     if (Session.get('question')===4) {
+      toastr.success("question 5");
       return quizRoom.questions[4];
     };
     if (Session.get('question')===5) {
+      toastr.success("Last Question");
       return quizRoom.questions[5];
     };
   },

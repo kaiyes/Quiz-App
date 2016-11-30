@@ -32,7 +32,8 @@ Template.profile.events({
     "click #remove": function(event, template) {
       console.log("clicked remove");
       console.log(Session.get('imageId'));
-      Cloudinary["delete"](Session.get('imageId'));
+      // Cloudinary["delete"](Session.get('imageId'));
+      Cloudinary.delete(Session.get('imageId'));
       Session.set('image', null);
     },
 
@@ -45,6 +46,7 @@ Template.profile.events({
     let age = document.querySelector("#age").value;
     let country = document.querySelector("#country").value;
     let imageUrl  = Session.get('image');
+    let imageId  = Session.get('imageId');
 
     profile = {
       age: age,
@@ -56,6 +58,7 @@ Template.profile.events({
       selectedCourses: Meteor.user().profile.selectedCourses,
       "totalPoints": 0,
       image:imageUrl,
+      imageId:imageId,
       createdAt: new Date(),
       createdBy: Meteor.userId(),
     };
