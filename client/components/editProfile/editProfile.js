@@ -26,19 +26,33 @@ Template.editProfile.onRendered(function() {
     });
 });
 
+Template.editProfile.onDestroyed(function () {
+  Session.set('image', null);
+});
 
 Template.editProfile.events({
 
    'change input[type="file"]' ( event, template ) {
       let imageData = event.currentTarget.files[0];
       console.log(imageData);
-      Cloudinary.upload(imageData, {}, function(err, res) {
-          console.log(res.url);
-          Session.set('image', res.url);
-          Session.set('imageId', res.public_id);
-          console.log("Upload Error: " + err);
-          return console.log("Upload Result: " + res.public_id);
-        });
+
+      Resizer.resize(imageData, {width: 300, height: 300, cropSquare: true }, function(err, file) {
+
+        Cloudinary.upload(file, {},function(err, res) {
+            if (err) {
+              toastr.error("couldn't upload your photo");
+              console.log( err);
+            }
+            if (file) {
+              console.log(res);
+              toastr.success("Photo uploaded");
+              Meteor.call("addPhoto", res.url, res.public_id );
+            }
+
+          });
+
+      });
+
     },
 
     "click #remove": function(event, template) {
@@ -61,8 +75,6 @@ Template.editProfile.events({
       let nickname = document.querySelector("#nickname").value;
       let age = document.querySelector("#age").value;
       let country = document.querySelector("#country").value;
-      let imageUrl  = Session.get('image');
-      let imageId  = Session.get('imageId');
 
       profile = {
         age: age,
@@ -73,8 +85,8 @@ Template.editProfile.events({
         programme: programme,
         selectedCourses: Meteor.user().profile.selectedCourses,
         "totalPoints": 0,
-        image:imageUrl,
-        imageId:imageId,
+        image: Meteor.user().profile.image,
+        imageId: Meteor.user().profile.imageId,
         createdAt: new Date(),
         createdBy: Meteor.userId(),
       };
@@ -119,6 +131,6 @@ Template.editProfile.events({
   },
   "click .form-group:nth-of-type(7)": function(event, template) {
 
-  }
+  },
 
 });

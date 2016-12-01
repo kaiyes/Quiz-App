@@ -28,6 +28,8 @@ Template.signUp.events({
       university:"",
       nickName:"",
       programme:"",
+      image:" ",
+      imageId: "",
       selectedCourses:[],
     };
 

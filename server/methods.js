@@ -14,6 +14,13 @@ Meteor.methods({
       );
     },
 
+    addPhoto:function(url, id){
+      Meteor.users.update(
+        { _id: this.userId },
+        {  $set: { "profile.image": url, "profile.imageId": id } }
+      );
+    },
+
     removePhoto:function(){
       Meteor.users.update(
         { _id: this.userId },

@@ -51,6 +51,8 @@ chrismbeckett:toastr
 aldeed:simple-schema
 aldeed:collection2
 lepozepo:cloudinary
+thinksoftware:image-resize-client
+
 
 #######################################################
 #                Utility                              #

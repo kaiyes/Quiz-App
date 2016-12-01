@@ -33,7 +33,7 @@
                          <div class="text-center">
                            <img class="make-round" width="85" height="85"
                            src="
-                           {{#if image}}
+                           {{#if $neq image " "}}
                               {{image}}
                             {{else}}
                                 {{#if $.Session.get 'image'}}
@@ -78,7 +78,7 @@
 
                  <div class="form-group">
                    <select label-type="floating" id="country" placeholder="{{country}}" name="country"  autocomplete="off" class="form-control">
-                     <option value="">Country</option>
+                     <option value="">Cloudinary</option>
                      <option value="bd">bd</option>
                      <option value="uk">uk</option>
                    </select>
