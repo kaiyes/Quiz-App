@@ -8,6 +8,7 @@ App.info({
 
 App.accessRule('http://*');
 App.accessRule('https://*');
+App.accessRule('*');
 
 App.appendToConfig(`
   <universal-links>
