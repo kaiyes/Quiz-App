@@ -150,6 +150,14 @@
 
   }
 
+  &__label {
+    margin-bottom: 0;
+    padding-left: 4px;
+
+    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
+    opacity: 0.7;
+  }
+
   &__upload_btn {
     width: 5.6rem;
     height: 5.6rem;

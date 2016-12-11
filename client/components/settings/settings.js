@@ -1,3 +1,10 @@
+Template.settings.onRendered(function() {
+  $('.eddy-settings ul li').click(function() {
+    $('.eddy-settings ul li').removeClass('eddy-settings__active');
+    $(this).addClass('eddy-settings__active');
+  });
+});
+
 Template.settings.events({
 
   "click #editProfile": function(event, template){
