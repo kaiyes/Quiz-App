@@ -28,9 +28,9 @@
                            <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
                            <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
                        </div>
-                       {{#if $.Session.get 'image'}}
+                       {{#if $neq currentUser.profile.image " "}}
                          <div class="text-center">
-                           <img class="make-round" width="85" height="85" src="{{$.Session.get 'image'}}" alt="Profile photo" />
+                           <img class="make-round" width="85" height="85" src="{{currentUser.profile.image}}" alt="Profile photo" />
                            <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
                          </div>
                        {{/if}}
