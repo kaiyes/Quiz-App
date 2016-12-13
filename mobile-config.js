@@ -1,5 +1,5 @@
 App.info({
-  id: 'com.example.ivive.eddie',
+  id: 'com.ivive.eddie',
   name: 'Eddie',
   author: 'Kaiyes Ansary',
   email: 'kaiyes.ansary@gmail.com',
