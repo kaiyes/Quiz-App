@@ -37,7 +37,8 @@
     @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, #595959);
   }
   &__name {
-    @include type-style($font-family-eddy-montserrathairline, 400, 1.6rem, #000000);
+    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
+    opacity: 0.60;
   }
   &--sorting {
     @include type-style($font-family-eddy-montserratbold, 700, 2.4rem, map-deep-get($colors, "primary", "base"));
