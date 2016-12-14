@@ -8,13 +8,16 @@ Template.community.onRendered(function() {
     $(document)
       .on("focus", ".eddy-community--post-area--input__reply", function(){
         var outerHeight = 0;
-        $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
+        $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
           outerHeight += $(this).outerHeight() + 10;
         });
 
+        var d = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height();
+        console.log(d);
         $(".page-content").animate({
-          scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
+          scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
         },"slow");
+        console.log(outerHeight);
       })
 });
 
