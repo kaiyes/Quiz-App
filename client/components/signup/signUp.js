@@ -1,12 +1,12 @@
 Template.signUp.onRendered(function() {
     $('.eddy-form--lists .item-input:nth-of-type(1)').click(function() {
       $(".page-content").animate({
-        scrollTop: 170
+        scrollTop: 210
       },"slow");
     });
     $('.eddy-form--lists .item-input:nth-of-type(2)').click(function() {
       $(".page-content").animate({
-        scrollTop: 214
+        scrollTop: 210
       },"slow");
     });
 });

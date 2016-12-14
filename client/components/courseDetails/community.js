@@ -18,7 +18,7 @@ Template.community.onRendered(function() {
           scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
         },"slow");
         console.log(outerHeight);
-      })
+      });
 });
 
 
@@ -63,19 +63,27 @@ Template.community.events({
       topic: topicName,
     };
     Meteor.call('insertComment', commentPayload);
+    $('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').hide();
+    $('#post-'+this._id)
+            .find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section')
+            .show();
+
     $('[name="comment"]').val('');
   },
 
   "click #openCommenting": function(event, template){
     event.preventDefault();
-    let value = Session.get('showComments');
-    if (value==="Show") {
-      Session.set("showComments", "hide");
-      console.log(Session.get('showComments'));
-    } else {
-      Session.set("showComments", "Show");
-      console.log(Session.get('showComments'));
-    }
+    $('#post-'+this._id)
+            .find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section')
+            .toggle();
+    // let value = Session.get('showComments');
+    // if (value==="Show") {
+    //   Session.set("showComments", "hide");
+    //   console.log(Session.get('showComments'));
+    // } else {
+    //   Session.set("showComments", "Show");
+    //   console.log(Session.get('showComments'));
+    // }
   },
 
   "click #like": function(event, template){
