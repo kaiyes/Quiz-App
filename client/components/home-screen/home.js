@@ -11,7 +11,7 @@ Template.homePage.events({
  },
  "click #hideProfileInfo": function(event, template) {
    $('#showProfileInfo').slideDown();
-   $('.eddy-home--profile-info').css({'margin-top': '-225px', 'transition': 'all 0.3s'});
+   $('.eddy-home--profile-info').css({'margin-top': '-300px', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
  },
 

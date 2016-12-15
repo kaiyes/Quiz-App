@@ -8567,7 +8567,7 @@ cur-zoom-out {
 }
 
 .overflow-hidden {
-    overflow: hidden
+    overflow: hidden !important;
 }
 
 .no-select {
@@ -8605,4 +8605,9 @@ cur-zoom-out {
 
 .social-background-google-plus {
     background-color: #f44336 !important
+}
+
+
+.word-break {
+  word-wrap: break-word;
 }

@@ -25,7 +25,7 @@
       </div>
     {{#each posts}}
       <div id="post-{{_id}}" class="eddy-community--post">
-        <div class="card margin-h-0 margin-bottom-0">
+           <div class="card margin-h-0 margin-bottom-0">
             <div class="card-header">
               <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                   <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
@@ -45,7 +45,7 @@
             </div>
             <div class="card-content">
                 <div class="card-content-inner">
-                  <p class="margin-0 opacity-80">
+                  <p class="margin-0 opacity-80 word-break">
                     {{body}}
                   </p>
                 </div>
@@ -79,7 +79,7 @@
           {{#each this.comments}}
             <div class="eddy-community--post--comment-section {{$.Session.get 'showComments'}}">
               <div>
-                <div class="card margin-h-0 margin-0 eddy-community--post--comments overlay-5">
+                <div class="card margin-h-0 margin-0 eddy-community--post--comments overlay-5 padding-left-15">
                     <div class="card-header">
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                           <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
@@ -100,7 +100,7 @@
                     </div>
                     <div class="card-content">
                         <div class="card-content-inner">
-                          <p class="margin-0 opacity-80">
+                          <p class="margin-0 opacity-80 word-break">
                             {{body}}
                           </p>
                         </div>
@@ -135,8 +135,7 @@
                               <form id="commentForm" class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                                   <input required class="eddy-community--post-area--input eddy-community--post-area--input__reply border-r-25 padding-10 height-auto"
                                     type="text"
-                                    name="comment"
-                                    autofocus>
+                                    name="comment">
                                   <button type="submit"
                                           class="button eddy-community--post-area--submit eddy-community--post-area--submit__reply">
                                       <i class="zmdi zmdi-mail-send"></i>

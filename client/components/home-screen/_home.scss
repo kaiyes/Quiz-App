@@ -19,19 +19,19 @@
 
 .eddy-home {
   &--profile-info {
-    margin-top: -225px;
+    margin-top: -300px;
 
     &__name_age {
-      @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #595959);
+      @include type-style($font-family-eddy-montserratbold, 700, 2rem, #595959);
     }
     &__nickname {
-      @include type-style($font-family-base, 400, 1.4rem, #595959);
+      @include type-style($font-family-base, 400, 1.8rem, #595959);
     }
     &__programme {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #595959);
+      @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #595959);
     }
     &__university {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #595959);
+      @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #595959);
     }
   }
   &--quiz {

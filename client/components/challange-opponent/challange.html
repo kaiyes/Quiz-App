@@ -10,7 +10,8 @@
             </div>
             <div class="center full-width text-center">
               <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar--challenge__heading">
-                   {{$.Session.get 'chapter'}}
+                   <!-- {{$.Session.get 'chapter'}} -->
+                   Challenge a mate
               </h2>
             </div>
             <div class="right">
@@ -44,12 +45,12 @@
                                 {{/if}}"
                             alt="Player Photo" />
                             <p class="font-size-fixed-14 padding-left-10 margin-0 eddy-community--post__username">
-                               {{profile.name}}
+                               {{profile.name}} <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info padding-left-5"></i>
                             </p>
                           </div>
                         </div>
                         <div class="item-after">
-                          <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                          <!-- <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
                           <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
                           <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
                         </div>

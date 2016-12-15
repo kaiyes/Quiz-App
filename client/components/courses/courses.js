@@ -21,11 +21,11 @@ Template.course.events({
 
   "click .select-course": function(event, template){
     if ($(event.target).hasClass('select-course')) {
-        $('.select-course').removeClass('eddy-courses--selected');
+        //$('.select-course').removeClass('eddy-courses--selected');
         $(event.target).toggleClass('eddy-courses--selected');
     }
     else {
-      $('.select-course').removeClass('eddy-courses--selected');
+      //$('.select-course').removeClass('eddy-courses--selected');
       $(event.target).parents('.select-course').toggleClass('eddy-courses--selected')
     }
   },
