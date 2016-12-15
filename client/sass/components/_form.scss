@@ -7,8 +7,8 @@
 
   &--item-inner{
     &__input {
-      @include type-style($font-family-eddy-montserrathairline, 600, 1.6rem, #000000);
-      opacity: 0.8;
+      @include type-style($font-family-eddy-montserrathairline, 600, 1.8rem, #000000);
+      //opacity: 0.8;
 
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #696969 !important;
@@ -39,22 +39,22 @@
     padding-bottom: 0.8rem;
 
     color: map-deep-get($colors, "primary", "base") !important;
-    font-size: 1.6rem;
+    font-size: 2rem;
 
     &.zmdi-lock-outline{
       padding-left: 0.2rem;
 
-      font-size: 1.8rem;
+      font-size: 2.3rem;
     }
   }
 
   &__forgot-pass-text {
-    @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #595959);
+    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #595959);
     font-style: italic;;
   }
 
   &__fortgot-msg {
-    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #595959);
+    @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #595959);
     line-height: normal;
   }
 }

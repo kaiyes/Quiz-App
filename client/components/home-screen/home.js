@@ -8,6 +8,7 @@ Template.homePage.events({
    $('#showProfileInfo').hide();
    $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
    $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
+
  },
  "click #hideProfileInfo": function(event, template) {
    $('#showProfileInfo').slideDown();
