@@ -98,23 +98,63 @@ Template.quiz.events({
 
   "click .eddy--sqr-buttons__price": function(event, template) {
     event.preventDefault();
-    //Router.go('/quiz-result');
-    toastr.success("feature coming soon");
+    let quizRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    let firstAnswer = this.firstAnswer;
+    let rightAnswer = this.rightAnswer;
+    if (firstAnswer===rightAnswer) {
+        if (Meteor.userId()===quizRoom.challanger._id) {
+          console.log("challanger wins");
+        };
+        if (Meteor.userId()===quizRoom.challanged._id) {
+          console.log("challanged wins");
+        };
+    }
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
-    //Router.go('/quiz-result');
-    toastr.success("feature coming soon");
+    let quizRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    let secondAnswer = this.secondAnswer;
+    let rightAnswer = this.rightAnswer;
+    if (secondAnswer===rightAnswer) {
+        if (Meteor.userId()===quizRoom.challanger._id) {
+          console.log("challanger wins");
+        };
+        if (Meteor.userId()===quizRoom.challanged._id) {
+          console.log("challanged wins");
+        };
+    }
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
     event.preventDefault();
-    //Router.go('/quiz-result');
-    toastr.success("feature coming soon");
+    let quizRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    let thirdAnswer = this.thirdAnswer;
+    let rightAnswer = this.rightAnswer;
+    if (thirdAnswer===rightAnswer) {
+        if (Meteor.userId()===quizRoom.challanger._id) {
+          console.log("challanger wins");
+        };
+        if (Meteor.userId()===quizRoom.challanged._id) {
+          console.log("challanged wins");
+        };
+    }
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
     event.preventDefault();
-    //Router.go('/quiz-result');
-    toastr.success("feature coming soon");
+    let quizRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    let fourthAnswer = this.fourthAnswer;
+    let rightAnswer = this.rightAnswer;
+    if (fourthAnswer===rightAnswer) {
+        if (Meteor.userId()===quizRoom.challanger._id) {
+          console.log("challanger wins");
+        };
+        if (Meteor.userId()===quizRoom.challanged._id) {
+          console.log("challanged wins");
+        };
+    }
   }
 });
 
