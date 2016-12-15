@@ -1,6 +1,15 @@
 var sixSecondTimer = new ReactiveCountdown(6);
 
+Template.quiz.onCreated(function () {
+  let quizRoomId = Router.current().params._id;
+  let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+  if (quizRoom.gameEnded) {
+    Router.go('/quiz-result');
+  }
+});
+
 Template.quiz.onRendered(function(event, instance){
+
   Session.set('question', 0);
     sixSecondTimer.start(function() {
       Session.set('question',1);
@@ -20,6 +29,7 @@ Template.quiz.onRendered(function(event, instance){
           });
       });
   });
+
 });
 
 Template.quiz.onDestroyed(function () {
@@ -66,6 +76,8 @@ Template.quiz.helpers({
     };
     if (Session.get('question')===5) {
       toastr.success("Last Question");
+      let quizRoomId = Router.current().params._id;
+      Meteor.call("endGame", quizRoomId);
       return quizRoom.questions[5];
     };
   },
@@ -105,9 +117,11 @@ Template.quiz.events({
     if (firstAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
+          Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
         if (Meteor.userId()===quizRoom.challanged._id) {
           console.log("challanged wins");
+          Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
     }
   },
@@ -120,9 +134,11 @@ Template.quiz.events({
     if (secondAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
+          Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
         if (Meteor.userId()===quizRoom.challanged._id) {
           console.log("challanged wins");
+          Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
     }
   },
@@ -135,9 +151,11 @@ Template.quiz.events({
     if (thirdAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
+          Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
         if (Meteor.userId()===quizRoom.challanged._id) {
           console.log("challanged wins");
+          Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
     }
   },
@@ -150,9 +168,11 @@ Template.quiz.events({
     if (fourthAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
+          Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
         if (Meteor.userId()===quizRoom.challanged._id) {
           console.log("challanged wins");
+          Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
     }
   }

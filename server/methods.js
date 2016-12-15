@@ -96,6 +96,7 @@ Meteor.methods({
            questions:questions,
            challangerStarted: true,
            challangedStarted: false,
+           gameEnded:false,
          });
 
         Notification.insert({
@@ -118,7 +119,6 @@ Meteor.methods({
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
       QuizRooms.remove({ _id: quizRoomId });
-
       let notification = Notification.findOne({
         _id: notificationId,
        });
@@ -134,19 +134,17 @@ Meteor.methods({
         };
     },
 
+    incChallangerRoomPoints: function( quizRoomId ){
+      QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:10 } });
+      Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+    },
+
+    incChallangedRoomPoints: function( quizRoomId ){
+      QuizRooms.update({ _id: quizRoomId }, { $inc:{ challangedRoomPoints:10 } });
+      Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+    },
+
+    endGame:function(quizRoomId){
+        QuizRooms.update({ _id: quizRoomId }, { $set: { gameEnded: true }});
+    }
 });
-
-
-// increaseTotalPoints: function () {
-//   Meteor.users.update(
-//     { _id: this.userId },
-//     { $inc: { "profile.totalPoints": 10 }}
-//   );
-// },
-//
-// increaseGamePoints: function () {
-//   Meteor.users.update(
-//     { _id: this.userId },
-//     { $inc: { "profile.gamePoints": 10 }}
-//   );
-// },
