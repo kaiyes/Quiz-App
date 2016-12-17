@@ -1,10 +1,11 @@
-var sixSecondTimer = new ReactiveCountdown(6);
+var sixSecondTimer = new ReactiveCountdown(20);
 
 Template.quiz.onCreated(function () {
   let quizRoomId = Router.current().params._id;
   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
   if (quizRoom.gameEnded) {
-    Router.go('/quiz-result');
+    toastr.success("Game ended, start a new game");
+    Router.go('/homePage');
   }
 });
 
@@ -123,7 +124,10 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
-    }
+     let questionNumber = Session.get('question');
+     Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
+    };
+
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
@@ -140,6 +144,8 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
+      let questionNumber = Session.get('question');
+      Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
     }
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
@@ -157,6 +163,9 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
+
+    let questionNumber = Session.get('question');
+    Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
     }
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
@@ -174,6 +183,8 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
+      let questionNumber = Session.get('question');
+      Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
     }
   }
 });

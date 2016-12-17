@@ -99,6 +99,13 @@ Meteor.methods({
            gameEnded:false,
          });
 
+         PlayedSessions.insert({
+             challanger: notificationData.challanger,
+             challanged: notificationData.challanged,
+             questions:questions,
+             originalRoomId:quizRoom,
+           });
+
         Notification.insert({
           challanger: notificationData.challanger,
           challanged: notificationData.challanged,
@@ -146,5 +153,82 @@ Meteor.methods({
 
     endGame:function(quizRoomId){
         QuizRooms.update({ _id: quizRoomId }, { $set: { gameEnded: true }});
+    },
+
+    updateSessionData: function (quizRoomId, givenAnswer, questionNumber) {
+      let quizRoom = QuizRooms.findOne({ _id:  quizRoomId });
+
+      if (quizRoom.challanger._id === this.userId) {
+
+        if (questionNumber===0) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.0.challangersAnswer": givenAnswer }});
+        };
+
+        if (questionNumber===1) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.1.challangersAnswer": givenAnswer }});
+        };
+
+        if (questionNumber===2) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.2.challangersAnswer": givenAnswer }});
+        };
+
+        if (questionNumber===3) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.3.challangersAnswer": givenAnswer }});
+        };
+
+        if (questionNumber===4) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.4.challangersAnswer": givenAnswer }});
+        };
+
+        if (questionNumber===5) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+          { $set: { "questions.5.challangersAnswer": givenAnswer }});
+        };
+
+      };
+
+
+      if (quizRoom.challanged._id === this.userId) {
+
+        if (questionNumber===0) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.0.defendersAnswer" : givenAnswer }});
+        };
+
+        if (questionNumber===1) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.1.defendersAnswer" : givenAnswer }});
+        };
+
+        if (questionNumber===2) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.2.defendersAnswer" : givenAnswer }});
+        };
+
+        if (questionNumber===3) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.3.defendersAnswer" : givenAnswer }});
+        };
+
+        if (questionNumber===4) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.4.defendersAnswer" : givenAnswer }});
+        };
+
+        if (questionNumber===5) {
+          PlayedSessions.update({ originalRoomId : quizRoomId },
+           { $set:  { "questions.5.defendersAnswer" : givenAnswer }});
+        }
+
+
+      };
+
+
+
     }
 });
