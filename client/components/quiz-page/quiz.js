@@ -124,10 +124,9 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
-     let questionNumber = Session.get('question');
-     Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
     };
-
+    let questionNumber = Session.get('question');
+    Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
@@ -144,9 +143,9 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
-      let questionNumber = Session.get('question');
-      Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
-    }
+    };
+    let questionNumber = Session.get('question');
+    Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
     event.preventDefault();
@@ -163,10 +162,9 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
-
+    };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
-    }
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
     event.preventDefault();
@@ -183,9 +181,10 @@ Template.quiz.events({
           console.log("challanged wins");
           Meteor.call("incChallangedRoomPoints", quizRoomId );
         };
-      let questionNumber = Session.get('question');
-      Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
-    }
+
+    };
+    let questionNumber = Session.get('question');
+    Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
   }
 });
 
