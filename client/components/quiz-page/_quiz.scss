@@ -3,7 +3,7 @@
   right: -8px;
   top: -2px;
 
-  @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #fff);
+  @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #fff);
 }
 .eddy-quiz {
   z-index: 1;
@@ -13,7 +13,7 @@
   }
 
   &__question {
-    @include type-style($font-family-eddy-montserratlight, 400, 2rem, #494949);
+    @include type-style($font-family-eddy-montserratlight, 400, 2.2rem, #494949);
   }
   &--option-btn{
     color: map-deep-get($colors, 'foreground', 'white');
@@ -44,7 +44,7 @@
 
     line-height: 3.6rem;
     text-align: center;
-    @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, #fff);
+    @include type-style($font-family-eddy-montserratbold, 400, 1.6rem, #fff);
   }
   &--players{
     color: map-deep-get($colors, 'foreground', 'white');

@@ -1,6 +1,17 @@
 .eddy-landing{
   background-color: map-deep-get($colors, "primary", "base") !important;
 
+  &__login_or_sign {
+    padding-left: 3rem;
+    padding-right: 3rem;
+
+    @include respond-to(iphone) {
+      padding-left: 1rem;
+      padding-right: 1rem;
+
+    }
+  }
+
   &--app-name{
     position: absolute;;
     top: 40%;
@@ -11,7 +22,7 @@
     -ms-transform: translate(-50%, -40%);
     transform: translate(-50%, -40%);
 
-    @include type-style($font-family-eddy-montserratbold, 700, 5rem, map-deep-get($colors, "foreground", "white"));
+    @include type-style($font-family-eddy-montserratbold, 700, 6.5rem, map-deep-get($colors, "foreground", "white"));
   }
 
   &--toolbar{

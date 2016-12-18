@@ -39,20 +39,20 @@
       &__swiped {
         a{
           background-color: map-deep-get($colors, 'primary', 'base') !important;
-          @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, 'foreground', 'white'));
+          @include type-style($font-family-eddy-montserratlight, 400, 1.46rem, map-deep-get($colors, 'foreground', 'white'));
         }
       }
     }
 
     &--number{
-      @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, map-deep-get($colors, 'primary', 'base'));
+      @include type-style($font-family-eddy-montserratbold, 400, 1.6rem, map-deep-get($colors, 'primary', 'base'));
     }
     &__topic {
       padding-top: 5px;
-      @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, map-deep-get($colors, 'foreground', 'light-black'));
+      @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, map-deep-get($colors, 'foreground', 'light-black'));
     }
     &--rank{
-      @include type-style($font-family-eddy-montserratbold, 400, 1.4rem, map-deep-get($colors, 'primary', 'base'));
+      @include type-style($font-family-eddy-montserratbold, 400, 1.6rem, map-deep-get($colors, 'primary', 'base'));
     }
 
     .item-inner {

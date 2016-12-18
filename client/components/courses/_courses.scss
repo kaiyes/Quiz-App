@@ -9,7 +9,7 @@
     background-position: 95% center !important;
     border: 1px solid map-deep-get($colors, "primary", "base") !important;
 
-    @include type-style($font-family-eddy-montserrathairline, 400, 1.6rem, map-deep-get($colors, "foreground", "black"));
+    @include type-style($font-family-eddy-montserrathairline, 400, 1.8rem, map-deep-get($colors, "foreground", "black"));
     //color: map-deep-get($colors, "foreground", "light-black") !important;
 
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
@@ -34,14 +34,14 @@
 
 .eddy-courses{
   &__codes {
-    @include type-style($font-family-eddy-montserratbold, 700, 1.2rem, #595959);
+    @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #595959);
   }
   &__name {
     @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
-    opacity: 0.60;
+    opacity: 0.90;
   }
   &--sorting {
-    @include type-style($font-family-eddy-montserratbold, 700, 2.4rem, map-deep-get($colors, "primary", "base"));
+    @include type-style($font-family-eddy-montserratbold, 700, 2.6rem, map-deep-get($colors, "primary", "base"));
   }
   &--selected {
     .eddy-courses__codes, .eddy-courses__name {
