@@ -23,74 +23,121 @@
 
             {{#with currentUser.profile}}
                <form id="profileInfo">
-                 <div class="form-group eddy-profile__upload-section border-bottom">
+                 <div class="eddy-profile__upload-section margin-h-30">
                      <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                        <p class="control-label eddy-profile__pptxt">Profile picture</p>
-                       <div>
-                           <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">+</label>
-                           <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
-                       </div>
-                         <div class="text-center">
-                           <img class="make-round" width="85" height="85"
-                           src="
-                           {{#if $neq image " "}}
-                              {{image}}
-                            {{else}}
-                                {{#if $.Session.get 'image'}}
-                                    {{$.Session.get 'image'}}
-                                  {{else}}
-                                    http://placehold.it/85x85
-                                {{/if}}
-                            {{/if}}"
-                           alt="Profile photo" />
-                           <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
-                         </div>
+                       {{#if $neq image " "}}
+                           <div class="text-center">
+                             <img class="make-round" width="85" height="85"
+                             src="
+                             {{#if $neq image " "}}
+                                {{image}}
+                              {{else}}
+                                  {{#if $.Session.get 'image'}}
+                                      {{$.Session.get 'image'}}
+                                    {{else}}
+                                      http://placehold.it/85x85
+                                  {{/if}}
+                              {{/if}}"
+                             alt="Profile photo" />
+                             <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
+                           </div>
+                           {{else}}
+                             <div>
+                                 <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">
+                                   <i class="zmdi zmdi-plus"></i>
+                                 </label>
+                                 <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
+                             </div>
+                         {{/if}}
                      </div>
                  </div>
 
-                 <div class="form-group">
-                   <label class="eddy-profile__label" for="name">Name</label>
-                   <input type="text" id="name" value="{{name}}" required name="name" class="form-control">
+                 <div class="list-block margin-top-0 margin-h-30">
+                    <ul>
+                      <li class="margin-bottom-15 padding-top-15 p-form">
+                        <div class="item-content padding-left-0">
+
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">Name *</div>
+                            <div class="item-input">
+                              <input type="text" id="name" value="{{name}}" required name="name">
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="margin-bottom-15 p-form">
+                        <div class="item-content padding-left-0">
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">University *</div>
+                            <div class="item-input">
+                              <select name="university" id="university"  value={{university}} required autocomplete="off">
+                                <option value="{{university}}">{{university}}</option>
+                                <option>AUST</option>
+                                <option>BUET</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="margin-bottom-15 p-form">
+                        <div class="item-content padding-left-0">
+
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">Programme *</div>
+                            <div class="item-input">
+                              <input type="text" id="programme"  name="programme" value="{{programme}}" required>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="margin-bottom-15 p-form">
+                        <div class="item-content padding-left-0">
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">Nickname</div>
+                            <div class="item-input">
+                              <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
+                                <option value="{{nickName}}">{{nickName}}</option>
+                                <option value="warrior">warrior</option>
+                                <option value="lion">lion</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="margin-bottom-15 p-form">
+                        <div class="item-content padding-left-0">
+
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">Age</div>
+                            <div class="item-input">
+                              <input type="number" id="age"  value="{{age}}" name="age" >
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="margin-bottom-15 p-form">
+                        <div class="item-content padding-left-0">
+                          <div class="item-inner">
+                            <div class="item-title label eddy-profile__label">Country</div>
+                            <div class="item-input">
+                              <select id="country" placeholder="Country" name="country"  autocomplete="off">
+                                <option value="{{country}}">{{country}}</option>
+                                <option value="bd">bd</option>
+                                <option value="uk">uk</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+
+                    </ul>
                  </div>
 
-                 <div class="form-group">
-                   <label class="eddy-profile__label" for="name">University</label>
-                   <select name="university" id="university"  value={{university}} required autocomplete="off" class="form-control">
-                     <option value="{{university}}">University</option>
-                     <option value="AUST">AUST</option>
-                     <option value="BUET">BUET</option>
-                   </select>
-                 </div>
-
-                 <div class="form-group">
-                   <label class="eddy-profile__label" for="name">Programme</label>
-                   <input type="text" id="programme"  name="programme" value="{{programme}}" required class="form-control">
-                 </div>
-
-                 <div class="form-group">
-                   <label  class="eddy-profile__label" for="name">Nickname</label>
-                   <select label-type="floating" id="nickname"  name="nickname"  autocomplete="off" class="form-control">
-                     <option value="{{nickName}}">Nickname</option>
-                     <option value="warrior">warrior</option>
-                     <option value="lion">lion</option>
-                   </select>
-                 </div>
-
-                 <div class="form-group">
-                   <label class="eddy-profile__label" for="name">Age</label>
-                   <input type="number" id="age"  value="{{age}}" name="age"  class="form-control">
-                 </div>
-
-                 <div class="form-group">
-                   <label class="eddy-profile__label" for="name">Country</label>
-                   <select label-type="floating" id="country" name="country"  autocomplete="off" class="form-control">
-                     <option value="{{country}}">Country</option>
-                     <option value="bd">bd</option>
-                     <option value="uk">uk</option>
-                   </select>
-                 </div>
-
-                 <div class="form-group eddy-profile__submit">
+                 <div class="eddy-profile__submit">
                    <button type="submit" class="btn btn-primary">DONE</button>
                  </div>
                </form>

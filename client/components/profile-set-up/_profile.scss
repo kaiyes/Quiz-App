@@ -6,15 +6,20 @@
 
   &__label {
     margin-bottom: 0;
-    padding-left: 4px;
+    margin-right: 25px;
 
-    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
+    padding: 0px !important;
+
+    @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #000000);
+    text-align: left;
+
     opacity: 0.7;
   }
 
   &__upload_btn {
     width: 5.6rem;
     height: 5.6rem;
+    display: inline-block;
     border-radius: 50%;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     background-color: #51c8ac;
@@ -24,7 +29,7 @@
     text-align: center;
   }
   &__pptxt {
-    padding-left: 5px;
+    //padding-left: 5px;
 
     padding-top: 1.5rem;
     display: block !important;
@@ -32,14 +37,14 @@
 
     font-weight: normal;
     @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
-    //opacity: 0.50;
+    opacity: 0.50;
   }
-  .form-group{
-    margin-left: 3rem;
-    margin-right: 3rem;
+  .item-input {
+    //margin-left: 3rem;
+    //margin-right: 3rem;
 
     input, select {
-      padding-left: 5px;
+      //padding-left: 5px;
       border-top: none !important;
       border-left: none !important;
       border-right: none !important;
@@ -48,7 +53,7 @@
     }
 
     input {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+      //border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
 
       @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
       opacity: 0.50;

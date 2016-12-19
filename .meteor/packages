@@ -39,8 +39,8 @@ iron:router
 
 nobutakaoshiro:framework7-ios-material
 fourseven:scss
-fortawesome:fontawesome
-twbs:bootstrap
+#fortawesome:fontawesome
+#twbs:bootstrap
 chrismbeckett:toastr
 
 #######################################################
