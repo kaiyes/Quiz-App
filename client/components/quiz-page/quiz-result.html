@@ -79,13 +79,21 @@
                               </div>
                               <div class="text-center">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">QUESTIONS</h4>
-                                <h3 class="margin-0 eddy-stats__points">5/8</h3>
+                                <h3 class="margin-0 eddy-stats__points">
+                                  {{#if $eq currentUser._id challanger._id}}
+                                    {{challangersRightAnswer}}/6
+                                  {{/if}}
+
+                                  {{#if $eq currentUser._id defender._id}}
+                                    {{defendersRightAnswer}}/6
+                                  {{/if}}
+                                </h3>
                               </div>
                             </div>
                             <div class="flex-direction--row flex-justify-content--space-between padding-top-20">
                               <div class="text-center">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">NEW POINTS</h4>
-                                <h3 class="margin-0 eddy-stats__points">330</h3>
+                                <h3 class="margin-0 eddy-stats__points">{{currentUser.profile.totalPoints}}</h3>
                               </div>
                               <div class="eddy-quiz-result--rank text-center">
                                 <h4 class="margin-0 eddy-stats__title">NEW RANK</h4>

@@ -148,13 +148,17 @@ Meteor.methods({
     incChallangerRoomPoints: function( quizRoomId ){
       QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:10 } });
       Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
-      PlayedSessions.update({ originalRoomId: quizRoomId }, { $inc: { challangersPoint: 10 }});
+      PlayedSessions.update({ originalRoomId: quizRoomId }, {
+        $inc: { challangersPoint: 10, challangersRightAnswer:1 }
+      });
     },
 
     incdefenderRoomPoints: function( quizRoomId ){
       QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
       Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
-      PlayedSessions.update({ originalRoomId: quizRoomId }, { $inc: { defendersPoint: 10 }});
+      PlayedSessions.update({ originalRoomId: quizRoomId }, {
+        $inc: { defendersPoint: 10, defendersRightAnswer:1 }
+      });
     },
 
     endGame:function(quizRoomId){
