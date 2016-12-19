@@ -15,6 +15,36 @@ Template.quizResult.onRendered(function() {
 
 Template.quizResult.events({
 
+  "click #community": function(event, template){
+    event.preventDefault();
+    Router.go('/courseDetails#community');
+  },
+
+  "click #playAgain": function(event, template){
+    event.preventDefault();
+    let resultRoomId = Router.current().params._id;
+    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let chapter = room.questions[0].chapter;
+    if (Meteor.userId()===room.challanger._id) {
+      Session.set('playerInfo', room.defender);
+    }
+    if (Meteor.userId()===room.defender._id) {
+      Session.set('playerInfo', room.challanger);
+    }
+
+    let notificationData = {
+      challanger: Meteor.user(),
+      defender: Session.get('playerInfo'),
+      when: new Date(),
+      topic: Session.get('topicName'),
+      chapter: chapter,
+    };
+
+    Session.set('challangeNotification', notificationData);
+    Meteor.call("insertChallangeNotification",notificationData);
+    Router.go('/playFirst');
+  },
+
 });
 
 Template.quizResult.helpers({

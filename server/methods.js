@@ -107,7 +107,8 @@ Meteor.methods({
              challangersPoint:0,
              defendersPoint:0,
              challangersRightAnswer:0,
-             defendersRightanswer:0,
+             defendersRightAnswer:0,
+             accuracy:0,
            });
 
         Notification.insert({

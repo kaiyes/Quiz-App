@@ -76,14 +76,6 @@ Template.community.events({
     $('#post-'+this._id)
             .find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section')
             .toggle();
-    // let value = Session.get('showComments');
-    // if (value==="Show") {
-    //   Session.set("showComments", "hide");
-    //   console.log(Session.get('showComments'));
-    // } else {
-    //   Session.set("showComments", "Show");
-    //   console.log(Session.get('showComments'));
-    // }
   },
 
   "click #like": function(event, template){
