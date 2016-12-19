@@ -1,4 +1,4 @@
-var sixSecondTimer = new ReactiveCountdown(20);
+var sixSecondTimer = new ReactiveCountdown(6);
 
 Template.quiz.onCreated(function () {
   let quizRoomId = Router.current().params._id;
@@ -23,7 +23,9 @@ Template.quiz.onRendered(function(event, instance){
                 sixSecondTimer.start(function() {
                   Session.set('question',5);
                     sixSecondTimer.start(function() {
-                       Router.go('/quiz-result')
+                      let quizRoomId = Router.current().params._id;
+                      let resultRoom = PlayedSessions.findOne({ originalRoomId: quizRoomId });
+                       Router.go(`/quiz-result/${resultRoom._id}`);
                       });
                   });
               });
@@ -120,9 +122,9 @@ Template.quiz.events({
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
-        if (Meteor.userId()===quizRoom.challanged._id) {
-          console.log("challanged wins");
-          Meteor.call("incChallangedRoomPoints", quizRoomId );
+        if (Meteor.userId()===quizRoom.defender._id) {
+          console.log("defender wins");
+          Meteor.call("incdefenderRoomPoints", quizRoomId );
         };
     };
     let questionNumber = Session.get('question');
@@ -139,9 +141,9 @@ Template.quiz.events({
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
-        if (Meteor.userId()===quizRoom.challanged._id) {
-          console.log("challanged wins");
-          Meteor.call("incChallangedRoomPoints", quizRoomId );
+        if (Meteor.userId()===quizRoom.defender._id) {
+          console.log("defender wins");
+          Meteor.call("incdefenderRoomPoints", quizRoomId );
         };
     };
     let questionNumber = Session.get('question');
@@ -158,9 +160,9 @@ Template.quiz.events({
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
-        if (Meteor.userId()===quizRoom.challanged._id) {
-          console.log("challanged wins");
-          Meteor.call("incChallangedRoomPoints", quizRoomId );
+        if (Meteor.userId()===quizRoom.defender._id) {
+          console.log("defender wins");
+          Meteor.call("incdefenderRoomPoints", quizRoomId );
         };
     };
     let questionNumber = Session.get('question');
@@ -177,9 +179,9 @@ Template.quiz.events({
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
-        if (Meteor.userId()===quizRoom.challanged._id) {
-          console.log("challanged wins");
-          Meteor.call("incChallangedRoomPoints", quizRoomId );
+        if (Meteor.userId()===quizRoom.defender._id) {
+          console.log("defender wins");
+          Meteor.call("incdefenderRoomPoints", quizRoomId );
         };
 
     };
@@ -187,22 +189,3 @@ Template.quiz.events({
     Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
   }
 });
-
-// QuestionBank.insert({
-//   question:"how many rakat for Dhuhor sunnah",
-//   rightAnswer:"6",
-//   firstAnswer:"2",
-//   secondAnswer:"4",
-//   thirdAnswer:"6",
-//   fourthAnswer:"8",
-//   chapter:"maths",
-//   explanation:"The marketing mix refers to the set of actions, or tactics that a company uses to promise its brand or product in the market.The 4Ps make up a typical marketing mix - Price. Product. Promotion and Place.However nowadays the marketing mix increasingly includes several others Ps like Packaging.Positioning. People and even Politics as virtual mix elements.",
-// })
-
-
-    // sixSecondTimer.start(function() {
-    //   return quizRoom.question[0];
-    //     sixSecondTimer.start(function() {
-    //         return quizRoom.question[1];
-    //     });
-    // });

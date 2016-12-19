@@ -22,7 +22,7 @@ Template.challengeOpponent.events({
 
     let notificationData = {
       challanger: Meteor.user(),
-      challanged: Session.get('playerInfo'),
+      defender: Session.get('playerInfo'),
       when: new Date(),
       topic: Session.get('topicName'),
       chapter: Session.get('chapter'),

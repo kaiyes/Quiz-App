@@ -2,7 +2,7 @@
 Template.notification.helpers({
 
   challangeNotifications: function(){
-    return Notification.find({ "challanged._id": Meteor.userId()}, { sort: { when: -1 }} );
+    return Notification.find({ "defender._id": Meteor.userId()}, { sort: { when: -1 }} );
   },
 
   postNotifications: function(){

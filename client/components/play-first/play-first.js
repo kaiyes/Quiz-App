@@ -43,7 +43,7 @@ Template.playFirst.helpers({
      var quizRoom = QuizRooms.findOne({
        _id: notification.quizRoomId,
       });
-      if (quizRoom.challangedStarted) {
+      if (quizRoom.defenderStarted) {
         Session.set('didAccept', quizRoom._id);
         if (Session.get('didAccept')) {
             return "accepted";

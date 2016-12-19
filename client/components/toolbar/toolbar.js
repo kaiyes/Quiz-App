@@ -24,7 +24,7 @@ Template.toolbar.helpers({
     return Notification.find({
       $or:
       [
-        { type: "challange", "challanged._id": Meteor.userId(),  },
+        { type: "challange", "defender._id": Meteor.userId(),  },
         { type: "post", topic: { $in: topicsChosen }, },
         { type: "like", postCreator: Meteor.user().profile.name },
         { type: "commentLike", commentCreator: Meteor.user().profile.name },

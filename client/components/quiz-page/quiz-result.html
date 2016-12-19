@@ -24,24 +24,38 @@
       <div class="pages">
         <div class="page">
           <div class="page-content">
+
+          {{#with resultRoom}}
               <div class="eddy-quiz-result margin-bottom-50">
                 <div class="card margin-h-0">
                     <div class="card-content">
                         <div class="card-content-inner padding-h-35">
                           <div class="flex-direction--row flex-justify-content--space-between margin-top-60">
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85" src="http://placehold.it/85x85" alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">SANA</p>
+                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              src="{{#if challanger.profile.image}}
+                                  {{challanger.profile.image}}
+                              {{else}}
+                                  http://placehold.it/150x150
+                              {{/if}}"
+                              alt="Player photo" />
+                              <p class="eddy-quiz-result__player-name">{{challanger.profile.name}}</p>
                             </div>
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85" src="http://placehold.it/85x85" alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">SALLY</p>
+                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              src="{{#if defender.profile.image}}
+                                  {{defender.profile.image}}
+                              {{else}}
+                                  http://placehold.it/150x150
+                              {{/if}}"
+                              alt="Player photo" />
+                              <p class="eddy-quiz-result__player-name">{{defender.profile.name}}</p>
                             </div>
                           </div>
                           <div class="flex-direction--row flex-justify-content--space-between padding-h-25 padding-bottom-15">
-                            <h3 class="margin-0 eddy-quiz-result__player-score">12</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{challangersPoint}}</h3>
                             <h3 class="margin-0 eddy-quiz-result__player-score">:</h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">10</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{defendersPoint}}</h3>
                           </div>
                         </div>
                     </div>
@@ -146,8 +160,9 @@
                     EXPLANATION
                   </a>
                 </div>
-
               </div>
+           {{/with}}
+
           </div>
         </div>
       </div>

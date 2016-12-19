@@ -16,3 +16,10 @@ Template.quizResult.onRendered(function() {
 Template.quizResult.events({
 
 });
+
+Template.quizResult.helpers({
+  resultRoom: function(){
+    let resultRoomId = Router.current().params._id;
+    return PlayedSessions.findOne({ _id: resultRoomId });
+  }
+});

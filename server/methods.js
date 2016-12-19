@@ -89,26 +89,30 @@ Meteor.methods({
 
        let quizRoom = QuizRooms.insert({
            challanger: notificationData.challanger,
-           challanged: notificationData.challanged,
+           defender: notificationData.defender,
            createdAt: new Date(),
            challangerRoomPoints: 0,
-           challangedRoomPoints:0,
+           defenderRoomPoints:0,
            questions:questions,
            challangerStarted: true,
-           challangedStarted: false,
+           defenderStarted: false,
            gameEnded:false,
          });
 
          PlayedSessions.insert({
              challanger: notificationData.challanger,
-             challanged: notificationData.challanged,
+             defender: notificationData.defender,
              questions:questions,
              originalRoomId:quizRoom,
+             challangersPoint:0,
+             defendersPoint:0,
+             challangersRightAnswer:0,
+             defendersRightanswer:0,
            });
 
         Notification.insert({
           challanger: notificationData.challanger,
-          challanged: notificationData.challanged,
+          defender: notificationData.defender,
           when: notificationData.when,
           topic: notificationData.topic,
           chapter: notificationData.chapter,
@@ -120,7 +124,7 @@ Meteor.methods({
     updateOpponent: function (quizRoomId) {
        QuizRooms.update(
          { _id:quizRoomId },
-         { $set:{ challangedStarted: true }}
+         { $set:{ defenderStarted: true }}
        );
      },
 
@@ -144,11 +148,13 @@ Meteor.methods({
     incChallangerRoomPoints: function( quizRoomId ){
       QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:10 } });
       Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+      PlayedSessions.update({ originalRoomId: quizRoomId }, { $inc: { challangersPoint: 10 }});
     },
 
-    incChallangedRoomPoints: function( quizRoomId ){
-      QuizRooms.update({ _id: quizRoomId }, { $inc:{ challangedRoomPoints:10 } });
+    incdefenderRoomPoints: function( quizRoomId ){
+      QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
       Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+      PlayedSessions.update({ originalRoomId: quizRoomId }, { $inc: { defendersPoint: 10 }});
     },
 
     endGame:function(quizRoomId){
@@ -193,7 +199,7 @@ Meteor.methods({
       };
 
 
-      if (quizRoom.challanged._id === this.userId) {
+      if (quizRoom.defender._id === this.userId) {
 
         if (questionNumber===0) {
           PlayedSessions.update({ originalRoomId : quizRoomId },
