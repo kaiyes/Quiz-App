@@ -45,6 +45,18 @@ Template.quizResult.events({
     Router.go('/playFirst');
   },
 
+  "click #playAnother": function(event, template){
+    event.preventDefault();
+    Router.go('/challengeOpponent');
+  },
+
+  "click #left": function(event, template){
+    event.preventDefault();
+    let resultRoomId = Router.current().params._id;
+    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    Session.set('question', room.questions[0])  
+  },
+
 });
 
 Template.quizResult.helpers({

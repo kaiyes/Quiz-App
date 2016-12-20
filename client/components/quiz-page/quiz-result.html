@@ -119,7 +119,7 @@
                                  COMMUNITY
                                </a>
                             </div>
-                            <a href="#"
+                            <a href="#" id="playAnother"
                               class="eddy--primary-button
                                      eddy--primary-button__white-color
                                      border-r-25
@@ -133,13 +133,13 @@
 
                 <div class="eddy-quiz-result--questions padding-h-15">
                   <div class="flex-direction--row flex-justify-content--space-between padding-v-15">
-                      <a href="#" class="link icon-only iconic-tap text-center">
+                      <a href="#" id="left" class="link icon-only iconic-tap text-center">
                         <i class="zmdi zmdi-chevron-left font-size-fixed-40"></i>
                       </a>
                       <h2 class="font-size-fixed-14 margin-0 eddy-quiz-result--questions--no">
                           QUESTION 6
                       </h2>
-                      <a href="#" class="open-panel link icon-only iconic-tap text-center">
+                      <a href="#" id="right" class="open-panel link icon-only iconic-tap text-center">
                         <i class="zmdi zmdi-chevron-right font-size-fixed-40"></i>
                       </a>
                   </div>
@@ -150,7 +150,7 @@
                         <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
                           <div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
                               <p class="padding-h-20">
-                                What is not a part of the Marketing Mix?
+                                {{!-- {{questions[0].question}} --}}
                               </p>
                           </div>
                           <div class="padding-h-5 padding-bottom-20">
