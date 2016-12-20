@@ -6,14 +6,16 @@ Template.homePage.events({
  "click #showProfileInfo": function(event, template) {
    $('#showProfileInfo').slideUp();
    $('#showProfileInfo').hide();
+   $('.eddy-home').removeClass('margin-top-10').addClass('full-height margin-0');
    $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
-   $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
+   $('.eddy-home--quizes').removeClass('margin-top-90 margin-bottom-70').addClass('margin-bottom-285 full-height');
 
  },
  "click #hideProfileInfo": function(event, template) {
    $('#showProfileInfo').slideDown();
-   $('.eddy-home--profile-info').css({'margin-top': '-300px', 'transition': 'all 0.3s'});
-   $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
+   $('.eddy-home').removeClass('full-height margin-0').addClass('margin-top-10');
+   $('.eddy-home--profile-info').css({'margin-top': '-350px', 'transition': 'all 0.3s'});
+   $('.eddy-home--quizes').addClass('margin-top-90 margin-bottom-70').removeClass('margin-bottom-285 full-height');
  },
 
 });
