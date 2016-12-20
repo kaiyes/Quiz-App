@@ -3,7 +3,7 @@ Template.quizResult.onRendered(function() {
   let resultRoomId = Router.current().params._id;
   let room = PlayedSessions.findOne({ _id: resultRoomId });
   Session.set('question', room.questions[0]);
-  Session.set('number', 2);
+  Session.set('number', 0);
 
   $(document).ready(function	(){
     $(function(){
@@ -61,14 +61,67 @@ Template.quizResult.events({
     let resultRoomId = Router.current().params._id;
     let room = PlayedSessions.findOne({ _id: resultRoomId });
     let currentNumber = Session.get('number');
+    if (currentNumber===0) {
+      Session.set('number', 5);
+    } else {
       Session.set('number', currentNumber-1);
+    }
+
     var session = Session.get('number');
       switch(session) {
+        case 0:
+        console.log("0");
+        break;
         case 1:
         console.log("1");
         break;
         case 2:
         console.log("2");
+        break;
+        case 3:
+        console.log("3");
+        break;
+        case 4:
+        console.log("4");
+        break;
+        case 5:
+        console.log("5");
+        break;
+        default:
+        console.log("0");
+      }
+  },
+
+  "click #right": function(event, template){
+    event.preventDefault();
+    let resultRoomId = Router.current().params._id;
+    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let currentNumber = Session.get('number');
+    if (currentNumber===5) {
+      Session.set('number', 0);
+    } else {
+      Session.set('number', currentNumber+1);
+    }
+
+    var session = Session.get('number');
+      switch(session) {
+        case 0:
+        console.log("0");
+        break;
+        case 1:
+        console.log("1");
+        break;
+        case 2:
+        console.log("2");
+        break;
+        case 3:
+        console.log("3");
+        break;
+        case 4:
+        console.log("4");
+        break;
+        case 5:
+        console.log("5");
         break;
         default:
         console.log("0");
