@@ -131,7 +131,9 @@
                     </div>
                 </div>
 
+
                 <div class="eddy-quiz-result--questions padding-h-15">
+                {{#with question}}
                   <div class="flex-direction--row flex-justify-content--space-between padding-v-15">
                       <a href="#" id="left" class="link icon-only iconic-tap text-center">
                         <i class="zmdi zmdi-chevron-left font-size-fixed-40"></i>
@@ -144,13 +146,14 @@
                       </a>
                   </div>
 
+
                   <div class="card">
                     <div class="card-content">
                       <div class="card-content-inner padding-h-5">
                         <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
                           <div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
                               <p class="padding-h-20">
-                                {{!-- {{questions[0].question}} --}}
+                                {{this.question}}
                               </p>
                           </div>
                           <div class="padding-h-5 padding-bottom-20">
@@ -165,10 +168,13 @@
                   </div>
 
                   <a href="#" data-popup=".popup-explanation" class="link text-bold text-center display-block padding-top-8 padding-bottom-16 open-popup eddy-result-exp__poptxt">
-                    EXPLANATION
+                    explanation
                   </a>
+                  {{/with}}
                 </div>
+
               </div>
+
            {{/with}}
 
           </div>

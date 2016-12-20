@@ -1,4 +1,10 @@
 Template.quizResult.onRendered(function() {
+
+  let resultRoomId = Router.current().params._id;
+  let room = PlayedSessions.findOne({ _id: resultRoomId });
+  Session.set('question', room.questions[0]);
+  Session.set('number', 2);
+
   $(document).ready(function	(){
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
@@ -54,7 +60,19 @@ Template.quizResult.events({
     event.preventDefault();
     let resultRoomId = Router.current().params._id;
     let room = PlayedSessions.findOne({ _id: resultRoomId });
-    Session.set('question', room.questions[0])  
+    let currentNumber = Session.get('number');
+      Session.set('number', currentNumber-1);
+    var session = Session.get('number');
+      switch(session) {
+        case 1:
+        console.log("1");
+        break;
+        case 2:
+        console.log("2");
+        break;
+        default:
+        console.log("0");
+      }
   },
 
 });
@@ -63,5 +81,11 @@ Template.quizResult.helpers({
   resultRoom: function(){
     let resultRoomId = Router.current().params._id;
     return PlayedSessions.findOne({ _id: resultRoomId });
-  }
+  },
+
+   question: function(){
+    let data = Session.get('question');
+    return data;
+  },
+
 });

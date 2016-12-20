@@ -5,6 +5,8 @@
         <div class="pages">
           <div class="page">
             <div class="page-content">
+
+              {{#with answer}}
                 <div class="flex-direction--column full-height">
                   <div class="flex--1">
                     <div class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">
@@ -13,10 +15,9 @@
                       </a>
                     </div>
                     <div class="eddy-result-exp margin-top-60 padding-h-30">
-                      <h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">MARKETING MIX</h4>
+                      <h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">{{question}}</h4>
                       <p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">
-                        The marketing mix refers to the set of actions, or tactics that a company uses to promise its brand or product in the market. The 4Ps make up a typical marketing mix - Price. Product.
-                        Promotion and Place. However nowadays the marketing mix increasingly includes several others Ps like Packaging. Positioning. People and even Politics as virtual mix elements.
+                          {{explanation}}
                       </p>
                     </div>
                   </div>
@@ -45,6 +46,8 @@
                     </div>
                   </div>
                 </div>
+              {{/with}}
+
             </div>
           </div>
         </div>
