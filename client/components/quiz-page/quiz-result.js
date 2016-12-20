@@ -70,25 +70,25 @@ Template.quizResult.events({
     var session = Session.get('number');
       switch(session) {
         case 0:
-        console.log("0");
+        Session.set('question', room.questions[0]);
         break;
         case 1:
-        console.log("1");
+        Session.set('question', room.questions[1]);
         break;
         case 2:
-        console.log("2");
+        Session.set('question', room.questions[2]);
         break;
         case 3:
-        console.log("3");
+        Session.set('question', room.questions[3]);
         break;
         case 4:
-        console.log("4");
+        Session.set('question', room.questions[4]);
         break;
         case 5:
-        console.log("5");
+        Session.set('question', room.questions[5]);
         break;
         default:
-        console.log("0");
+        Session.set('question', room.questions[5]);
       }
   },
 
@@ -106,25 +106,25 @@ Template.quizResult.events({
     var session = Session.get('number');
       switch(session) {
         case 0:
-        console.log("0");
+        Session.set('question', room.questions[0]);
         break;
         case 1:
-        console.log("1");
+        Session.set('question', room.questions[1]);
         break;
         case 2:
-        console.log("2");
+        Session.set('question', room.questions[2]);
         break;
         case 3:
-        console.log("3");
+        Session.set('question', room.questions[3]);
         break;
         case 4:
-        console.log("4");
+        Session.set('question', room.questions[4]);
         break;
         case 5:
-        console.log("5");
+        Session.set('question', room.questions[5]);
         break;
         default:
-        console.log("0");
+        Session.set('question', room.questions[1]);
       }
   },
 
