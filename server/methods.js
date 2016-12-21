@@ -12,6 +12,19 @@ Meteor.methods({
         { _id: this.userId },
         { $set: { profile: profile }}
       );
+
+    },
+
+    addRanking: function(userData){
+
+      ranking = {
+        user: userData.user,
+        points: 10,
+      };
+
+      Courses.update (
+        { _id: userData.courseName },
+        { $addToSet: { ranking:ranking  }});
     },
 
     addPhoto:function(url, id){
