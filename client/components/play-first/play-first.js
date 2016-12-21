@@ -53,6 +53,7 @@ Template.playFirst.helpers({
 });
 
 Template.playFirst.events({
+
   "click #play": function(event, instance){
     let sessionData = Session.get('challangeNotification');
     let time = sessionData.when;
@@ -62,7 +63,6 @@ Template.playFirst.events({
 
   "click #cross": function(event, instance){
      toastr.error("Match Failed");
-     Router.go('/homePage');
      let notificationData = Session.get('challangeNotification');
      let notification = Notification.findOne({
        when: notificationData.when,
@@ -73,7 +73,8 @@ Template.playFirst.events({
 
       if (notification && quizRoom) {
          Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
-      }
+      };
+      Router.go('/challengeOpponent');
   },
 });
 
