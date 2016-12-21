@@ -16,6 +16,10 @@ Template.stats.onRendered(function() {
 
 Template.stats.helpers({
 
+  course: function(){
+    let topicName = Session.get('topicName');
+    return Courses.findOne({ courseName: topicName });
+  }
 });
 
 Template.stats.events({

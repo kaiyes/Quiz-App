@@ -35,8 +35,14 @@ Template.course.events({
     toastr.success(`added ${this.courseName}`);
     let selectedCourses = Meteor.user().profile.selectedCourses;
     console.log(selectedCourses);
+
+    let courseData = {
+      courseName : this.courseName,
+      ranking : 0,
+    };
+
       Meteor.users.update(
         { _id: Meteor.userId()},
-        { $addToSet: { "profile.selectedCourses": this.courseName }});
+        { $addToSet: { "profile.selectedCourses": courseData  }});
     },
 });

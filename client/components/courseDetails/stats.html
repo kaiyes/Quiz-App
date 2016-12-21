@@ -40,64 +40,28 @@
             </div>
           </div>
           <div class="card-content">
-              <div class="card-content-inner padding-0">
-                  <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
-                    <span class="padding-left-5 width-70 eddy-stats__ranking__index">1</span>
-                    <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                      <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                        <img class="make-round" width="45" height="45" src="http://placehold.it/45x45" alt="Player Photo" />
-                        <p class="eddy-stats__ranking__username padding-left-5 margin-0">
-                          CEM
-                        </p>
-                      </div>
-                      <div class="">
-                        <span class="eddy-stats__ranking__points">430</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
-                    <span class="padding-left-5 width-70 eddy-stats__ranking__index">2</span>
-                    <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                      <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                        <img class="make-round" width="45" height="45" src="http://placehold.it/45x45" alt="Player Photo" />
-                        <p class="eddy-stats__ranking__username padding-left-5 margin-0">
-                          CEM
-                        </p>
-                      </div>
-                      <div class="">
-                        <span class="eddy-stats__ranking__points">430</span>
+
+            {{#with course}}
+              {{#each ranking}}
+                <div class="card-content-inner padding-0">
+                    <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
+                      <span class="padding-left-5 width-70 eddy-stats__ranking__index">1</span>
+                      <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                        <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                          <img class="make-round" width="45" height="45" src="http://placehold.it/45x45" alt="Player Photo" />
+                          <p class="eddy-stats__ranking__username padding-left-5 margin-0">
+                            {{user.profile.name}}
+                          </p>
+                        </div>
+                        <div class="">
+                          <span class="eddy-stats__ranking__points">{{points}}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
-                    <span class="padding-left-5 width-70 eddy-stats__ranking__index">3</span>
-                    <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                      <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                        <img class="make-round" width="45" height="45" src="http://placehold.it/45x45" alt="Player Photo" />
-                        <p class="eddy-stats__ranking__username padding-left-5 margin-0">
-                          CEM
-                        </p>
-                      </div>
-                      <div class="">
-                        <span class="eddy-stats__ranking__points">430</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
-                    <span class="padding-left-5 width-70 eddy-stats__ranking__index">4</span>
-                    <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                      <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                        <img class="make-round" width="45" height="45" src="http://placehold.it/45x45" alt="Player Photo" />
-                        <p class="eddy-stats__ranking__username padding-left-5 margin-0">
-                          CEM
-                        </p>
-                      </div>
-                      <div class="">
-                        <span class="eddy-stats__ranking__points">430</span>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+                </div>
+              {{/each}}
+            {{/with}}
+
           </div>
       </div>
 
