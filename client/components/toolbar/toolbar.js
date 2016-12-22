@@ -25,7 +25,7 @@ Template.toolbar.helpers({
       $or:
       [
         { type: "challange", "defender._id": Meteor.userId(),  },
-        { type: "post", topic: { $in: topicsChosen }, },
+        { type: "post", topic: { $in: topicsChosen.courseName }, },
         { type: "like", postCreator: Meteor.user().profile.name },
         { type: "commentLike", commentCreator: Meteor.user().profile.name },
         { type: "comment", postCreator: Meteor.user() }

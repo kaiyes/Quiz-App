@@ -8,6 +8,7 @@ Template.chapters.helpers({
 
 Template.chapters.events({
   "click #list": function(event, template){
+    console.log(this);
      Session.set("chapter", this.toString())
      Router.go('/challengeOpponent');
 

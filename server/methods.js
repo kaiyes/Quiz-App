@@ -23,7 +23,7 @@ Meteor.methods({
       };
 
       Courses.update (
-        { _id: userData.courseName },
+        { courseName: userData.courseName },
         { $addToSet: { ranking:ranking  }});
     },
 

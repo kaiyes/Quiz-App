@@ -38,12 +38,15 @@ Template.courseDetails.events({
     $('.pages').removeClass('opacity-50');
     $('.toolbar').removeClass('opacity-30');
   },
-  "click #popUpList": function(event, template){
-    Session.set("topicName", this.toString());
-    $('.eddy-courseDetails__select-topic').removeClass('opened');
-    $('.pages').removeClass('opacity-50');
-    $('.toolbar').removeClass('opacity-30');
- },
+
+ "click #popUpList": function(event, template){
+   event.preventDefault();
+   console.log(this.courseName);
+   Session.set("topicName", this.courseName);
+   $('.eddy-courseDetails__select-topic').removeClass('opened');
+   $('.pages').removeClass('opacity-50');
+   $('.toolbar').removeClass('opacity-30');
+},
 
 
 });
