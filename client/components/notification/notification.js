@@ -2,13 +2,17 @@
 Template.notification.helpers({
 
   challangeNotifications: function(){
-    return Notification.find({ "defender._id": Meteor.userId()}, { sort: { when: -1 }} );
+    return Notification.find({ "defender._id": Meteor.userId()},
+    { sort: { when: -1 }} );
   },
 
   postNotifications: function(){
     if (Meteor.user()) {
-      let topicsChosen = Meteor.user().profile.selectedCourses;
-      return Notification.find({ topic: { $in: topicsChosen }, type: "post"}, { sort: { when: -1 }});
+      let objArray = Meteor.user().profile.selectedCourses;
+      let topicsChosen = _.map(objArray,'courseName');
+
+      return Notification.find({ topic: { $in: topicsChosen }, type: "post"},
+      { sort: { when: -1 }});
     }
   },
 

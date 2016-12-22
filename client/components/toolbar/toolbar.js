@@ -19,13 +19,14 @@ Template.toolbar.onRendered(function() {
 Template.toolbar.helpers({
 
   notificationAll: function(){
-    let topicsChosen = Meteor.user().profile.selectedCourses;
-
+    let objArray = Meteor.user().profile.selectedCourses;
+    let topicsChosen = _.map(objArray,'courseName');
+    
     return Notification.find({
       $or:
       [
         { type: "challange", "defender._id": Meteor.userId(),  },
-        { type: "post", topic: { $in: topicsChosen.courseName }, },
+        { type: "post", topic: { $in: topicsChosen }},
         { type: "like", postCreator: Meteor.user().profile.name },
         { type: "commentLike", commentCreator: Meteor.user().profile.name },
         { type: "comment", postCreator: Meteor.user() }
