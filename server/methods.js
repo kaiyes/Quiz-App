@@ -98,7 +98,7 @@ Meteor.methods({
 
     insertChallangeNotification: function (notificationData) {
       let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
-      let questions = _.sample(array, 6);
+      let questions = _.sampleSize(array, 6);
 
        let quizRoom = QuizRooms.insert({
            challanger: notificationData.challanger,

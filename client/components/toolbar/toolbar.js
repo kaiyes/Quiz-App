@@ -21,7 +21,7 @@ Template.toolbar.helpers({
   notificationAll: function(){
     let objArray = Meteor.user().profile.selectedCourses;
     let topicsChosen = _.map(objArray,'courseName');
-    
+
     return Notification.find({
       $or:
       [
