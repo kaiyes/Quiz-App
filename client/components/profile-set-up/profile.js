@@ -54,7 +54,6 @@ Template.profile.events({
       nickName: nickname,
       programme: programme,
       selectedCourses: Meteor.user().profile.selectedCourses,
-      "totalPoints": 0,
       image: Meteor.user().profile.image,
       imageId: Meteor.user().profile.imageId,
       createdAt: new Date(),
@@ -62,6 +61,7 @@ Template.profile.events({
     };
 
     Meteor.call("addToProfile", profile);
+    Meteor.call("addRanking");
     toastr.success("created Profile");
     Router.go('/homePage');
   },

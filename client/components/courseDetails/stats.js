@@ -2,7 +2,7 @@ Template.stats.onRendered(function() {
   $(document).ready(function(){
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
-        percent = parseInt($ppc.data('percent')),
+        percent = 65,
         deg = 360*percent/100;
       if (percent > 50) {
         $ppc.addClass('gt-50');
@@ -16,10 +16,13 @@ Template.stats.onRendered(function() {
 
 Template.stats.helpers({
 
-  course: function(){
+  ranking: function(){
     let topicName = Session.get('topicName');
-    return Courses.findOne({ courseName: topicName });
-  }
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let  ranking = _.sortBy(rankingArray, ['points']);
+    return _.reverse(ranking);
+  },
+
 });
 
 Template.stats.events({

@@ -8,7 +8,7 @@
                 <div class="">
                   <img width="150" height="150" class="make-round eddy-home--profile-photo"
                   src="
-                  {{#if currentUser.profile.image}}
+                  {{#if $neq currentUser.profile.image " "}}
                       {{currentUser.profile.image}}
                   {{else}}
                       http://placehold.it/150x150
