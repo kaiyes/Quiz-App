@@ -19,10 +19,13 @@ Meteor.methods({
     addRanking: function(){
         let objArray = Meteor.user().profile.selectedCourses;
         let topicsChosen = _.map(objArray,'courseName');
+
         let userData = {
           user: Meteor.user(),
           points: 1,
+          userId: this.userId,
         };
+
        topicsChosen.forEach(function(q){
          Courses.update (
            { courseName: q },

@@ -23,8 +23,34 @@ Template.stats.helpers({
     return _.reverse(ranking);
   },
 
+  indexOfUser: function(){
+    let topicName = Session.get('topicName');
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let points = _.sortBy(rankingArray, ['points']);
+    let reverse = _.reverse(points);
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+
+    if (ranking===0) {
+      return 0;
+    } else {
+      return ranking;
+    }
+
+  },
+
+  point: function(){
+    let topicName = Session.get('topicName');
+    let array = Meteor.user().profile.selectedCourses;
+    return _.find(array, {'courseName': topicName });
+  },
+
 });
 
 Template.stats.events({
+
+  "click #4": function(event, template) {
+   event.preventDefault();
+   console.log(this);
+ },
 
 });
