@@ -8,6 +8,7 @@ Meteor.methods({
      },
 
     addToProfile: function(profile){
+
       Meteor.users.update(
         { _id: this.userId },
         { $set: { profile: profile }}
@@ -15,17 +16,23 @@ Meteor.methods({
 
     },
 
-    addRanking: function(userData){
+    addRanking: function(){
+        let objArray = Meteor.user().profile.selectedCourses;
+        let topicsChosen = _.map(objArray,'courseName');
 
-      ranking = {
-        user: userData.user,
-        points: 10,
-      };
+        let userData = {
+          user: Meteor.user(),
+          points: 1,
+          userId: this.userId,
+        };
 
-      Courses.update (
-        { courseName: userData.courseName },
-        { $addToSet: { ranking:ranking  }});
+       topicsChosen.forEach(function(q){
+         Courses.update (
+           { courseName: q },
+            { $addToSet: { ranking: userData  }});
+       });
     },
+
 
     addPhoto:function(url, id){
       Meteor.users.update(
@@ -248,11 +255,7 @@ Meteor.methods({
           PlayedSessions.update({ originalRoomId : quizRoomId },
            { $set:  { "questions.5.defendersAnswer" : givenAnswer }});
         }
-
-
       };
 
-
-
-    }
+    },
 });

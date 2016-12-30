@@ -2,7 +2,7 @@ Template.stats.onRendered(function() {
   $(document).ready(function(){
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
-        percent = parseInt($ppc.data('percent')),
+        percent = 65,
         deg = 360*percent/100;
       if (percent > 50) {
         $ppc.addClass('gt-50');
@@ -16,12 +16,41 @@ Template.stats.onRendered(function() {
 
 Template.stats.helpers({
 
-  course: function(){
+  ranking: function(){
     let topicName = Session.get('topicName');
-    return Courses.findOne({ courseName: topicName });
-  }
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let  ranking = _.sortBy(rankingArray, ['points']);
+    return _.reverse(ranking);
+  },
+
+  indexOfUser: function(){
+    let topicName = Session.get('topicName');
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let points = _.sortBy(rankingArray, ['points']);
+    let reverse = _.reverse(points);
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+
+    if (ranking===0) {
+      return 0;
+    } else {
+      return ranking;
+    }
+
+  },
+
+  point: function(){
+    let topicName = Session.get('topicName');
+    let array = Meteor.user().profile.selectedCourses;
+    return _.find(array, {'courseName': topicName });
+  },
+
 });
 
 Template.stats.events({
+
+  "click #4": function(event, template) {
+   event.preventDefault();
+   console.log(this);
+ },
 
 });
