@@ -66,7 +66,6 @@ Template.editProfile.events({
         nickName: nickname,
         programme: programme,
         selectedCourses: Meteor.user().profile.selectedCourses,
-        "totalPoints": 0,
         image: Meteor.user().profile.image,
         imageId: Meteor.user().profile.imageId,
         createdAt: new Date(),

@@ -2,19 +2,27 @@ Template.quizResult.onRendered(function() {
 
   let resultRoomId = Router.current().params._id;
   let room = PlayedSessions.findOne({ _id: resultRoomId });
+  if (Meteor.userId()===room.challanger._id ){
+    let accuracy = (room.challangersRightAnswer/6)*100;
+    Session.set('percent', accuracy);
+  }
+  if (Meteor.userId()===room.defender._id ){
+    let accuracy = (room.defendersRightAnswer/6)*100;
+    Session.set('percent', accuracy);
+  }
   Session.set('question', room.questions[0]);
   Session.set('number', 0);
 
   $(document).ready(function	(){
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
-        percent = parseInt($ppc.data('percent')),
-        deg = 360*percent/100;
-      if (percent > 50) {
+        accuracy = parseInt($ppc.data('percent')),
+        deg = 360*accuracy/100;
+      if (accuracy > 50) {
         $ppc.addClass('gt-50');
       }
       $('.eddy-progress--bar--fill').css('transform','rotate('+ deg +'deg)');
-      $('.eddy-progress--percents span').html(percent+' %');
+      $('.eddy-progress--percents span').html(accuracy+' %');
     });
   });
 });
@@ -139,6 +147,35 @@ Template.quizResult.helpers({
    question: function(){
     let data = Session.get('question');
     return data;
+  },
+
+  indexOfTopic: function(){
+    let resultRoomId = Router.current().params._id;
+    let room =  PlayedSessions.findOne({ _id: resultRoomId });
+    let topic = room.questions[0].topic;
+    let userCourseArray = Meteor.user().profile.selectedCourses;
+    let courseObject = _.find(userCourseArray, { 'courseName': topic });
+    return courseObject;
+  },
+
+  whoWon:function(){
+    let resultRoomId = Router.current().params._id;
+    let room =  PlayedSessions.findOne({ _id: resultRoomId });
+
+    if (room.challangersPoint > room.defendersPoint) {
+      if (Meteor.userId()===room.challanger._id ) {
+         return 'you won :D';
+      } else {
+         return 'you lost :(';
+      }
+    } else if (room.challangersPoint < room.defendersPoint){
+      if (Meteor.userId()===room.challanger._id ) {
+         return 'you lost :(';
+      } else {
+          return 'you won :D';
+      }
+    };
+
   },
 
 });

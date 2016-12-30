@@ -167,19 +167,46 @@ Meteor.methods({
     },
 
     incChallangerRoomPoints: function( quizRoomId ){
+
       QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:10 } });
-      Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
         $inc: { challangersPoint: 10, challangersRightAnswer:1 }
       });
+
+      let room = QuizRooms.findOne({ _id:  quizRoomId });
+      let topic = room.questions[0].topic;
+      let userCourseArray = Meteor.user().profile.selectedCourses;
+      let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+
+      let increasePoints = {};
+      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = 10;
+
+      Meteor.users.update({ _id: this.userId },
+        {  $inc:   increasePoints });
+
+      console.log("challangers point updated");
     },
 
     incdefenderRoomPoints: function( quizRoomId ){
       QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
-      Meteor.users.update({ _id: this.userId },{ $inc: { "profile.totalPoints": 10 }});
+
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
         $inc: { defendersPoint: 10, defendersRightAnswer:1 }
       });
+
+      let room = QuizRooms.findOne({ _id:  quizRoomId });
+      let topic = room.questions[0].topic;
+      let userCourseArray = Meteor.user().profile.selectedCourses;
+      let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+
+      let increasePoints = {};
+      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = 10;
+
+      Meteor.users.update({ _id: this.userId },
+        {  $inc:   increasePoints });
+
+      console.log("defenders point updated");
     },
 
     endGame:function(quizRoomId){
@@ -257,5 +284,15 @@ Meteor.methods({
         }
       };
 
+    },
+
+    test:function () {
+      console.log("working");
+      let index = 0;
+      let toUpdate = {};
+      toUpdate[`profile.selectedCourses.${index}.points`] = 100;
+
+      Meteor.users.update({ _id: this.userId },
+        {  $inc:   toUpdate });
     },
 });
