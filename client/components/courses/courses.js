@@ -9,9 +9,10 @@ Template.course.onRendered(function() {
   if (Framework7.prototype.device.android) {
         $('.eddy-navbar').addClass('eddy-navbar--android');
         $('.navbar-fixed .page>.searchbar~.page-content').css('padding-top', '115px');
+        $('.eddy-courses').addClass('padding-top-20');
     }else {
       $('.eddy-navbar').addClass('eddy-navbar--ios');
-      $('.eddy-searchbar').css('top', '50px');
+      $('.eddy-searchbar').css('top', '45px');
       $('.navbar-fixed .page>.searchbar~.page-content').css('padding-top', '110px');
       $('.eddy-courses--sorting').addClass('line-height-normal height-auto padding-v-8');
     }

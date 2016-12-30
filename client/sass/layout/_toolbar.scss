@@ -21,12 +21,17 @@
 
       &--badge {
         position: absolute;
-        //left: 4.2rem;
-        top: -.8rem;
+        right: -3px;
+        top: 0.5rem;
 
         color: map-deep-get($colors, "primary", "base") !important;
         font-size: 1rem !important;
         font-weight: 700;
+
+        -webkit-transform: rotate(-20deg);
+        -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        transform: rotate(-20deg);
       }
     }
   }

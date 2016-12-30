@@ -2,10 +2,10 @@
   <div class="views">
     <div class="view view-main">
       <div class="navbar eddy-navbar eddy-navbar--challenge">
-        <div class="navbar-inner">
-            <div class="left">
-                <a href="{{pathFor 'courseDetails'}}" class="link icon-only iconic-tap">
-                  <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center eddy-navbar--challenge__back"></i>
+        <div class="navbar-inner padding-h-0">
+            <div class="left full-height width-45 text-center margin-0">
+                <a href="{{pathFor 'courseDetails'}}" class="link icon-only full-width">
+                    <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center eddy-navbar--challenge__back"></i>
                 </a>
             </div>
             <div class="center full-width text-center">
@@ -20,17 +20,19 @@
               </a>
             </div>
         </div>
+
+        <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center height-70">
+          <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
+              RANDOM OPPONENT
+          </button>
+        </div>
       </div>
       <div class="pages">
         <div class="page eddy-challenge">
           <div class="page-content">
             <div class="eddy-challenge-mrgn-top flex-direction--column">
-              <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center height-70">
-                <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
-                    RANDOM OPPONENT
-                </button>
-              </div>
-              <div class="list-block flex--1 padding-top-35">
+
+              <div class="list-block flex--1">
                 <ul class="eddy-challenge__list">
                   {{#each players}}
                     <li id="player" class="item-content padding-left-0 cur-pointer">
@@ -45,7 +47,7 @@
                                 {{/if}}"
                             alt="Player Photo" />
                             <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
-                               {{profile.name}} <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i>
+                            Sabbir   {{profile.name}} <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i>
                             </p>
                           </div>
                         </div>
@@ -56,7 +58,7 @@
                         </div>
                       </div>
                     </li>
-                  {{/each}}
+                    {{/each}}
                 </ul>
               </div>
             </div>

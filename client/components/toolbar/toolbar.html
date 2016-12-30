@@ -1,26 +1,28 @@
 <template name="toolbar">
   <div class="toolbar position-absolute top-initial eddy-toolbar">
-    <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center padding-h-25">
-      <span data-popup=".popup-settings" class="border_none--imp eddy-toolbar--icon open-popup text-center">
-        <span class="lnr lnr-cog iconic-tap--small"></span>
+    <div class="toolbar-inner flex-direction--row">
+      <span data-popup=".popup-settings" class="flex--1 border_none--imp eddy-toolbar--icon open-popup flex-direction--row flex-justify-content--center flex-align-items--center full-height">
+        <span class="lnr lnr-cog"></span>
       </span>
 
-      <span id="home" class="border_none--imp eddy-toolbar--icon text-center">
-        <span class="lnr lnr-home iconic-tap--small" aria-hidden="true"></span>
+      <span id="home" class="flex--1 border_none--imp eddy-toolbar--icon flex-direction--row flex-justify-content--center flex-align-items--center  full-height">
+        <span class="lnr lnr-home" aria-hidden="true"></span>
       </span>
 
-      <span data-popup=".popup-notification" class="border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup">
+      <span data-popup=".popup-notification" class="flex--1 border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup full-height flex-direction--row flex-justify-content--center flex-align-items--center">
 
        {{#with notificationAll}}
         {{#if $eq this 0 }}
-          <div class="text-center">
-            <span class="lnr lnr-alarm iconic-tap--small" aria-hidden="true"></span>
+          <div class="text-center padding-top-8">
+            <span class="lnr lnr-alarm" aria-hidden="true"></span>
+            <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
           </div>
            {{else}}
-           <div class="text-center">
-             <span class="lnr lnr-alarm iconic-tap--small" aria-hidden="true"></span>
+           <div class="text-center padding-top-8">
+             <span class="lnr lnr-alarm" aria-hidden="true"></span>
+             <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
            </div>
-           <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
+
           {{/if}}
         {{/with}}
       </span>

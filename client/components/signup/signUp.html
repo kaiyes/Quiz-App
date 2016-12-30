@@ -6,20 +6,21 @@
           <div class="page-content">
             <!-- Top Navbar -->
             <div class="navbar eddy-navbar">
-              <div class="navbar-inner">
-                  <div class="left">
-                      <a id="back" href="{{pathFor 'home'}}" class="link icon-only iconic-tap">
+              <div class="navbar-inner padding-0">
+                  <div class="left full-height width-45 text-center margin-0">
+                      <a id="back" href="{{pathFor 'home'}}" class="link icon-only full-width">
                           <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
                       </a>
                   </div>
                   <div class="center full-width text-center">
                     <h2 class="margin-0 full-width eddy-navbar__title">WELCOME TO EDDY</h2>
                   </div>
-                  <div class="right">
-                    <a class="open-panel link icon-only"></a>
+                  <div class="right width-45 text-center margin-0">
+                    <a href="#" class="open-panel link icon-only full-width"></a>
                   </div>
               </div>
             </div>
+
             <!-- /End of Top Navbar -->
             <div class="list-block margin-top-170 padding-h-20">
               <form name="signUpForm" autocomplete="off" class="eddy-form" id="signUpForm">
@@ -53,10 +54,11 @@
                 <div class="content-block">
                   <div class="row">
                     <div class="col-auto flex-justify-content--center display-flex flex-direction--row">
-                      <input type="submit"
+                      <button type="submit"
                              name="name"
-                             value="SIGN UP"
                              class="width-auto eddy--login-button border-r-25 padding-h-40 padding-v-15 margin-top-50 font-size-fixed-12">
+                             SIGN UP
+                       </button>
                     </div>
                   </div>
                 </div>

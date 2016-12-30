@@ -8,10 +8,10 @@ Template.toolbar.events({
 Template.toolbar.onRendered(function() {
 
     if (Framework7.prototype.device.android) {
-        $('.eddy-toolbar--icon__noti--badge').css({'right': '2.5rem', 'top': '0.8rem'});
+        //$('.eddy-toolbar--icon__noti--badge').css({'right': '4rem', 'top': '1rem'});
       }
       else {
-        $('.eddy-toolbar--icon__noti--badge').css({'right': '2.5rem', 'top': '0.8rem'});
+        //$('.eddy-toolbar--icon__noti--badge').css({'right': '4rem', 'top': '1rem'});
       }
 
 });

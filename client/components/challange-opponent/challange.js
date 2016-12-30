@@ -1,8 +1,12 @@
 Template.challengeOpponent.onRendered(function() {
     if (Framework7.prototype.device.android) {
       $('.eddy-challenge-mrgn-top').addClass('margin-top-56');
+      $('.eddy-challenge__random-op-btn').css('top','56px');
+      $('.eddy-challenge-mrgn-top >div').addClass('padding-top-38');
     }else {
       $('.eddy-challenge-mrgn-top').addClass('margin-top-48');
+      $('.eddy-challenge__random-op-btn').css('top','44px');
+      $('.eddy-challenge-mrgn-top >div').addClass('padding-top-30');
     }
 });
 
