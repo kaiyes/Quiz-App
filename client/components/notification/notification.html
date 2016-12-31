@@ -40,12 +40,11 @@
                                 <div class="item-title">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
                                     <img class="make-round" width="45" height="45"
-                                    src=
-                                    "{{#if challanger.profile.image}}
+                                    src="{{#if $neq challanger.profile.image " "}}
                                           {{challanger.profile.image}}
-                                        {{else}}
-                                            http://placehold.it/85x85
-                                        {{/if}}"
+                                      {{else}}
+                                          http://placehold.it/150x150
+                                      {{/if}}"
                                     alt="Player Photo" />
                                     <p class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{challanger.profile.name}}

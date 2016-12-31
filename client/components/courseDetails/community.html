@@ -30,12 +30,11 @@
               <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                   <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                     <img width="45" height="45" class="make-round"
-                    src="
-                    {{#if createdBy.profile.image}}
-                        {{createdBy.profile.image}}
-                    {{else}}
-                        http://placehold.it/85x85
-                    {{/if}}" alt="profile photo">
+                    src="{{#if $neq createdBy.profile.image " "}}
+                          {{createdBy.profile.image}}
+                      {{else}}
+                          http://placehold.it/150x150
+                      {{/if}}" alt="profile photo">
                     <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">{{createdBy.profile.name}}</h4>
                   </div>
                   <div class="">
@@ -84,12 +83,11 @@
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                           <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                             <img width="45" height="45"  class="make-round"
-                            src=
-                            "{{#if commenter.profile.image}}
-                              {{commenter.profile.image}}
-                            {{else}}
-                                http://placehold.it/85x85
-                            {{/if}}"
+                            src="{{#if $neq commenter.profile.image " "}}
+                                  {{commenter.profile.image}}
+                              {{else}}
+                                  http://placehold.it/150x150
+                              {{/if}}"
                             alt="profile photo">
                             <h4 class="margin-0 eddy-community--post__username font-size-fixed-16 padding-left-10">{{commenter.profile.name}}</h4>
                           </div>
