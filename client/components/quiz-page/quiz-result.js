@@ -1,4 +1,4 @@
-Template.quizResult.onRendered(function() {
+Template.quizResult.onCreated(function() {
 
   let resultRoomId = Router.current().params._id;
   let room = PlayedSessions.findOne({ _id: resultRoomId });
@@ -12,6 +12,10 @@ Template.quizResult.onRendered(function() {
   }
   Session.set('question', room.questions[0]);
   Session.set('number', 0);
+
+});
+
+Template.quizResult.onRendered(function() {
 
   $(document).ready(function	(){
     $(function(){
