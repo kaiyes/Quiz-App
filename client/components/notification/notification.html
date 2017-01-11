@@ -46,7 +46,7 @@
                                           http://placehold.it/150x150
                                       {{/if}}"
                                     alt="Player Photo" />
-                                    <p class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
+                                    <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{challanger.profile.name}}
                                     </p>
                                   </div>
@@ -76,7 +76,7 @@
                   <div class="card-content">
 
                     {{#each postNotifications}}
-                      <div class="card-content-inner padding-0">
+                      <div id="postNotification" class="card-content-inner padding-0 close-popup">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
@@ -97,7 +97,7 @@
                     {{/each}}
 
                     {{#each likeNotifications}}
-                      <div class="card-content-inner padding-0">
+                      <div id="likeNotification" class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
@@ -118,7 +118,7 @@
                     {{/each}}
 
                     {{#each likesOnComment}}
-                      <div class="card-content-inner padding-0">
+                      <div id="likesOnComment" class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
@@ -139,7 +139,7 @@
                     {{/each}}
 
                     {{#each commentNotification}}
-                      <div class="card-content-inner padding-0">
+                      <div id="commentNotification" class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
                               <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">

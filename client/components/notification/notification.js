@@ -55,4 +55,30 @@ Template.notification.events({
   "click #denyChallange": function(event, template){
     Meteor.call("removeChallangeNotification", this._id, this.quizRoomId);
   },
+
+  "click #postNotification": function(event, template){
+      console.log(this.topic);
+      Session.set('topicName',this.topic);
+      Router.go('/courseDetails#community');
+  },
+
+  "click #likeNotification": function(event, template){
+      console.log(this);
+      Session.set('topicName',this.topic);
+      Router.go('/courseDetails#community');
+  },
+
+  "click #likesOnComment": function(event, template){
+      console.log(this);
+      Session.set('topicName',this.topic);
+      Router.go('/courseDetails#community');
+  },
+
+  "click #commentNotification": function(event, template){
+      console.log(this);
+      Session.set('topicName',this.topic);
+      Router.go('/courseDetails#community');
+  },
+
+
 });
