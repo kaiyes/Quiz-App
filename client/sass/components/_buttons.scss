@@ -90,25 +90,65 @@
         }
     }
     &--login-button{
-        @extend  %button-common;
+      background-color:  map-deep-get($colors, "buttons", "white") !important;
 
-        &:hover {
-            //background:  map-deep-get($colors, "primary", "base") !important;
-            color: map-deep-get($colors, "primary", "base") !important;
-        }
+      border: 1px solid map-deep-get($colors, "primary", "base") !important;
+      outline: none;
 
-        &:active {
+      @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
+
+      cursor: pointer;
+
+      font-size: 12px;
+      margin: 5px;
+
+      &:hover {
           //background:  map-deep-get($colors, "primary", "base") !important;
           color: map-deep-get($colors, "primary", "base") !important;
-        }
+      }
 
-        &:focus {
-          //background:  map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "primary", "base") !important;
-        }
-        &.active-state {
-          background: #d9d9d9 !important;
-        }
+      &:active {
+        //background:  map-deep-get($colors, "primary", "base") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+      }
+
+      &:focus {
+        //background:  map-deep-get($colors, "primary", "base") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+      }
+      &.active-state {
+        background: #d9d9d9 !important;
+      }
+    }
+    &--single-login-button{
+      background-color:  map-deep-get($colors, "buttons", "white") !important;
+
+      border: 1px solid map-deep-get($colors, "primary", "base") !important;
+      outline: none;
+
+      @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
+
+      cursor: pointer;
+      font-size: 12px;
+      margin: 5px;
+
+      &:hover {
+        //background:  map-deep-get($colors, "primary", "base") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+      }
+
+      &:active {
+        //background:  map-deep-get($colors, "primary", "base") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+      }
+
+      &:focus {
+        //background:  map-deep-get($colors, "primary", "base") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+      }
+      &.active-state {
+        background: #d9d9d9 !important;
+      }
     }
 	&--primary-button-revert{
         @extend  %button-revert;
