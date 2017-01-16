@@ -22,16 +22,16 @@
     margin-top: -350px;
 
     &__name_age {
-      @include type-style($font-family-eddy-montserratbold, 700, 2rem, #595959);
+      @include type-style($font-family-eddy-montserratbold, 700, 1.5rem, #595959);
     }
     &__nickname {
-      @include type-style($font-family-base, 400, 1.8rem, #595959);
+      @include type-style($font-family-base, 400, 1.2rem, #595959);
     }
     &__programme {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #595959);
+      @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
     }
     &__university {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #595959);
+      @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
     }
   }
   &--quiz {
@@ -63,4 +63,7 @@
   &--profile-photo {
     box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
   }
+}
+.toggle-profile {
+  padding: 63px 0 0 0;
 }
