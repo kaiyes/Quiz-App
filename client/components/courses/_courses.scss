@@ -34,22 +34,27 @@
 
 .eddy-courses{
   &__codes {
-    @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #595959);
+    @include type-style($font-family-eddy-montserratbold, 700, 1rem, #595959);
   }
   &__name {
-    @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #000000);
+    @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #000000);
     opacity: 0.90;
   }
   &--sorting {
-    @include type-style($font-family-eddy-montserratbold, 700, 2.6rem, map-deep-get($colors, "primary", "base"));
+    @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, map-deep-get($colors, "primary", "base"));
   }
   &--selected {
     .eddy-courses__codes, .eddy-courses__name {
       color: map-deep-get($colors, "primary", "base") !important;
+      font-weight: bold;
     }
   }
 
   .item-inner {
     background-image: none !important;
+    //border-bottom: 0.1px #BCBBC1!important;
+  }
+  .item-link {
+    background: #ffffff!important;
   }
 }

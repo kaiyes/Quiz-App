@@ -47,9 +47,9 @@
                        <a class="item-link cur-pointer">
                         <div class="swipeout-content item-content eddy-home--quiz--content">
                           <div class="item-media eddy-home--quiz--icon-wrap">
-                              <img class="width-55 eddy-home--quiz--icon" src="/assets/icon_2.png" alt="icon">
+                              <img class="width-50 eddy-home--quiz--icon" src="/assets/icon_2.png" alt="icon">
                           </div>
-                          <div class="item-inner padding-v-20">
+                          <div class="item-inner padding-v-15">
                             <div class="item-title">
                                 <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                   ECON 2501
@@ -61,12 +61,7 @@
                                 <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
                             </div>
                             <div class="item-after eddy-home--quiz--rank">
-                              <span>{{ranking}}<sup>
-                                {{#if $eq ranking 1 }}st  {{/if}}
-                                {{#if $eq ranking 2 }}nd  {{/if}}
-                                {{#if $eq ranking 3 }}rd  {{/if}}
-                                {{#if $eq ranking 0 }} :D  {{/if}}
-                              </sup></span>
+                              <span>{{showRanking}}</span>
                             </div>
                           </div>
                         </div>

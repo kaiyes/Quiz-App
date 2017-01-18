@@ -24,8 +24,7 @@ Template.course.events({
     if ($(event.target).hasClass('select-course')) {
         //$('.select-course').removeClass('eddy-courses--selected');
         $(event.target).toggleClass('eddy-courses--selected');
-    }
-    else {
+    } else {
       //$('.select-course').removeClass('eddy-courses--selected');
       $(event.target).parents('.select-course').toggleClass('eddy-courses--selected')
     }

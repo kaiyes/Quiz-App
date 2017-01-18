@@ -6,6 +6,24 @@ Template.homePage.helpers({
     }
     return {};
     // return UserInformation.findOne({ createdBy: Meteor.userId()});
+  },
+  showRanking() {
+    if (!this.ranking) {
+      return 'no rank';
+    }
+    let ranking = this.ranking;
+    console.log(ranking)
+    if (this.ranking === 1) {
+      ranking += '<sup>st</sup>';
+    } else if (this.ranking === 2) {
+      ranking += '<sup>nd</sup>';
+    } else if (this.ranking === 3) {
+      ranking += '<sup>rd</sup>';
+    } else {
+      ranking += '<sup>th</sup>';
+    }
+    console.log(ranking);
+    return Spacebars.SafeString(ranking);
   }
 });
 
