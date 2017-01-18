@@ -7,5 +7,8 @@ Template.forgotPass.onRendered(function() {
 });
 
 Template.forgotPass.events({
-
+  'click .eddy-password--button'(event) {
+    event.preventDefault();
+    toastr.success("password is being sent");
+  }
 });

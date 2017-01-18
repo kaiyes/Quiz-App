@@ -17,16 +17,15 @@ Template.login.events({
     let email = document.querySelector("#email").value;
     let password = document.querySelector("#password").value;
 
-    Meteor.loginWithPassword(email, password,
-      function(error) {
-        if (error) {
-          toastr.error(error.reason);
-        } else {
-          toastr.success("Log In Successful");
-          Accounts._autoLoginEnabled = true;
-          Router.go('/homePage');
-        };
-      });
+    Meteor.loginWithPassword(email, password, function(error) {
+      if (error) {
+        toastr.error(error.reason);
+      } else {
+        toastr.success("Log In Successful");
+        Accounts._autoLoginEnabled = true;
+        Router.go('/homePage');
+      }
+    });
     $('[name="listName"]').val('');
     $('[name = password]').val('');
   },
