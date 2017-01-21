@@ -1,8 +1,65 @@
 Template.profile.onRendered(function() {
-
+  let self = this;
+  self.$( "#profileInfo" ).validate({
+    rules: {
+      name: {
+        required: true
+      },
+      university: {
+        required: true
+      },
+      programme: {
+        required: true
+      }
+    },
+    messages: {
+      name: {
+        required: 'please put your name'
+      },
+      university: {
+        required: 'please select you university'
+      },
+      programme: {
+        required: 'please put your programme'
+      }
+    }
+  });
 });
 
 Template.profile.events({
+  'click .submit-profile' (event, instance) {
+    event.preventDefault();
+    if(instance.$( "#profileInfo" ).valid()) {
+      let name = document.querySelector("#name").value;
+      let university = document.querySelector("#university").value;
+      let programme = document.querySelector("#programme").value;
+      let nickname = document.querySelector("#nickname").value;
+      let age = document.querySelector("#age").value;
+      let country = document.querySelector("#country").value;
+
+      let profile = {
+        age: age,
+        country: country,
+        name: name,
+        university: university,
+        nickName: nickname,
+        programme: programme,
+        selectedCourses: Meteor.user().profile.selectedCourses,
+        image: Meteor.user().profile.image,
+        imageId: Meteor.user().profile.imageId,
+        createdAt: new Date(),
+        createdBy: Meteor.userId(),
+      };
+
+      Meteor.call("addToProfile", profile, function (err) {
+        if (!err) {
+          Meteor.call("addRanking");
+          toastr.success("profile information added successfully");
+          Router.go('/homePage');
+        }
+      });
+    }
+  },
 
     'change input[type="file"]' ( event, template ) {
       let imageData = event.currentTarget.files[0];
@@ -39,31 +96,7 @@ Template.profile.events({
 
   'submit form': function() {
     event.preventDefault();
-    let name = document.querySelector("#name").value;
-    let university = document.querySelector("#university").value;
-    let programme = document.querySelector("#programme").value;
-    let nickname = document.querySelector("#nickname").value;
-    let age = document.querySelector("#age").value;
-    let country = document.querySelector("#country").value;
 
-    profile = {
-      age: age,
-      country: country,
-      name: name,
-      university: university,
-      nickName: nickname,
-      programme: programme,
-      selectedCourses: Meteor.user().profile.selectedCourses,
-      image: Meteor.user().profile.image,
-      imageId: Meteor.user().profile.imageId,
-      createdAt: new Date(),
-      createdBy: Meteor.userId(),
-    };
-
-    Meteor.call("addToProfile", profile);
-    Meteor.call("addRanking");
-    toastr.success("created Profile");
-    Router.go('/homePage');
   },
 
   "click .p-form:nth-of-type(1)": function(event, template) {

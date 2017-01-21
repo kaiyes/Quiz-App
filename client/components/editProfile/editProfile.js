@@ -2,9 +2,8 @@ Template.editProfile.onRendered(function() {
   let self = this;
   self.autorun(function () {
     let user = Meteor.users.find({}).fetch();
-    console.log(user);
     Tracker.afterFlush(function () {
-      $( "#profileInfo" ).validate({
+      self.$( "#profileInfo" ).validate({
         rules: {
           name: {
             required: true
@@ -44,9 +43,40 @@ Template.editProfile.onDestroyed(function () {
 });
 
 Template.editProfile.events({
-  'click .submit-profile' (event) {
+  'click .submit-profile' (event, instance) {
     event.preventDefault();
-    $( "#profileInfo" ).submit();
+    if (instance.$( "#profileInfo" ).valid()) {
+      let name = document.querySelector("#name").value;
+      let university = document.querySelector("#university").value;
+      let programme = document.querySelector("#programme").value;
+      let nickname = document.querySelector("#nickname").value;
+      let age = document.querySelector("#age").value;
+      let country = document.querySelector("#country").value;
+
+      let profile = {
+        age: age,
+        country: country,
+        name: name,
+        university: university,
+        nickName: nickname,
+        programme: programme,
+        selectedCourses: Meteor.user().profile.selectedCourses,
+        image: Meteor.user().profile.image,
+        imageId: Meteor.user().profile.imageId,
+        createdAt: new Date(),
+        createdBy: Meteor.userId(),
+      };
+      console.log(profile);
+
+      Meteor.call("addToProfile", profile, function (err) {
+        if (!err) {
+          toastr.success("profile update successfully");
+          Router.go('/homePage');
+        } else {
+          toastr.error(err);
+        }
+      });
+    }
   },
    'change input[type="file"]' ( event, template ) {
       let imageData = event.currentTarget.files[0];
@@ -83,34 +113,6 @@ Template.editProfile.events({
           });
     },
 
-    'submit form': function() {
-      event.preventDefault();
-      let name = document.querySelector("#name").value;
-      let university = document.querySelector("#university").value;
-      let programme = document.querySelector("#programme").value;
-      let nickname = document.querySelector("#nickname").value;
-      let age = document.querySelector("#age").value;
-      let country = document.querySelector("#country").value;
-
-      let profile = {
-        age: age,
-        country: country,
-        name: name,
-        university: university,
-        nickName: nickname,
-        programme: programme,
-        selectedCourses: Meteor.user().profile.selectedCourses,
-        image: Meteor.user().profile.image,
-        imageId: Meteor.user().profile.imageId,
-        createdAt: new Date(),
-        createdBy: Meteor.userId(),
-      };
-      console.log(profile)
-
-      // Meteor.call("addToProfile", profile);
-      // toastr.success("created Profile");
-      // Router.go('/homePage');
-    },
 
     "click .p-form:nth-of-type(1)": function(event, template) {
         $(".page-content").animate({

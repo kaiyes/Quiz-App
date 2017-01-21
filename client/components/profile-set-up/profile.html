@@ -18,9 +18,16 @@
                   </div>
               </div>
             </div>
+            <div class="toolbar toolbar-bottom">
+                <div class="toolbar-inner eddy-profile__submit">
+                    <a href="#" class="link">&nbsp;</a>
+                    <a href="#" class="link submit-profile">DONE</a>
+                    <a href="#" class="link">&nbsp;</a>
+                </div>
+            </div>
            <div class="page-content position-static">
              <div class="eddy-profile padding-top-20 padding-bottom-45 position-static">
-               <form id="profileInfo" class="position-static">
+               <form id="profileInfo" class="position-static" action="#" method="post">
                  <div class="eddy-profile__upload-section margin-h-30">
                      <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                        <p class="control-label eddy-profile__pptxt">Profile picture</p>
@@ -40,89 +47,82 @@
                      </div>
                  </div>
 
-                 <div class="list-block margin-top-0 margin-h-30">
-                    <ul>
-                      <li class="margin-bottom-15 padding-top-15 p-form">
-                        <div class="item-content padding-left-0">
+                   <div class="list-block">
+                       <ul>
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label eddy-profile__label">Name <span class="imp">*</span></div>
+                                       <div class="item-input">
+                                           <input type="text" placeholder="Your name" id="name" value="{{name}}" name="name" />
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label eddy-profile__label">University <span class="imp">*</span></div>
+                                       <div class="item-input">
+                                           <select name="university" id="university" required autocomplete="off">
+                                               <option value="{{university}}">{{university}}</option>
+                                               <option value="AUST">AUST</option>
+                                               <option value="BUET">BUET</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label label eddy-profile__label">Programme <span class="imp">*</span></div>
+                                       <div class="item-input">
+                                           <input type="text" placeholder="Program" id="programme"  name="programme" value="{{programme}}" required />
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label eddy-profile__label">Nickname</div>
+                                       <div class="item-input">
+                                           <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
+                                               <option value="warrior">Warrior</option>
+                                               <option value="lion">Lion</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
 
-                          <div class="item-inner">
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label eddy-profile__label">Age</div>
+                                       <div class="item-input">
+                                           <input type="number" id="age"  value="{{age}}" name="age" >
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                           <li>
+                               <div class="item-content">
+                                   <div class="item-inner">
+                                       <div class="item-title label eddy-profile__label">Country</div>
+                                       <div class="item-input">
+                                           <select id="country" placeholder="Country" name="country"  autocomplete="off">
+                                               <option value="bd">BD</option>
+                                               <option value="uk">UK</option>
+                                           </select>
+                                       </div>
+                                   </div>
+                               </div>
+                           </li>
+                       </ul>
+                   </div>
 
-                            <div class="item-input">
-                              <input type="text" id="name" placeholder="Name *" required name="name">
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="margin-bottom-15 p-form">
-                        <div class="item-content padding-left-0">
-                          <div class="item-inner">
-
-                            <div class="item-input">
-                              <select name="university" id="university" required autocomplete="off">
-                                <option value="">University *</option>
-                                <option value="AUST">AUST</option>
-                                <option value="BUET">BUET</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="margin-bottom-15 p-form">
-                        <div class="item-content padding-left-0">
-
-                          <div class="item-inner">
-
-                            <div class="item-input">
-                              <input type="text" id="programme" placeholder="Programme *" name="programme"  required>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="margin-bottom-15 p-form">
-                        <div class="item-content padding-left-0">
-                          <div class="item-inner">
-
-                            <div class="item-input">
-                              <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
-                                <option value="">Nickname</option>
-                                <option value="warrior">warrior</option>
-                                <option value="lion">lion</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="margin-bottom-15 p-form">
-                        <div class="item-content padding-left-0">
-
-                          <div class="item-inner">
-
-                            <div class="item-input">
-                              <input type="number" id="age" placeholder="Age" name="age">
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li class="margin-bottom-15 p-form">
-                        <div class="item-content padding-left-0">
-                          <div class="item-inner">
-
-                            <div class="item-input">
-                              <select id="country" placeholder="Country" name="country"  autocomplete="off">
-                                <option value="">Country</option>
-                                <option value="bd">bd</option>
-                                <option value="uk">uk</option>
-                              </select>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-
-                 <div class="eddy-profile__submit">
-                   <button type="submit" class="btn btn-primary">DONE</button>
-                 </div>
                </form>
              </div>
            </div>
