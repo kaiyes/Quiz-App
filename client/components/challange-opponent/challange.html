@@ -22,7 +22,7 @@
         </div>
 
         <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center height-70">
-          <button type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
+          <button id="randomOpponent" type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
               RANDOM OPPONENT
           </button>
         </div>
@@ -47,11 +47,12 @@
                               {{/if}}"
                             alt="Player Photo" />
                             <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
-                            {{profile.name}} <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i>
+                            {{profile.name}}
                             </p>
                           </div>
                         </div>
                         <div class="item-after">
+                            <span> <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i></span>
                           <!-- <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
                           <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
                           <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->

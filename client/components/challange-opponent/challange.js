@@ -22,6 +22,7 @@ Template.challengeOpponent.helpers({
 
 Template.challengeOpponent.events({
   "click #player": function(event, template){
+    event.preventDefault();
     Session.set('playerInfo', this);
 
     let notificationData = {
@@ -33,7 +34,38 @@ Template.challengeOpponent.events({
     };
 
     Session.set('challangeNotification', notificationData);
-    Meteor.call("insertChallangeNotification",notificationData);
+    Meteor.call("insertChallangeNotification", notificationData);
     Router.go('/playFirst');
   },
+  'click #randomOpponent'(event) {
+    event.preventDefault();
+    let topicName = Session.get('topicName');
+    let totalUser = Meteor.users.find({
+      'profile.selectedCourses.courseName': topicName,
+      _id: { $ne: Meteor.userId() }
+    }).count();
+
+    let playerInfo = Meteor.users.findOne({
+      'profile.selectedCourses.courseName': topicName,
+      _id: { $ne: Meteor.userId() }
+    }, {skip: parseInt(Math.random() * totalUser)});
+    console.log(playerInfo);
+
+    Session.set('playerInfo', playerInfo);
+
+    let notificationData = {
+      challanger: Meteor.user(),
+      defender: Session.get('playerInfo'),
+      when: new Date(),
+      topic: Session.get('topicName'),
+      chapter: Session.get('chapter'),
+    };
+
+    Session.set('challangeNotification', notificationData);
+    Meteor.call("insertChallangeNotification", notificationData, function (err) {
+      if (!err) {
+        Router.go('/playFirst');
+      }
+    });
+  }
 });

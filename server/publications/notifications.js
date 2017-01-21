@@ -1,3 +1,3 @@
-Meteor.publish('notifications', function coursesPublication() {
-  return Notification.find();
-});
+// Meteor.publish('notifications', function coursesPublication() {
+//   return Notification.find();
+// });
