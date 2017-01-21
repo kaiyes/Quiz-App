@@ -7,24 +7,24 @@
 
   &--item-inner{
     &__input {
-      @include type-style($font-family-eddy-montserrathairline, 600, 1.8rem, #000000);
+      @include type-style($font-family-eddy-montserrathairline, 600, 1.5rem, #000000);
       //opacity: 0.8;
 
       &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #696969 !important;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       &::-moz-placeholder { /* Firefox 19+ */
         color: #696969 !important;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
       &:-ms-input-placeholder { /* IE 10+ */
         color: #696969 !important;
-        font-size: 1.4rem;
+        font-size: 1.2rem;
       }
       &:-moz-placeholder { /* Firefox 18- */
         color: #696969 !important;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
       }
 
     }

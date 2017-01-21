@@ -1,11 +1,42 @@
+Template.editProfile.onRendered(function() {
+  let self = this;
+  self.autorun(function () {
+    let user = Meteor.users.find({}).fetch();
+    console.log(user);
+    Tracker.afterFlush(function () {
+      $( "#profileInfo" ).validate({
+        rules: {
+          name: {
+            required: true
+          },
+          university: {
+            required: true
+          },
+          programme: {
+            required: true
+          }
+        },
+        messages: {
+          name: {
+            required: 'please put your name'
+          },
+          university: {
+            required: 'please select you university'
+          },
+          programme: {
+            required: 'please put your programme'
+          }
+        }
+      });
+    });
+  });
+
+});
+
 Template.editProfile.helpers({
    user: function(){
      return UserInformation.findOne({createdBy: Meteor.userId()});
   }
-});
-
-Template.editProfile.onRendered(function() {
-
 });
 
 Template.editProfile.onDestroyed(function () {
@@ -13,7 +44,10 @@ Template.editProfile.onDestroyed(function () {
 });
 
 Template.editProfile.events({
-
+  'click .submit-profile' (event) {
+    event.preventDefault();
+    $( "#profileInfo" ).submit();
+  },
    'change input[type="file"]' ( event, template ) {
       let imageData = event.currentTarget.files[0];
       console.log(imageData);
@@ -58,7 +92,7 @@ Template.editProfile.events({
       let age = document.querySelector("#age").value;
       let country = document.querySelector("#country").value;
 
-      profile = {
+      let profile = {
         age: age,
         country: country,
         name: name,
@@ -71,10 +105,11 @@ Template.editProfile.events({
         createdAt: new Date(),
         createdBy: Meteor.userId(),
       };
+      console.log(profile)
 
-      Meteor.call("addToProfile", profile);
-      toastr.success("created Profile");
-      Router.go('/homePage');
+      // Meteor.call("addToProfile", profile);
+      // toastr.success("created Profile");
+      // Router.go('/homePage');
     },
 
     "click .p-form:nth-of-type(1)": function(event, template) {
