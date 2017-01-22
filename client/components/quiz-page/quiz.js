@@ -9,7 +9,7 @@ Template.quiz.onCreated(function () {
   }
 });
 
-Template.quiz.onRendered(function(event, instance){
+Template.quiz.onRendered(function(){
 
   Session.set('question', 0);
     sixSecondTimer.start(function() {
