@@ -33,9 +33,24 @@ Template.challengeOpponent.events({
       chapter: Session.get('chapter'),
     };
 
+    const options = {
+      challenger: Meteor.user(),
+      defender: Session.get('playerInfo'),
+      when: new Date(),
+      topic: Session.get('topicName'),
+      chapter: Session.get('chapter'),
+    };
+
     Session.set('challangeNotification', notificationData);
-    Meteor.call("insertChallangeNotification", notificationData);
-    Router.go('/playFirst');
+    Meteor.call('createRoom', options, (err, data) => {
+      if (!err) {
+        notificationData.quizRoomId = data;
+        Meteor.call("insertChallengeNotification", notificationData);
+        Router.go('/playFirst/' + data);
+      } else {
+        toastr.error(err);
+      }
+    })
   },
   'click #randomOpponent'(event) {
     event.preventDefault();

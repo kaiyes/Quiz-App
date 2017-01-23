@@ -88,7 +88,7 @@ Meteor.methods({
       });
     },
 
-    likeAcomment: function ( commentData, liker ) {
+  likeAcomment: function ( commentData, liker ) {
       Posts.update(
         { _id: commentData.postId , "comments.body":commentData.body},
         { $addToSet: {"comments.$.likes": liker }}
@@ -103,42 +103,42 @@ Meteor.methods({
        });
     },
 
-    insertChallangeNotification: function (notificationData) {
-      let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
-      let questions = _.sampleSize(array, 6);
-
-       let quizRoom = QuizRooms.insert({
-           challanger: notificationData.challanger,
-           defender: notificationData.defender,
-           createdAt: new Date(),
-           challangerRoomPoints: 0,
-           defenderRoomPoints:0,
-           questions:questions,
-           challangerStarted: true,
-           defenderStarted: false,
-           gameEnded:false,
-         });
-
-         PlayedSessions.insert({
-             challanger: notificationData.challanger,
-             defender: notificationData.defender,
-             questions:questions,
-             originalRoomId:quizRoom,
-             challangersPoint:0,
-             defendersPoint:0,
-             challangersRightAnswer:0,
-             defendersRightAnswer:0,
-             accuracy:0,
-           });
+    insertChallengeNotification: function (options) {
+      // let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
+      // let questions = _.sampleSize(array, 6);
+      //
+      //  let quizRoom = QuizRooms.insert({
+      //      challanger: notificationData.challanger,
+      //      defender: notificationData.defender,
+      //      createdAt: new Date(),
+      //      challangerRoomPoints: 0,
+      //      defenderRoomPoints:0,
+      //      questions:questions,
+      //      challangerStarted: true,
+      //      defenderStarted: false,
+      //      gameEnded:false,
+      //    });
+      //
+      //    PlayedSessions.insert({
+      //        challanger: notificationData.challanger,
+      //        defender: notificationData.defender,
+      //        questions:questions,
+      //        originalRoomId:quizRoom,
+      //        challangersPoint:0,
+      //        defendersPoint:0,
+      //        challangersRightAnswer:0,
+      //        defendersRightAnswer:0,
+      //        accuracy:0,
+      //      });
 
         Notification.insert({
-          challanger: notificationData.challanger,
-          defender: notificationData.defender,
-          when: notificationData.when,
-          topic: notificationData.topic,
-          chapter: notificationData.chapter,
-          type: "challange",
-          quizRoomId: quizRoom,
+          challanger: options.challanger,
+          defender: options.defender,
+          when: options.when,
+          topic: options.topic,
+          chapter: options.chapter,
+          type: "challenge",
+          quizRoomId: options.quizRoomId,
         });
     },
 
