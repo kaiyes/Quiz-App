@@ -1,12 +1,14 @@
 var countdown = new ReactiveCountdown(120);
 
-Template.playFirst.onCreated(function(){
-    Session.set('shouldTimerStart', true);
+Template.playFirst.onCreated(function () {
+  let self = this;
+  self.roomId = Router.current().params._id;
+  Session.set('shouldTimerStart', true);
 });
 
-Template.playFirst.onRendered(function(){
+Template.playFirst.onRendered(function () {
 
-  countdown.start(function() {
+  countdown.start(function () {
     if (Session.get('shouldTimerStart')) {
       toastr.error("Match Failed");
       console.log("timer in play first ended");
@@ -16,65 +18,76 @@ Template.playFirst.onRendered(function(){
     }
   });
 
-  this.autorun(function(){
+  this.autorun(function () {
     let router = Session.get('didAccept');
-      if (Session.get('didAccept')) {
-        Router.go(`/quiz/${router}`);
-      }
+    if (Session.get('didAccept')) {
+      Router.go(`/quiz/${router}`);
+    }
 
   });
 
 });
 
 Template.playFirst.helpers({
-  userInfo: function(){
+  userInfo: function () {
     return Session.get('playerInfo');
   },
 
-  time:function(event, instance){
-   return countdown.get();
+  time: function (event, instance) {
+    return countdown.get();
   },
 
-  opponentStarted:function(event, instance){
+  opponentStarted: function (event, instance) {
     var notificationData = Session.get('challangeNotification');
     var notification = Notification.findOne({
       when: notificationData.when,
-     });
-     var quizRoom = QuizRooms.findOne({
-       _id: notification.quizRoomId,
-      });
-      if (quizRoom.defenderStarted) {
-        Session.set('didAccept', quizRoom._id);
-        if (Session.get('didAccept')) {
-            return "accepted";
-        }
+    });
+    var quizRoom = QuizRooms.findOne({
+      _id: notification.quizRoomId,
+    });
+    if (quizRoom.defenderStarted) {
+      Session.set('didAccept', quizRoom._id);
+      if (Session.get('didAccept')) {
+        return "accepted";
       }
+    }
   },
 });
 
 Template.playFirst.events({
 
-  "click #play": function(event, instance){
-    let sessionData = Session.get('challangeNotification');
-    let time = sessionData.when;
-    let handle = Notification.findOne({ when: time.when });
-    Router.go(`/quiz/${handle.quizRoomId}`);
+  "click #play": function (event, instance) {
+    event.preventDefault();
+    Meteor.call('startPlayFirst', { _id: instance.roomId }, function (err) {
+      if (!err) {
+        Router.go(`/quiz/${instance.roomId}`);
+      } else {
+        toastr.error(err);
+      }
+    });
   },
 
-  "click #cross": function(event, instance){
-     toastr.error("Match Failed");
-     let notificationData = Session.get('challangeNotification');
-     let notification = Notification.findOne({
-       when: notificationData.when,
-      });
-      let quizRoom = QuizRooms.findOne({
-        _id: notification.quizRoomId,
-       });
-
-      if (notification && quizRoom) {
-         Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
-      };
-      Router.go('/challengeOpponent');
+  "click #cross": function (event, instance) {
+    event.preventDefault();
+    // let notificationData = Session.get('challangeNotification');
+    // let notification = Notification.findOne({
+    //   when: notificationData.when,
+    // });
+    // let quizRoom = QuizRooms.findOne({
+    //   _id: notification.quizRoomId,
+    // });
+    //
+    // if (notification && quizRoom) {
+    //   Meteor.call("removeChallangeNotification", notification._id, notification.quizRoomId);
+    // }
+    Meteor.call('removeRoomRequest', {_id: instance.roomId}, function (err) {
+      if (!err) {
+        toastr.info("Remove challenge request");
+        Router.go('/challengeOpponent');
+      } else {
+        toastr.error(err);
+      }
+    });
   },
 });
 
