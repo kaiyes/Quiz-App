@@ -1,14 +1,11 @@
-var countdown = new ReactiveCountdown(120);
-
 Template.playFirst.onCreated(function () {
   let self = this;
   self.roomId = Router.current().params._id;
+  self.countdown = new ReactiveCountdown(120);
+
   Session.set('shouldTimerStart', true);
-});
 
-Template.playFirst.onRendered(function () {
-
-  countdown.start(function () {
+  self.countdown.start(function () {
     if (Session.get('shouldTimerStart')) {
       toastr.error("Match Failed");
       console.log("timer in play first ended");
@@ -17,13 +14,16 @@ Template.playFirst.onRendered(function () {
       console.log("Routing Shouldn't happen");
     }
   });
+});
 
-  this.autorun(function () {
+Template.playFirst.onRendered(function () {
+  let self = this;
+
+  self.autorun(function () {
     let router = Session.get('didAccept');
     if (Session.get('didAccept')) {
       Router.go(`/quiz/${router}`);
     }
-
   });
 
 });
@@ -33,8 +33,8 @@ Template.playFirst.helpers({
     return Session.get('playerInfo');
   },
 
-  time: function (event, instance) {
-    return countdown.get();
+  time: function () {
+    return Template.instance().countdown.get();
   },
 
   opponentStarted: function (event, instance) {

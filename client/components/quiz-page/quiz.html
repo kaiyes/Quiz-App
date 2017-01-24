@@ -26,11 +26,12 @@
                     <i class="zmdi zmdi-chevron-down font-size-fixed-40"></i>
                 </div>
                 <div class="padding-h-50 padding-bottom-5 eddy-quiz--players flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                  <div class="text-center eddy-quiz--players--me position-relative">
-                    <span class="eddy-quiz--players--rank">2</span>
+                  {{#with userProfile}}
+                    <div class="text-center eddy-quiz--players--me position-relative">
+                    <span class="eddy-quiz--players--rank">{{givenAnswer}}</span>
                     <img width="55" height="55" class="make-round eddy-quiz--players--profile-img"
-                    src="{{#if challanger.profile.image}}
-                            {{challanger.profile.image}}
+                    src="{{#if profile.image}}
+                            {{profile.image}}
                           {{else}}
                             http://placehold.it/85x85
                           {{/if}}"
@@ -39,29 +40,34 @@
                       {{challanger.profile.name}}
                     </p>
                   </div>
+                  {{/with}}
                   <div class="eddy-quiz--level">
                     {{#with timerCount}}
                         {{this}}
                     {{/with}}
                   </div>
+
+                {{#with opponentProfile}}
                   <div class="text-center eddy-quiz--players--opponent position-relative">
-                    <span class="eddy-quiz--players--rank__opponent">?</span>
+                    <span class="eddy-quiz--players--rank__opponent">{{#if quizRoom.isFirst}}?{{else}} {{givenAnswer}} {{/if}}</span>
                     <img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
-                    src="{{#if defender.profile.image}}
-                            {{defender.profile.image}}
+                    src="{{#if profile.image}}
+                            {{profile.image}}
                           {{else}}
                             http://placehold.it/85x85
                           {{/if}}"
                     alt="Profile Photo">
                     <p class="margin-0 font-size-fixed-14 padding-5">
-                      {{defender.profile.name}}
+                      {{profile.name}}
                     </p>
                   </div>
+                {{/with}}
+
                 </div>
               </div>
              {{/with}}
 
-                {{#with timer}}
+                {{#with quiz}}
                   <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
                     <div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
                         <p class="padding-h-20">

@@ -30,7 +30,7 @@ Meteor.methods({
       QuizRooms.update({
         _id: options._id
       }, {
-        $set: { 'challenger.isFirst': true }
+        $set: { isFirst: true }
       });
     } catch (err) {
       console.log(err);
@@ -51,6 +51,29 @@ Meteor.methods({
       let quizRoom = QuizRooms.findOne({_id: options._id});
       if (quizRoom.challenger._id === Meteor.userId()) {
         return QuizRooms.remove({_id: options._id});
+      } else {
+        return new Meteor.Error('permission denied')
+      }
+    } catch (err) {
+      console.log(err);
+      throw new Meteor.Error(err);
+    }
+  },
+  updateAnswer: function (options) {
+    try {
+      let quizRoom = QuizRooms.findOne({_id: options._id});
+      if (quizRoom.challenger._id === Meteor.userId()) {
+        return QuizRooms.update({
+          _id: options._id
+        }, {
+          $inc: { 'challenger.givenAnswer': 1}
+        });
+      } else if (quizRoom.defender._id === Meteor.userId()) {
+        return QuizRooms.update({
+          _id: options._id
+        }, {
+          $inc: { 'defender.givenAnswer': 1}
+        });
       } else {
         return new Meteor.Error('permission denied')
       }
