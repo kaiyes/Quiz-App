@@ -30,13 +30,13 @@ Template.quiz.onRendered(function(){
         self.sixSecondTimer.stop(6);
         self.sixSecondTimer.start(function () {
           console.log('done');
-          // Meteor.call('skipQuizQuestion', { roomId: self.roomId }, function (err) {
-          //   if (!err) {
-          //     // self.sixSecondTimer.stop();
-          //   } else {
-          //     toastr.error(err);
-          //   }
-          // });
+          Meteor.call('skipQuizQuestion', { roomId: self.roomId }, function (err) {
+            if (!err) {
+              // self.sixSecondTimer.stop();
+            } else {
+              toastr.error(err);
+            }
+          });
         });
       } else {
         toastr.success('Congratulation!! quiz is finished')
