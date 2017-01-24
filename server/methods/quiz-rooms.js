@@ -14,7 +14,7 @@ Meteor.methods({
         challenger: options.challenger,
         defender: defender,
         questions: questions,
-        topic: options.topic,
+        course: options.topic,
         chapter: options.chapter
       };
       const _id = QuizRooms.insert(quizRoom);
@@ -59,24 +59,47 @@ Meteor.methods({
       throw new Meteor.Error(err);
     }
   },
-  updateAnswer: function (options) {
+  storeQuizAnswer: function (options) {
     try {
-      let quizRoom = QuizRooms.findOne({_id: options._id});
+      let quizRoom = QuizRooms.findOne({_id: options.roomId});
+      let point = 0;
+      let correctAnswer = 0;
+      let wrongAnswer = 0;
+      console.log(options);
+      let question = quizRoom.questions[options.questionIndex];
+      console.log(question);
+      if (question.rightAnswer == options.answer) {
+        point = 10;
+        correctAnswer = 1;
+      } else {
+        wrongAnswer = 1;
+      }
       if (quizRoom.challenger._id === Meteor.userId()) {
-        return QuizRooms.update({
-          _id: options._id
-        }, {
-          $inc: { 'challenger.givenAnswer': 1}
-        });
+        QuizRooms.update({_id: options.roomId }, {
+          $inc: { 'challenger.totalPoint': point, 'challenger.totalTime': options.timeCount }
+        })
       } else if (quizRoom.defender._id === Meteor.userId()) {
-        return QuizRooms.update({
-          _id: options._id
-        }, {
-          $inc: { 'defender.givenAnswer': 1}
-        });
+        QuizRooms.update({_id: options.roomId }, {
+          $inc: { 'defender.totalPoint': point, 'defender.totalTime': options.timeCount }
+        })
       } else {
         return new Meteor.Error('permission denied')
       }
+      let updateQuestion = [];
+      updateQuestion[`question.${options.questionIndex}`] = { answer: options.answer };
+      PlayedSessions.update({
+        quizRoomId: options.roomId,
+        'player._id': Meteor.userId()
+      }, {
+        $inc: {
+          givenAnswer: 1,
+          points: point,
+          wrongAnswer: wrongAnswer,
+          correctAnswer: correctAnswer,
+          totalTime: options.timeCount
+        },
+        $set: updateQuestion
+      });
     } catch (err) {
       console.log(err);
       throw new Meteor.Error(err);

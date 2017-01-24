@@ -38,19 +38,19 @@ Template.playFirst.helpers({
   },
 
   opponentStarted: function (event, instance) {
-    var notificationData = Session.get('challangeNotification');
-    var notification = Notification.findOne({
-      when: notificationData.when,
-    });
-    var quizRoom = QuizRooms.findOne({
-      _id: notification.quizRoomId,
-    });
-    if (quizRoom.defenderStarted) {
-      Session.set('didAccept', quizRoom._id);
-      if (Session.get('didAccept')) {
-        return "accepted";
-      }
-    }
+    // var notificationData = Session.get('challangeNotification');
+    // var notification = Notification.findOne({
+    //   when: notificationData.when,
+    // });
+    // var quizRoom = QuizRooms.findOne({
+    //   _id: notification.quizRoomId,
+    // });
+    // if (quizRoom.defenderStarted) {
+    //   Session.set('didAccept', quizRoom._id);
+    //   if (Session.get('didAccept')) {
+    //     return "accepted";
+    //   }
+    // }
   },
 });
 
@@ -58,9 +58,16 @@ Template.playFirst.events({
 
   "click #play": function (event, instance) {
     event.preventDefault();
+    console.log(instance.roomId);
     Meteor.call('startPlayFirst', { _id: instance.roomId }, function (err) {
       if (!err) {
-        Router.go(`/quiz/${instance.roomId}`);
+        Meteor.call('createQuizSession', { roomId: instance.roomId }, function (err) {
+          if(err) {
+            toastr.error('unable to create quiz session');
+          } else {
+            Router.go(`/quiz/${instance.roomId}`);
+          }
+        });
       } else {
         toastr.error(err);
       }
