@@ -14,17 +14,27 @@ Template.playFirst.onCreated(function () {
       console.log("Routing Shouldn't happen");
     }
   });
+
+  self.autorun(function () {
+    let quizRoom = QuizRooms.findOne({_id: self.roomId});
+    if (quizRoom) {
+      if (quizRoom.status==='running') {
+        self.countdown.stop();
+        Router.go(`/quiz/${self.roomId}`);
+      }
+    }
+  })
 });
 
 Template.playFirst.onRendered(function () {
   let self = this;
 
-  self.autorun(function () {
-    let router = Session.get('didAccept');
-    if (Session.get('didAccept')) {
-      Router.go(`/quiz/${router}`);
-    }
-  });
+  // self.autorun(function () {
+  //   let router = Session.get('didAccept');
+  //   if (Session.get('didAccept')) {
+  //     Router.go(`/quiz/${router}`);
+  //   }
+  // });
 
 });
 

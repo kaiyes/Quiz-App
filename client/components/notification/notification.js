@@ -48,8 +48,18 @@ Template.notification.helpers({
 Template.notification.events({
 
   "click #acceptChallange": function(event, template){
-     Meteor.call("updateOpponent", this.quizRoomId);
-     Router.go(`/quiz/${this.quizRoomId}`);
+    console.log(this);
+    let instance = this;
+    Meteor.call('acceptQuizChallenge', {_id: instance.quizRoomId}, function () {
+      Meteor.call('createQuizSession', { roomId: instance.quizRoomId }, function (err) {
+        if(err) {
+          toastr.error('unable to create quiz session');
+        } else {
+          // Meteor.call("removeChallangeNotification", instance._id, instance.quizRoomId);
+          Router.go(`/quiz/${instance.quizRoomId}`);
+        }
+      });
+    });
   },
 
   "click #denyChallange": function(event, template){

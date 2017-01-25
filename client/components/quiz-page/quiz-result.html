@@ -35,29 +35,29 @@
                           <div class="flex-direction--row flex-justify-content--space-between margin-top-60">
                             <div class="text-center">
                               <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
-                              src="{{#if $neq challanger.profile.image " "}}
-                                    {{challanger.profile.image}}
+                              src="{{#if $neq player.player.profile.image " "}}
+                                    {{player.player.profile.image}}
                                 {{else}}
                                     http://placehold.it/150x150
                                 {{/if}}"
                               alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">{{challanger.profile.name}}</p>
+                              <p class="eddy-quiz-result__player-name">{{player.player.profile.name}}</p>
                             </div>
                             <div class="text-center">
                               <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
-                              src="{{#if defender.profile.image}}
-                                  {{defender.profile.image}}
+                              src="{{#if opponent.player.profile.image}}
+                                  {{opponent.player.profile.image}}
                               {{else}}
                                   http://placehold.it/150x150
                               {{/if}}"
                               alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">{{defender.profile.name}}</p>
+                              <p class="eddy-quiz-result__player-name">{{opponent.player.profile.name}}</p>
                             </div>
                           </div>
                           <div class="flex-direction--row flex-justify-content--space-between padding-h-25 padding-bottom-15">
-                            <h3 class="margin-0 eddy-quiz-result__player-score">{{challangersPoint}}</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{player.points}}</h3>
                             <h3 class="margin-0 eddy-quiz-result__player-score">:</h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">{{defendersPoint}}</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{opponent.points}}</h3>
                           </div>
                         </div>
                     </div>
@@ -82,13 +82,7 @@
                               <div class="text-center">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">QUESTIONS</h4>
                                 <h3 class="margin-0 eddy-stats__points">
-                                  {{#if $eq currentUser._id challanger._id}}
-                                    {{challangersRightAnswer}}/6
-                                  {{/if}}
-
-                                  {{#if $eq currentUser._id defender._id}}
-                                    {{defendersRightAnswer}}/6
-                                  {{/if}}
+                                    {{player.correctAnswer}}/6
                                 </h3>
                               </div>
                             </div>

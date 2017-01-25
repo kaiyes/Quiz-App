@@ -5,6 +5,7 @@ Meteor.methods({
   createQuizSession: function (options) {
     try {
       let quizRoom = QuizRooms.findOne({_id: options.roomId});
+      console.log(quizRoom)
       let quizSessions = {};
       if (quizRoom.challenger._id === Meteor.userId()) {
         quizSessions.player = quizRoom.challenger;

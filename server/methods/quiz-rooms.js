@@ -37,6 +37,18 @@ Meteor.methods({
       throw new Meteor.Error(err);
     }
   },
+  acceptQuizChallenge: function (options) {
+    try {
+      QuizRooms.update({
+        _id: options._id
+      }, {
+        $set: { status: 'running' }
+      });
+    } catch (err) {
+      console.log(err);
+      throw new Meteor.Error(err);
+    }
+  },
   updateChallengerResult: function (options) {
     
   },
@@ -94,13 +106,21 @@ Meteor.methods({
         increment.point *= 2;
       }
 
-      return PlayedSessions.update({
+      const isUpdate = PlayedSessions.update({
         quizRoomId: options.roomId,
         'player._id': Meteor.userId()
       }, {
         $inc: increment,
         $set: dataSet
       });
+
+      if (question.length === (options.questionIndex+1)) {
+        if (quizRoom.defender._id === Meteor.userId()) {
+          QuizRooms.update({_id: quizRoom._id}, {$set: { status: 'completed' }})
+        }
+      }
+
+      return isUpdate;
     } catch (err) {
       console.log(err);
       throw new Meteor.Error(err);

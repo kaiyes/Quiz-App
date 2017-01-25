@@ -1,17 +1,18 @@
 Template.quizResult.onCreated(function() {
-
+  let self = this;
   let resultRoomId = Router.current().params._id;
-  let room = PlayedSessions.findOne({ _id: resultRoomId });
-  if (Meteor.userId()===room.challanger._id ){
-    let accuracy = (room.challangersRightAnswer/6)*100;
-    Session.set('percent', accuracy);
-  }
-  if (Meteor.userId()===room.defender._id ){
-    let accuracy = (room.defendersRightAnswer/6)*100;
-    Session.set('percent', accuracy);
-  }
-  Session.set('question', room.questions[0]);
-  Session.set('number', 0);
+  self.roomId = Router.current().params._id;
+
+  self.autorun(function () {
+    let room = PlayedSessions.findOne({ quizRoomId: resultRoomId, 'player._id': Meteor.userId() });
+    if (room) {
+      let accuracy = (room.correctAnswer/6)*100;
+      Session.set('percent', accuracy);
+
+      Session.set('question', room.questions[0]);
+      Session.set('number', 0);
+    }
+  });
 
 });
 
@@ -31,6 +32,56 @@ Template.quizResult.onRendered(function() {
   });
 });
 
+Template.quizResult.helpers({
+  resultRoom: function(){
+    let resultRoomId = Router.current().params._id;
+    return QuizRooms.findOne({ _id: resultRoomId});
+  },
+  player: function () {
+    return PlayedSessions.findOne({
+      quizRoomId: Template.instance().roomId, 'player._id': Meteor.userId()
+    });
+  },
+  opponent: function () {
+    return PlayedSessions.findOne({
+      quizRoomId: Template.instance().roomId, 'opponent._id': Meteor.userId()
+    });
+  },
+  question: function(){
+    let data = Session.get('question');
+    return data;
+  },
+
+  indexOfTopic: function(){
+    let resultRoomId = Router.current().params._id;
+    let room =  PlayedSessions.findOne({ quizRoomId: resultRoomId });
+    let topic = room.questions[0].topic;
+    let userCourseArray = Meteor.user().profile.selectedCourses;
+    let courseObject = _.find(userCourseArray, { 'courseName': topic });
+    return courseObject;
+  },
+
+  whoWon:function(){
+    let resultRoomId = Router.current().params._id;
+    let room =  PlayedSessions.findOne({ _id: resultRoomId });
+
+    let player = PlayedSessions.findOne({
+      quizRoomId: Template.instance().roomId, 'player._id': Meteor.userId()
+    });
+    let opponent = PlayedSessions.findOne({
+      quizRoomId: Template.instance().roomId, 'opponent._id': Meteor.userId()
+    });
+
+    if (player.points > opponent.points) {
+      return 'You won :D';
+    } else if ( player.points == opponent.points){
+      return 'Draw :|';
+    } else {
+      return 'You lost :(';
+    }
+  },
+});
+
 Template.quizResult.events({
 
   "click #community": function(event, template){
@@ -41,14 +92,10 @@ Template.quizResult.events({
   "click #playAgain": function(event, template){
     event.preventDefault();
     let resultRoomId = Router.current().params._id;
-    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let room = PlayedSessions.findOne({ quizRoomId: resultRoomId });
     let chapter = room.questions[0].chapter;
-    if (Meteor.userId()===room.challanger._id) {
-      Session.set('playerInfo', room.defender);
-    }
-    if (Meteor.userId()===room.defender._id) {
-      Session.set('playerInfo', room.challanger);
-    }
+    Session.set('playerInfo', room.opponent);
+
 
     let notificationData = {
       challanger: Meteor.user(),
@@ -71,7 +118,7 @@ Template.quizResult.events({
   "click #left": function(event, template){
     event.preventDefault();
     let resultRoomId = Router.current().params._id;
-    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let room = PlayedSessions.findOne({ quizRoomId: resultRoomId });
     let currentNumber = Session.get('number');
     if (currentNumber===0) {
       Session.set('number', 5);
@@ -107,7 +154,7 @@ Template.quizResult.events({
   "click #right": function(event, template){
     event.preventDefault();
     let resultRoomId = Router.current().params._id;
-    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let room = PlayedSessions.findOne({ quizRoomId: resultRoomId });
     let currentNumber = Session.get('number');
     if (currentNumber===5) {
       Session.set('number', 0);
@@ -138,48 +185,6 @@ Template.quizResult.events({
         default:
         Session.set('question', room.questions[1]);
       }
-  },
-
-});
-
-Template.quizResult.helpers({
-  resultRoom: function(){
-    let resultRoomId = Router.current().params._id;
-    return PlayedSessions.findOne({ _id: resultRoomId });
-  },
-
-   question: function(){
-    let data = Session.get('question');
-    return data;
-  },
-
-  indexOfTopic: function(){
-    let resultRoomId = Router.current().params._id;
-    let room =  PlayedSessions.findOne({ _id: resultRoomId });
-    let topic = room.questions[0].topic;
-    let userCourseArray = Meteor.user().profile.selectedCourses;
-    let courseObject = _.find(userCourseArray, { 'courseName': topic });
-    return courseObject;
-  },
-
-  whoWon:function(){
-    let resultRoomId = Router.current().params._id;
-    let room =  PlayedSessions.findOne({ _id: resultRoomId });
-
-    if (room.challangersPoint > room.defendersPoint) {
-      if (Meteor.userId()===room.challanger._id ) {
-         return 'you won :D';
-      } else {
-         return 'you lost :(';
-      }
-    } else if (room.challangersPoint < room.defendersPoint){
-      if (Meteor.userId()===room.challanger._id ) {
-         return 'you lost :(';
-      } else {
-          return 'you won :D';
-      }
-    };
-
   },
 
 });
