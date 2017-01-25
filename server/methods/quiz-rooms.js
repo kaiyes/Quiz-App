@@ -86,8 +86,10 @@ Meteor.methods({
         return new Meteor.Error('permission denied')
       }
       let updateQuestion = [];
-      updateQuestion[`question.${options.questionIndex}`] = { answer: options.answer };
-      PlayedSessions.update({
+      updateQuestion = `question.${options.questionIndex}`;
+      // updateQuestion = options.answer;
+      console.log(updateQuestion);
+      return PlayedSessions.update({
         quizRoomId: options.roomId,
         'player._id': Meteor.userId()
       }, {
@@ -98,8 +100,8 @@ Meteor.methods({
           correctAnswer: correctAnswer,
           totalTime: options.timeCount
         },
-        $set: updateQuestion
-      });
+        $set: { updateQuestion: { answer: options.answer} }
+      }, false, true);
     } catch (err) {
       console.log(err);
       throw new Meteor.Error(err);
