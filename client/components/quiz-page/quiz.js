@@ -3,21 +3,12 @@ Template.quiz.onCreated(function () {
   self.roomId = Router.current().params._id;
   self.questionLenght = 6;
   self.currentQuestionIndex = 0;
-  self.questionTimer = new ReactiveCountdown(6);
-  let quizRoomId = Router.current().params._id;
-  console.log(quizRoomId);
   self.sixSecondTimer = new ReactiveCountdown(6);
 
   self.autorun(function () {
     let quizRoom = QuizRooms.findOne({_id: self.roomId });
-
     console.log(quizRoom);
   });
-
-  // if (quizRoom.gameEnded) {
-  //   toastr.success("Game ended, start a new game");
-  //   Router.go('/homePage');
-  // }
 });
 
 Template.quiz.onRendered(function(){
@@ -26,8 +17,8 @@ Template.quiz.onRendered(function(){
     let playerSession = PlayedSessions.findOne({quizRoomId: self.roomId, 'player._id': Meteor.userId() });
     console.log(playerSession);
     if (playerSession) {
+      self.currentQuestionIndex = playerSession.givenAnswer;
       if (playerSession.givenAnswer < 6) {
-        self.sixSecondTimer.stop(6);
         self.sixSecondTimer.start(function () {
           console.log('done');
           Meteor.call('skipQuizQuestion', { roomId: self.roomId }, function (err) {
@@ -38,8 +29,11 @@ Template.quiz.onRendered(function(){
             }
           });
         });
+        // self.sixSecondTimer.stop(6);
       } else {
-        toastr.success('Congratulation!! quiz is finished')
+        self.sixSecondTimer.stop();
+        toastr.success('Congratulation!! quiz is finished');
+        Router.go('/quiz-result/'+ self.roomId);
       }
     }
   });
@@ -77,10 +71,11 @@ Template.quiz.helpers({
     return Template.instance().sixSecondTimer.get();
   },
   quiz: function () {
-    let quizRoom = QuizRooms.findOne({ _id: Template.instance().roomId });
-    let quizSession = PlayedSessions.findOne({ quizRoomId: Template.instance().roomId, 'player._id': Meteor.userId() });
+    let instance = Template.instance();
+    let quizRoom = QuizRooms.findOne({ _id: instance.roomId });
+    let quizSession = PlayedSessions.findOne({ quizRoomId: instance.roomId, 'player._id': Meteor.userId() });
     if (quizRoom) {
-      Template.instance().currentQuestionIndex = quizSession.givenAnswer;
+      instance.currentQuestionIndex = quizSession.givenAnswer;
       return quizRoom.questions[quizSession.givenAnswer];
     }
   },
@@ -101,7 +96,10 @@ Template.quiz.events({
       timeCount: 6 - parseInt(instance.sixSecondTimer.get())
     };
     Meteor.call('storeQuizAnswer', options, function (err) {
-
+      instance.sixSecondTimer.stop(6);
+      if (!err) {
+        console.log('data updated');
+      }
     });
   },
   "click .eddy-quiz--option--close": function(event, template){

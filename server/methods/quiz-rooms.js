@@ -13,7 +13,7 @@ Meteor.methods({
       const quizRoom = {
         challenger: options.challenger,
         defender: defender,
-        questions: questions,
+        questions: _.map(questions, (data)=>{ data.answer = null; return data;}),
         course: options.topic,
         chapter: options.chapter
       };
@@ -61,47 +61,46 @@ Meteor.methods({
   },
   storeQuizAnswer: function (options) {
     try {
+      let increment = {};
       let quizRoom = QuizRooms.findOne({_id: options.roomId});
-      let point = 0;
-      let correctAnswer = 0;
-      let wrongAnswer = 0;
-      console.log(options);
       let question = quizRoom.questions[options.questionIndex];
-      console.log(question);
-      if (question.rightAnswer == options.answer) {
-        point = 10;
-        correctAnswer = 1;
-      } else {
-        wrongAnswer = 1;
-      }
+
       if (quizRoom.challenger._id === Meteor.userId()) {
         QuizRooms.update({_id: options.roomId }, {
-          $inc: { 'challenger.totalPoint': point, 'challenger.totalTime': options.timeCount }
+          $inc: { 'challenger.totalPoint': options.point, 'challenger.totalTime': options.timeCount }
         })
       } else if (quizRoom.defender._id === Meteor.userId()) {
         QuizRooms.update({_id: options.roomId }, {
-          $inc: { 'defender.totalPoint': point, 'defender.totalTime': options.timeCount }
+          $inc: { 'defender.totalPoint': options.point, 'defender.totalTime': options.timeCount }
         })
       } else {
         return new Meteor.Error('permission denied')
       }
-      let updateQuestion = [];
-      updateQuestion = `question.${options.questionIndex}`;
-      // updateQuestion = options.answer;
-      console.log(updateQuestion);
+
+      let dataSet = {};
+      dataSet[`questions.${options.questionIndex}.answer`] = options.answer;
+
+      increment.givenAnswer = 1;
+      increment.totalTIme = options.totalTime;
+      if (question.rightAnswer == options.answer) {
+        increment.point = 10;
+        increment.correctAnswer = 1;
+      } else {
+        increment.wrongAnswer = 1;
+      }
+
+      if (question.length === (options.questionIndex+1)) {
+        dataSet.isCompleted = true;
+        increment.point *= 2;
+      }
+
       return PlayedSessions.update({
         quizRoomId: options.roomId,
         'player._id': Meteor.userId()
       }, {
-        $inc: {
-          givenAnswer: 1,
-          points: point,
-          wrongAnswer: wrongAnswer,
-          correctAnswer: correctAnswer,
-          totalTime: options.timeCount
-        },
-        $set: { updateQuestion: { answer: options.answer} }
-      }, false, true);
+        $inc: increment,
+        $set: dataSet
+      });
     } catch (err) {
       console.log(err);
       throw new Meteor.Error(err);
