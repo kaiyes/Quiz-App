@@ -20,7 +20,13 @@ Template.playFirst.onCreated(function () {
     if (quizRoom) {
       if (quizRoom.status==='running') {
         self.countdown.stop();
-        Router.go(`/quiz/${self.roomId}`);
+        Meteor.call('createQuizSession', { roomId: self.roomId }, function (err) {
+          if(err) {
+            toastr.error('unable to create quiz session');
+          } else {
+            Router.go(`/quiz/${instance.roomId}`);
+          }
+        });
       }
     }
   })
