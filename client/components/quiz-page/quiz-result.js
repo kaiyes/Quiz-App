@@ -212,4 +212,10 @@ Template.quizResult.events({
       }
   },
 
+  "click #cross": function(event, template){
+    event.preventDefault();
+    Router.go('/challengeOpponent');
+  },
+
+
 });

@@ -9,9 +9,8 @@ Template.playFirst.onCreated(function () {
     if (Session.get('shouldTimerStart')) {
       toastr.error("Match Failed");
       console.log("timer in play first ended");
-      Router.go('/homePage');
+      Router.go('/challengeOpponent');
     } else {
-      self.countdown.stop();
       console.log("Routing Shouldn't happen");
     }
   });
@@ -76,15 +75,15 @@ Template.playFirst.events({
 
   "click #cross": function (event, instance) {
     event.preventDefault();
-
+    Router.go('/challengeOpponent');
     Meteor.call('removeRoomRequest', {_id: instance.roomId}, function (err) {
       if (!err) {
-        toastr.info("Remove challenge request");
-        Router.go('/challengeOpponent');
+        toastr.info("Removed challenge request");
       } else {
         toastr.error(err);
       }
     });
+
   },
 });
 

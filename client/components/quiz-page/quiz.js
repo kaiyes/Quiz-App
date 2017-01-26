@@ -34,8 +34,6 @@ Template.quiz.onRendered(function(){
         toastr.success('Congratulation!! quiz is finished');
         Router.go('/quiz-result/'+ self.roomId);
       }
-      self.sixSecondTimer.stop();
-      console.log("timer stopped");
     }
   });
 

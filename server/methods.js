@@ -104,14 +104,14 @@ Meteor.methods({
     },
 
     insertChallengeNotification: function (options) {
-    
+
         Notification.insert({
           challanger: options.challenger,
           defender: options.defender,
           when: options.when,
           topic: options.topic,
           chapter: options.chapter,
-          type: "challange",
+          type: "challenge",
           quizRoomId: options.quizRoomId,
         });
     },
