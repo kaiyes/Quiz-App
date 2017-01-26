@@ -18,13 +18,14 @@ Template.playFirst.onCreated(function () {
   self.autorun(function () {
     let quizRoom = QuizRooms.findOne({_id: self.roomId});
     if (quizRoom) {
+      console.log(quizRoom.status);
       if (quizRoom.status==='running') {
         self.countdown.stop();
         Meteor.call('createQuizSession', { roomId: self.roomId }, function (err) {
           if(err) {
             toastr.error('unable to create quiz session');
           } else {
-            Router.go(`/quiz/${instance.roomId}`);
+            Router.go(`/quiz/${self.roomId}`);
           }
         });
       }

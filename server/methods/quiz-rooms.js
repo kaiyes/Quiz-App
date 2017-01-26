@@ -39,6 +39,8 @@ Meteor.methods({
   },
   acceptQuizChallenge: function (options) {
     try {
+      console.log('acceptQuizChallenge');
+      console.log(options);
       QuizRooms.update({
         _id: options._id
       }, {
