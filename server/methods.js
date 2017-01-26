@@ -104,40 +104,14 @@ Meteor.methods({
     },
 
     insertChallengeNotification: function (options) {
-      // let array = QuestionBank.find({ chapter: notificationData.chapter }).fetch();
-      // let questions = _.sampleSize(array, 6);
-      //
-      //  let quizRoom = QuizRooms.insert({
-      //      challanger: notificationData.challanger,
-      //      defender: notificationData.defender,
-      //      createdAt: new Date(),
-      //      challangerRoomPoints: 0,
-      //      defenderRoomPoints:0,
-      //      questions:questions,
-      //      challangerStarted: true,
-      //      defenderStarted: false,
-      //      gameEnded:false,
-      //    });
-      //
-      //    PlayedSessions.insert({
-      //        challanger: notificationData.challanger,
-      //        defender: notificationData.defender,
-      //        questions:questions,
-      //        originalRoomId:quizRoom,
-      //        challangersPoint:0,
-      //        defendersPoint:0,
-      //        challangersRightAnswer:0,
-      //        defendersRightAnswer:0,
-      //        accuracy:0,
-      //      });
-
+    
         Notification.insert({
-          challanger: options.challanger,
+          challanger: options.challenger,
           defender: options.defender,
           when: options.when,
           topic: options.topic,
           chapter: options.chapter,
-          type: "challenge",
+          type: "challange",
           quizRoomId: options.quizRoomId,
         });
     },

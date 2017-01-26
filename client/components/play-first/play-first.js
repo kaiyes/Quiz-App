@@ -11,6 +11,7 @@ Template.playFirst.onCreated(function () {
       console.log("timer in play first ended");
       Router.go('/homePage');
     } else {
+      self.countdown.stop();
       console.log("Routing Shouldn't happen");
     }
   });
@@ -36,12 +37,6 @@ Template.playFirst.onCreated(function () {
 Template.playFirst.onRendered(function () {
   let self = this;
 
-  // self.autorun(function () {
-  //   let router = Session.get('didAccept');
-  //   if (Session.get('didAccept')) {
-  //     Router.go(`/quiz/${router}`);
-  //   }
-  // });
 
 });
 
@@ -55,19 +50,7 @@ Template.playFirst.helpers({
   },
 
   opponentStarted: function (event, instance) {
-    // var notificationData = Session.get('challangeNotification');
-    // var notification = Notification.findOne({
-    //   when: notificationData.when,
-    // });
-    // var quizRoom = QuizRooms.findOne({
-    //   _id: notification.quizRoomId,
-    // });
-    // if (quizRoom.defenderStarted) {
-    //   Session.set('didAccept', quizRoom._id);
-    //   if (Session.get('didAccept')) {
-    //     return "accepted";
-    //   }
-    // }
+
   },
 });
 
@@ -93,17 +76,7 @@ Template.playFirst.events({
 
   "click #cross": function (event, instance) {
     event.preventDefault();
-    // let notificationData = Session.get('challangeNotification');
-    // let notification = Notification.findOne({
-    //   when: notificationData.when,
-    // });
-    // let quizRoom = QuizRooms.findOne({
-    //   _id: notification.quizRoomId,
-    // });
-    //
-    // if (notification && quizRoom) {
-    //   Meteor.call("removeChallangeNotification", notification._id, notification.quizRoomId);
-    // }
+
     Meteor.call('removeRoomRequest', {_id: instance.roomId}, function (err) {
       if (!err) {
         toastr.info("Remove challenge request");
