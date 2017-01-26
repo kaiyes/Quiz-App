@@ -75,29 +75,18 @@ Meteor.methods({
   },
   storeQuizAnswer: function (options) {
     try {
+      console.log(options);
       let increment = {};
       let quizRoom = QuizRooms.findOne({_id: options.roomId});
       let question = quizRoom.questions[options.questionIndex];
-
-      if (quizRoom.challenger._id === Meteor.userId()) {
-        QuizRooms.update({_id: options.roomId }, {
-          $inc: { 'challenger.totalPoint': options.point, 'challenger.totalTime': options.timeCount }
-        })
-      } else if (quizRoom.defender._id === Meteor.userId()) {
-        QuizRooms.update({_id: options.roomId }, {
-          $inc: { 'defender.totalPoint': options.point, 'defender.totalTime': options.timeCount }
-        })
-      } else {
-        return new Meteor.Error('permission denied')
-      }
 
       let dataSet = {};
       dataSet[`questions.${options.questionIndex}.answer`] = options.answer;
 
       increment.givenAnswer = 1;
-      increment.totalTIme = options.totalTime;
+      increment.totalTIme = options.timeCount;
       if (question.rightAnswer == options.answer) {
-        increment.point = 10;
+        increment.points = 10;
         increment.correctAnswer = 1;
       } else {
         increment.wrongAnswer = 1;
@@ -105,7 +94,19 @@ Meteor.methods({
 
       if (question.length === (options.questionIndex+1)) {
         dataSet.isCompleted = true;
-        increment.point *= 2;
+        increment.points *= 2;
+      }
+
+      if (quizRoom.challenger._id === Meteor.userId()) {
+        QuizRooms.update({_id: options.roomId }, {
+          $inc: { 'challenger.totalPoint': increment.points, 'challenger.totalTime': options.timeCount }
+        })
+      } else if (quizRoom.defender._id === Meteor.userId()) {
+        QuizRooms.update({_id: options.roomId }, {
+          $inc: { 'defender.totalPoint': increment.points, 'defender.totalTime': options.timeCount }
+        })
+      } else {
+        return new Meteor.Error('permission denied')
       }
 
       const isUpdate = PlayedSessions.update({
@@ -118,7 +119,9 @@ Meteor.methods({
 
       if (question.length === (options.questionIndex+1)) {
         if (quizRoom.defender._id === Meteor.userId()) {
-          QuizRooms.update({_id: quizRoom._id}, {$set: { status: 'completed' }})
+          QuizRooms.update({_id: quizRoom._id}, {$set: { 'defender.isCompleted': true }})
+        } else {
+          QuizRooms.update({_id: quizRoom._id}, {$set: { 'challenger.isCompleted': true }})
         }
       }
 
