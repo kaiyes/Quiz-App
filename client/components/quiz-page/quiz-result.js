@@ -59,7 +59,24 @@ Template.quizResult.helpers({
     let data = Session.get('question');
     return data;
   },
+  questionRightAnswer(answer){
+    console.log(this);
+    console.log(answer);
+    if (this.rightAnswer == answer) {
+      return 'eddy--sqr-buttons__plan__primary'
+    } else {
+      return 'eddy--sqr-buttons__price';
+    }
 
+  },
+  userGivenAnswer(answer){
+    console.log(answer);
+    if (this.answer == answer) {
+      return 'eddy--sqr-buttons__product__primary'
+    } else {
+      return 'eddy--sqr-buttons__price';
+    }
+  },
   indexOfTopic: function(){
     let resultRoomId = Router.current().params._id;
     let room =  PlayedSessions.findOne({ quizRoomId: resultRoomId });
