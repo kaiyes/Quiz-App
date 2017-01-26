@@ -129,6 +129,9 @@ Template.quiz.events({
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
+
+    let time = sixSecondTimer.get();
+    sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
@@ -140,14 +143,18 @@ Template.quiz.events({
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
+
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
+
         };
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
+    let time = sixSecondTimer.get();
+    sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
     event.preventDefault();
@@ -159,14 +166,18 @@ Template.quiz.events({
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
+
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
+
         };
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
+    let time = sixSecondTimer.get();
+    sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
     event.preventDefault();
@@ -178,14 +189,18 @@ Template.quiz.events({
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
+
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
+
         };
 
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
+    let time = sixSecondTimer.get();
+    sixSecondTimer.remove(time);
   }
 });
