@@ -33,6 +33,14 @@ Template.quizResult.onRendered(function() {
 });
 
 Template.quizResult.helpers({
+  rank: function () {
+    let resultRoomId = Router.current().params._id;
+    let quizRoom = QuizRooms.findOne({ _id: resultRoomId});
+    let courseRanking = Courses.findOne({ courseName: quizRoom.course }).ranking;
+    courseRanking = _.sortBy(courseRanking, ['points']);
+
+    return _.findIndex(courseRanking, { 'userId': Meteor.userId() });
+  },
   resultRoom: function(){
     let resultRoomId = Router.current().params._id;
     return QuizRooms.findOne({ _id: resultRoomId});
