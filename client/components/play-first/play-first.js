@@ -10,7 +10,7 @@ Template.playFirst.onRendered(function(){
     if (Session.get('shouldTimerStart')) {
       toastr.error("Match Failed");
       console.log("timer in play first ended");
-      Router.go('/homePage');
+      Router.go('/challengeOpponent');
     } else {
       console.log("Routing Shouldn't happen");
     }
@@ -58,7 +58,8 @@ Template.playFirst.events({
   "click #play": function(event, instance){
     let sessionData = Session.get('challangeNotification');
     let time = sessionData.when;
-    let handle = Notification.findOne({ when: time.when });
+    console.log(time);
+    let handle = Notification.findOne({ when: time });
     Router.go(`/quiz/${handle.quizRoomId}`);
   },
 

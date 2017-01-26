@@ -116,7 +116,8 @@ Meteor.methods({
            questions:questions,
            challangerStarted: true,
            defenderStarted: false,
-           gameEnded:false,
+           challangerPlayed:false,
+           defenderPlayed:false,
          });
 
          PlayedSessions.insert({
