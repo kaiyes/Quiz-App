@@ -44,6 +44,7 @@ Template.quiz.onDestroyed(function () {
   // Session.set('challangeNotification', null);
   // Session.set('didAccept', null);
   // Session.set('question',null);
+    self.sixSecondTimer.stop();
 });
 
 

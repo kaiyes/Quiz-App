@@ -119,4 +119,5 @@ Template.playFirst.onDestroyed(function () {
   Session.set('challangeNotification', null);
   Session.set('shouldTimerStart', false);
   Session.set('didAccept', null);
+  self.countdown.stop();
 });
