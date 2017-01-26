@@ -85,6 +85,7 @@ Meteor.methods({
 
       increment.givenAnswer = 1;
       increment.totalTIme = options.timeCount;
+      increment.points = 0;
       if (question.rightAnswer == options.answer) {
         increment.points = 10;
         increment.correctAnswer = 1;
@@ -92,7 +93,8 @@ Meteor.methods({
         increment.wrongAnswer = 1;
       }
 
-      if (question.length === (options.questionIndex+1)) {
+      if (options.questionIndex == 5) {
+        console.log('match')
         dataSet.isCompleted = true;
         increment.points *= 2;
       }
@@ -117,11 +119,47 @@ Meteor.methods({
         $set: dataSet
       });
 
-      if (question.length === (options.questionIndex+1)) {
+      if (dataSet.isCompleted) {
         if (quizRoom.defender._id === Meteor.userId()) {
           QuizRooms.update({_id: quizRoom._id}, {$set: { 'defender.isCompleted': true }})
         } else {
           QuizRooms.update({_id: quizRoom._id}, {$set: { 'challenger.isCompleted': true }})
+        }
+        let newQuizRoom = QuizRooms.findOne({_id: quizRoom._id})
+
+        if ((newQuizRoom.challenger.isCompleted === true) && (newQuizRoom.defender.isCompleted === true)) {
+          QuizRooms.update({_id: quizRoom._id}, {$set: { 'status': 'completed' }});
+
+          let userCourseArray = Meteor.users.findOne({_id: newQuizRoom.challenger._id}).profile.selectedCourses;
+          let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': newQuizRoom.course });
+          let increasePoints = {};
+          increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = newQuizRoom.challenger.totalPoint;
+          Meteor.users.update({
+            _id: newQuizRoom.challenger._id
+          }, {  $inc:   increasePoints });
+          console.log('complete challenger point');
+
+          let defenderCourseArray = Meteor.users.findOne({_id: newQuizRoom.defender._id}).profile.selectedCourses;
+          let defenderCoursesIndex = _.findIndex(defenderCourseArray, { 'courseName': newQuizRoom.course });
+          let defenderPoints = {};
+          defenderPoints[`profile.selectedCourses.${defenderCoursesIndex}.points`] = newQuizRoom.defender.totalPoint;
+          Meteor.users.update({
+            _id: newQuizRoom.defender._id
+          }, {  $inc:   defenderPoints });
+          console.log('complete defender point');
+
+          let courseRanking = Courses.findOne({ courseName: newQuizRoom.course }).ranking;
+          let challengerIndexCourse = _.findIndex(courseRanking, { 'userId': newQuizRoom.challenger._id });
+          let defenderIndexCourse = _.findIndex(courseRanking, { 'userId': newQuizRoom.defender._id });
+
+          let increaseCoursePoints = {};
+          increaseCoursePoints[`ranking.${challengerIndexCourse}.points`] = newQuizRoom.challenger.totalPoint;
+          increaseCoursePoints[`ranking.${defenderIndexCourse}.points`] = newQuizRoom.defender.totalPoint;
+          console.log(increaseCoursePoints);
+          let isCourseUpdate = Courses.update({ courseName: newQuizRoom.course }, {  $inc:   increaseCoursePoints });
+
+          console.log(isCourseUpdate);
+
         }
       }
 
