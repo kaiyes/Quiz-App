@@ -1,4 +1,4 @@
-var countdown = new ReactiveCountdown(120);
+var countdown = new ReactiveCountdown(6);
 
 Template.playFirst.onCreated(function(){
     Session.set('shouldTimerStart', true);
@@ -19,6 +19,7 @@ Template.playFirst.onRendered(function(){
   this.autorun(function(){
     let router = Session.get('didAccept');
       if (Session.get('didAccept')) {
+        countdown.stop();
         Router.go(`/quiz/${router}`);
       }
 
@@ -82,4 +83,5 @@ Template.playFirst.onDestroyed(function () {
   Session.set('challangeNotification', null);
   Session.set('shouldTimerStart', false);
   Session.set('didAccept', null);
+  countdown.stop();
 });

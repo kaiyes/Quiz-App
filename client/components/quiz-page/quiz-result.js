@@ -68,6 +68,11 @@ Template.quizResult.events({
     Router.go('/challengeOpponent');
   },
 
+  "click #cross": function(event, template){
+    event.preventDefault();
+    Router.go('/homePage');
+  },
+
   "click #left": function(event, template){
     event.preventDefault();
     let resultRoomId = Router.current().params._id;
