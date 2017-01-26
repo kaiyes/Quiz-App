@@ -60,6 +60,7 @@ Template.playFirst.events({
     let time = sessionData.when;
     console.log(time);
     let handle = Notification.findOne({ when: time });
+    Meteor.call("updatePlayFirst", handle.quizRoomId );
     Router.go(`/quiz/${handle.quizRoomId}`);
   },
 

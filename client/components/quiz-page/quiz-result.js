@@ -171,20 +171,23 @@ Template.quizResult.helpers({
     let resultRoomId = Router.current().params._id;
     let room =  PlayedSessions.findOne({ _id: resultRoomId });
 
-    if (room.challangersPoint > room.defendersPoint) {
-      if (Meteor.userId()===room.challanger._id ) {
-         return 'you won :D';
-      } else {
-         return 'you lost :(';
-      }
-    } else if (room.challangersPoint < room.defendersPoint){
-      if (Meteor.userId()===room.challanger._id ) {
-         return 'you lost :(';
-      } else {
-          return 'you won :D';
-      }
-    };
-
+    if (room.playfirst) {
+       return 'result will be displayed after opponent has played';
+    } else {
+      if (room.challangersPoint > room.defendersPoint) {
+        if (Meteor.userId()===room.challanger._id ) {
+           return 'you won :D';
+        } else {
+           return 'you lost :(';
+        }
+      } else if (room.challangersPoint < room.defendersPoint){
+        if (Meteor.userId()===room.challanger._id ) {
+           return 'you lost :(';
+        } else {
+            return 'you won :D';
+        }
+      };
+    }
   },
 
 });

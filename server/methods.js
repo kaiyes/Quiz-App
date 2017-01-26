@@ -130,6 +130,7 @@ Meteor.methods({
              challangersRightAnswer:0,
              defendersRightAnswer:0,
              accuracy:0,
+             playfirst:false,
            });
 
         Notification.insert({
@@ -294,6 +295,13 @@ Meteor.methods({
       };
 
     },
+
+    updatePlayFirst: function (quizRoomId) {
+       PlayedSessions.update(
+         { originalRoomId: quizRoomId },
+         { $set:{ playfirst: true }}
+       );
+     },
 
     test:function () {
       console.log("working");
