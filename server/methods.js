@@ -219,8 +219,12 @@ Meteor.methods({
       console.log("defenders point updated");
     },
 
-    endGame:function(quizRoomId){
-        QuizRooms.update({ _id: quizRoomId }, { $set: { gameEnded: true }});
+    endGameForChallanger:function(quizRoomId){
+        QuizRooms.update({ _id: quizRoomId }, { $set: { challangerPlayed : true }});
+    },
+
+    endGameForDefender:function(quizRoomId){
+        QuizRooms.update({ _id: quizRoomId }, { $set: { defenderPlayed : true }});
     },
 
     updateSessionData: function (quizRoomId, givenAnswer, questionNumber) {
@@ -303,13 +307,4 @@ Meteor.methods({
        );
      },
 
-    test:function () {
-      console.log("working");
-      let index = 0;
-      let toUpdate = {};
-      toUpdate[`profile.selectedCourses.${index}.points`] = 100;
-
-      Meteor.users.update({ _id: this.userId },
-        {  $inc:   toUpdate });
-    },
 });
