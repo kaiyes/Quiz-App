@@ -154,7 +154,7 @@ Meteor.methods({
      },
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
-      QuizRooms.remove({ _id: quizRoomId });
+
       let notification = Notification.findOne({
         _id: notificationId,
        });
@@ -162,12 +162,12 @@ Meteor.methods({
           Notification.remove({ _id: notificationId });
        };
 
-       let quizRoom = QuizRooms.findOne({
-         _id: quizRoomId,
-        });
-        if (quizRoom) {
-           QuizRooms.remove({ _id: quizRoomId });
-        };
+      //  let quizRoom = QuizRooms.findOne({
+      //    _id: quizRoomId,
+      //   });
+      //   if (quizRoom) {
+      //      QuizRooms.remove({ _id: quizRoomId });
+      //   };
     },
 
     incChallangerRoomPoints: function( quizRoomId ){
@@ -219,6 +219,30 @@ Meteor.methods({
       Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
 
       console.log("defenders point updated");
+    },
+
+    updateChallangersAccuracy:function (resultRoomId, accuracy) {
+      let resultRoom = PlayedSessions.findOne({_id: resultRoomId });
+      let topic = resultRoom.questions[0].topic;
+      let userCourseArray = Meteor.user().profile.selectedCourses;
+      let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+      let addAccuracy = {};
+      addAccuracy[`profile.selectedCourses.${thisCoursesIndex}.accuracy`] = accuracy;
+
+      Meteor.users.update({ _id: this.userId },
+        {  $addToSet:   addAccuracy });
+    },
+
+    updateDefendersAccuracy:function (resultRoomId, accuracy) {
+      let resultRoom = PlayedSessions.findOne({_id: resultRoomId });
+      let topic = resultRoom.questions[0].topic;
+      let userCourseArray = Meteor.user().profile.selectedCourses;
+      let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+      let addAccuracy = {};
+      addAccuracy[`profile.selectedCourses.${thisCoursesIndex}.accuracy`] = accuracy;
+
+      Meteor.users.update({ _id: this.userId },
+        {  $addToSet:   addAccuracy });
     },
 
     endGameForChallanger:function(quizRoomId){

@@ -1,8 +1,17 @@
+Template.stats.onCreated(function() {
+  let topicName = Session.get('topicName');
+  let array = Meteor.user().profile.selectedCourses;
+  let course = _.find(array, {'courseName': topicName });
+  let accuracyArray = course.accuracy;
+  let accuracy=  _.mean(accuracyArray);
+  Session.set('percent', accuracy);
+});
+
 Template.stats.onRendered(function() {
   $(document).ready(function(){
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
-        percent = 65,
+        percent = parseInt($ppc.data('percent')),
         deg = 360*percent/100;
       if (percent > 50) {
         $ppc.addClass('gt-50');
@@ -34,8 +43,7 @@ Template.stats.helpers({
       return 0;
     } else {
       return ranking;
-    }
-
+    };
   },
 
   point: function(){
@@ -43,6 +51,7 @@ Template.stats.helpers({
     let array = Meteor.user().profile.selectedCourses;
     return _.find(array, {'courseName': topicName });
   },
+
 
 });
 
