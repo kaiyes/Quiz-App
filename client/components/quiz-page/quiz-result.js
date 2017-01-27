@@ -17,6 +17,7 @@ Template.quizResult.onCreated(function() {
   Session.set('number', 0);
 });
 
+
 Template.quizResult.onRendered(function() {
 
   $(document).ready(function	(){
@@ -33,6 +34,56 @@ Template.quizResult.onRendered(function() {
   });
 
 });
+
+Template.quizResult.helpers({
+  ranking: function(){
+    let resultRoomId = Router.current().params._id;
+    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let topic = room.questions[0].topic;
+
+    let rankingArray =  Courses.findOne({ courseName: topic }).ranking;
+    let points = _.sortBy(rankingArray, ['points']);
+    let reverse = _.reverse(points);
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+
+    if (ranking===0) {
+      return 0;
+    } else {
+      return ranking;
+    };
+  },
+
+  rightAnswer:function(answer) {
+    if (this.rightAnswer === answer) {
+     return 'eddy--sqr-buttons__plan__primary'
+   }
+ },
+
+ usersAnswer:function(answer){
+
+   let resultRoomId = Router.current().params._id;
+   let room = PlayedSessions.findOne({ _id: resultRoomId });
+
+   if ( Meteor.userId()===room.challanger._id ){
+       if (this.challangersAnswer=== answer) {
+        return 'eddy--sqr-buttons__product__primary'
+      } else {
+        return 'eddy--sqr-buttons__price'
+      }
+   };
+
+   if ( Meteor.userId()===room.defender._id ){
+     if (this.defendersAnswer=== answer) {
+      return 'eddy--sqr-buttons__product__primary'
+    } else {
+      return 'eddy--sqr-buttons__price'
+    }
+   };
+
+ },
+
+});
+
 
 Template.quizResult.events({
 

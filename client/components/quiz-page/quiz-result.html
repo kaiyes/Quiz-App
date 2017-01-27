@@ -104,8 +104,17 @@
                               <div class="eddy-quiz-result--rank text-center">
                                 <h4 class="margin-0 eddy-stats__title">NEW RANK</h4>
                                 <div class="eddy-rank margin-top-10">
-                                  <span>4</span>
-                                  <span class="eddy-rank--badge"><i class="zmdi zmdi-bookmark" aria-hidden="true"></i></span>
+                                  <span>   {{#with ranking}}
+                                              {{this}}
+                                              {{/with}}
+                                    </span>
+                                  <span class="eddy-rank--badge">
+                                    <i class="zmdi zmdi-bookmark" aria-hidden="true">
+                                      {{#with ranking}}
+                                          {{this}}
+                                      {{/with}}
+                                   </i>
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -163,10 +172,14 @@
                               </p>
                           </div>
                           <div class="padding-h-5 padding-bottom-20">
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price margin-top-15">{{this.firstAnswer}}</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan eddy--sqr-buttons__plan__primary margin-top-15">{{this.secondAnswer}}</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place margin-top-15">{{this.thirdAnswer}}</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product__primary margin-top-15">{{this.fourthAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.firstAnswer}} {{usersAnswer this.firstAnswer}}">{{this.firstAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.secondAnswer}} {{usersAnswer this.secondAnswer}}">{{this.secondAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.thirdAnswer}} {{usersAnswer this.thirdAnswer}}">{{this.thirdAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.fourthAnswer}} {{usersAnswer this.fourthAnswer}}">{{this.fourthAnswer}}</a>
                           </div>
                         </div>
                       </div>
