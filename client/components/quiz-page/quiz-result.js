@@ -2,17 +2,22 @@ Template.quizResult.onCreated(function() {
 
   let resultRoomId = Router.current().params._id;
   let room = PlayedSessions.findOne({ _id: resultRoomId });
+
+  // if (room.challangerPlayed && room.defenderPlayed) {
+  //   console.log("both played");
+  //   Meteor.call("makePlayFirstFalse",resultRoomId);
+  // };
+
   if (Meteor.userId()===room.challanger._id ){
     let accuracy = (room.challangersRightAnswer/6)*100;
     Session.set('percent', accuracy);
-  }
+  };
   if (Meteor.userId()===room.defender._id ){
     let accuracy = (room.defendersRightAnswer/6)*100;
     Session.set('percent', accuracy);
-  }
+  };
   Session.set('question', room.questions[0]);
   Session.set('number', 0);
-
 });
 
 Template.quizResult.onRendered(function() {
@@ -70,7 +75,7 @@ Template.quizResult.events({
 
   "click #cross": function(event, template){
     event.preventDefault();
-    Router.go('/homePage');
+    Router.go('/challengeOpponent');
   },
 
   "click #left": function(event, template){

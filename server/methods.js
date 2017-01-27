@@ -131,6 +131,8 @@ Meteor.methods({
              defendersRightAnswer:0,
              accuracy:0,
              playfirst:false,
+             challangerPlayed:false,
+             defenderPlayed:false,
            });
 
         Notification.insert({
@@ -221,11 +223,33 @@ Meteor.methods({
 
     endGameForChallanger:function(quizRoomId){
         QuizRooms.update({ _id: quizRoomId }, { $set: { challangerPlayed : true }});
+        PlayedSessions.update(
+          { originalRoomId: quizRoomId },
+          { $set:{ challangerPlayed: true }}
+        );
     },
 
     endGameForDefender:function(quizRoomId){
         QuizRooms.update({ _id: quizRoomId }, { $set: { defenderPlayed : true }});
+        PlayedSessions.update(
+          { originalRoomId: quizRoomId },
+          { $set:{ defenderPlayed: true }}
+        );
     },
+
+    updatePlayFirst: function (quizRoomId) {
+       PlayedSessions.update(
+         { originalRoomId: quizRoomId },
+         { $set:{ playfirst: true }}
+       );
+     },
+
+     makePlayFirstFalse: function (resultRoomId) {
+        PlayedSessions.update(
+          { _id: resultRoomId },
+          { $set:{ playfirst: false }}
+        );
+      },
 
     updateSessionData: function (quizRoomId, givenAnswer, questionNumber) {
       let quizRoom = QuizRooms.findOne({ _id:  quizRoomId });
@@ -300,11 +324,5 @@ Meteor.methods({
 
     },
 
-    updatePlayFirst: function (quizRoomId) {
-       PlayedSessions.update(
-         { originalRoomId: quizRoomId },
-         { $set:{ playfirst: true }}
-       );
-     },
 
 });

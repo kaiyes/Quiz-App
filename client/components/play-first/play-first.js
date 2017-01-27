@@ -27,6 +27,13 @@ Template.playFirst.onRendered(function(){
 
 });
 
+Template.playFirst.onDestroyed(function () {
+  Session.set('challangeNotification', null);
+  Session.set('shouldTimerStart', false);
+  Session.set('didAccept', null);
+  countdown.stop();
+});
+
 Template.playFirst.helpers({
   userInfo: function(){
     return Session.get('playerInfo');
@@ -66,6 +73,8 @@ Template.playFirst.events({
 
   "click #cross": function(event, instance){
      toastr.error("Match Failed");
+     Router.go('/challengeOpponent');
+
      let notificationData = Session.get('challangeNotification');
      let notification = Notification.findOne({
        when: notificationData.when,
@@ -77,13 +86,6 @@ Template.playFirst.events({
       if (notification && quizRoom) {
          Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
       };
-      Router.go('/challengeOpponent');
-  },
-});
 
-Template.playFirst.onDestroyed(function () {
-  Session.set('challangeNotification', null);
-  Session.set('shouldTimerStart', false);
-  Session.set('didAccept', null);
-  countdown.stop();
+  },
 });

@@ -40,13 +40,21 @@ Template.quiz.onRendered(function(event, instance){
 
                       if (Meteor.userId()===quizRoom.challanger._id ){
                         Meteor.call("endGameForChallanger", quizRoomId );
+                          if ( quizRoom.defenderPlayed) {
+                            console.log("logging from challenger");
+                            Meteor.call("makePlayFirstFalse",resultRoom._id);
+                          };
                       };
 
                       if (Meteor.userId()===quizRoom.defender._id ){
                         Meteor.call("endGameForDefender", quizRoomId );
+                          if ( quizRoom.challangerPlayed) {
+                            console.log("logging from defender played");
+                            Meteor.call("makePlayFirstFalse",resultRoom._id);
+                          };
                       };
 
-                       Router.go(`/quiz-result/${resultRoom._id}`);
+                       Router.go(`/quizResult/${resultRoom._id}`);
                       });
                   });
               });
