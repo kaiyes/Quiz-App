@@ -11,6 +11,10 @@ Template.settings.events({
     Router.go('/editProfile');
   },
 
+  "click #admin": function(event, template){
+    Router.go('/adminPanel');
+  },
+
   "click #help": function(event, template){
     Router.go('/help');
   },

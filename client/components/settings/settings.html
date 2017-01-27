@@ -27,6 +27,16 @@
             <div class="page-content eddy-settings">
               <div class="list-block margin-top-90">
                 <ul>
+                  {{#if currentUser.profile.isAdmin}}
+                    <li id="admin" class="item-content cur-pointer close-popup padding-left-30">
+                      <div class="item-media">
+                        <i class="zmdi zmdi-rotate-right zmdi-hc-spin eddy-settings__list__icons"></i>
+                      </div>
+                      <div  class="item-inner padding-v-20">
+                        <div  class="item-title eddy-settings__list">ADMIN PANEL</div>
+                      </div>
+                    </li>
+                  {{/if}}
                   <li class="item-content cur-pointer padding-left-30">
                     <div class="item-media">
                       <i class="zmdi zmdi-favorite-outline eddy-settings__list__icons"></i>

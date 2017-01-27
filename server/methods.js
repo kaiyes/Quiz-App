@@ -348,5 +348,16 @@ Meteor.methods({
 
     },
 
+    insertCourses: function (obj) {
+      let ifCourseExists = Courses.findOne({ courseName: obj.courseName });
+      if (!ifCourseExists) {
+        Courses.insert({
+          courseName: obj.courseName,
+          chapters: obj.chapters,
+          ranking:[],
+        });
+      }
+     },
+
 
 });
