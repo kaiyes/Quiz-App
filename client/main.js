@@ -1,4 +1,5 @@
 Meteor.startup(function(){
+
    myApp = new Framework7({
       fastClicks: true,
       materialRipple:true,
@@ -27,9 +28,22 @@ Meteor.startup(function(){
       cloud_name: 'jahanara',
     });
 
-  //  var courseCount = Courses.find().count();
-  //  if (courseCount<=0) {
-  //    Courses.insert({ "courseName": "science", "chapters":['biology', 'maths']});
-  //    Courses.insert({ "courseName": "art", "chapters":['history', 'ভূগোল']})
-  //  }
+    Push.Configure({
+      // android: {
+      //   senderID: 12341234,
+      //   alert: true,
+      //   badge: true,
+      //   sound: true,
+      //   vibrate: true,
+      //   clearNotifications: true
+      //   // icon: '',
+      //   // iconColor: ''
+      // },
+      ios: {
+        alert: true,
+        badge: true,
+        sound: true
+      }
+    });
+
 });
