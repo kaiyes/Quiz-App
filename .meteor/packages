@@ -60,7 +60,7 @@ thinksoftware:image-resize-client
 momentjs:moment
 raix:handlebar-helpers
 flyandi:reactive-countdown
-raix:push
+raix:push@3.0.3-rc.5
 
 #######################################################
 #                To be removed in production          #

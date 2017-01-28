@@ -7,17 +7,15 @@
   });
 
 
+    Push.debug = true;
 
     Push.Configure({
       apn: {
-        certData: Assets.getText('PushChatCert.pem'),
-        keyData: Assets.getText('PushChatKey.pem'),
-        passphrase: 'eddie',
-        production: false,
+        certData: Assets.getText('eddie-prod-cert.pem'),
+        keyData: Assets.getText('eddie-prod-key.pem'),
+        passphrase: '84pk8uu3',
+        production: true,
         gateway: 'gateway.push.apple.com',
       },
-      // gcm: {
-      //   apiKey: 'xxxxxxx',
-      // }
 
     });
