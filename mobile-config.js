@@ -26,5 +26,5 @@ App.appendToConfig(`<platform name="ios">
   </platform>`);
 
   App.configurePlugin('phonegap-plugin-push', {
-    //SENDER_ID: 12341234
+    SENDER_ID: 12341234
   });
