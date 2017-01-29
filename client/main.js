@@ -38,8 +38,4 @@ Meteor.startup(function(){
       }
    });
 
-   Push.addListener('token', function(token) {
-     alert(JSON.stringify(token));
-   });
-
 });

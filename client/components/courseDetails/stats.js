@@ -39,9 +39,12 @@ Template.stats.helpers({
     let reverse = _.reverse(points);
     let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
 
-    if (ranking===0) {
-      return 0;
+    if (ranking<=0) {
+      console.log(ranking);
+      // return 1;
+      return 'king';
     } else {
+      // return ranking+1;
       return ranking;
     };
   },
