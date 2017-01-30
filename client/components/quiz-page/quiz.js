@@ -231,5 +231,30 @@ Template.quiz.events({
     Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
     let time = sixSecondTimer.get();
     sixSecondTimer.remove(time);
-  }
+  },
+
+  'click #surrender':function(event,template){
+    event.preventDefault();
+    let quizRoomId = Router.current().params._id;
+    let resultRoom = PlayedSessions.findOne({ originalRoomId: quizRoomId });
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    if (Meteor.userId()===quizRoom.challanger._id ){
+      Meteor.call("endGameForChallanger", quizRoomId );
+        if ( quizRoom.defenderPlayed) {
+          console.log("logging from challenger");
+          Meteor.call("makePlayFirstFalse",resultRoom._id);
+        };
+    };
+
+    if (Meteor.userId()===quizRoom.defender._id ){
+      Meteor.call("endGameForDefender", quizRoomId );
+        if ( quizRoom.challangerPlayed) {
+          console.log("logging from defender played");
+          Meteor.call("makePlayFirstFalse",resultRoom._id);
+        };
+    };
+    Router.go(`/quizResult/${resultRoom._id}`);
+
+  },
+
 });
