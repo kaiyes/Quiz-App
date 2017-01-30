@@ -46,8 +46,8 @@ Template.quizResult.helpers({
     let reverse = _.reverse(points);
     let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
 
-    if (ranking===0) {
-      return 0;
+    if (ranking<=0) {
+      return 'king';
     } else {
       return ranking;
     };

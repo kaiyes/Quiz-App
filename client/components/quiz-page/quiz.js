@@ -253,6 +253,7 @@ Template.quiz.events({
           Meteor.call("makePlayFirstFalse",resultRoom._id);
         };
     };
+    sixSecondTimer.stop();
     Router.go(`/quizResult/${resultRoom._id}`);
 
   },
