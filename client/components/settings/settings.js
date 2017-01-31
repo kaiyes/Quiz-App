@@ -24,7 +24,7 @@ Template.settings.events({
   },
 
   "click #mantra": function(event, template){
-    Router.go('/mantra');
+    //Router.go('/mantra');
   },
 
   "click #logout": function(event, template){
