@@ -6,6 +6,11 @@ Meteor.startup(function(){
     });
    $$ = Dom7;
 
+   Transitioner.default({
+     in: "transition.slideRightIn",
+     out: "transition.slideRightOut"
+   });
+
    toastr.options = {
       "closeButton": false,
       "debug": false,
