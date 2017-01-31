@@ -42,7 +42,7 @@ Template.community.events({
       createdAt: new Date(),
       likes:[],
       comments:[],
-      topicName:topicName
+      topicName
     };
 
     Meteor.call('insertPost', payload);

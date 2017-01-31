@@ -24,6 +24,7 @@ Meteor.methods({
           user: Meteor.user(),
           points: 10,
           userId: this.userId,
+          name: Meteor.user().profile.name,
         };
 
        topicsChosen.forEach(function(q){
@@ -56,6 +57,18 @@ Meteor.methods({
         when: new Date(),
         type: "post",
         createdBy: payload.createdBy,
+      });
+
+      let text =`${payload.createdBy.profile.name} posted in ${payload.topicName}` ;
+      let usersArray = Courses.findOne({ courseName:`${payload.topicName}` }).ranking;
+      let users = _.map(usersArray,'userId');
+
+      Push.send({
+        text,
+        title:"Comment",
+        from:"User",
+        badge: 1,
+        query: { userId: {$in: users} },
       });
     },
 

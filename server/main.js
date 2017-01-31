@@ -14,8 +14,8 @@
         certData: Assets.getText('eddieCert.pem'),
         keyData: Assets.getText('eddieKey.pem'),
         passphrase: '84pk8uu3',
-        production: true,
-        gateway: 'gateway.push.apple.com',
+        production: false ,
+        gateway: 'gateway.sandbox.push.apple.com',
       },
 
     });
