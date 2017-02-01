@@ -113,6 +113,10 @@ Template.editProfile.events({
           });
     },
 
+    "click #backButton": function(event, template){
+       event.preventDefault();
+       window.history.back();
+    },
 
     "click .p-form:nth-of-type(1)": function(event, template) {
         $(".page-content").animate({

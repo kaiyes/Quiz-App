@@ -1,5 +1,4 @@
 <template name="resultExplanation">
-  <div class="popup popup-explanation tablet-fullscreen">
     <div class="views">
       <div class="view view-main">
         <div class="pages">
@@ -9,8 +8,8 @@
               {{#with answer}}
                 <div class="flex-direction--column full-height">
                   <div class="flex--1">
-                    <div class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">
-                      <a href="#" class="close-popup link icon-only text-center">
+                    <div id="cross" class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">
+                      <a href="#" class="link icon-only text-center">
                         <i class="zmdi zmdi-close eddy-result-exp__close font-size-fixed-24 margin-top-10"></i>
                       </a>
                     </div>
@@ -26,12 +25,6 @@
                       <div class="flex-direction--row">
                         <button type="button" class="button eddy-community--post--like-cmnt-btn iconic-tap--small">
                             <i class="zmdi zmdi-favorite"></i>
-
-                            {{!
-                              use commented code for like done case
-                              <i class="zmdi zmdi-favorite eddy-community--post--liked"></i>
-                            }}
-
                         </button>
 
                         <button type="button" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn iconic-tap--small">
@@ -53,5 +46,4 @@
         </div>
       </div>
     </div>
-  </div>
 </template>

@@ -37,6 +37,7 @@ Template.challengeOpponent.events({
     Meteor.call("insertChallangeNotification", notificationData);
     Router.go('/playFirst');
   },
+
   'click #randomOpponent'(event) {
     event.preventDefault();
     let topicName = Session.get('topicName');
@@ -67,5 +68,6 @@ Template.challengeOpponent.events({
         Router.go('/playFirst');
       }
     });
-  }
+  },
+  
 });

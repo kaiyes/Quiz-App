@@ -65,8 +65,8 @@ Meteor.methods({
 
       Push.send({
         text,
-        title:"Comment",
-        from:"User",
+        title:"Post",
+        from:"Poster",
         badge: 1,
         query: { userId: {$in: users} },
       });
@@ -82,6 +82,17 @@ Meteor.methods({
          when: new Date(),
          type: "comment",
          commenter: commentPayload.commenter,
+       });
+
+       let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
+       let userId = commentPayload.postCreator._id;
+
+       Push.send({
+         text,
+         title:"Comment",
+         from:"commenter",
+         badge: 1,
+         query: { userId: userId },
        });
     },
 
@@ -99,6 +110,16 @@ Meteor.methods({
         type: "like",
         liker: liker,
       });
+
+      let text =`${liker.profile.name} liked your post in ${post.topicName}`;
+
+      Push.send({
+        text,
+        title:"Comment",
+        from:"Liker",
+        badge: 1,
+        query: { userId: post.createdBy._id },
+      });
     },
 
     likeAcomment: function ( commentData, liker ) {
@@ -113,6 +134,15 @@ Meteor.methods({
          when: new Date(),
          type: "commentLike",
          liker: liker,
+       });
+
+       let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
+       Push.send({
+         text,
+         title:"Comment",
+         from:"Liker",
+         badge: 1,
+         query: { userId: commentData.commenter._id },
        });
     },
 
@@ -156,6 +186,15 @@ Meteor.methods({
           chapter: notificationData.chapter,
           type: "challange",
           quizRoomId: quizRoom,
+        });
+
+        let text =`${notificationData.challanger.profile.name} Challenged you in ${notificationData.topic}`;
+        Push.send({
+          text,
+          title:"Challenge",
+          from:"Challenger",
+          badge: 1,
+          query: { userId: notificationData.defender._id },
         });
     },
 

@@ -11,11 +11,14 @@
 
     Push.Configure({
       apn: {
-        certData: Assets.getText('eddieCert.pem'),
-        keyData: Assets.getText('eddieKey.pem'),
+        // certData: Assets.getText('eddieCert.pem'),
+        // keyData: Assets.getText('eddieKey.pem'),
+        certData: Assets.getText('eddieCertProd.pem'),
+        keyData: Assets.getText('eddieKeyProd.pem'),
         passphrase: '84pk8uu3',
-        production: false ,
-        gateway: 'gateway.sandbox.push.apple.com',
+        production: true ,
+        // gateway: 'gateway.sandbox.push.apple.com',
+        gateway: 'gateway.push.apple.com',
       },
 
     });

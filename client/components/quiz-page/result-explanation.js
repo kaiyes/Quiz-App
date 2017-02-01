@@ -6,3 +6,10 @@ Template.resultExplanation.helpers({
   },
 
 });
+
+Template.resultExplanation.events({
+  "click #cross": function(event, template){
+     event.preventDefault();
+     window.history.back();
+  }
+});
