@@ -61,6 +61,7 @@ momentjs:moment
 raix:handlebar-helpers
 flyandi:reactive-countdown
 raix:push
+chart:chart
 
 #######################################################
 #                To be removed in production          #
