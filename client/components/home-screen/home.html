@@ -55,7 +55,6 @@
                                   ECON 2501
                                   <span class="eddy-badge eddy-badge__primary">
                                     <i class="zmdi zmdi-help-outline"></i>
-                                    <!-- <i class="zmdi zmdi-info-outline"></i> -->
                                   </span>
                                 </h4>
                                 <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
@@ -71,6 +70,7 @@
                                 {{#if $eq ranking 1 }}st  {{/if}}
                                 {{#if $eq ranking 2 }}nd  {{/if}}
                                 {{#if $eq ranking 3 }}rd  {{/if}}
+                                {{#if $gte ranking 3 }}th  {{/if}}
                               </sup>
                             </span>
                             </div>
