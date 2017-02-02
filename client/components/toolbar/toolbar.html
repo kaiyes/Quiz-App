@@ -11,20 +11,19 @@
 
       <span data-popup=".popup-notification" class="flex--1 border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup full-height flex-direction--row flex-justify-content--center flex-align-items--center">
 
-       {{#with notificationAll}}
-        {{#if $eq this 0 }}
+
+        {{#if $eq notificationAll 0 }}
           <div class="text-center padding-top-8">
             <span class="lnr lnr-alarm" aria-hidden="true"></span>
-            <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
           </div>
            {{else}}
            <div class="text-center padding-top-8">
              <span class="lnr lnr-alarm" aria-hidden="true"></span>
-             <span class="eddy-toolbar--icon__noti--badge">{{this}}</span>
+             <span class="eddy-toolbar--icon__noti--badge">{{notificationAll}}</span>
            </div>
 
           {{/if}}
-        {{/with}}
+
       </span>
     </div>
   </div>

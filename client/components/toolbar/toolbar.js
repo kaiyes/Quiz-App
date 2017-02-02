@@ -18,7 +18,7 @@ Template.toolbar.onRendered(function() {
 
 Template.toolbar.helpers({
   notificationAll: function(){
-    if (Meteor.userId()) {
+    if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
       let topicsChosen = _.map(objArray,'courseName');
 
