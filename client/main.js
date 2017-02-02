@@ -45,6 +45,6 @@ Meteor.startup(function(){
         clearBadge: true
       }
    });
-
+   
 
 });

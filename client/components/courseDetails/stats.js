@@ -1,3 +1,9 @@
+Feedback.profiles = {
+   "somethingHappened": {
+     sound: "/sounds/furrow.mp3",
+   }
+};
+
 Template.stats.onCreated(function() {
   let topicName = Session.get('topicName');
   let array = Meteor.user().profile.selectedCourses;
@@ -60,7 +66,9 @@ Template.stats.events({
 
   "click #4": function(event, template) {
    event.preventDefault();
-   console.log(this);
+
+   Feedback.provide("somethingHappened");
+    console.log(this);
  },
 
 });
