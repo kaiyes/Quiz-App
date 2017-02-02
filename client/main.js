@@ -3,8 +3,11 @@ Meteor.startup(function(){
    myApp = new Framework7({
       fastClicks: true,
       materialRipple:true,
+      statusbarOverlay:false,
     });
    $$ = Dom7;
+
+   StatusBar.hide();
 
    Transitioner.default({
      in: "transition.slideRightIn",
