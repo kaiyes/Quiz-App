@@ -1,15 +1,7 @@
 <template name="layOut">
-
     <div class="views">
-
         {{#transitioner}}
-            {{#if isReady}}
               {{>yield}}
-            {{else}}
-              {{> spinner}}
-            {{/if}}
         {{/transitioner}}
-
     </div>
-
 </template>

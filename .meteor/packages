@@ -31,7 +31,9 @@ session@1.1.7
 
 iron:router
 ccorcos:transitioner
-sacha:spin
+multiply:iron-router-progress
+
+
 
 #######################################################
 #                 css                                #
