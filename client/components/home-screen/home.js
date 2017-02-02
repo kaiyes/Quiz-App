@@ -1,30 +1,19 @@
 Template.homePage.helpers({
-  userInfo(){
-    if (Meteor.userId()) {
-      console.log(Meteor.user());
-      return Meteor.user().profile;
-    }
-    return {};
-    // return UserInformation.findOne({ createdBy: Meteor.userId()});
-  },
-  showRanking() {
-    if (!this.ranking) {
-      return 'no rank';
-    }
-    let ranking = this.ranking;
-    console.log(ranking)
-    if (this.ranking === 1) {
-      ranking += '<sup>st</sup>';
-    } else if (this.ranking === 2) {
-      ranking += '<sup>nd</sup>';
-    } else if (this.ranking === 3) {
-      ranking += '<sup>rd</sup>';
+  ranking() {
+    let topicName = this.courseName;
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let points = _.sortBy(rankingArray, ['points']);
+    let reverse = _.reverse(points);
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+
+    if (ranking<=0) {
+      return 'king';
     } else {
-      ranking += '<sup>th</sup>';
-    }
-    console.log(ranking);
-    return Spacebars.SafeString(ranking);
-  }
+      return ranking;
+    };
+
+  },
+
 });
 
 Template.homePage.events({

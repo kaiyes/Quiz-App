@@ -61,7 +61,18 @@
                                 <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
                             </div>
                             <div class="item-after eddy-home--quiz--rank">
-                              <span>{{showRanking}}</span>
+                              <span>
+                                  {{#if $eq ranking 'king' }}
+                                      King
+                                    {{else}}
+                                      {{ranking}}
+                                  {{/if}}
+                                <sup>
+                                {{#if $eq ranking 1 }}st  {{/if}}
+                                {{#if $eq ranking 2 }}nd  {{/if}}
+                                {{#if $eq ranking 3 }}rd  {{/if}}
+                              </sup>
+                            </span>
                             </div>
                           </div>
                         </div>
