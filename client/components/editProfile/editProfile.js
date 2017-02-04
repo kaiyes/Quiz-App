@@ -17,13 +17,13 @@ Template.editProfile.onRendered(function() {
         },
         messages: {
           name: {
-            required: 'please put your name'
+            required: 'please write your name'
           },
           university: {
             required: 'please select you university'
           },
           programme: {
-            required: 'please put your programme'
+            required: 'please write your program'
           }
         }
       });
