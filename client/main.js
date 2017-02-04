@@ -19,7 +19,7 @@ Meteor.startup(function(){
       "debug": false,
       "newestOnTop": false,
       "progressBar": false,
-      "positionClass": "toast-top-right",
+      "positionClass": "toast-top-full-width",
       "preventDuplicates": false,
       "onclick": null,
       "showDuration": "200",
@@ -29,7 +29,7 @@ Meteor.startup(function(){
       "showEasing": "swing",
       "hideEasing": "linear",
       "showMethod": "fadeIn",
-      "hideMethod": "fadeOut"
+      "hideMethod": "fadeOut",
     };
 
     $.cloudinary.config({
@@ -45,6 +45,6 @@ Meteor.startup(function(){
         clearBadge: true
       }
    });
-   
+
 
 });
