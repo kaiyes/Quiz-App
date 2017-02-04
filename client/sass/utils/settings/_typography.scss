@@ -1,20 +1,32 @@
 
-/// @name font-family-sapien-bold
+/// @name font-family-montserratregular
 /// @author Sabbir Ahmed
-$font-family-eddy-lato: 'Montserrat', Calibri, Arial, sans-serif !default;
+$font-family-eddy-montserratregular: 'montserratregular', Calibri, Arial, sans-serif !default;
+
+/// @name font-family-montserratbold
+/// @author Sabbir Ahmed
+$font-family-eddy-montserratbold: 'montserratbold', Calibri, Arial, sans-serif !default;
+
+/// @name font-family-montserrathairline
+/// @author Sabbir Ahmed
+$font-family-eddy-montserrathairline: 'montserrathairline', Calibri, Arial, sans-serif !default;
+
+/// @name font-family-montserrathairline
+/// @author Sabbir Ahmed
+$font-family-eddy-montserratlight: 'montserratlight', Calibri, Arial, sans-serif !default;
 
 
 /// @name font-family-base
 /// @author Sabbir Ahmed
-$font-family-base: $font-family-eddy-lato !default;
+$font-family-base: $font-family-eddy-montserratregular !default;
 
 /// @name font-family-base-customerapp
 /// @author Sabbir Ahmed
-$font-family-base-app: $font-family-eddy-lato !default;
+$font-family-base-app: $font-family-eddy-montserratregular !default;
 
 /// @name font-family-base-customerapp
 /// @author Sabbir Ahmed
-$font-family-heading: $font-family-eddy-lato !default;
+$font-family-heading: $font-family-eddy-montserratregular !default;
 
 /// @name font-size-base
 /// @author Sabbir Ahmed

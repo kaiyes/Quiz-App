@@ -1,48 +1,92 @@
 Template.registerHelper('getTimePosted', date => {
   if (date) {
-    console.log(moment(new Date(date)).fromNow(true));
     return moment(new Date(date)).fromNow(true);
   }
+});
+
+Template.community.onRendered(function() {
+    $(document)
+      .on("focus", ".eddy-community--post-area--input__reply", function(){
+        var outerHeight = 0;
+        $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function() {
+          outerHeight += $(this).outerHeight() + 10;
+        });
+
+        var d = $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height();
+        console.log(d);
+        $(".page-content").animate({
+          scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
+        },"slow");
+        console.log(outerHeight);
+      });
 });
 
 
 Template.community.helpers({
     posts(){
-      return Posts.find();
-    }
+      let topicName = Session.get('topicName');
+      return Posts.find({ topicName:topicName }, { sort: { createdAt: -1 }} );
+    },
+
 });
 
 Template.community.events({
-  "submit form": function(event, template){
+  "submit  #post": function(event, template){
     event.preventDefault();
-     var text = event.target.text.value;
+     let text = event.target.text.value;
+     let topicName = Session.get('topicName');
 
     let payload = {
       body : text,
       createdBy: Meteor.user(),
       createdAt: new Date(),
       likes:[],
-      reply:[],
+      comments:[],
+      topicName
     };
 
     Meteor.call('insertPost', payload);
-    console.log(Posts.find().fetch());
+    $('[name="text"]').val('');
   },
 
-  "click #comment": function(event, template){
+  "submit #commentForm": function(event, template){
     event.preventDefault();
-    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comment-section').removeClass('hide');
+    let comment = event.target.comment.value;
+    let topicName = Session.get('topicName');
+    let commentPayload = {
+      body : comment,
+      commenter: Meteor.user(),
+      createdAt: new Date(),
+      likes:[],
+      postId:this._id,
+      postCreator:this.createdBy,
+      topic: topicName,
+    };
+    Meteor.call('insertComment', commentPayload);
+    $('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').hide();
+    $('#post-'+this._id)
+            .find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section')
+            .show();
+
+    $('[name="comment"]').val('');
   },
 
-  "click #reply": function(event, template){
+  "click #openCommenting": function(event, template){
     event.preventDefault();
-    $(event.target).parents('#post-'+ this._id).find('.eddy-community--post--comments--reply').removeClass('hide');
+    $('#post-'+this._id)
+            .find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section')
+            .toggle();
   },
 
   "click #like": function(event, template){
     event.preventDefault();
+    Meteor.call('like', this._id, Meteor.user());
+  },
+
+  "click #commentLike": function(event, template){
+    event.preventDefault();
     console.log(this);
-    Meteor.call('like', this._id, Meteor.userId());
+    Meteor.call('likeAcomment', this, Meteor.user());
   },
 
 

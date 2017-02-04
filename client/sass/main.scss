@@ -36,6 +36,8 @@
 @import 'base/link';
 @import 'base/fonts';
 
+@import 'vendor/lineicons';
+@import 'vendor/material-fonts';
 
 
 //app layout
@@ -58,9 +60,19 @@
 @import "../components/landing-page/landingPage";
 @import "../components/signup/signUp";
 @import "../components/login/login";
+@import "../components/forgot-pass/forgot-pass";
 @import "../components/courses/courses";
 @import "../components/courseDetails/community";
 @import "../components/courseDetails/chapters";
+@import "../components/courseDetails/stats";
 @import "../components/home-screen/home";
 @import "../components/quiz-page/quiz";
 @import "../components/quiz-page/quiz-result";
+@import "../components/quiz-page/quiz-result-explanation";
+@import "../components/profile-set-up/profile";
+@import "../components/notification/notification";
+@import "../components/challange-opponent/challange";
+@import "../components/play-first/play-first";
+@import "../components/courseDetails/courseDetails";
+@import "../components/settings/settings";
+@import "../components/loadingText/loadingText";

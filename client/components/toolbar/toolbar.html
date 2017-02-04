@@ -1,16 +1,29 @@
 <template name="toolbar">
   <div class="toolbar position-absolute top-initial eddy-toolbar">
-    <div class="toolbar-inner flex-direction--row flex-justify-content--space-between flex-align-items--center">
-      <span data-popup=".popup-settings" class="button ripple border_none--imp eddy-toolbar--icon open-popup">
-        <i class="fa fa-cog" aria-hidden="true"></i>
+    <div class="toolbar-inner flex-direction--row">
+      <span data-popup=".popup-settings" class="flex--1 border_none--imp eddy-toolbar--icon open-popup flex-direction--row flex-justify-content--center flex-align-items--center full-height">
+        <span class="lnr lnr-cog"></span>
       </span>
-      <span class="button ripple border_none--imp eddy-toolbar--icon">
-        <i class="fa fa-home" aria-hidden="true"></i>
-      </span>
-      <span class="button ripple border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti">
-        <i class="fa fa-bell-o" aria-hidden="true"></i>
 
-        <span class="eddy-toolbar--icon__noti--badge">5</span>
+      <span id="home" class="flex--1 border_none--imp eddy-toolbar--icon flex-direction--row flex-justify-content--center flex-align-items--center  full-height">
+        <span class="lnr lnr-home" aria-hidden="true"></span>
+      </span>
+
+      <span data-popup=".popup-notification" class="flex--1 border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup full-height flex-direction--row flex-justify-content--center flex-align-items--center">
+
+
+        {{#if $eq notificationAll 0 }}
+          <div class="text-center padding-top-8">
+            <span class="lnr lnr-alarm" aria-hidden="true"></span>
+          </div>
+           {{else}}
+           <div class="text-center padding-top-8">
+             <span class="lnr lnr-alarm" aria-hidden="true"></span>
+             <span class="eddy-toolbar--icon__noti--badge">{{notificationAll}}</span>
+           </div>
+
+          {{/if}}
+
       </span>
     </div>
   </div>

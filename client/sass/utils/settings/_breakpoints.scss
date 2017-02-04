@@ -9,6 +9,7 @@ $breakpoints: (
 	'tablet-portrait': ( max-width: 850px ),
     'tab-small': ( max-width: 991px ),
 	'phablet': ( max-width: 767px ),
-	'mobile': ( max-width: 365px )
-    
+	'mobile': ( max-width: 365px ),
+	'iphone': ( max-width: 340px )
+
 ) !default;

@@ -1,34 +1,43 @@
+Template.homePage.helpers({
+  ranking() {
+    let topicName = this.courseName;
+    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
+    let points = _.sortBy(rankingArray, ['points']);
+    let reverse = _.reverse(points);
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+
+    if (ranking<=0) {
+      return 'king';
+    } else {
+      return ranking;
+    };
+
+  },
+
+});
+
 Template.homePage.events({
   "click #list": function(event, template){
-    console.log(this.toString());
-    Session.set("topicName", this.toString());
+    event.preventDefault();
+    console.log(this.courseName);
+    Session.set("topicName", this.courseName);
     Router.go('/courseDetails');
  },
  "click #showProfileInfo": function(event, template) {
+    $('.with-subnavbar').removeClass('toggle-profile');
+   $('#showProfileInfo').slideUp();
    $('#showProfileInfo').hide();
-   $('.eddy-home--profile-info').removeClass('hide');
-   $('.eddy-home--quizes').removeClass('margin-v-70').addClass('margin-bottom-285');
+   $('.eddy-home').removeClass('margin-top-10').addClass('full-height margin-0');
+   $('.eddy-home--profile-info').css({'margin-top': '0', 'transition': 'all 0.3s'});
+   $('.eddy-home--quizes').removeClass('margin-top-90 margin-bottom-70').addClass('margin-bottom-285 full-height');
+
  },
  "click #hideProfileInfo": function(event, template) {
-   $('#showProfileInfo').show();
-   $('.eddy-home--profile-info').addClass('hide');
-   $('.eddy-home--quizes').addClass('margin-v-70').removeClass('margin-bottom-285');
- }
-});
+   $('.with-subnavbar').addClass('toggle-profile');
+   $('#showProfileInfo').slideDown();
+   $('.eddy-home').removeClass('full-height margin-0').addClass('margin-top-10');
+   $('.eddy-home--profile-info').css({'margin-top': '-350px', 'transition': 'all 0.3s'});
+   $('.eddy-home--quizes').addClass('margin-top-90 margin-bottom-70').removeClass('margin-bottom-285 full-height');
+ },
 
-Template.homePage.helpers({
-  quizRankFormat(i){
-      var j = i % 10,
-          k = i % 100;
-      if (j == 1 && k != 11) {
-          return "st";
-      }
-      if (j == 2 && k != 12) {
-          return "nd";
-      }
-      if (j == 3 && k != 13) {
-          return "rd";
-      }
-      return "th";
-    }
 });

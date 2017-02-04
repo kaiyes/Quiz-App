@@ -1,0 +1,49 @@
+<template name="resultExplanation">
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages">
+          <div class="page">
+            <div class="page-content">
+
+              {{#with answer}}
+                <div class="flex-direction--column full-height">
+                  <div class="flex--1">
+                    <div id="cross" class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">
+                      <a href="#" class="link icon-only text-center">
+                        <i class="zmdi zmdi-close eddy-result-exp__close font-size-fixed-24 margin-top-10"></i>
+                      </a>
+                    </div>
+                    <div class="eddy-result-exp margin-top-60 padding-h-30">
+                      <h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">{{question}}</h4>
+                      <p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">
+                          {{explanation}}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="card-footer flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                      <div class="flex-direction--row">
+                        <button type="button" class="button eddy-community--post--like-cmnt-btn iconic-tap--small">
+                            <i class="zmdi zmdi-favorite"></i>
+                        </button>
+
+                        <button type="button" class="button eddy-community--post--like-cmnt-btn margin-left-15 eddy-comment-btn iconic-tap--small">
+                            <i class="zmdi zmdi-comment"></i>
+                        </button>
+                      </div>
+                      <div class="">
+                        <button type="button" class="button eddy-community--post--play-btn">
+                            <span>SOURCE</span>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {{/with}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</template>

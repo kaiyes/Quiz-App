@@ -7,13 +7,13 @@
   box-shadow: 0 55px 10px 60px map-deep-get($colors, "background", "border") !important;
 
   &--icon{
-    color: map-deep-get($colors, "foreground", "light-black") !important;
-    font-size: 1.8rem !important;
+    color: #737373 !important;
+    font-size: 2.5rem !important;
 
     &__noti {
       //position: relative;
       overflow: visible !important;
-      i {
+      div {
         -webkit-transform: rotate(20deg) !important;
         -ms-transform: rotate(20deg) !important;
         transform: rotate(20deg) !important;
@@ -21,13 +21,24 @@
 
       &--badge {
         position: absolute;
-        //right: 2.2rem;
-        top: -1rem;
+        right: -3px;
+        top: 0.5rem;
 
         color: map-deep-get($colors, "primary", "base") !important;
         font-size: 1rem !important;
         font-weight: 700;
+
+        -webkit-transform: rotate(-20deg);
+        -moz-transform: rotate(-20deg);
+        -ms-transform: rotate(-20deg);
+        transform: rotate(-20deg);
       }
+    }
+  }
+
+  &--course {
+    &__next {
+      @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, '');
     }
   }
 }

@@ -9,3 +9,15 @@ Template.landingPage.events({
     Router.go('login');
   },
 });
+
+Template.landingPage.onCreated(function() {
+  // var currentLoginToken = localStorage.key(Accounts._storeLoginToken);
+  //     if (currentLoginToken) {
+  //         Accounts.loginWithToken(currentLoginToken);
+  //         Router.go('/homePage');
+  //     }
+
+  if (Meteor.userId()) {
+      Router.go('/homePage');
+    }
+  });

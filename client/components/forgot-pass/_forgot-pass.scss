@@ -1,0 +1,33 @@
+.eddy-password {
+  &--button{
+    background-color: #51C8AC;
+    border: #51C8AC;
+    outline: none;
+    color: #fff;
+    font-family: 'montserratbold', Calibri, Arial, sans-serif;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 5px;
+    //&:hover {
+    //  //background:  map-deep-get($colors, "primary", "base") !important;
+    //  color: #51C8AC;
+    //  background: #ffffff;
+    //  border: 1px solid #51C8AC;
+    //}
+
+    &:active {
+      color: #51C8AC;
+      background: #ffffff;
+      border: 1px solid #51C8AC;
+    }
+
+    &:focus {
+      color: #51C8AC;
+      background: #ffffff;
+      border: 1px solid #51C8AC;
+    }
+    //&.active-state {
+    //  background: #d9d9d9 !important;
+    //}
+  }
+}

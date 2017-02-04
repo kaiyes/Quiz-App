@@ -6,33 +6,34 @@
           <div class="page-content">
             <!-- Top Navbar-->
             <div class="navbar eddy-navbar">
-              <div class="navbar-inner">
-                  <div class="left">
-                      <a href="#" class="link icon-only">
-                          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+              <div class="navbar-inner padding-h-0">
+                  <div class="left full-height width-45 text-center margin-0">
+                      <a href="{{pathFor 'login'}}" class="link icon-only full-width">
+                          <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
                       </a>
                   </div>
-                  <div class="center">
-                    <h2 class="font-size-fixed-14 margin-0">FORGOT PASSWORD ?</h2>
+                  <div class="center full-width text-center">
+                    <h2 class="margin-0 full-width eddy-navbar__title">FORGOT PASSWORD ?</h2>
                   </div>
-                  <div class="right">
-                    <a href="#" class="open-panel link icon-only"></a>
+                  <div class="right width-45 text-center margin-0">
+                    <a href="#" class="open-panel link icon-only full-width"></a>
                   </div>
               </div>
             </div>
+
             <!-- /End of Top Navbar-->
             <div class="list-block margin-top-120 padding-h-20">
-              <h3 class="text-center font-size-fixed-14">Enter your email and we will send you password reset instructions.</h3>
-              <form name="forgotPassForm" autocomplete="off" class="eddy-form margin-top-30">
+              <h3 class="text-center font-size-fixed-14 eddy-form__fortgot-msg">Enter your email and we will send you password reset instructions.</h3>
+              <form name="forgotPassForm" autocomplete="off" class="eddy-form margin-top-55">
                 <ul class="eddy-form--lists">
                   <li>
                     <div class="item-content">
                       <div class="item-media width-15">
-                        <i class="fa fa-envelope-o eddy-form--icon" aria-hidden="true"></i>
+                        <span class="lnr lnr-envelope eddy-form--icon" aria-hidden="true"></span>
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input autocomplete="off" required type="email" placeholder="Student Email">
+                          <input autocomplete="off" class="eddy-form--item-inner__input" required type="email" placeholder="Student Email">
                         </div>
                       </div>
                     </div>
@@ -41,10 +42,11 @@
                 <div class="content-block">
                   <div class="row">
                     <div class="col-auto flex-justify-content--center display-flex flex-direction--row">
-                      <input type="submit"
+                      <button type="submit"
                              name="name"
-                             value="SEND"
-                             class="width-auto button button-round eddy--primary-button border-r-20 padding-h-24 margin-top-40">
+                             class="width-auto eddy-password--button border-r-25 padding-h-40 padding-v-15 margin-top-30 font-size-fixed-12">
+                             SEND
+                       </button>
                     </div>
                   </div>
                 </div>

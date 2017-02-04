@@ -1,7 +1,8 @@
 <template name="quizResult">
+  {{> resultExplanation}}
   <div class="views">
     <div class="view view-main">
-      <div class="navbar eddy-navbar">
+      <div class="navbar eddy-navbar eddy-navbar--quiz">
         <div class="navbar-inner">
             <div class="left">
                 <a href="#" class="link icon-only">
@@ -9,13 +10,15 @@
                 </a>
             </div>
             <div class="center full-width text-center">
-              <h2 class="font-size-fixed-14 margin-0">
-                  YOU WON :)
+              <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar--quiz__heading">
+                  {{#with whoWon}}
+                      {{this}}
+                  {{/with}}
               </h2>
             </div>
-            <div class="right">
+            <div id="cross" class="right">
               <a href="#" class="open-panel link icon-only">
-                <i class="fa fa-close" aria-hidden="true"></i>
+                <i class="zmdi zmdi-close font-size-fixed-20 eddy-navbar--quiz__close"></i>
               </a>
             </div>
         </div>
@@ -23,35 +26,49 @@
       <div class="pages">
         <div class="page">
           <div class="page-content">
+
+          {{#with resultRoom}}
               <div class="eddy-quiz-result margin-bottom-50">
                 <div class="card margin-h-0">
                     <div class="card-content">
-                        <div class="card-content-inner padding-h-55">
-                          <div class="flex-direction--row flex-justify-content--space-between margin-top-45">
+                        <div class="card-content-inner padding-h-35">
+                          <div class="flex-direction--row flex-justify-content--space-between margin-top-60">
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="65" height="65" src="http://placehold.it/65x65" alt="Player photo" />
-                              <p>SANA</p>
+                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              src="{{#if $neq challanger.profile.image " "}}
+                                    {{challanger.profile.image}}
+                                {{else}}
+                                    http://placehold.it/150x150
+                                {{/if}}"
+                              alt="Player photo" />
+                              <p class="eddy-quiz-result__player-name">{{challanger.profile.name}}</p>
                             </div>
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="65" height="65" src="http://placehold.it/65x65" alt="Player photo" />
-                              <p>SALLY</p>
+                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              src="{{#if defender.profile.image}}
+                                  {{defender.profile.image}}
+                              {{else}}
+                                  http://placehold.it/150x150
+                              {{/if}}"
+                              alt="Player photo" />
+                              <p class="eddy-quiz-result__player-name">{{defender.profile.name}}</p>
                             </div>
                           </div>
-                          <div class="flex-direction--row flex-justify-content--space-between padding-h-15">
-                            <h3 class="margin-0">12</h3>
-                            <h3 class="margin-0">:</h3>
-                            <h3 class="margin-0">10</h3>
+                          <div class="flex-direction--row flex-justify-content--space-between padding-h-25 padding-bottom-15">
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{challangersPoint}}</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">:</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">{{defendersPoint}}</h3>
                           </div>
                         </div>
                     </div>
                 </div>
                 <div class="card margin-h-0">
                     <div class="card-content">
-                        <div class="card-content-inner padding-h-55 padding-bottom-30">
+                        <div class="card-content-inner padding-h-35 padding-bottom-50">
                             <div class="flex-direction--row flex-justify-content--space-between">
                               <div class="text-center">
-                                <h4 class="margin-0 font-size-fixed-12 padding-bottom-10">ACCURACY</h4>
-                                <div class="eddy-progress--wrapper" data-percent="57">
+                                <h4 class="margin-0 padding-bottom-10 eddy-stats__title">ACCURACY</h4>
+                                <div class="eddy-progress--wrapper" data-percent="{{$.Session.get 'percent'}}">
                                   <div class="eddy-progress--bar">
                                     <div class="eddy-progress--bar--fill"></div>
                                   </div>
@@ -63,20 +80,36 @@
                                 </div>
                               </div>
                               <div class="text-center">
-                                <h4 class="margin-0 font-size-fixed-12">QUESTIONS</h4>
-                                <h3 class="margin-0 padding-top-20">5/8</h3>
+                                <h4 class="margin-0 padding-bottom-15 eddy-stats__title">QUESTIONS</h4>
+                                <h3 class="margin-0 eddy-stats__points">
+                                  {{#if $eq currentUser._id challanger._id}}
+                                    {{challangersRightAnswer}}/6
+                                  {{/if}}
+
+                                  {{#if $eq currentUser._id defender._id}}
+                                    {{defendersRightAnswer}}/6
+                                  {{/if}}
+                                </h3>
                               </div>
                             </div>
                             <div class="flex-direction--row flex-justify-content--space-between padding-top-20">
                               <div class="text-center">
-                                <h4 class="margin-0 font-size-fixed-12 padding-bottom-15">NEW POINTS</h4>
-                                <h3 class="margin-0">330</h3>
+                                <h4 class="margin-0 padding-bottom-15 eddy-stats__title">NEW POINTS</h4>
+                                <h3 class="margin-0 eddy-stats__points">
+                                  {{#with indexOfTopic}}
+                                     {{this.points}}
+                                  {{/with}}
+                                </h3>
                               </div>
                               <div class="eddy-quiz-result--rank text-center">
-                                <h4 class="margin-0 font-size-fixed-12">NEW RANK</h4>
+                                <h4 class="margin-0 eddy-stats__title">NEW RANK</h4>
                                 <div class="eddy-rank margin-top-10">
-                                  <span>4</span>
-                                  <span class="eddy-rank--badge"><i class="fa fa-bookmark" aria-hidden="true"></i></span>
+                                  <span> {{ranking}} </span>
+                                  <span class="eddy-rank--badge">
+                                    <i class="zmdi zmdi-bookmark" aria-hidden="true">
+
+                                   </i>
+                                  </span>
                                 </div>
                               </div>
                             </div>
@@ -85,76 +118,81 @@
                 </div>
                 <div class="card margin-h-0">
                     <div class="card-content">
-                        <div class="card-content-inner padding-h-55">
+                        <div class="card-content-inner padding-h-35 padding-bottom-25">
                             <div class="flex-direction--row flex-justify-content--space-between">
-                               <a href="#"
-                                 class="button button-round eddy--primary-button-revert border-r-20 font-size-fixed-10 text-bold">
+                               <a href="#" id="playAgain"
+                                 class="eddy--primary-button-revert border-r-25 font-size-fixed-12">
                                  PLAY AGAIN
                                </a>
-                               <a href="#"
-                                 class="button button-round eddy--primary-button-revert border-r-20 font-size-fixed-10 text-bold">
+                               <a href="#" id="community"
+                                 class="eddy--primary-button-revert border-r-25 font-size-fixed-12">
                                  COMMUNITY
                                </a>
                             </div>
-                            <a href="#"
-                              class="button
-                                     button-round
-                                     eddy--primary-button
+                            <a href="#" id="playAnother"
+                              class="eddy--primary-button
                                      eddy--primary-button__white-color
-                                     border-r-20
+                                     border-r-25
                                      margin-top-15
-                                     font-size-fixed-10
-                                     text-bold">
+                                     font-size-fixed-12">
                               PLAY ANOTHER
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div class="eddy-quiz-result--questions">
-                  <div class="flex-direction--row flex-justify-content--space-between padding-10">
-                      <a href="#" class="link icon-only">
-                        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+
+                <div class="eddy-quiz-result--questions padding-h-15">
+                {{#with question}}
+                  <div class="flex-direction--row flex-justify-content--space-between padding-v-15">
+                      <a href="#" id="left" class="link icon-only iconic-tap text-center">
+                        <i class="zmdi zmdi-chevron-left font-size-fixed-40"></i>
                       </a>
                       <h2 class="font-size-fixed-14 margin-0 eddy-quiz-result--questions--no">
                           QUESTION 6
                       </h2>
-                      <a href="#" class="open-panel link icon-only">
-                        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                      <a href="#" id="right" class="open-panel link icon-only iconic-tap text-center">
+                        <i class="zmdi zmdi-chevron-right font-size-fixed-40"></i>
                       </a>
                   </div>
+
 
                   <div class="card">
                     <div class="card-content">
                       <div class="card-content-inner padding-h-5">
                         <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
-                          <div class="eddy-quiz--question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
-                              <p class="margin-0 font-size-fixed-20">
-                                What is not a part of the Marketing Mix?
+                          <div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
+                              <p class="padding-h-20">
+                                {{this.question}}
                               </p>
                           </div>
-                          <div class="padding-bottom-20">
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price button button-fill button-raised margin-top-5">PRICE</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan eddy--sqr-buttons__plan__primary button button-fill button-raised margin-top-5">PLAN</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place button button-fill button-raised margin-top-5">PLACE</a>
-                            <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product__primary button button-fill button-raised margin-top-5">PRODUCT</a>
+                          <div class="padding-h-5 padding-bottom-20">
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.firstAnswer}} {{usersAnswer this.firstAnswer}}">{{this.firstAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.secondAnswer}} {{usersAnswer this.secondAnswer}}">{{this.secondAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.thirdAnswer}} {{usersAnswer this.thirdAnswer}}">{{this.thirdAnswer}}</a>
+                            <a href="#" class="eddy--sqr-buttons  margin-top-15
+                            {{rightAnswer this.fourthAnswer}} {{usersAnswer this.fourthAnswer}}">{{this.fourthAnswer}}</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <a href="#" class="link text-bold text-center display-block padding-8">
-                    EXPLANATION
+                  <a href="{{pathFor 'resultExplanation'}}" data-popup=".popup-explanation" class="link text-bold text-center display-block padding-top-8 padding-bottom-16 open-popup eddy-result-exp__poptxt">
+                    explanation
                   </a>
+                  {{/with}}
                 </div>
 
               </div>
+
+           {{/with}}
           </div>
         </div>
       </div>
-
-
       {{> toolbar}}
     </div>
   </div>

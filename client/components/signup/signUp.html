@@ -6,20 +6,21 @@
           <div class="page-content">
             <!-- Top Navbar -->
             <div class="navbar eddy-navbar">
-              <div class="navbar-inner">
-                  <div class="left">
-                      <a  class="link icon-only">
-                          <i id="back" class="fa fa-chevron-left" aria-hidden="true"></i>
+              <div class="navbar-inner padding-0">
+                  <div class="left full-height width-45 text-center margin-0">
+                      <a id="back" href="{{pathFor 'home'}}" class="link icon-only full-width">
+                          <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
                       </a>
                   </div>
-                  <div class="center">
-                    <h2 class="font-size-fixed-14 margin-0">WELCOME TO EDDY</h2>
+                  <div class="center full-width text-center">
+                    <h2 class="margin-0 full-width eddy-navbar__title">WELCOME TO EDDY</h2>
                   </div>
-                  <div class="right">
-                    <a class="open-panel link icon-only"></a>
+                  <div class="right width-45 text-center margin-0">
+                    <a href="#" class="open-panel link icon-only full-width"></a>
                   </div>
               </div>
             </div>
+
             <!-- /End of Top Navbar -->
             <div class="list-block margin-top-170 padding-h-20">
               <form name="signUpForm" autocomplete="off" class="eddy-form" id="signUpForm">
@@ -27,11 +28,11 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media width-15">
-                        <i class="fa fa-envelope-o eddy-form--icon" aria-hidden="true"></i>
+                        <span class="lnr lnr-envelope eddy-form--icon" aria-hidden="true"></span>
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input id="email" autocomplete="off" required type="email" placeholder="Student Email">
+                          <input id="email" class="eddy-form--item-inner__input" autocomplete="off" required type="email" placeholder="Student Email">
                         </div>
                       </div>
                     </div>
@@ -39,27 +40,29 @@
                   <li>
                     <div class="item-content">
                       <div class="item-media width-15">
-                        <i class="fa fa-lock eddy-form--icon" aria-hidden="true"></i>
+                        <i class="zmdi zmdi-lock-outline eddy-form--icon"></i>
                       </div>
                       <div class="item-inner eddy-form--item-inner">
                         <div class="item-input border-bottom">
-                          <input id="password" autocomplete="off" required type="password" placeholder="Password">
+                          <input id="password"  class="eddy-form--item-inner__input" autocomplete="off" required type="password" placeholder="Password">
                         </div>
                       </div>
                     </div>
                   </li>
                 </ul>
+
                 <div class="content-block">
                   <div class="row">
                     <div class="col-auto flex-justify-content--center display-flex flex-direction--row">
-                      <input type="submit"
-                             name="name"
-                             value="SIGN UP"
-                             class="width-auto button button-round eddy--primary-button border-r-20 padding-h-24 margin-top-50">
+                      <button type="submit" name="name"
+                             class="width-auto eddy-signup--button border-r-25 padding-h-40 padding-v-15 margin-top-50 font-size-fixed-12">
+                             SIGN UP
+                       </button>
                     </div>
                   </div>
-
                 </div>
+
+
               </form>
             </div>
           </div>

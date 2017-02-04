@@ -1,0 +1,15 @@
+.loading-txt {
+  padding-left: 3rem;
+  padding-right: 3rem;
+
+  @include type-style($font-family-eddy-montserratbold, 700, 2.6rem, map-deep-get($colors, "primary", "base"));
+  text-align: center;
+  line-height: normal;
+  text-transform: uppercase;
+
+  &__by {
+    @include type-style($font-family-eddy-montserratlight, 700, 1.4rem, map-deep-get($colors, "primary", "base"));
+    margin: 0;
+    font-style: italic;
+  }
+}

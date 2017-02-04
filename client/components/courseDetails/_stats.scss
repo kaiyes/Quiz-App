@@ -1,0 +1,46 @@
+.eddy-rank--badge {
+  &__stats {
+    top: 51% !important;
+  }
+}
+
+.eddy-stats {
+  &__rank-list {
+    &:hover {
+      background-color: map-deep-get($colors, "primary", "base") !important;
+
+      color: map-deep-get($colors, "foreground", "white");
+
+      cursor: pointer;
+    }
+    &:nth-of-type(odd) {
+      background-color: #f9f9f9;
+    }
+  }
+
+  &__title {
+    @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #9a9a9a);
+  }
+
+  &__points {
+    @include type-style($font-family-eddy-montserratbold, 700, 3.5rem, map-deep-get($colors, "primary", "base"));
+  }
+
+  &__ranking {
+    &__title {
+      @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #464646);
+    }
+    &__index {
+      @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #464646);
+    }
+
+    &__username {
+      text-transform: uppercase;
+      @include type-style($font-family-base, 400, 1.4rem, #464646);
+    }
+
+    &__points {
+      @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #464646);
+    }
+  }
+}

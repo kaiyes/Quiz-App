@@ -1,0 +1,145 @@
+<template name="editProfile">
+  <div class="views layout-white">
+    <div class="view view-main layout-white" data-page="home">
+      <div class="pages navbar-fixed">
+        <div data-page="home" class="page">
+            <div class="navbar eddy-navbar">
+                <div class="navbar-inner padding-h-0">
+                  <div id="backButton" class="left">
+                      <a href="{{pathFor 'homePage'}}" class="link icon-only">
+                          <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
+                      </a>
+                  </div>
+                  <div class="center full-width text-center">
+                    <h2 class="margin-0 full-width eddy-navbar__title">TELL US ABOUT YOURSELF</h2>
+                  </div>
+                  <div class="right">
+                    <a href="#" class="open-panel link icon-only"></a>
+                  </div>
+                </div>
+            </div>
+            <div class="toolbar toolbar-bottom">
+                <div class="toolbar-inner eddy-profile__submit">
+                    <a href="#" class="link">&nbsp;</a>
+                    <a href="#" class="link submit-profile">DONE</a>
+                    <a href="#" class="link">&nbsp;</a>
+                </div>
+            </div>
+            <div class="page-content position-static">
+             <div class="eddy-profile padding-top-20 padding-bottom-25 position-static">
+                {{#with currentUser.profile}}
+                   <form id="profileInfo" class="position-static" action="#" method="post">
+                     <div class="eddy-profile__upload-section margin-h-30">
+                         <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                           <p class="control-label eddy-profile__pptxt">Profile picture</p>
+                           {{#if $neq image " "}}
+                               <div class="text-center">
+                                 <img class="make-round" width="85" height="85"
+                                 src="
+                                 {{#if $neq image " "}}
+                                    {{image}}
+                                  {{else}}
+                                      {{#if $.Session.get 'image'}}
+                                          {{$.Session.get 'image'}}
+                                        {{else}}
+                                          http://placehold.it/85x85
+                                      {{/if}}
+                                  {{/if}}"
+                                 alt="Profile photo" />
+                                 <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
+                               </div>
+                               {{else}}
+                                 <div>
+                                     <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">
+                                       <i class="zmdi zmdi-plus"></i>
+                                     </label>
+                                     <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
+                                 </div>
+                             {{/if}}
+                         </div>
+                     </div>
+
+                     <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">Name <span class="imp">*</span></div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="Your name" id="name" value="{{name}}" name="name" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">University <span class="imp">*</span></div>
+                                        <div class="item-input">
+                                            <select name="university" id="university" required autocomplete="off">
+                                                <option value="{{university}}">{{university}}</option>
+                                                <option value="AUST">AUST</option>
+                                                <option value="BUET">BUET</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label label eddy-profile__label">Programme <span class="imp">*</span></div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="Program" id="programme"  name="programme" value="{{programme}}" required />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">Nickname</div>
+                                        <div class="item-input">
+                                            <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
+                                                <option value="warrior">Warrior</option>
+                                                <option value="lion">Lion</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">Age</div>
+                                        <div class="item-input">
+                                            <input type="number" id="age"  value="{{age}}" name="age" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">Country</div>
+                                        <div class="item-input">
+                                            <select id="country" placeholder="Country" name="country"  autocomplete="off">
+                                                <option value="bd">BD</option>
+                                                <option value="uk">UK</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                     </div>
+                   </form>
+                {{/with}}
+             </div>
+           </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</template>

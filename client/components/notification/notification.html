@@ -1,0 +1,169 @@
+<template name="notification">
+  <div class="popup popup-notification tablet-fullscreen">
+    <div class="views">
+      <div class="view view-main">
+        <div class="navbar eddy-navbar eddy-navbar__noti">
+          <div class="navbar-inner padding-h-0">
+              <div class="left">
+                  <a href="#" class="link icon-only">
+
+                  </a>
+              </div>
+              <div class="center full-width text-center">
+                <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar__noti__title">
+                    NOTIFICATIONS
+                </h2>
+              </div>
+              <div class="right">
+                <a href="#" class="close-popup link icon-only">
+                  <i class="zmdi zmdi-close font-size-fixed-20 eddy-navbar__noti__close"></i>
+                </a>
+              </div>
+          </div>
+        </div>
+        <div class="pages">
+          <div class="page">
+            <div class="page-content">
+              <div class="card margin-0 margin-top-70">
+                  <div class="card-header padding-0 border-bottom">
+                    <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
+                      CHALLENGES
+                    </h4>
+                  </div>
+                  <div class="card-content">
+                      <div class="card-content-inner">
+                      {{#each challangeNotifications}}
+                        <div class="list-block">
+                          <ul>
+                            <li class="item-content padding-left-0">
+                              <div class="item-inner padding-h-20">
+                                <div class="item-title">
+                                  <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                                    <img class="make-round" width="45" height="45"
+                                    src="{{#if $neq challanger.profile.image " "}}
+                                          {{challanger.profile.image}}
+                                      {{else}}
+                                          http://placehold.it/150x150
+                                      {{/if}}"
+                                    alt="Player Photo" />
+                                    <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
+                                    {{challanger.profile.name}}
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="item-after">
+                                  <span id="denyChallange">
+                                    <i class="zmdi zmdi-close font-size-fixed-24 cur-pointer margin-right-30 eddy-noti__challenge__acpt-deny"></i>
+                                  </span>
+                                  <span id="acceptChallange">
+                                    <i class="zmdi zmdi-check font-size-fixed-24 cur-pointer close-popup eddy-noti__challenge__acpt-deny"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      {{/each}}
+                      </div>
+                  </div>
+              </div>
+              <div class="card margin-0 margin-top-20">
+                  <div class="card-header padding-0 border-bottom">
+                    <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
+                      NEWS
+                    </h4>
+                  </div>
+                  <div class="card-content">
+
+                    {{#each postNotifications}}
+                      <div id="postNotification" class="card-content-inner padding-0 close-popup">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
+                                    {{topic}}
+                                  </h4>
+                              </div>
+                              <div class="opacity-70 eddy-noti__news_time">
+                                {{getTimePosted when}} ago
+                              </div>
+                          </div>
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                            {{createdBy.profile.name}} {{type}}ed in {{topic}}
+                          </p>
+                        </div>
+                      </div>
+                    {{/each}}
+
+                    {{#each likeNotifications}}
+                      <div id="likeNotification" class="card-content-inner padding-0">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
+                                    {{topic}}
+                                  </h4>
+                              </div>
+                              <div class="opacity-70 eddy-noti__news_time">
+                                {{getTimePosted when}} ago
+                              </div>
+                          </div>
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                            {{liker.profile.name}} {{type}}d your post in {{topic}}
+                          </p>
+                        </div>
+                      </div>
+                    {{/each}}
+
+                    {{#each likesOnComment}}
+                      <div id="likesOnComment" class="card-content-inner padding-0">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
+                                    {{topic}}
+                                  </h4>
+                              </div>
+                              <div class="opacity-70 eddy-noti__news_time">
+                                {{getTimePosted when}} ago
+                              </div>
+                          </div>
+                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                            {{liker.profile.name}} liked your comment in {{topic}}
+                          </p>
+                        </div>
+                      </div>
+                    {{/each}}
+
+                    {{#each commentNotification}}
+                      <div id="commentNotification" class="card-content-inner padding-0">
+                        <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                                  <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
+                                  <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
+                                    {{topic}}
+                                  </h4>
+                              </div>
+                              <div class="opacity-70 eddy-noti__news_time">
+                                {{getTimePosted when}} ago
+                              </div>
+                          </div>
+                          <p class="ffont-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                            {{commenter.profile.name}} {{type}}ed on your post in {{topic}}
+                          </p>
+                        </div>
+                      </div>
+                    {{/each}}
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

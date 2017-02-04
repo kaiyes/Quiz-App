@@ -15,10 +15,10 @@
 /// @author Sabbir Ahmed
 
 @mixin type-style($family: $font-family-base, $weight: 400, $size: $font-size-base, $color: map-deep-get($colors, "foreground", "base")) {
-    font-family: $family;
-    font-weight: $weight;
-    font-size: $size;
-    color: $color;
+    font-family: $family !important;
+    font-weight: $weight !important;
+    font-size: $size !important;
+    color: $color !important;
 }
 
 /// @name  font-weight-color

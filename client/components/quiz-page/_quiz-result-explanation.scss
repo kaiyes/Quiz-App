@@ -1,0 +1,15 @@
+.eddy-result-exp {
+  &__title {
+    @include type-style($font-family-eddy-montserratbold, 700, 2rem, map-deep-get($colors, "primary", "base"));
+  }
+  &__poptxt {
+    @include type-style($font-family-eddy-montserratbold, 700, 1.8rem, map-deep-get($colors, "primary", "base"));
+  }
+  &__content {
+    @include type-style($font-family-eddy-montserratlight, 400, 1.8rem, #464646);
+  }
+
+  &__close {
+    color: #494949;
+  }
+}

@@ -1,0 +1,26 @@
+.eddy-settings {
+  &__active {
+    .eddy-settings__list {
+      color: map-deep-get($colors, 'primary', 'base') !important;
+    }
+  }
+  &__list {
+    @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #494949);
+
+    &__icons {
+      color: #494949;
+      font-size: 2.4rem;
+    }
+  }
+}
+
+.label-switch {
+  input[type=checkbox] {
+    &:checked+.checkbox {
+      background: rgba(81, 200, 172, 0.5) !important;
+      &:after {
+        background: #51c8ac !important;
+      }
+    }
+  }
+}

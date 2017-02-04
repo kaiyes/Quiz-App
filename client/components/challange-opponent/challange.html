@@ -1,0 +1,72 @@
+<template name="challengeOpponent">
+  <div class="views">
+    <div class="view view-main">
+      <div class="navbar eddy-navbar eddy-navbar--challenge">
+        <div class="navbar-inner padding-h-0">
+            <div class="left full-height width-45 text-center margin-0">
+                <a href="{{pathFor 'courseDetails'}}" class="link icon-only full-width">
+                    <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center eddy-navbar--challenge__back"></i>
+                </a>
+            </div>
+            <div class="center full-width text-center">
+              <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar--challenge__heading">
+                   <!-- {{$.Session.get 'chapter'}} -->
+                   Challenge a mate
+              </h2>
+            </div>
+            <div class="right">
+              <a href="#" class="open-panel link icon-only">
+
+              </a>
+            </div>
+        </div>
+
+        <div class="eddy-challenge__random-op-btn flex-direction--row flex-justify-content--center flex-align-items--center height-70">
+          <button id="randomOpponent" type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
+              RANDOM OPPONENT
+          </button>
+        </div>
+      </div>
+      <div class="pages">
+        <div class="page eddy-challenge">
+          <div class="page-content">
+            <div class="eddy-challenge-mrgn-top flex-direction--column">
+
+              <div class="list-block flex--1">
+                <ul class="eddy-challenge__list">
+                  {{#each players}}
+                    <li id="player" class="item-content padding-left-0 cur-pointer">
+                      <div class="item-inner padding-h-20">
+                        <div class="item-title">
+                          <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                            <img class="make-round" width="45" height="45"
+                            src="{{#if $neq profile.image " "}}
+                                  {{profile.image}}
+                              {{else}}
+                                  http://placehold.it/150x150
+                              {{/if}}"
+                            alt="Player Photo" />
+                            <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
+                            {{profile.name}}
+                            </p>
+                          </div>
+                        </div>
+                        <div class="item-after">
+                            <span> <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i></span>
+                          <!-- <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
+                          <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                          <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
+                        </div>
+                      </div>
+                    </li>
+                    {{/each}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{> toolbar}}
+    </div>
+  </div>
+</template>

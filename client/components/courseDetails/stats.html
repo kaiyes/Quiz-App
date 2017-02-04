@@ -1,16 +1,104 @@
 <template name="stats">
-  <h1>stats</h1>
-    {{#each showMessages}}
-       <li id="list"> {{body}}
-         <button id="button"> comment </button>
+    <div class="eddy-stats">
+      <div class="flex-direction--row flex-justify-content--space-between padding-h-30 padding-top-30">
+        <div class="eddy-quiz-result--rank text-center">
+          <h4 class="margin-0 eddy-stats__title">RANK</h4>
+          <div class="eddy-rank margin-top-10">
+            <span>
+               {{indexOfUser}}
+            </span>
+            <span class="eddy-rank--badge eddy-rank--badge__stats"><i class="zmdi zmdi-bookmark" aria-hidden="true"></i></span>
+          </div>
+        </div>
+        <div id="4" class="text-center padding-left-16">
+          <h4 class="margin-0 padding-bottom-15 eddy-stats__title">POINTS</h4>
+          <h3 class="margin-0 eddy-stats__points">
+              {{#with point}}
+                  {{this.points}}
+              {{/with}}
+          </h3>
+        </div>
+        <div class="text-center">
+          <h4 class="margin-0 padding-bottom-10 eddy-stats__title">ACCURACY</h4>
+          <div class="eddy-progress--wrapper" data-percent="{{$.Session.get 'percent'}}">
+            <div class="eddy-progress--bar">
+              <div class="eddy-progress--bar--fill"></div>
+            </div>
+            <div class="eddy-progress--percents">
+              <div class="eddy-progress--percents--wrapper">
+                <span>%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-            {{#if $.Session.equals "showComments" "Show"}}
-                <input  type="text">
-            {{/if}}
 
-            {{#if $.Session.equals "showComments" "Hide"}}
+      <!-- .......................chart....................... -->
+      <div class="card margin-0 border-r-0 eddy-stats__ranking">
+          <div class="card-header padding-0">
+            <div class="card margin-0 full-width">
+              <div class="card-content">
+                <div class="card-content-inner padding-h-0">
+                  <span class="font-size-fixed-12 padding-h-30 eddy-stats__ranking__title"> Chart</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+              {{>chart}}
+          </div>
+      </div>
 
-            {{/if}}
-        </li>
-    {{/each}}
+      <!-- .......................ranking....................... -->
+      <div class="card margin-0 border-r-0 eddy-stats__ranking">
+          <div class="card-header padding-0">
+            <div class="card margin-0 full-width">
+              <div class="card-content">
+                <div class="card-content-inner padding-h-0">
+                  <span class="font-size-fixed-12 padding-h-30 eddy-stats__ranking__title"> RANKING</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+
+
+              {{#each  $mapped ranking}}
+                <div class="card-content-inner padding-0">
+                    <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
+                      <span class="padding-left-5 width-70 eddy-stats__ranking__index">
+                         {{#if  $first }}
+                            King
+                            {{else}}
+                          {{$index}}
+                         {{/if}}
+                      </span>
+                      <div class="flex--1 flex-direction--row flex-justify-content--space-between flex-align-items--center">
+                        <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                          <img class="make-round" width="45" height="45"
+                          src="
+                          {{#if $neq user.profile.image " "}}
+                               {{user.profile.image}}
+                           {{else}}
+                               http://placehold.it/150x150
+                           {{/if}}
+                          " alt="Player Photo" />
+                          <p class="eddy-stats__ranking__username padding-left-5 margin-0">
+                            {{user.profile.name}}
+                          </p>
+                        </div>
+                        <div class="">
+                          <span class="eddy-stats__ranking__points">{{points}}</span>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              {{/each}}
+
+
+          </div>
+      </div>
+
+    </div>
 </template>
