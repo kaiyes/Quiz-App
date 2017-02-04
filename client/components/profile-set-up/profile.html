@@ -30,7 +30,7 @@
                <form id="profileInfo" class="position-static" action="#" method="post">
                  <div class="eddy-profile__upload-section margin-h-30">
                      <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                       <p class="control-label eddy-profile__pptxt">Profile picture</p>
+                       <p class="control-label eddy-profile__pptxt">Add Profile Picture</p>
                        {{#if $neq currentUser.profile.image " "}}
                          <div class="text-center">
                            <img class="make-round" width="85" height="85" src="{{currentUser.profile.image}}" alt="Profile photo" />
@@ -76,7 +76,7 @@
                            <li>
                                <div class="item-content">
                                    <div class="item-inner">
-                                       <div class="item-title label label eddy-profile__label">Programme <span class="imp">*</span></div>
+                                       <div class="item-title label label eddy-profile__label">Program <span class="imp">*</span></div>
                                        <div class="item-input">
                                            <input type="text" placeholder="Program" id="programme"  name="programme" value="{{programme}}" required />
                                        </div>
