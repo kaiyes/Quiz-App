@@ -16,54 +16,51 @@
 //     }
 //   }
 // }
-
 .eddy-home {
-  &--profile-info {
-    margin-top: -350px;
-
-    &__name_age {
-      @include type-style($font-family-eddy-montserratbold, 700, 1.5rem, #595959);
-    }
-    &__nickname {
-      @include type-style($font-family-base, 400, 1.2rem, #595959);
-    }
-    &__programme {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
-    }
-    &__university {
-      @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
-    }
-  }
-  &--quiz {
-    &--content{
-      &__swiped {
-        a{
-          background-color: map-deep-get($colors, 'primary', 'base') !important;
-          @include type-style($font-family-eddy-montserratlight, 400, 1.46rem, map-deep-get($colors, 'foreground', 'white'));
+    &--profile-info {
+        margin-top: -350px;
+        &__name_age {
+            @include type-style($font-family-eddy-montserratbold, 700, 1.5rem, #595959);
         }
-      }
+        &__nickname {
+            @include type-style($font-family-base, 400, 1.2rem, #595959);
+        }
+        &__programme {
+            @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
+        }
+        &__university {
+            @include type-style($font-family-eddy-montserratlight, 400, 1.2rem, #595959);
+        }
     }
-
-    &--number{
-      @include type-style($font-family-eddy-montserratbold, 400, 1.1rem, map-deep-get($colors, 'primary', 'base'));
+    &--quiz {
+        &--content {
+            &__swiped {
+                a {
+                    background-color: map-deep-get($colors, 'primary', 'base') !important;
+                    @include type-style($font-family-eddy-montserratlight, 400, 1.3rem, map-deep-get($colors, 'foreground', 'white'));
+                }
+            }
+        }
+        &--number {
+            @include type-style($font-family-eddy-montserratbold, 400, 1.2rem, map-deep-get($colors, 'primary', 'base'));
+        }
+        &__topic {
+            //padding-top: 1px;
+            @include type-style($font-family-eddy-montserratlight, 400, 1.3rem, map-deep-get($colors, 'foreground', 'light-black'));
+            text-transform: capitalize;
+        }
+        &--rank {
+            @include type-style($font-family-eddy-montserratbold, 400, 1.3rem, map-deep-get($colors, 'primary', 'base'));
+        }
+        .item-inner {
+            background-image: none !important;
+        }
     }
-    &__topic {
-      //padding-top: 1px;
-      @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, 'foreground', 'light-black'));
+    &--profile-photo {
+        box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
     }
-    &--rank{
-      @include type-style($font-family-eddy-montserratbold, 400, 1.3rem, map-deep-get($colors, 'primary', 'base'));
-    }
-
-    .item-inner {
-      background-image: none !important;
-    }
-  }
-
-  &--profile-photo {
-    box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
-  }
 }
+
 .toggle-profile {
-  padding: 63px 0 0 0;
+    padding: 63px 0 0 0;
 }
