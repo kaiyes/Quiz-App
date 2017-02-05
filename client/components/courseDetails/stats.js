@@ -10,7 +10,13 @@ Template.stats.onCreated(function() {
   let course = _.find(array, {'courseName': topicName });
   let accuracyArray = course.accuracy;
   let accuracy = _.mean(accuracyArray);
+  let isAccuracyNaN = _.isNaN(accuracy);
+
+  if (isAccuracyNaN) {
+  Session.set('percent', 0);
+  } else {
   Session.set('percent', accuracy);
+  }
 });
 
 Template.stats.onRendered(function() {
