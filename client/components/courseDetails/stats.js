@@ -9,7 +9,7 @@ Template.stats.onCreated(function() {
   let array = Meteor.user().profile.selectedCourses;
   let course = _.find(array, {'courseName': topicName });
   let accuracyArray = course.accuracy;
-  let accuracy=  _.mean(accuracyArray);
+  let accuracy = _.mean(accuracyArray);
   Session.set('percent', accuracy);
 });
 

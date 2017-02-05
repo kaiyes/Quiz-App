@@ -22,7 +22,7 @@ Meteor.methods({
 
         let userData = {
           user: Meteor.user(),
-          points: 10,
+          points: 0,
           userId: this.userId,
           name: Meteor.user().profile.name,
         };

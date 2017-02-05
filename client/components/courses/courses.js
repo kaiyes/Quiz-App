@@ -37,8 +37,10 @@ Template.course.events({
 
     let courseData = {
       courseName : this.courseName,
-      points: 10,
+      points: 0,
       accuracy:[],
+      playedChapters:[],
+      totalChapters:this.chapters.length,
     };
 
       Meteor.users.update(

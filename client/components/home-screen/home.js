@@ -11,8 +11,21 @@ Template.homePage.helpers({
     } else {
       return ranking;
     };
-
   },
+
+  mates(){
+    let topicName = this.courseName;
+    let numberOfMates =  Courses.findOne({ courseName: topicName }).ranking.length;
+    return numberOfMates;
+  },
+
+  playedChapters(){
+    let topicName = this.courseName;
+    let courseArray =  Meteor.user().profile.selectedCourses;
+    let course = _.find(courseArray, ['courseName',topicName]);
+    let totalChapters = course.totalChapters;
+    return totalChapters;
+  }
 
 });
 
