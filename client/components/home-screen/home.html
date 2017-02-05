@@ -60,7 +60,7 @@
                                 <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
                                 <div class="item-stats">
                                   <span class="smaller fw-normal font-light"><span class="primary-colors">
-                                    2</span>/ <span class="text-muted">{{playedChapters}} Chapters</span> </span>
+                                    {{playedChapters}}</span>/ <span class="text-muted">{{totalChapters}} Chapters</span> </span>
                                 </div>
                             </div>
                             <div class="item-after eddy-home--quiz--rank">
@@ -77,7 +77,7 @@
                                 {{#if $gte ranking 3 }}th  {{/if}}
                               </sup>
                             <p class="text-muted font-light fw-normal">
-                              {{mates}} mates
+                              {{mates}} mate{{#if $gt mates 1}}s{{/if}}
                             </p>
                             </span>
 

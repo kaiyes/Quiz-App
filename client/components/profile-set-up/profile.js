@@ -20,7 +20,7 @@ Template.profile.onRendered(function() {
         required: 'please select you university'
       },
       programme: {
-        required: 'please write your programme'
+        required: 'please state your program'
       }
     }
   });

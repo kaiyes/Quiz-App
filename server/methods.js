@@ -196,6 +196,15 @@ Meteor.methods({
           badge: 1,
           query: { userId: notificationData.defender._id },
         });
+
+
+        let userCourseArray = Meteor.user().profile.selectedCourses;
+        let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': notificationData.topic });
+
+        let playedChapters = {};
+        playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = notificationData.chapter;
+        Meteor.users.update({ _id: this.userId },
+          {  $addToSet:   playedChapters });
     },
 
     updateOpponent: function (quizRoomId) {
@@ -203,6 +212,16 @@ Meteor.methods({
          { _id:quizRoomId },
          { $set:{ defenderStarted: true }}
        );
+
+       let chapter = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].chapter;
+       let topic = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].topic;
+       let userCourseArray = Meteor.user().profile.selectedCourses;
+       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+
+       let playedChapters = {};
+       playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = chapter;
+       Meteor.users.update({ _id: this.userId },
+         {  $addToSet:   playedChapters });
      },
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
