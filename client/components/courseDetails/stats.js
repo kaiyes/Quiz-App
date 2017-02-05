@@ -73,7 +73,7 @@ Template.stats.events({
   "click #4": function(event, template) {
    event.preventDefault();
    toastr.success("Game ended, start a new game");
-  //  Feedback.provide("somethingHappened");
+    Feedback.provide("somethingHappened");
     console.log(this);
 
  },
