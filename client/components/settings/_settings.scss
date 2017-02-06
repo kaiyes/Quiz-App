@@ -14,13 +14,13 @@
   }
 }
 
-.label-switch {
-  input[type=checkbox] {
-    &:checked+.checkbox {
-      background: rgba(81, 200, 172, 0.5) !important;
-      &:after {
-        background: #51c8ac !important;
-      }
-    }
-  }
-}
+// .label-switch {
+//   input[type=checkbox] {
+//     &:checked+.checkbox {
+//       background: rgba(81, 200, 172, 0.5) !important;
+//       // &:after {
+//       //   background: #51c8ac !important;
+//       // }
+//     }
+//   }
+// }
