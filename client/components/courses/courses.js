@@ -22,19 +22,15 @@ Template.course.events({
 
   "click .select-course": function(event, template){
     if ($(event.target).hasClass('select-course')) {
-        //$('.select-course').removeClass('eddy-courses--selected');
         $(event.target).toggleClass('eddy-courses--selected');
     } else {
-      //$('.select-course').removeClass('eddy-courses--selected');
       $(event.target).parents('.select-course').toggleClass('eddy-courses--selected')
     }
   },
 
   "click #course": function(){
     event.preventDefault();
-    toastr.success(`added ${this.courseName}`);
     let selectedCourses = Meteor.user().profile.selectedCourses;
-
     let courseData = {
       courseName : this.courseName,
       points: 0,
@@ -42,11 +38,31 @@ Template.course.events({
       playedChapters:[],
       totalChapters:this.chapters.length,
     };
+    if (Session.get(`${this.courseName}`)===true) {
+      Session.set(`${this.courseName}`, false);
+      console.log(Session.get(`${this.courseName}`));
+      Meteor.call("removeCourse", courseData, function(error, result){
+        if(error){
+          toastr.warning("something went wrong");
+          console.log(error);
+        } else {
+          toastr.error(`removed ${courseData.courseName}`);
+        }
+      });
+    }else {
+      Session.set(`${this.courseName}`, true);
+      console.log(Session.get(`${this.courseName}`));
+      Meteor.call("addCourse", courseData, function(error, result){
+        if(error){
+          toastr.warning("something went wrong");
+          console.log(error);
+        } else {
+          toastr.success(`added ${courseData.courseName}`);
+        }
+      });
+    }
 
-      Meteor.users.update(
-        { _id: Meteor.userId()},
-        { $addToSet: { "profile.selectedCourses": courseData  }});
-    },
+  },
 
 
 });

@@ -22,7 +22,7 @@ Meteor.startup(function(){
       "positionClass": "toast-top-full-width",
       "preventDuplicates": false,
       "onclick": null,
-      "showDuration": "200",
+      "showDuration": "100",
       "hideDuration": "1000",
       "timeOut": "1000",
       "extendedTimeOut": "1000",

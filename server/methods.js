@@ -8,12 +8,24 @@ Meteor.methods({
      },
 
     addToProfile: function(profile){
-
       Meteor.users.update(
         { _id: this.userId },
         { $set: { profile: profile }}
       );
+    },
 
+    addCourse:function (courseData) {
+      Meteor.users.update(
+        { _id: this.userId },
+        { $addToSet: { "profile.selectedCourses": courseData  }}
+      );
+    },
+
+    removeCourse:function (courseData) {
+      Meteor.users.update(
+        { _id: this.userId },
+        { $pull: { "profile.selectedCourses": courseData  }}
+      );
     },
 
     addRanking: function(){
@@ -418,6 +430,8 @@ Meteor.methods({
       };
 
     },
+
+    // .................Admin Stuff.......................
 
     insertCourses: function (obj) {
       let ifCourseExists = Courses.findOne({ courseName: obj.courseName });
