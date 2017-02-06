@@ -1,6 +1,5 @@
 .eddy-chapters {
   &__list {
-    &:nth-of-type(even) {
       background-color: rgba(0, 0, 0, 0.05);
     }
 
@@ -19,4 +18,3 @@
       }
     }
   }
-}
