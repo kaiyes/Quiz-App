@@ -22,9 +22,11 @@ Meteor.methods({
     },
 
     removeCourse:function (courseData) {
+      let courses = Meteor.user().profile.selectedCourses;
+      let courseToBeRemoved = _.find(courses, ['courseName', courseData.courseName])
       Meteor.users.update(
         { _id: this.userId },
-        { $pull: { "profile.selectedCourses": courseData  }}
+        { $pull: { "profile.selectedCourses": courseToBeRemoved  }}
       );
     },
 

@@ -1,5 +1,25 @@
 Template.course.helpers({
   courses: function(){
+    // var courses = Courses.find().fetch();
+    // var grouped = _.chain(courses).groupBy(function(v){
+    // return v.courseName.substr(0,1).toUpperCase();
+    // }).value();
+
+
+    // var initials = Object.keys(grouped);
+
+    // var alphabets = _(_.range(65,91)).map(function(v){
+    // return String.fromCharCode(v);
+    // }).map(function(v){
+    // var obj={};
+    // obj[v]=_.isUndefined(grouped[v]) ? [] : grouped[v];
+    // return obj;
+    // }).value();
+    //
+    // return alphabets;
+    //
+    // var template =  _.template(document.getElementById("tpl").innerText);
+    // document.getElementById("list").innerHTML = template({data:alphabets});
     return Courses.find();
   },
 
@@ -15,7 +35,8 @@ Template.course.onRendered(function() {
       $('.eddy-searchbar').css('top', '45px');
       $('.navbar-fixed .page>.searchbar~.page-content').css('padding-top', '110px');
       $('.eddy-courses--sorting').addClass('line-height-normal height-auto padding-v-8');
-    }
+    };
+
 });
 
 Template.course.events({
@@ -61,6 +82,7 @@ Template.course.events({
         }
       });
     }
+    // console.log(this );
 
   },
 

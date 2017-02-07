@@ -2,7 +2,16 @@ Template.editCourses.helpers({
   courses: function(){
     return Courses.find();
   },
+  addedCourse(){
+    let playerCourses =  Meteor.user().profile.selectedCourses;
+    let course = _.map(playerCourses, 'courseName');
+    let ifIncludes = _.includes(course, this.courseName);
 
+     if (ifIncludes) {
+       Session.set(`${this.courseName}`, true);
+       return 'eddy-courses--selected';
+     }
+  }
 });
 
 Template.editCourses.onRendered(function() {
