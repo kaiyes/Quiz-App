@@ -16,11 +16,12 @@
         certData: Assets.getText('eddieCertProd.pem'),
         keyData: Assets.getText('eddieKeyProd.pem'),
         passphrase: '84pk8uu3',
-        production: true ,
+        production: true,
         // gateway: 'gateway.sandbox.push.apple.com',
         gateway: 'gateway.push.apple.com',
       },
       gcm: {
-         apiKey: 'AIzaSyD6UOxN5sBBJx4rujg-WZdgt1wTAiqfbZc',
+         apiKey: 'AAAAltHR2fQ:APA91bFN_lyKf8i0_stc0fIfRYEdqeOlQsiAzzxV-lrg0EeJFMp3n1QCWuwCYmlofLAY7ebmB5YR3jcTqhzzmPFJQs3syDWLJWSykoe_8Hmq-YEYjeGaAVdz5K2CJxguEQgzj5e00xzj',
+         projectNumber:"eddie-9fadb"
        }
     });
