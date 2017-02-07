@@ -28,7 +28,7 @@
            <div class="card margin-h-0 margin-bottom-0">
             <div class="card-header">
               <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                  <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
+                  <div id="player" class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                     <img width="45" height="45" class="make-round"
                     src="{{#if $neq createdBy.profile.image " "}}
                           {{createdBy.profile.image}}
@@ -81,7 +81,7 @@
                 <div class="card margin-h-0 padding-v-8 margin-0 eddy-community--post--comments overlay-5 padding-left-15">
                     <div class="card-header">
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                          <div class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
+                          <div id="commenter" class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                             <img width="45" height="45"  class="make-round"
                             src="{{#if $neq commenter.profile.image " "}}
                                   {{commenter.profile.image}}
