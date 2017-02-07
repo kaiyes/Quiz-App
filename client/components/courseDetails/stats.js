@@ -75,7 +75,13 @@ Template.stats.events({
    toastr.success("Game ended, start a new game");
     Feedback.provide("somethingHappened");
     console.log(this);
-
  },
+
+ "click #player": function(event, template) {
+  event.preventDefault();
+  Session.set('player', this.user);
+  Router.go('/player');
+},
+
 
 });

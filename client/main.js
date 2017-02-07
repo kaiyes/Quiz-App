@@ -38,6 +38,16 @@ Meteor.startup(function(){
 
 
     Push.Configure({
+      android: {
+        senderID: 647765285364,
+        alert: true,
+        badge: true,
+        sound: true,
+        vibrate: true,
+        clearNotifications: true
+        // icon: '',
+        // iconColor: ''
+      },
       ios: {
         alert: true,
         badge: true,

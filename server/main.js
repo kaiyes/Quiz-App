@@ -20,5 +20,7 @@
         // gateway: 'gateway.sandbox.push.apple.com',
         gateway: 'gateway.push.apple.com',
       },
-
+      gcm: {
+         apiKey: 'AIzaSyD6UOxN5sBBJx4rujg-WZdgt1wTAiqfbZc',
+       }
     });
