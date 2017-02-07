@@ -45,8 +45,6 @@ Meteor.startup(function(){
         sound: true,
         vibrate: true,
         clearNotifications: true
-        // icon: '',
-        // iconColor: ''
       },
       ios: {
         alert: true,

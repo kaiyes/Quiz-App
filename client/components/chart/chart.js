@@ -1,29 +1,23 @@
 Template.chart.onRendered(function () {
 
-  var ctx = document.getElementById("myChart").getContext("2d");
+  let ctx = document.getElementById("myChart").getContext("2d");
+  let courseName = Session.get('topicName');
+  let playerCourses =  Meteor.user().profile.selectedCourses;
+  let course = _.find(playerCourses, ['courseName', courseName]);
 
-  var data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  let data = {
+    labels: ['', '', '', '', '', '', ''],
     datasets: [{
         label: 'My First dataset',
-        fillColor: "rgba(220,220,220,0.2)",
-          strokeColor: "rgba(220,220,220,1)",
-          pointColor: "rgba(220,220,220,1)",
+        fillColor: "rgba(22, 222, 102, 0.2)",
+          strokeColor: "rgba(223, 219, 219, 1)",
+          pointColor: "rgba(252, 245, 245, 1)",
           pointStrokeColor: "#fff",
-          pointHighlightFill: "#fff",
+          pointHighlightFill: "#e4ecc5",
           pointHighlightStroke: "rgba(220,220,220,1)",
-          data: [20, 30, 40, 50, 60, 70, 40]
-        },{
-            label: "My Second dataset",
-            fillColor: "rgba(151,187,205,0.2)",
-            strokeColor: "rgba(151,187,205,1)",
-            pointColor: "rgba(151,187,205,1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#fff",
-            pointHighlightStroke: "rgba(151,187,205,1)",
-            data: [20, 30, 40, 50, 60, 70, 40]
+          data: course.accuracy,
         }],
   };
-  var myLineChart = new Chart(ctx).Line(data);
+  let myLineChart = new Chart(ctx).Line(data);
 
 });

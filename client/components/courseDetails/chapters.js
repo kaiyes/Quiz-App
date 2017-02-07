@@ -12,7 +12,7 @@ Template.chapters.helpers({
   hasPlayed(){
     let courseName = Session.get('topicName');
     let playerCourses =  Meteor.user().profile.selectedCourses;
-    let course = _.find(playerCourses, ['courseName', "science"]);
+    let course = _.find(playerCourses, ['courseName', courseName]);
     let ifIncludes = _.includes(course.playedChapters, this.toString());
 
      if (ifIncludes) {
