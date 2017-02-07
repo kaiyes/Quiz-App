@@ -1,20 +1,22 @@
 Template.quizResult.onCreated(function() {
 
-  let resultRoomId = Router.current().params._id;
-  let room = PlayedSessions.findOne({ _id: resultRoomId });
+  if (Meteor.user()) {
+    let resultRoomId = Router.current().params._id;
+    let room = PlayedSessions.findOne({ _id: resultRoomId });
 
-  if (Meteor.userId()===room.challanger._id ){
-    let accuracy = (room.challangersRightAnswer/6)*100;
-    Session.set('percent', accuracy);
-    Meteor.call("updateChallangersAccuracy", resultRoomId, accuracy);
-  };
-  if (Meteor.userId()===room.defender._id ){
-    let accuracy = (room.defendersRightAnswer/6)*100;
-    Session.set('percent', accuracy);
-    Meteor.call("updateDefendersAccuracy", resultRoomId, accuracy);
-  };
-  Session.set('question', room.questions[0]);
-  Session.set('number', 0);
+    if (Meteor.userId()===room.challanger._id ){
+      let accuracy = (room.challangersRightAnswer/6)*100;
+      Session.set('percent', accuracy);
+      Meteor.call("updateChallangersAccuracy", resultRoomId, accuracy);
+    };
+    if (Meteor.userId()===room.defender._id ){
+      let accuracy = (room.defendersRightAnswer/6)*100;
+      Session.set('percent', accuracy);
+      Meteor.call("updateDefendersAccuracy", resultRoomId, accuracy);
+    };
+    Session.set('question', room.questions[0]);
+    Session.set('number', 1);
+  }
 });
 
 
@@ -132,34 +134,34 @@ Template.quizResult.events({
     let resultRoomId = Router.current().params._id;
     let room = PlayedSessions.findOne({ _id: resultRoomId });
     let currentNumber = Session.get('number');
-    if (currentNumber===0) {
-      Session.set('number', 5);
+    if (currentNumber===1) {
+      Session.set('number', 6);
     } else {
       Session.set('number', currentNumber-1);
     }
 
     var session = Session.get('number');
       switch(session) {
-        case 0:
+        case 1:
         Session.set('question', room.questions[0]);
         break;
-        case 1:
+        case 2:
         Session.set('question', room.questions[1]);
         break;
-        case 2:
+        case 3:
         Session.set('question', room.questions[2]);
         break;
-        case 3:
+        case 4:
         Session.set('question', room.questions[3]);
         break;
-        case 4:
+        case 5:
         Session.set('question', room.questions[4]);
         break;
-        case 5:
+        case 6:
         Session.set('question', room.questions[5]);
         break;
         default:
-        Session.set('question', room.questions[5]);
+        Session.set('question', room.questions[6]);
       }
   },
 
@@ -168,30 +170,30 @@ Template.quizResult.events({
     let resultRoomId = Router.current().params._id;
     let room = PlayedSessions.findOne({ _id: resultRoomId });
     let currentNumber = Session.get('number');
-    if (currentNumber===5) {
-      Session.set('number', 0);
+    if (currentNumber===6) {
+      Session.set('number', 1);
     } else {
       Session.set('number', currentNumber+1);
     }
 
     var session = Session.get('number');
       switch(session) {
-        case 0:
+        case 1:
         Session.set('question', room.questions[0]);
         break;
-        case 1:
+        case 2:
         Session.set('question', room.questions[1]);
         break;
-        case 2:
+        case 3:
         Session.set('question', room.questions[2]);
         break;
-        case 3:
+        case 4:
         Session.set('question', room.questions[3]);
         break;
-        case 4:
+        case 5:
         Session.set('question', room.questions[4]);
         break;
-        case 5:
+        case 6:
         Session.set('question', room.questions[5]);
         break;
         default:
