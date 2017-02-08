@@ -1,12 +1,21 @@
-// Template.settings.onRendered(function() {
-//
-//
-//   $$('.eddy-settings ul li').click(function() {
-//     $$('.eddy-settings ul li').removeClass('eddy-settings__active');
-//     $$(this).addClass('eddy-settings__active');
-//   });
-//
-// });
+
+Template.settings.helpers({
+  isSoundChecked: function(){
+    if (Meteor.user().profile.sound===true) {
+      return 'checked'
+    }else {
+      return ''
+    }
+  },
+
+  isNotificationChecked: function(){
+    if (Meteor.user().profile.notification===true) {
+      return 'checked'
+    }else {
+      return ''
+    }
+  },
+});
 
 Template.settings.events({
 
@@ -34,12 +43,27 @@ Template.settings.events({
     Router.go('/mantra');
   },
 
-  // "click #soundSwitch": function(event, template){
-  //   event.preventDefault();
-  //   console.log("message");
-  //
-  //
-  // },
+  "change #soundSwitch": function(event, template){
+
+      if (Meteor.user().profile.sound===true) {
+        Meteor.call("muteSound");
+        toastr.error('Muted All Sound');
+      } else {
+        Meteor.call("turnOnSound");
+        toastr.success('Turned Sound on');
+      }
+
+  },
+
+  "change #notification": function(event, template){
+    if (Meteor.user().profile.notification===true) {
+      Meteor.call("muteNotification");
+      toastr.error('Notifications off');
+    } else {
+      Meteor.call("turnNotificationOn");
+      toastr.success('Notifications on');
+    }
+  },
 
   "click #logout": function(event, template){
     Meteor.logout(function(){

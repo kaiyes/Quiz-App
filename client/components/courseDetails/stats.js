@@ -1,8 +1,10 @@
-Feedback.profiles = {
-   "somethingHappened": {
-     sound: "/sounds/furrow.mp3",
-   }
-};
+
+  Feedback.profiles = {
+     "somethingHappened": {
+       sound: "/sounds/furrow.mp3",
+     }
+  };
+
 
 Template.stats.onCreated(function() {
   let topicName = Session.get('topicName');
@@ -72,8 +74,9 @@ Template.stats.events({
 
   "click #4": function(event, template) {
    event.preventDefault();
-   toastr.success("Game ended, start a new game");
-    Feedback.provide("somethingHappened");
+   if (Meteor.user().profile.sound===true) {
+     Feedback.provide("somethingHappened");
+   }
     console.log(this);
  },
 

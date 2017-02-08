@@ -31,6 +31,8 @@ Template.signUp.events({
       image:" ",
       imageId: "",
       selectedCourses:[],
+      sound:true,
+      notification:true,
     };
 
     Meteor.call("addUser", email,password, profile, function(error,result){

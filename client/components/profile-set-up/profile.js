@@ -49,6 +49,8 @@ Template.profile.events({
         imageId: Meteor.user().profile.imageId,
         createdAt: new Date(),
         createdBy: Meteor.userId(),
+        sound:true,
+        notification:true,
       };
 
       Meteor.call("addToProfile", profile, function (err) {

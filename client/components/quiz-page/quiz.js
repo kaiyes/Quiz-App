@@ -89,12 +89,10 @@ Template.quiz.helpers({
 
     if (Session.get('question')===0) {
       toastr.success("question 1");
-      Feedback.provide("somethingHappened");
       return quizRoom.questions[0];
     };
     if (Session.get('question')===1) {
       toastr.success("question 2");
-      Feedback.provide("somethingHappened");
       return quizRoom.questions[1];
     };
     if (Session.get('question')===2) {
@@ -111,8 +109,6 @@ Template.quiz.helpers({
     };
     if (Session.get('question')===5) {
       toastr.success("Last Question");
-      // let quizRoomId = Router.current().params._id;
-      // Meteor.call("endGame", quizRoomId);
       return quizRoom.questions[5];
     };
   },

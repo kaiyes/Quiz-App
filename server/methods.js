@@ -433,6 +433,29 @@ Meteor.methods({
 
     },
 
+    muteSound:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.sound": false }
+      });
+    },
+
+    turnOnSound:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.sound": true }
+      });
+    },
+
+    muteNotification:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.notification": false }
+      });
+    },
+
+    turnNotificationOn:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.notification": true }
+      });
+    },
     // .................Admin Stuff.......................
 
     insertCourses: function (obj) {
