@@ -7,7 +7,9 @@ Meteor.startup(function(){
     });
    $$ = Dom7;
 
-   StatusBar.hide();
+   if(typeof StatusBar !== 'undefined'){     
+     StatusBar.hide();
+   }
 
    Transitioner.default({
      in: "transition.slideRightIn",
