@@ -13,7 +13,7 @@
           <div class="blink margin-bottom-20">Waiting for<br /> Opponent</div>
             <div class="">
               <img width="150" height="150" class="make-round eddy-home--profile-photo"
-              src="{{#if this.profile.image}}
+              src="{{#if $neq this.profile.image " "}}
                     {{this.profile.image}}
                   {{else}}
                       http://placehold.it/150x150
