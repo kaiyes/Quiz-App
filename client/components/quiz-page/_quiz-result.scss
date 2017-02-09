@@ -8,6 +8,11 @@
     z-index: 1;
   }
 
+  &--player-photo-dull {
+    box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
+    opacity: 0.4;
+  }
+
   &--questions {
     &--no {
       line-height: 40px;

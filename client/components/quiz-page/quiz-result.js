@@ -2,20 +2,20 @@ Template.quizResult.onCreated(function() {
 
   if (Meteor.user()) {
     let resultRoomId = Router.current().params._id;
-    let room = PlayedSessions.findOne({ _id: resultRoomId });
+    let room = PlayedSessions.findOne({ _id: resultRoomId })
 
     if (Meteor.userId()===room.challanger._id ){
-      let accuracy = (room.challangersRightAnswer/6)*100;
-      Session.set('percent', accuracy);
-      Meteor.call("updateChallangersAccuracy", resultRoomId, accuracy);
-    };
+      let accuracy = (room.challangersRightAnswer/6)*100
+      Session.set('percent', accuracy)
+      Meteor.call("updateChallangersAccuracy", resultRoomId, accuracy)
+    }
     if (Meteor.userId()===room.defender._id ){
-      let accuracy = (room.defendersRightAnswer/6)*100;
-      Session.set('percent', accuracy);
-      Meteor.call("updateDefendersAccuracy", resultRoomId, accuracy);
-    };
-    Session.set('question', room.questions[0]);
-    Session.set('number', 1);
+      let accuracy = (room.defendersRightAnswer/6)*100
+      Session.set('percent', accuracy)
+      Meteor.call("updateDefendersAccuracy", resultRoomId, accuracy)
+    }
+    Session.set('question', room.questions[0])
+    Session.set('number', 1)
   }
 });
 
@@ -26,33 +26,33 @@ Template.quizResult.onRendered(function() {
     $(function(){
       var $ppc = $('.eddy-progress--wrapper'),
         accuracy = parseInt($ppc.data('percent')),
-        deg = 360*accuracy/100;
+        deg = 360*accuracy/100
       if (accuracy > 50) {
-        $ppc.addClass('gt-50');
+        $ppc.addClass('gt-50')
       }
-      $('.eddy-progress--bar--fill').css('transform','rotate('+ deg +'deg)');
-      $('.eddy-progress--percents span').html(accuracy+' %');
-    });
-  });
+      $('.eddy-progress--bar--fill').css('transform','rotate('+ deg +'deg)')
+      $('.eddy-progress--percents span').html(accuracy+' %')
+    })
+  })
 
 });
 
 Template.quizResult.helpers({
   ranking: function(){
-    let resultRoomId = Router.current().params._id;
-    let room = PlayedSessions.findOne({ _id: resultRoomId });
-    let topic = room.questions[0].topic;
+    let resultRoomId = Router.current().params._id
+    let room = PlayedSessions.findOne({ _id: resultRoomId })
+    let topic = room.questions[0].topic
 
-    let rankingArray =  Courses.findOne({ courseName: topic }).ranking;
-    let points = _.sortBy(rankingArray, ['points']);
-    let reverse = _.reverse(points);
-    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() });
+    let rankingArray =  Courses.findOne({ courseName: topic }).ranking
+    let points = _.sortBy(rankingArray, ['points'])
+    let reverse = _.reverse(points)
+    let ranking = _.findIndex(reverse , {'userId': Meteor.userId() })
 
     if (ranking<=0) {
-      return 'king';
+      return 'king'
     } else {
-      return ranking;
-    };
+      return ranking
+    }
   },
 
   rightAnswer:function(answer) {
@@ -63,8 +63,8 @@ Template.quizResult.helpers({
 
  usersAnswer:function(answer){
 
-   let resultRoomId = Router.current().params._id;
-   let room = PlayedSessions.findOne({ _id: resultRoomId });
+   let resultRoomId = Router.current().params._id
+   let room = PlayedSessions.findOne({ _id: resultRoomId })
 
    if ( Meteor.userId()===room.challanger._id ){
        if (this.challangersAnswer=== answer) {
@@ -72,7 +72,7 @@ Template.quizResult.helpers({
       } else {
         return 'eddy--sqr-buttons__price'
       }
-   };
+   }
 
    if ( Meteor.userId()===room.defender._id ){
      if (this.defendersAnswer=== answer) {
@@ -80,8 +80,73 @@ Template.quizResult.helpers({
     } else {
       return 'eddy--sqr-buttons__price'
     }
-   };
+   }
+ },
 
+ resultRoom: function(){
+   let resultRoomId = Router.current().params._id
+   return PlayedSessions.findOne({ _id: resultRoomId })
+ },
+
+  question: function(){
+   let data = Session.get('question');
+   return data
+ },
+
+ indexOfTopic: function(){
+   let resultRoomId = Router.current().params._id
+   let room =  PlayedSessions.findOne({ _id: resultRoomId })
+   let topic = room.questions[0].topic
+   let userCourseArray = Meteor.user().profile.selectedCourses
+   let courseObject = _.find(userCourseArray, { 'courseName': topic })
+   return courseObject
+ },
+
+ whoWon:function(){
+   let resultRoomId = Router.current().params._id;
+   let room =  PlayedSessions.findOne({ _id: resultRoomId })
+
+   if (room.playfirst) {
+      return 'result will be displayed after opponent has played'
+   } else {
+     if (room.challangersPoint > room.defendersPoint) {
+       if (Meteor.userId()===room.challanger._id ) {
+          return 'you won :D'
+       } else {
+          return 'you lost :('
+       }
+     } else if (room.challangersPoint < room.defendersPoint){
+       if (Meteor.userId()===room.challanger._id ) {
+          return 'you lost :('
+       } else {
+           return 'you won :D'
+       }
+     };
+   }
+ },
+
+ challengerDull:function(){
+   let resultRoomId = Router.current().params._id
+   let room =  PlayedSessions.findOne({ _id: resultRoomId })
+
+   if (room.playfirst) {
+     if (room.challangerPlayed===false) {
+       return '-dull'
+     }
+   }
+   return ''
+ },
+ 
+ defenderDull:function(){
+   let resultRoomId = Router.current().params._id
+   let room =  PlayedSessions.findOne({ _id: resultRoomId })
+
+   if (room.playfirst) {
+     if (room.defenderPlayed===false) {
+       return '-dull'
+     }
+   }
+   return ''
  },
 
 });
@@ -199,51 +264,6 @@ Template.quizResult.events({
         default:
         Session.set('question', room.questions[1]);
       }
-  },
-
-});
-
-Template.quizResult.helpers({
-  resultRoom: function(){
-    let resultRoomId = Router.current().params._id;
-    return PlayedSessions.findOne({ _id: resultRoomId });
-  },
-
-   question: function(){
-    let data = Session.get('question');
-    return data;
-  },
-
-  indexOfTopic: function(){
-    let resultRoomId = Router.current().params._id;
-    let room =  PlayedSessions.findOne({ _id: resultRoomId });
-    let topic = room.questions[0].topic;
-    let userCourseArray = Meteor.user().profile.selectedCourses;
-    let courseObject = _.find(userCourseArray, { 'courseName': topic });
-    return courseObject;
-  },
-
-  whoWon:function(){
-    let resultRoomId = Router.current().params._id;
-    let room =  PlayedSessions.findOne({ _id: resultRoomId });
-
-    if (room.playfirst) {
-       return 'result will be displayed after opponent has played';
-    } else {
-      if (room.challangersPoint > room.defendersPoint) {
-        if (Meteor.userId()===room.challanger._id ) {
-           return 'you won :D';
-        } else {
-           return 'you lost :(';
-        }
-      } else if (room.challangersPoint < room.defendersPoint){
-        if (Meteor.userId()===room.challanger._id ) {
-           return 'you lost :(';
-        } else {
-            return 'you won :D';
-        }
-      };
-    }
   },
 
 });

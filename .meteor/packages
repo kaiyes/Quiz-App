@@ -41,17 +41,12 @@ multiply:iron-router-progress
 
 nobutakaoshiro:framework7-ios-material
 fourseven:scss
-#fortawesome:fontawesome
-#twbs:bootstrap
 chrismbeckett:toastr
 
 #######################################################
 #   Schema & Form validation & Image upload from Form #
 #######################################################
 
-
-aldeed:simple-schema
-aldeed:collection2
 lepozepo:cloudinary
 thinksoftware:image-resize-client
 
@@ -67,7 +62,10 @@ chart:chart
 elevatedevdesign:feedback
 jss:flag-icon
 3stack:country-codes
-suxez:countries 
+suxez:countries
+xyz:loading
+
+
 #######################################################
 #                To be removed in production          #
 #######################################################

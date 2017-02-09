@@ -1,4 +1,4 @@
-var sixSecondTimer = new ReactiveCountdown(6);
+var sixSecondTimer = new ReactiveCountdown(15);
 
 
 Template.quiz.onCreated(function () {
@@ -42,7 +42,6 @@ Template.quiz.onRendered(function(event, instance){
                       if (Meteor.userId()===quizRoom.challanger._id ){
                         Meteor.call("endGameForChallanger", quizRoomId );
                           if ( quizRoom.defenderPlayed) {
-                            console.log("logging from challenger");
                             Meteor.call("makePlayFirstFalse",resultRoom._id);
                           };
                       };
@@ -50,11 +49,9 @@ Template.quiz.onRendered(function(event, instance){
                       if (Meteor.userId()===quizRoom.defender._id ){
                         Meteor.call("endGameForDefender", quizRoomId );
                           if ( quizRoom.challangerPlayed) {
-                            console.log("logging from defender played");
                             Meteor.call("makePlayFirstFalse",resultRoom._id);
                           };
                       };
-
                        Router.go(`/quizResult/${resultRoom._id}`);
                       });
                   });
@@ -88,27 +85,27 @@ Template.quiz.helpers({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
 
     if (Session.get('question')===0) {
-      toastr.success("question 1");
+      toastr.info("question 1");
       return quizRoom.questions[0];
     };
     if (Session.get('question')===1) {
-      toastr.success("question 2");
+      toastr.info("question 2");
       return quizRoom.questions[1];
     };
     if (Session.get('question')===2) {
-      toastr.success("question 3");
+      toastr.info("question 3");
       return quizRoom.questions[2];
     };
     if (Session.get('question')===3) {
-      toastr.success("question 4");
+      toastr.info("question 4");
       return quizRoom.questions[3];
     };
     if (Session.get('question')===4) {
-      toastr.success("question 5");
+      toastr.info("question 5");
       return quizRoom.questions[4];
     };
     if (Session.get('question')===5) {
-      toastr.success("Last Question");
+      toastr.info("Last Question");
       return quizRoom.questions[5];
     };
   },
@@ -147,11 +144,9 @@ Template.quiz.events({
     let rightAnswer = this.rightAnswer;
     if (firstAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
         };
         if (Meteor.userId()===quizRoom.defender._id) {
-          console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
         };
     };
@@ -169,14 +164,10 @@ Template.quiz.events({
     let rightAnswer = this.rightAnswer;
     if (secondAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
-
         };
         if (Meteor.userId()===quizRoom.defender._id) {
-          console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
-
         };
     };
     let questionNumber = Session.get('question');
@@ -194,12 +185,10 @@ Template.quiz.events({
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
           Meteor.call("incChallangerRoomPoints", quizRoomId );
-
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
           Meteor.call("incdefenderRoomPoints", quizRoomId );
-
         };
     };
     let questionNumber = Session.get('question');
