@@ -32,9 +32,12 @@
              <div class="list-group">
                <ul class="eddy-courses">
 
-                <li id="tpl" class="list-group-title eddy-courses--sorting">A</li>
-                 {{#each  courses}}
-
+                 {{#each objectToPairs courses}}
+                  <li class="list-group-title eddy-courses--sorting">
+                    {{ getIndex value }}
+                  </li>
+                  {{#if hasCources value }}
+                  {{#each getValue value }}
                    <li id="course" class="cur-pointer select-course">
                     <a class="item-link">
                      <div class="item-content">
@@ -53,8 +56,9 @@
                        </div>
                       </a>
                      </li>
+                  {{/each}}
+                  {{/if}}
                  {{/each}}
-
                </ul>
              </div>
            </div>

@@ -1,28 +1,43 @@
 Template.course.helpers({
-  courses: function(){
-    // var courses = Courses.find().fetch();
-    // var grouped = _.chain(courses).groupBy(function(v){
-    // return v.courseName.substr(0,1).toUpperCase();
-    // }).value();
+    objectToPairs: function (object) {
+      return _.map(object, function (value, key) {
+        return {
+          key: key,
+          value: value
+        }
+      })
+    },
+    getIndex: function (obj) {
+      return _.first(_.keys(obj))
+    },
+    hasCources: function (obj) {
+      return !_.isEmpty(_.first(_.values(obj)))
+    },
+    getValue: function (obj) {
+      return _.values(obj)
+    },
+    courses: function () {
+      var all_courses = Courses.find().fetch()
+
+      var grouped = _.chain(all_courses).groupBy(function (v) {
+        return v.courseName.substr(0, 1).toUpperCase()
+      })
+        .mapValues(function (v) {
+          return _.transform(v, _.ary(_.extend, 2), {})
+        })
+        .value()
 
 
-    // var initials = Object.keys(grouped);
+      var alphabets = _(_.range(65, 91)).map(function (v) {
+        return String.fromCharCode(v)
+      }).map(function (v) {
+        var obj = {}
+        obj[v] = _.isUndefined(grouped[v]) ? {} : grouped[v]
+        return obj
+      }).value()
 
-    // var alphabets = _(_.range(65,91)).map(function(v){
-    // return String.fromCharCode(v);
-    // }).map(function(v){
-    // var obj={};
-    // obj[v]=_.isUndefined(grouped[v]) ? [] : grouped[v];
-    // return obj;
-    // }).value();
-    //
-    // return alphabets;
-    //
-    // var template =  _.template(document.getElementById("tpl").innerText);
-    // document.getElementById("list").innerHTML = template({data:alphabets});
-    return Courses.find();
-  },
-
+      return alphabets
+    },
 });
 
 Template.course.onRendered(function() {
