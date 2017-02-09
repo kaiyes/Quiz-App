@@ -65,7 +65,11 @@ Template.toolbar.onRendered(function() {
 
      Tracker.afterFlush(function() {
          if (notification>oldNotification) {
+           if (Meteor.user().profile.sound===true) {
             Feedback.provide("somethingHappened");
+          }else {
+            console.log(notification);
+          }
          }
       });
     }
