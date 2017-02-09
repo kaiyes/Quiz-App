@@ -79,6 +79,7 @@ Template.editCourses.events({
     let courseData = {
       courseName: this.courseName,
       points: 0,
+      courseNumber:this.courseNumber,
       accuracy: [],
       playedChapters: [],
       totalChapters: this.chapters.length

@@ -29,35 +29,6 @@
              <div class="eddy-profile padding-top-20 padding-bottom-25 position-static">
 
                    <form id="profileInfo" class="position-static" action="#" method="post">
-                     <!-- <div class="eddy-profile__upload-section margin-h-30">
-
-                           <p class="control-label eddy-profile__pptxt">Photo For Course</p>
-                           {{#if $neq image " "}}
-                               <div class="text-center">
-                                 <img class="make-round" width="85" height="85"
-                                 src="
-                                 {{#if $neq image " "}}
-                                    {{image}}
-                                  {{else}}
-                                      {{#if $.Session.get 'image'}}
-                                          {{$.Session.get 'image'}}
-                                        {{else}}
-                                          http://placehold.it/85x85
-                                      {{/if}}
-                                  {{/if}}"
-                                 alt="Profile photo" />
-                                 <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
-                               </div>
-                               {{else}}
-                                 <div>
-                                     <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">
-                                       <i class="zmdi zmdi-plus"></i>
-                                     </label>
-                                     <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
-                                 </div>
-                             {{/if}}
-                         </div>
-                     </div> -->
 
                      <div class="list-block">
                         <ul>
@@ -70,6 +41,19 @@
                                         <div class="item-input">
                                             <input type="text" placeholder="Mathmatics/Arts/Engineering"
                                             id="courseName"  name="courseName" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label eddy-profile__label">Course Number
+                                          <span class="imp">*</span>
+                                        </div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="ES 2501"
+                                            id="courseNumber"  name="courseNumber" />
                                         </div>
                                     </div>
                                 </div>

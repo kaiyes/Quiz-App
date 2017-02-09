@@ -8,6 +8,9 @@ Template.adminPanel.onRendered(function() {
           courseName: {
             required: true
           },
+          courseNumber: {
+            required: true
+          },
           chapter1: {
             required: true
           },
@@ -19,7 +22,9 @@ Template.adminPanel.onRendered(function() {
           chapter1: {
             required: 'Please select at 1 chapter name'
           },
-
+          courseNumber: {
+            required: 'Please add course Number'
+          },
         }
       });
     });
@@ -40,12 +45,13 @@ Template.adminPanel.events({
     event.preventDefault();
     if (instance.$( "#profileInfo" ).valid()) {
       let courseName = document.querySelector("#courseName").value;
+      let courseNumber = document.querySelector("#courseNumber").value;
       let chapter3 = document.querySelector("#chapter3").value;
       let chapter2 = document.querySelector("#chapter2").value;
       let chapter1 = document.querySelector("#chapter1").value;
       let chapters = [chapter1,chapter2,chapter3];
       let removeEmptyStuff = _.remove(chapters, function(x) { return x == "" });
-      let obj = { courseName, chapters }
+      let obj = { courseName, chapters, courseNumber }
       console.log(obj);
 
       Meteor.call("insertCourses", obj, function (err) {

@@ -463,6 +463,7 @@ Meteor.methods({
       if (!ifCourseExists) {
         Courses.insert({
           courseName: obj.courseName,
+          courseNumber:obj.courseNumber,
           chapters: obj.chapters,
           ranking:[],
         });

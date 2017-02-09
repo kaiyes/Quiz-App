@@ -72,6 +72,7 @@ Template.course.events({
       points: 0,
       accuracy:[],
       playedChapters:[],
+      courseNumber:this.courseNumber,
       totalChapters:this.chapters.length,
     };
     if (Session.get(`${this.courseName}`)===true) {
