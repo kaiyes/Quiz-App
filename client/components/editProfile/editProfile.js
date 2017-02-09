@@ -76,14 +76,14 @@ Template.editProfile.events({
       };
       console.log(profile);
 
-      // Meteor.call("addToProfile", profile, function (err) {
-      //   if (!err) {
-      //     toastr.success("profile update successfully");
-      //     Router.go('/homePage');
-      //   } else {
-      //     toastr.error(err);
-      //   }
-      // });
+      Meteor.call("addToProfile", profile, function (err) {
+        if (!err) {
+          toastr.success("profile update successfully");
+          Router.go('/homePage');
+        } else {
+          toastr.error(err);
+        }
+      });
     }
   },
    'change input[type="file"]' ( event, template ) {
