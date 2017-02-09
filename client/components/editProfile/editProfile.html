@@ -42,7 +42,7 @@
                                       {{#if $.Session.get 'image'}}
                                           {{$.Session.get 'image'}}
                                         {{else}}
-                                          http://placehold.it/85x85
+                                          /assets/generic_800.png
                                       {{/if}}
                                   {{/if}}"
                                  alt="Profile photo" />
@@ -101,6 +101,7 @@
                                         <div class="item-title label eddy-profile__label">Nickname</div>
                                         <div class="item-input">
                                             <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
+                                                <option value="{{nickName}}">{{nickName}}  </option>
                                                 <option value="warrior">Warrior</option>
                                                 <option value="lion">Lion</option>
                                             </select>
@@ -124,10 +125,14 @@
                                     <div class="item-inner">
                                         <div class="item-title label eddy-profile__label">Country</div>
                                         <div class="item-input">
-                                            <select id="country" placeholder="Country" name="country"  autocomplete="off">
-                                                <option value="bd">BD</option>
-                                                <option value="uk">UK</option>
-                                            </select>
+                                          <select id="country" placeholder="Country" name="country"  autocomplete="off">
+                                            <option value="{{country}}"> {{country}} </option>
+                                             {{#each countries}}
+                                               <option value="{{cn_iso_2}}">
+                                                 {{cn_short_en}}
+                                               </option>
+                                             {{/each}}
+                                          </select>
                                         </div>
                                     </div>
                                 </div>

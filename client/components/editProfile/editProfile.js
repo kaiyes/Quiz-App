@@ -33,6 +33,14 @@ Template.editProfile.onRendered(function() {
 });
 
 Template.editProfile.helpers({
+  countries: function(){
+  return SuxezCountries.find({});
+},
+
+});
+
+
+Template.editProfile.helpers({
    user: function(){
      return UserInformation.findOne({createdBy: Meteor.userId()});
   }
@@ -68,14 +76,14 @@ Template.editProfile.events({
       };
       console.log(profile);
 
-      Meteor.call("addToProfile", profile, function (err) {
-        if (!err) {
-          toastr.success("profile update successfully");
-          Router.go('/homePage');
-        } else {
-          toastr.error(err);
-        }
-      });
+      // Meteor.call("addToProfile", profile, function (err) {
+      //   if (!err) {
+      //     toastr.success("profile update successfully");
+      //     Router.go('/homePage');
+      //   } else {
+      //     toastr.error(err);
+      //   }
+      // });
     }
   },
    'change input[type="file"]' ( event, template ) {

@@ -69,7 +69,7 @@
                                        <div class="item-title label eddy-profile__label">University <span class="imp">*</span></div>
                                        <div class="item-input">
                                            <select name="university" id="university" required autocomplete="off">
-                                               <option value="{{university}}">{{university}}</option>
+                                               <option value="#"> Select Your University </option>
                                                <option value="AUST">AUST</option>
                                                <option value="BUET">BUET</option>
                                            </select>
@@ -93,6 +93,7 @@
                                        <div class="item-title label eddy-profile__label">Nickname</div>
                                        <div class="item-input">
                                            <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
+                                               <option value="#"> Select Your Nick Name </option>
                                                <option value="warrior">Warrior</option>
                                                <option value="lion">Lion</option>
                                            </select>
@@ -117,6 +118,7 @@
                                        <div class="item-title label eddy-profile__label">Country</div>
                                        <div class="item-input">
                                            <select id="country" placeholder="Country" name="country"  autocomplete="off">
+                                             <option value="#"> Select Your Country </option>
                                               {{#each countries}}
                                                 <option value="{{cn_iso_2}}">
                                                   {{cn_short_en}}
