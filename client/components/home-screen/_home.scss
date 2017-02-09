@@ -61,6 +61,20 @@
     }
 }
 
+.profile-pic-container {
+    position: relative;
+    .flag-icon {
+        position: absolute;
+        left: -10px;
+        top: 16px;
+        z-index: 0;
+    }
+    .eddy-home--profile-photo {
+        position: relative;
+        z-index: 10;
+    }
+}
+
 .toggle-profile {
     padding: 63px 0 0 0;
 }
