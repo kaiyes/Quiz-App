@@ -5,15 +5,13 @@
           <div class="eddy-home--profile-info">
             <div class="padding-top-15 flex-direction--column flex-justify-content--flex-start flex-align-items--center">
 
-                <div class="">
+                <div class="">                  
                   <img width="100" height="100" class="make-round eddy-home--profile-photo"
-                  src="
-                  {{#if $neq currentUser.profile.image " "}}
-                      {{currentUser.profile.image}}
-                  {{else}}
-                      http://placehold.it/100x100
-                  {{/if}}
-                  " alt="Profile Photo">
+                  src="{{#if $neq currentUser.profile.image " "}} 
+                  {{currentUser.profile.image}}
+                  {{else}} 
+                  /assets/generic_800.png                  
+                  {{/if}}" alt="Profile Photo">
                   <span class="flag-icon flag-icon-{{currentUser.profile.country}}"></span>
                 </div>
                   <div class="full-width">
@@ -67,7 +65,7 @@
                                 <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
                                 <div class="item-stats">
                                   <span class="smaller fw-normal font-light"><span class="primary-colors">
-                                    {{playedChapters}}</span>/ <span class="text-muted">{{totalChapters}} Chapters</span> </span>
+                                    {{playedChapters}}</span> / <span class="text-muted">{{totalChapters}} Chapters</span> </span>
                                 </div>
                             </div>
                             <div class="item-after eddy-home--quiz--rank">

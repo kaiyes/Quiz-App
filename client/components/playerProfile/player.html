@@ -9,10 +9,10 @@
         <div class="padding-h-50 flex-direction--column flex-justify-content--center flex-align-items--center flex--1">
             <div class="">
               <img width="150" height="150" class="make-round eddy-home--profile-photo"
-              src="{{#if this.profile.image}}
+              src="{{#if $neq this.profile.image " "}}
                     {{this.profile.image}}
                   {{else}}
-                      http://placehold.it/150x150
+                      /assets/generic_800.png
                   {{/if}}"
               alt="Profile Photo">
             </div>
