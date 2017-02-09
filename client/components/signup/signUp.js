@@ -35,7 +35,7 @@ Template.signUp.events({
       notification:true,
     };
 
-    Meteor.call("addUser", email,password, profile, function(error,result){
+    Loading.call("addUser", email,password, profile, function(error,result){
       if (error) {
         toastr.error(error.reason);
       } else {
