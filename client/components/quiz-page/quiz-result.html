@@ -45,7 +45,7 @@
                             </div>
                             <div class="text-center">
                               <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
-                              src="{{#if defender.profile.image}}
+                              src="{{#if $neq defender.profile.image " "}}
                                   {{defender.profile.image}}
                               {{else}}
                                   http://placehold.it/150x150
@@ -149,7 +149,7 @@
                         <i class="zmdi zmdi-chevron-left font-size-fixed-40"></i>
                       </a>
                       <h2 class="font-size-fixed-14 margin-0 eddy-quiz-result--questions--no">
-                          QUESTION 6
+                          QUESTION   {{$.Session.get 'number'}}
                       </h2>
                       <a href="#" id="right" class="open-panel link icon-only iconic-tap text-center">
                         <i class="zmdi zmdi-chevron-right font-size-fixed-40"></i>

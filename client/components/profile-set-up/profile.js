@@ -1,3 +1,5 @@
+
+
 Template.profile.onRendered(function() {
   let self = this;
   self.$( "#profileInfo" ).validate({
@@ -20,11 +22,18 @@ Template.profile.onRendered(function() {
         required: 'please select you university'
       },
       programme: {
-        required: 'please write your programme'
+        required: 'please state your program'
       }
     }
   });
 });
+
+Template.profile.helpers({
+  countries: function(){
+  return SuxezCountries.find({});
+  }
+});
+
 
 Template.profile.events({
   'click .submit-profile' (event, instance) {
@@ -35,7 +44,7 @@ Template.profile.events({
       let programme = document.querySelector("#programme").value;
       let nickname = document.querySelector("#nickname").value;
       let age = document.querySelector("#age").value;
-      let country = document.querySelector("#country").value;
+      let country = document.querySelector("#country").value.toLowerCase();
 
       let profile = {
         age: age,
@@ -49,6 +58,8 @@ Template.profile.events({
         imageId: Meteor.user().profile.imageId,
         createdAt: new Date(),
         createdBy: Meteor.userId(),
+        sound:true,
+        notification:true,
       };
 
       Meteor.call("addToProfile", profile, function (err) {

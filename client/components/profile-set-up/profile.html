@@ -11,7 +11,9 @@
                       </a>
                   </div>
                   <div class="center full-width text-center">
-                    <h2 class="margin-0 full-width eddy-navbar__title">TELL US ABOUT YOURSELF</h2>
+                    <h2 class="margin-0 full-width eddy-navbar__title">
+                      TELL US ABOUT YOURSELF
+                    </h2>
                   </div>
                   <div class="right">
                     <a href="#" class="open-panel link icon-only"></a>
@@ -21,7 +23,9 @@
             <div class="toolbar toolbar-bottom">
                 <div class="toolbar-inner eddy-profile__submit">
                     <a href="#" class="link">&nbsp;</a>
-                    <a href="#" class="link submit-profile">DONE</a>
+                    <a href="#" class="link submit-profile">
+                      DONE
+                    </a>
                     <a href="#" class="link">&nbsp;</a>
                 </div>
             </div>
@@ -113,8 +117,11 @@
                                        <div class="item-title label eddy-profile__label">Country</div>
                                        <div class="item-input">
                                            <select id="country" placeholder="Country" name="country"  autocomplete="off">
-                                               <option value="bd">BD</option>
-                                               <option value="uk">UK</option>
+                                              {{#each countries}}
+                                                <option value="{{cn_iso_2}}">
+                                                  {{cn_short_en}}
+                                                </option>
+                                              {{/each}}
                                            </select>
                                        </div>
                                    </div>

@@ -7,7 +7,9 @@ Meteor.startup(function(){
     });
    $$ = Dom7;
 
-   StatusBar.hide();
+   if(typeof StatusBar !== 'undefined'){     
+     StatusBar.hide();
+   }
 
    Transitioner.default({
      in: "transition.slideRightIn",
@@ -22,7 +24,7 @@ Meteor.startup(function(){
       "positionClass": "toast-top-full-width",
       "preventDuplicates": false,
       "onclick": null,
-      "showDuration": "200",
+      "showDuration": "100",
       "hideDuration": "1000",
       "timeOut": "1000",
       "extendedTimeOut": "1000",
@@ -38,6 +40,14 @@ Meteor.startup(function(){
 
 
     Push.Configure({
+      android: {
+        senderID: 647765285364,
+        alert: true,
+        badge: true,
+        sound: true,
+        vibrate: true,
+        clearNotifications: true
+      },
       ios: {
         alert: true,
         badge: true,

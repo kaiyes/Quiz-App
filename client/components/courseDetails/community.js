@@ -89,5 +89,16 @@ Template.community.events({
     Meteor.call('likeAcomment', this, Meteor.user());
   },
 
+  "click #player": function(event, template) {
+   event.preventDefault();
+   Session.set('player', this.createdBy);
+   Router.go('/player');
+ },
+
+ "click #commenter": function(event, template) {
+  event.preventDefault();
+  Session.set('player', this.commenter);
+  Router.go('/player');
+ },
 
 });

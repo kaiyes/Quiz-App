@@ -53,7 +53,15 @@
                     <div class="item-inner padding-v-20">
                       <div class="item-title eddy-settings__list">MANTRA</div>
                     </div>
-                  
+
+                  </li>
+                  <li id="course" class="item-content cur-pointer close-popup padding-left-30">
+                    <div class="item-media">
+                      <i class="zmdi zmdi-collection-plus eddy-settings__list__icons"></i>
+                    </div>
+                    <div class="item-inner padding-v-20">
+                      <div class="item-title eddy-settings__list">EDIT COURSES</div>
+                    </div>
                   </li>
                   <li id="editProfile" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
@@ -65,6 +73,7 @@
                       </div>
                     </div>
                   </li>
+                  {{#if currentUser}}
                   <li class="item-content padding-left-30">
                     <div class="item-media">
                       <i class="zmdi zmdi-volume-up eddy-settings__list__icons"></i>
@@ -73,8 +82,8 @@
                       <div class="item-title eddy-settings__list">SOUNDS</div>
                       <div class="item-after">
                         <div class="item-input">
-                          <label class="label-switch">
-                            <input type="checkbox" checked>
+                          <label  class="label-switch">
+                            <input id="soundSwitch" type="checkbox" {{isSoundChecked}}>
                             <div class="checkbox"></div>
                           </label>
                         </div>
@@ -92,13 +101,14 @@
                       <div class="item-after">
                         <div class="item-input">
                           <label class="label-switch">
-                            <input type="checkbox">
+                            <input id="notification" type="checkbox" {{isNotificationChecked}}>
                             <div class="checkbox"></div>
                           </label>
                         </div>
                       </div>
                     </div>
                   </li>
+                  {{/if}}
                   <li id="help" class="item-content cur-pointer close-popup padding-left-30">
                     <div class="item-media">
                       <i class="zmdi zmdi-info-outline eddy-settings__list__icons"></i>

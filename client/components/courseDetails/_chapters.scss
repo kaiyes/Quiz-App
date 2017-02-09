@@ -1,9 +1,8 @@
 .eddy-chapters {
   &__list {
-    &:nth-of-type(even) {
+    & {
       background-color: rgba(0, 0, 0, 0.05);
     }
-
     &__index {
       padding-top: 5px;
       @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #595959);
@@ -12,7 +11,6 @@
       padding-top: 5px;
       @include type-style($font-family-eddy-montserratlight, 400, 1.6rem, #595959);
     }
-
     .item-link {
       &.active-state {
         background: rgba(0, 0 ,0, 0.08)!important;

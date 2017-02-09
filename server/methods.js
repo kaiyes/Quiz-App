@@ -8,12 +8,26 @@ Meteor.methods({
      },
 
     addToProfile: function(profile){
-
       Meteor.users.update(
         { _id: this.userId },
         { $set: { profile: profile }}
       );
+    },
 
+    addCourse:function (courseData) {
+      Meteor.users.update(
+        { _id: this.userId },
+        { $addToSet: { "profile.selectedCourses": courseData  }}
+      );
+    },
+
+    removeCourse:function (courseData) {
+      let courses = Meteor.user().profile.selectedCourses;
+      let courseToBeRemoved = _.find(courses, ['courseName', courseData.courseName])
+      Meteor.users.update(
+        { _id: this.userId },
+        { $pull: { "profile.selectedCourses": courseToBeRemoved  }}
+      );
     },
 
     addRanking: function(){
@@ -22,7 +36,7 @@ Meteor.methods({
 
         let userData = {
           user: Meteor.user(),
-          points: 10,
+          points: 0,
           userId: this.userId,
           name: Meteor.user().profile.name,
         };
@@ -196,6 +210,15 @@ Meteor.methods({
           badge: 1,
           query: { userId: notificationData.defender._id },
         });
+
+
+        let userCourseArray = Meteor.user().profile.selectedCourses;
+        let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': notificationData.topic });
+
+        let playedChapters = {};
+        playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = notificationData.chapter;
+        Meteor.users.update({ _id: this.userId },
+          {  $addToSet:   playedChapters });
     },
 
     updateOpponent: function (quizRoomId) {
@@ -203,6 +226,16 @@ Meteor.methods({
          { _id:quizRoomId },
          { $set:{ defenderStarted: true }}
        );
+
+       let chapter = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].chapter;
+       let topic = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].topic;
+       let userCourseArray = Meteor.user().profile.selectedCourses;
+       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+
+       let playedChapters = {};
+       playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = chapter;
+       Meteor.users.update({ _id: this.userId },
+         {  $addToSet:   playedChapters });
      },
 
     removeChallangeNotification: function (notificationId,quizRoomId) {
@@ -399,6 +432,31 @@ Meteor.methods({
       };
 
     },
+
+    muteSound:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.sound": false }
+      });
+    },
+
+    turnOnSound:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.sound": true }
+      });
+    },
+
+    muteNotification:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.notification": false }
+      });
+    },
+
+    turnNotificationOn:function () {
+      Meteor.users.update({ _id:this.userId },
+        { $set: {   "profile.notification": true }
+      });
+    },
+    // .................Admin Stuff.......................
 
     insertCourses: function (obj) {
       let ifCourseExists = Courses.findOne({ courseName: obj.courseName });

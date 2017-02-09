@@ -18,7 +18,7 @@
               {{/with}}
           </h3>
         </div>
-        <div class="text-center">
+        <div  class="text-center">
           <h4 class="margin-0 padding-bottom-10 eddy-stats__title">ACCURACY</h4>
           <div class="eddy-progress--wrapper" data-percent="{{$.Session.get 'percent'}}">
             <div class="eddy-progress--bar">
@@ -65,7 +65,7 @@
 
 
               {{#each  $mapped ranking}}
-                <div class="card-content-inner padding-0">
+                <div id="player" class="card-content-inner padding-0">
                     <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
                       <span class="padding-left-5 width-70 eddy-stats__ranking__index">
                          {{#if  $first }}

@@ -1,16 +1,24 @@
-Feedback.profiles = {
-   "somethingHappened": {
-     sound: "/sounds/furrow.mp3",
-   }
-};
+
+  Feedback.profiles = {
+     "somethingHappened": {
+       sound: "/sounds/furrow.mp3",
+     }
+  };
+
 
 Template.stats.onCreated(function() {
   let topicName = Session.get('topicName');
   let array = Meteor.user().profile.selectedCourses;
   let course = _.find(array, {'courseName': topicName });
   let accuracyArray = course.accuracy;
-  let accuracy=  _.mean(accuracyArray);
+  let accuracy = _.mean(accuracyArray);
+  let isAccuracyNaN = _.isNaN(accuracy);
+
+  if (isAccuracyNaN) {
+  Session.set('percent', 0);
+  } else {
   Session.set('percent', accuracy);
+  }
 });
 
 Template.stats.onRendered(function() {
@@ -66,10 +74,17 @@ Template.stats.events({
 
   "click #4": function(event, template) {
    event.preventDefault();
-   toastr.success("Game ended, start a new game");
-  //  Feedback.provide("somethingHappened");
+   if (Meteor.user().profile.sound===true) {
+     Feedback.provide("somethingHappened");
+   }
     console.log(this);
-
  },
+
+ "click #player": function(event, template) {
+  event.preventDefault();
+  Session.set('player', this.user);
+  Router.go('/player');
+},
+
 
 });

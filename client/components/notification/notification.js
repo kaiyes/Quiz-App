@@ -80,5 +80,10 @@ Template.notification.events({
       Router.go('/courseDetails#community');
   },
 
+  "click #player": function(event, template) {
+   event.preventDefault();
+   Session.set('player', this.challanger);
+   Router.go('/player');
+ },
 
 });

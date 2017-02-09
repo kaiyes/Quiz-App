@@ -29,7 +29,7 @@
                   <div class="text-center eddy-quiz--players--me position-relative">
                     <span class="eddy-quiz--players--rank">2</span>
                     <img width="55" height="55" class="make-round eddy-quiz--players--profile-img"
-                    src="{{#if challanger.profile.image}}
+                    src="{{#if $neq challanger.profile.image " "}}
                             {{challanger.profile.image}}
                           {{else}}
                             http://placehold.it/85x85
@@ -47,7 +47,7 @@
                   <div class="text-center eddy-quiz--players--opponent position-relative">
                     <span class="eddy-quiz--players--rank__opponent">?</span>
                     <img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
-                    src="{{#if defender.profile.image}}
+                    src="{{#if $neq defender.profile.image " "}}
                             {{defender.profile.image}}
                           {{else}}
                             http://placehold.it/85x85
