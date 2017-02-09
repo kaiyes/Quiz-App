@@ -1,7 +1,7 @@
 
   Feedback.profiles = {
      "somethingHappened": {
-       sound: "/sounds/furrow.mp3",
+       sound: "/sounds/ting.mp3",
      }
   };
 
