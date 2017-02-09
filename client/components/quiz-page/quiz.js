@@ -86,26 +86,44 @@ Template.quiz.helpers({
 
     if (Session.get('question')===0) {
       toastr.info("question 1");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[0];
     };
     if (Session.get('question')===1) {
       toastr.info("question 2");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[1];
     };
     if (Session.get('question')===2) {
       toastr.info("question 3");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[2];
     };
     if (Session.get('question')===3) {
       toastr.info("question 4");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[3];
     };
     if (Session.get('question')===4) {
       toastr.info("question 5");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[4];
     };
     if (Session.get('question')===5) {
       toastr.info("Last Question");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       return quizRoom.questions[5];
     };
   },

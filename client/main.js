@@ -4,10 +4,11 @@ Meteor.startup(function(){
       fastClicks: true,
       materialRipple:true,
       statusbarOverlay:false,
+      activeState:true,
     });
    $$ = Dom7;
 
-   if(typeof StatusBar !== 'undefined'){     
+   if(typeof StatusBar !== 'undefined'){
      StatusBar.hide();
    }
 
