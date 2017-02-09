@@ -1,3 +1,5 @@
+
+
 Template.profile.onRendered(function() {
   let self = this;
   self.$( "#profileInfo" ).validate({
@@ -26,6 +28,13 @@ Template.profile.onRendered(function() {
   });
 });
 
+Template.profile.helpers({
+  countries: function(){
+  return SuxezCountries.find({});
+  }
+});
+
+
 Template.profile.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
@@ -35,7 +44,7 @@ Template.profile.events({
       let programme = document.querySelector("#programme").value;
       let nickname = document.querySelector("#nickname").value;
       let age = document.querySelector("#age").value;
-      let country = document.querySelector("#country").value;
+      let country = document.querySelector("#country").value.toLowerCase();
 
       let profile = {
         age: age,

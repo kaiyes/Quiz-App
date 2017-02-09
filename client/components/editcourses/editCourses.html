@@ -32,7 +32,9 @@
              <div class="list-group">
                <ul class="eddy-courses">
                  {{#each objectToPairs courses}}
-                  <li class="list-group-title eddy-courses--sorting">{{ getIndex value }}</li>                                    
+                  <li class="list-group-title eddy-courses--sorting">
+                    {{ getIndex value }}
+                  </li>
                   {{#if hasCources value }}
                   {{#each getValue value }}
                    <li id="course" class="cur-pointer select-course {{addedCourse}}">
@@ -53,9 +55,9 @@
                        </div>
                       </a>
                      </li>
-                  {{/each}}            
-                  {{/if}}     
-                 {{/each}}                 
+                  {{/each}}
+                  {{/if}}
+                 {{/each}}
 
                </ul>
              </div>
