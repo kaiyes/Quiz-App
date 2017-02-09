@@ -34,7 +34,7 @@
                         <div class="card-content-inner padding-h-35">
                           <div class="flex-direction--row flex-justify-content--space-between margin-top-60">
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              <img class="make-round eddy-quiz-result--player-photo{{challengerDull}}" width="85" height="85"
                               src="{{#if $neq challanger.profile.image " "}}
                                     {{challanger.profile.image}}
                                 {{else}}
@@ -44,7 +44,7 @@
                               <p class="eddy-quiz-result__player-name">{{challanger.profile.name}}</p>
                             </div>
                             <div class="text-center">
-                              <img class="make-round eddy-quiz-result--player-photo" width="85" height="85"
+                              <img class="make-round eddy-quiz-result--player-photo{{defenderDull}}" width="85" height="85"
                               src="{{#if $neq defender.profile.image " "}}
                                   {{defender.profile.image}}
                               {{else}}
