@@ -59,7 +59,7 @@ Template.editProfile.events({
       let programme = document.querySelector("#programme").value;
       let nickname = document.querySelector("#nickname").value;
       let age = document.querySelector("#age").value;
-      let country = document.querySelector("#country").value;
+      let country = document.querySelector("#country").value.toLowerCase();
 
       let profile = {
         age: age,
