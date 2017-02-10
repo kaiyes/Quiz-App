@@ -22,7 +22,12 @@ Template.quiz.onCreated(function () {
 });
 
 Template.quiz.onRendered(function(event, instance){
-
+  let quizRoomId = Router.current().params._id;
+  let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+  let ifQuestionsExists = quizRoom.questions[2];
+if (ifQuestionsExists===undefined) {
+  toastr.error("There are no questions");
+ }else {
   Session.set('question', 0);
     sixSecondTimer.start(function() {
       Session.set('question',1);
@@ -57,9 +62,9 @@ Template.quiz.onRendered(function(event, instance){
                   });
               });
           });
-      });
-  });
-
+       });
+    });
+   }
 });
 
 Template.quiz.onDestroyed(function () {
