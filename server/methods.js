@@ -255,15 +255,24 @@ Meteor.methods({
       //   };
     },
 
-    incChallangerRoomPoints: function( quizRoomId, time){
-      if (time<=9) {
-        var points = 5
-      } else if (time<=14) {
-        var points = 7
-      } else if (time<=20) {
-        var points = 10
+    incChallangerRoomPoints: function( quizRoomId, time, questionNumber){
+      if (questionNumber===5) {
+        if (time<=9) {
+          var points = 10
+        } else if (time<=14) {
+          var points = 14
+        } else if (time<=20) {
+          var points = 20
+        }
+      } else {
+        if (time<=9) {
+          var points = 5
+        } else if (time<=14) {
+          var points = 7
+        } else if (time<=20) {
+          var points = 10
+        }
       }
-
       QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:points } });
 
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
@@ -285,10 +294,27 @@ Meteor.methods({
       increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = points;
       Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
 
-      console.log(points);
+      console.log(points, questionNumber);
     },
 
-    incdefenderRoomPoints: function( quizRoomId, time ){
+    incdefenderRoomPoints: function( quizRoomId, time, questionNumber ){
+      if (questionNumber===5) {
+        if (time<=9) {
+          var points = 10
+        } else if (time<=14) {
+          var points = 14
+        } else if (time<=20) {
+          var points = 20
+        }
+      } else {
+        if (time<=9) {
+          var points = 5
+        } else if (time<=14) {
+          var points = 7
+        } else if (time<=20) {
+          var points = 10
+        }
+      }
       QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
 
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
@@ -310,7 +336,7 @@ Meteor.methods({
       increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = points;
       Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
 
-      console.log("defenders point updated");
+      console.log(points, questionNumber);
     },
 
     updateChallangersAccuracy:function (resultRoomId, accuracy) {

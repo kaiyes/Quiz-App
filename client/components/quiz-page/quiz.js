@@ -199,39 +199,37 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let firstAnswer = this.firstAnswer;
     let rightAnswer = this.rightAnswer;
-    var time = sixSecondTimer.get();                        
+    var time = sixSecondTimer.get();         
+    var questionNumber = Session.get('question');               
     if (firstAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber );
         };
         if (Meteor.userId()===quizRoom.defender._id) {
-          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber );
         };
     };
-    let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
-
     sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
     event.preventDefault();
-    let quizRoomId = Router.current().params._id;
-    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
-    let secondAnswer = this.secondAnswer;
-    let rightAnswer = this.rightAnswer;
-    var time = sixSecondTimer.get(); 
+    let quizRoomId = Router.current().params._id
+    let quizRoom = QuizRooms.findOne({ _id: quizRoomId })
+    let secondAnswer = this.secondAnswer
+    let rightAnswer = this.rightAnswer
+    var time = sixSecondTimer.get() 
+    var questionNumber = Session.get('question');
     if (secondAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
-        };
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber )
+        }
         if (Meteor.userId()===quizRoom.defender._id) {
-          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
-        };
-    };
-    let questionNumber = Session.get('question');
-    Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
-    // let time = sixSecondTimer.get();
-    sixSecondTimer.remove(time);
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber )
+        }
+    }
+    Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber )
+    sixSecondTimer.remove(time)
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
     event.preventDefault();
@@ -240,17 +238,17 @@ Template.quiz.events({
     let thirdAnswer = this.thirdAnswer;
     let rightAnswer = this.rightAnswer;
     var time = sixSecondTimer.get(); 
+    var questionNumber = Session.get('question');
     if (thirdAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
-          Meteor.call("incChallangerRoomPoints", quizRoomId, time);
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
-          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber );
         };
     };
-    let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
     sixSecondTimer.remove(time);
   },
@@ -261,20 +259,17 @@ Template.quiz.events({
     let fourthAnswer = this.fourthAnswer;
     let rightAnswer = this.rightAnswer;
     var time = sixSecondTimer.get(); 
+    var questionNumber = Session.get('question');
     if (fourthAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
-          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
-
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber );
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
-          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
-
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber );
         };
-
     };
-    let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
     sixSecondTimer.remove(time);
   },
