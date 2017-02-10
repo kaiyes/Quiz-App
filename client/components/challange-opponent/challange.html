@@ -10,7 +10,6 @@
             </div>
             <div class="center full-width text-center">
               <h2 class="font-size-fixed-14 margin-0 full-width eddy-navbar--challenge__heading">
-                   <!-- {{$.Session.get 'chapter'}} -->
                    Challenge a mate
               </h2>
             </div>
@@ -35,11 +34,11 @@
               <div class="list-block flex--1">
                 <ul class="eddy-challenge__list">
                   {{#each players}}
-                    <li id="player" class="item-content padding-left-0 cur-pointer">
+                    <li class="item-content padding-left-0 cur-pointer">
                       <div class="item-inner padding-h-20">
                         <div class="item-title">
                           <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                            <img class="make-round" width="45" height="45"
+                            <img id="playerIcon" class="make-round" width="45" height="45"
                             src="{{#if $neq profile.image " "}}
                                   {{profile.image}}
                               {{else}}
@@ -51,8 +50,12 @@
                             </p>
                           </div>
                         </div>
-                        <div class="item-after">
-                            <span> <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5"></i></span>
+                        <div id="player" class="item-after">
+                            <span>
+                              <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5">
+
+                             </i>
+                          </span>
                           <!-- <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
                           <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
                           <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->

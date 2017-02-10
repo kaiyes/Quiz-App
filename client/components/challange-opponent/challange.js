@@ -38,6 +38,12 @@ Template.challengeOpponent.events({
     Router.go('/playFirst');
   },
 
+  "click #playerIcon": function(event, template) {
+   event.preventDefault();
+   Session.set('player', this);
+   Router.go('/player');
+ },
+
   'click #randomOpponent'(event) {
     event.preventDefault();
     let topicName = Session.get('topicName');
@@ -69,5 +75,5 @@ Template.challengeOpponent.events({
       }
     });
   },
-  
+
 });
