@@ -1,95 +1,90 @@
 <template name="quiz">
-  <div class="views">
-    <div class="view view-main">
-      <div class="pages">
-        <div class="page">
-            <div class="eddy-quiz flex-direction--column full-height position-relative">
-
-              <div class="eddy-quiz--option padding-h-40 flex-direction--row flex-justify-content--space-between flex-align-items--center height-140">
-                  <div class="">
-                    <span class="font-size-fixed-14">SURRENDER ?</span>
-                  </div>
-                  <div class="flex-direction--row">
-                    <span class="padding-h-30 eddy-quiz--option--close cur-pointer">
+	<div class="views">
+		<div class="view view-main">
+			<div class="pages">
+				<div class="page">
+					<div class="eddy-quiz flex-direction--column full-height position-relative">
+						<div class="eddy-quiz--option padding-h-40 flex-direction--row flex-justify-content--space-between flex-align-items--center height-140">
+							<div class="">
+								<span class="font-size-fixed-14">SURRENDER ?</span>
+							</div>
+							<div class="flex-direction--row">
+								<span class="padding-h-30 eddy-quiz--option--close cur-pointer">
                       <i class="zmdi zmdi-close font-size-fixed-24"></i>
                     </span>
-                    <span id="surrender" class="eddy-quiz--option--ok cur-pointer">
+								<span id="surrender" class="eddy-quiz--option--ok cur-pointer">
                       <i class="zmdi zmdi-check font-size-fixed-24"></i>
                     </span>
-                  </div>
-              </div>
-
-
-            {{#with quizRoom}}
-              <div class="eddy-quiz__vs">
-                <div class="text-center full-width display-block eddy-quiz--option-btn padding-top-10 cur-pointer">
-                    <i class="zmdi zmdi-chevron-down font-size-fixed-40"></i>
-                </div>
-                <div class="padding-h-50 padding-bottom-5 eddy-quiz--players flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                  <div class="text-center eddy-quiz--players--me position-relative">
-                    <span class="eddy-quiz--players--rank">2</span>
-                    <img width="55" height="55" class="make-round eddy-quiz--players--profile-img"
-                    src="{{#if $neq challanger.profile.image " "}}
+							</div>
+						</div>
+						{{#with quizRoom}}
+						<div class="eddy-quiz__vs">
+							<div class="text-center full-width display-block eddy-quiz--option-btn padding-top-10 cur-pointer">
+								<i class="zmdi zmdi-chevron-down font-size-fixed-40"></i>
+							</div>
+							<div class="row no-gutter">
+								<div class="col-33">
+									<div class="text-center eddy-quiz--players--me position-relative">
+										<span class="eddy-quiz--players--rank">2</span>
+										<img width="55" height="55" class="make-round eddy-quiz--players--profile-img" src="{{#if $neq challanger.profile.image " "}}
                             {{challanger.profile.image}}
                           {{else}}
                             /assets/generic_800.png
-                          {{/if}}"
-                    alt="Profile Photo">
-                    <p class="margin-0 font-size-fixed-14 padding-5">
-                      {{challanger.profile.name}}
-                    </p>
-                  </div>
-                  <div class="eddy-quiz--level">
-                    {{#with timerCount}}
-                        {{this}}
-                    {{/with}}
-                  </div>
-                  <div class="text-center eddy-quiz--players--opponent position-relative">
-                    <span class="eddy-quiz--players--rank__opponent">?</span>
-                    <img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
-                    src="{{#if $neq defender.profile.image " "}}
+                          {{/if}}" alt="Profile Photo">
+									</div>
+								</div>
+								<div class="col-33">
+									<div class="eddy-quiz--level">
+										{{#with timerCount}} {{this}} {{/with}}
+									</div>
+								</div>
+								<div class="col-33">
+									<div class="text-center eddy-quiz--players--opponent position-relative">
+										<span class="eddy-quiz--players--rank__opponent">?</span>
+										<img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img" src="{{#if $neq defender.profile.image " "}}
                             {{defender.profile.image}}
                           {{else}}
                             /assets/generic_800.png
-                          {{/if}}"
-                    alt="Profile Photo">
-                    <p class="margin-0 font-size-fixed-14 padding-5">
-                      {{defender.profile.name}}
-                    </p>
-                  </div>
-                </div>
-              </div>
-             {{/with}}
-
-                {{#with timer}}
-                  <div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
-                    <div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
-                        <p class="padding-h-20">
-                          {{question}}
-                        </p>
-                    </div>
-                    <div class="padding-h-20 padding-bottom-20">
-                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price margin-top-15">
+                          {{/if}}" alt="Profile Photo">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-33 text-white text-center padding-5 font-14">
+									{{challanger.profile.name}}
+								</div>
+								<div class="col-33"></div>
+								<div class="col-33 text-white text-center padding-5 font-14">
+									{{defender.profile.name}}
+								</div>
+							</div>
+						</div>
+						{{/with}} {{#with timer}}
+						<div class="flex--1 flex-direction--column flex-justify-content--flex-end toggle-opacity">
+							<div class="eddy-quiz__question text-center padding-v-40 flex--1 flex-direction--column flex-justify-content--center">
+								<p class="padding-h-20">
+									{{question}}
+								</p>
+							</div>
+							<div class="padding-h-20 padding-bottom-20">
+								<a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__price margin-top-15">
                         {{firstAnswer}}
                       </a>
-                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan margin-top-15">
+								<a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__plan margin-top-15">
                         {{secondAnswer}}
                       </a>
-                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place margin-top-15">
+								<a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__place margin-top-15">
                         {{thirdAnswer}}
                       </a>
-                      <a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product margin-top-15">
+								<a href="#" class="eddy--sqr-buttons eddy--sqr-buttons__product margin-top-15">
                         {{fourthAnswer}}
                       </a>
-                    </div>
-                  </div>
-                {{/with}}
-
-            </div>
-          </div>
-
-
-      </div>
-    </div>
-  </div>
+							</div>
+						</div>
+						{{/with}}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
