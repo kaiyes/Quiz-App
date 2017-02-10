@@ -66,7 +66,7 @@
 
               {{#each  $mapped ranking}}
                 <div id="player" class="card-content-inner padding-0">
-                    <div class="eddy-stats__rank-list flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
+                    <div class="eddy-stats__rank-list{{#if $eq $.Meteor.userId user._id}}-me{{/if}} flex-direction--row flex-align-items--center padding-h-30 padding-v-5">
                       <span class="padding-left-5 width-70 eddy-stats__ranking__index">
                          {{#if  $first }}
                             King

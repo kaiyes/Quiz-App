@@ -18,6 +18,17 @@
     }
   }
 
+  &__rank-list-me {
+
+      background-color: map-deep-get($colors, "primary", "base") !important;
+
+      color: map-deep-get($colors, "foreground", "white");
+
+      cursor: pointer;
+
+  }
+
+
   &__title {
     @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #9a9a9a);
   }

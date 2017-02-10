@@ -46,6 +46,7 @@ Template.stats.helpers({
     return _.reverse(ranking);
   },
 
+
   indexOfUser: function(){
     let topicName = Session.get('topicName');
     let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
