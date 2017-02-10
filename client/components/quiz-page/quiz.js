@@ -1,4 +1,4 @@
-var sixSecondTimer = new ReactiveCountdown(15);
+var sixSecondTimer = new ReactiveCountdown(20);
 
 
 Template.quiz.onCreated(function () {
@@ -28,16 +28,40 @@ Template.quiz.onRendered(function(event, instance){
 if (ifQuestionsExists===undefined) {
   toastr.error("There are no questions");
  }else {
+     toastr.info("question 1");
+     if (Meteor.user().profile.sound===true) {
+       Feedback.provide("somethingHappened");
+     }
   Session.set('question', 0);
     sixSecondTimer.start(function() {
+      toastr.info("question 2");
+      if (Meteor.user().profile.sound===true) {
+        Feedback.provide("somethingHappened");
+      }
       Session.set('question',1);
       sixSecondTimer.start(function() {
+        toastr.info("question 3");
+        if (Meteor.user().profile.sound===true) {
+          Feedback.provide("somethingHappened");
+        }
         Session.set('question',2);
         sixSecondTimer.start(function() {
+          toastr.info("question 4");
+          if (Meteor.user().profile.sound===true) {
+            Feedback.provide("somethingHappened");
+          }
           Session.set('question',3);
             sixSecondTimer.start(function() {
+              toastr.info("question 5");
+              if (Meteor.user().profile.sound===true) {
+                Feedback.provide("somethingHappened");
+              }
               Session.set('question',4);
                 sixSecondTimer.start(function() {
+                  toastr.info("Last Question");
+                  if (Meteor.user().profile.sound===true) {
+                    Feedback.provide("somethingHappened");
+                  }
                   Session.set('question',5);
                     sixSecondTimer.start(function() {
                       let quizRoomId = Router.current().params._id;
@@ -90,45 +114,21 @@ Template.quiz.helpers({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
 
     if (Session.get('question')===0) {
-      toastr.info("question 1");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[0];
     };
     if (Session.get('question')===1) {
-      toastr.info("question 2");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[1];
     };
     if (Session.get('question')===2) {
-      toastr.info("question 3");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[2];
     };
     if (Session.get('question')===3) {
-      toastr.info("question 4");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[3];
     };
     if (Session.get('question')===4) {
-      toastr.info("question 5");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[4];
     };
     if (Session.get('question')===5) {
-      toastr.info("Last Question");
-      if (Meteor.user().profile.sound===true) {
-        Feedback.provide("somethingHappened");
-      }
       return quizRoom.questions[5];
     };
   },
