@@ -199,18 +199,18 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let firstAnswer = this.firstAnswer;
     let rightAnswer = this.rightAnswer;
+    var time = sixSecondTimer.get();                        
     if (firstAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          Meteor.call("incChallangerRoomPoints", quizRoomId );
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
         };
         if (Meteor.userId()===quizRoom.defender._id) {
-          Meteor.call("incdefenderRoomPoints", quizRoomId );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
         };
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber );
 
-    let time = sixSecondTimer.get();
     sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__plan": function(event, template) {
@@ -219,17 +219,18 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let secondAnswer = this.secondAnswer;
     let rightAnswer = this.rightAnswer;
+    var time = sixSecondTimer.get(); 
     if (secondAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
-          Meteor.call("incChallangerRoomPoints", quizRoomId );
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
         };
         if (Meteor.userId()===quizRoom.defender._id) {
-          Meteor.call("incdefenderRoomPoints", quizRoomId );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
         };
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber );
-    let time = sixSecondTimer.get();
+    // let time = sixSecondTimer.get();
     sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__place": function(event, template) {
@@ -238,19 +239,19 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let thirdAnswer = this.thirdAnswer;
     let rightAnswer = this.rightAnswer;
+    var time = sixSecondTimer.get(); 
     if (thirdAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
-          Meteor.call("incChallangerRoomPoints", quizRoomId );
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time);
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
-          Meteor.call("incdefenderRoomPoints", quizRoomId );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
         };
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
-    let time = sixSecondTimer.get();
     sixSecondTimer.remove(time);
   },
   "click .eddy--sqr-buttons__product": function(event, template) {
@@ -259,22 +260,22 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let fourthAnswer = this.fourthAnswer;
     let rightAnswer = this.rightAnswer;
+    var time = sixSecondTimer.get(); 
     if (fourthAnswer===rightAnswer) {
         if (Meteor.userId()===quizRoom.challanger._id) {
           console.log("challanger wins");
-          Meteor.call("incChallangerRoomPoints", quizRoomId );
+          Meteor.call("incChallangerRoomPoints", quizRoomId, time );
 
         };
         if (Meteor.userId()===quizRoom.defender._id) {
           console.log("defender wins");
-          Meteor.call("incdefenderRoomPoints", quizRoomId );
+          Meteor.call("incdefenderRoomPoints", quizRoomId, time );
 
         };
 
     };
     let questionNumber = Session.get('question');
     Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber );
-    let time = sixSecondTimer.get();
     sixSecondTimer.remove(time);
   },
 

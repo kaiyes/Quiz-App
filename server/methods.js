@@ -255,12 +255,19 @@ Meteor.methods({
       //   };
     },
 
-    incChallangerRoomPoints: function( quizRoomId ){
+    incChallangerRoomPoints: function( quizRoomId, time){
+      if (time<=9) {
+        var points = 5
+      } else if (time<=14) {
+        var points = 7
+      } else if (time<=20) {
+        var points = 10
+      }
 
-      QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:10 } });
+      QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:points } });
 
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
-        $inc: { challangersPoint: 10, challangersRightAnswer:1 }
+        $inc: { challangersPoint: points, challangersRightAnswer:1 }
       });
 
       let room = QuizRooms.findOne({ _id:  quizRoomId });
@@ -268,24 +275,24 @@ Meteor.methods({
       let userCourseArray = Meteor.user().profile.selectedCourses;
       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
       let increasePoints = {};
-      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = 10;
+      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = points;
       Meteor.users.update({ _id: this.userId },
         {  $inc:   increasePoints });
 
       let userArray = Courses.findOne({ courseName: topic }).ranking;
       let usersIndexinCourse = _.findIndex(userArray, { 'userId': this.userId });
       let increaseCoursePoints = {};
-      increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = 10;
+      increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = points;
       Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
 
-      console.log("challangers point updated");
+      console.log(points);
     },
 
-    incdefenderRoomPoints: function( quizRoomId ){
+    incdefenderRoomPoints: function( quizRoomId, time ){
       QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
 
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
-        $inc: { defendersPoint: 10, defendersRightAnswer:1 }
+        $inc: { defendersPoint: points, defendersRightAnswer:1 }
       });
 
       let room = QuizRooms.findOne({ _id:  quizRoomId });
@@ -293,14 +300,14 @@ Meteor.methods({
       let userCourseArray = Meteor.user().profile.selectedCourses;
       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
       let increasePoints = {};
-      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = 10;
+      increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = points;
       Meteor.users.update({ _id: this.userId },
         {  $inc:   increasePoints });
 
       let userArray = Courses.findOne({ courseName: topic }).ranking;
       let usersIndexinCourse = _.findIndex(userArray, { 'userId': this.userId });
       let increaseCoursePoints = {};
-      increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = 10;
+      increaseCoursePoints[`ranking.${usersIndexinCourse}.points`] = points;
       Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
 
       console.log("defenders point updated");
