@@ -25,7 +25,7 @@
 							<div class="row no-gutter">
 								<div class="col-33">
 									<div class="text-center eddy-quiz--players--me position-relative">
-										<span class="eddy-quiz--players--rank">2</span>
+										<span class="eddy-quiz--players--rank">{{rankingOfChallanger}}</span>
 										<img width="55" height="55" class="make-round eddy-quiz--players--profile-img" src="{{#if $neq challanger.profile.image " "}}
                             {{challanger.profile.image}}
                           {{else}}
@@ -40,7 +40,7 @@
 								</div>
 								<div class="col-33">
 									<div class="text-center eddy-quiz--players--opponent position-relative">
-										<span class="eddy-quiz--players--rank__opponent">?</span>
+										<span class="eddy-quiz--players--rank__opponent">{{rankingOfDefender}}</span>
 										<img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img" src="{{#if $neq defender.profile.image " "}}
                             {{defender.profile.image}}
                           {{else}}
