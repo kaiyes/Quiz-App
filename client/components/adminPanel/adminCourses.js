@@ -1,4 +1,4 @@
-Template.adminPanel.onRendered(function() {
+Template.adminCourses.onRendered(function() {
   let self = this;
   self.autorun(function () {
     let user = Meteor.users.find({}).fetch();
@@ -32,15 +32,8 @@ Template.adminPanel.onRendered(function() {
 
 });
 
-Template.adminPanel.helpers({
 
-});
-
-Template.editProfile.onDestroyed(function () {
-  Session.set('image', null);
-});
-
-Template.adminPanel.events({
+Template.adminCourses.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
     if (instance.$( "#profileInfo" ).valid()) {
@@ -64,41 +57,6 @@ Template.adminPanel.events({
 
     }
   },
-   'change input[type="file"]' ( event, template ) {
-      let imageData = event.currentTarget.files[0];
-      console.log(imageData);
-
-      Resizer.resize(imageData, {width: 300, height: 300, cropSquare: true }, function(err, file) {
-
-        Cloudinary.upload(file, {},function(err, res) {
-            if (err) {
-              toastr.error("couldn't upload your photo");
-              console.log( err);
-            }
-            if (file) {
-              console.log(res);
-              toastr.success("Photo uploaded");
-              Meteor.call("addPhoto", res.url, res.public_id );
-            }
-
-          });
-
-      });
-
-    },
-
-    "click #remove": function(event, template) {
-        Cloudinary.delete(this.imageId,function(err, res) {
-              if (err) {
-                  toastr.error("Something went wrong !!");
-              }
-              if (res) {
-                Meteor.call("removePhoto");
-                toastr.success("removed your photo");
-              }
-          });
-    },
-
 
     "click .p-form:nth-of-type(1)": function(event, template) {
         $(".page-content").animate({

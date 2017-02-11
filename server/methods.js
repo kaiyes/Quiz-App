@@ -503,5 +503,12 @@ Meteor.methods({
       }
      },
 
+     insertNickName: function (nickName) {
+       let ifNickExists = NickNames.findOne({ nick: nickName });
+       if (!ifNickExists) {
+        NickNames.insert({ nick: nickName })
+       }
+      },
+
 
 });

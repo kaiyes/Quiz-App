@@ -1,0 +1,113 @@
+<template name="adminUniversity">
+    <div class="views layout-white">
+      <div class="view view-main layout-white" data-page="home">
+        <div class="pages navbar-fixed">
+          <div data-page="home" class="page">
+              <div class="navbar eddy-navbar">
+                  <div class="navbar-inner padding-h-0">
+                    <div class="left">
+                        <a href="{{pathFor 'homePage'}}" class="link icon-only">
+                            <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
+                        </a>
+                    </div>
+                    <div class="center full-width text-center">
+                      <h2 class="margin-0 full-width eddy-navbar__title">Admin Panel</h2>
+                    </div>
+                    <div class="right">
+                      <a href="#" class="open-panel link icon-only"></a>
+                    </div>
+                  </div>
+              </div>
+              <div class="toolbar toolbar-bottom">
+                  <div class="toolbar-inner eddy-profile__submit">
+                      <a href="#" class="link">&nbsp;</a>
+                      <a href="#" class="link submit-profile">DONE</a>
+                      <a href="#" class="link">&nbsp;</a>
+                  </div>
+              </div>
+              <div class="page-content position-static">
+               <div class="eddy-profile padding-top-20 padding-bottom-25 position-static">
+
+                     <form id="profileInfo" class="position-static" action="#" >
+
+                       <div class="list-block">
+                          <ul>
+                              <li>
+                                  <div class="item-content">
+                                      <div class="item-inner">
+                                          <div class="item-title label eddy-profile__label">Course Name
+                                            <span class="imp">*</span>
+                                          </div>
+                                          <div class="item-input">
+                                              <input type="text" placeholder="Mathmatics/Arts/Engineering"
+                                              id="courseName"  name="courseName" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="item-content">
+                                      <div class="item-inner">
+                                          <div class="item-title label eddy-profile__label">Course Number
+                                            <span class="imp">*</span>
+                                          </div>
+                                          <div class="item-input">
+                                              <input type="text" placeholder="ES 2501"
+                                              id="courseNumber"  name="courseNumber" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+
+                              <li>
+                                  <div class="item-content">
+                                      <div class="item-inner">
+                                          <div class="item-title label eddy-profile__label">Chapter 1
+                                            <span class="imp">*</span>
+                                          </div>
+                                          <div class="item-input">
+                                              <input type="text" placeholder="CAD design/Maths 101/Control Engineering"
+                                              id="chapter1"  name="chapter1" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+
+                              <li>
+                                  <div class="item-content">
+                                      <div class="item-inner">
+                                          <div class="item-title label eddy-profile__label">Chapter 2
+
+                                          </div>
+                                          <div class="item-input">
+                                              <input type="text" placeholder="CAD design/Maths 101/Control Engineering"
+                                              id="chapter2"  name="chapter2" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+
+                              <li>
+                                  <div class="item-content">
+                                      <div class="item-inner">
+                                          <div class="item-title label eddy-profile__label">Chapter 3
+
+                                          </div>
+                                          <div class="item-input">
+                                              <input type="text" placeholder="CAD design/Maths 101/Control Engineering"
+                                              id="chapter3"  name="chapter3" />
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                       </div>
+                     </form>
+
+               </div>
+             </div>
+          </div>
+         </div>
+      </div>
+    </div>
+</template>

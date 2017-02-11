@@ -23,8 +23,20 @@ Template.settings.events({
     Router.go('/editProfile');
   },
 
-  "click #admin": function(event, template){
-    Router.go('/adminPanel');
+  "click #adminCourses": function(event, template){
+    Router.go('/adminCourses');
+  },
+
+  "click #adminUniversity": function(event, template){
+    Router.go('/adminUniversity');
+  },
+
+  "click #adminQuestions": function(event, template){
+    Router.go('/adminQuestions');
+  },
+
+  "click #adminNickNames": function(event, template){
+    Router.go('/adminNickNames');
   },
 
   "click #help": function(event, template){
@@ -47,7 +59,7 @@ Template.settings.events({
 
       if (Meteor.user().profile.sound===true) {
         Meteor.call("muteSound");
-        toastr.error('Muted All Sound');
+        toastr.info('Muted All Sound');
       } else {
         Meteor.call("turnOnSound");
         toastr.success('Turned Sound on');
@@ -58,7 +70,7 @@ Template.settings.events({
   "change #notification": function(event, template){
     if (Meteor.user().profile.notification===true) {
       Meteor.call("muteNotification");
-      toastr.error('Notifications off');
+      toastr.info('Notifications off');
     } else {
       Meteor.call("turnNotificationOn");
       toastr.success('Notifications on');
