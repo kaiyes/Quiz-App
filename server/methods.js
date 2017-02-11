@@ -510,5 +510,26 @@ Meteor.methods({
        }
       },
 
+      insertUniversity: function (universityName) {
+        let ifUniExists = University.findOne({ name: universityName });
+        if (!ifUniExists) {
+         University.insert({ name : universityName })
+        }
+       },
+
+       insertQuestions: function (obj) {
+         QuestionBank.insert({
+            question: obj.question,
+            rightAnswer: obj.rightAnswer,
+            firstAnswer:obj.answer1,
+            secondAnswer:obj.answer2,
+            thirdAnswer:obj.answer3,
+            fourthAnswer:obj.answer4,
+            chapter:obj.chapterName,
+            topic:obj.courseName,
+            explanation:obj.explanation,
+          });
+        },
+
 
 });
