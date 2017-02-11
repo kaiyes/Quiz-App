@@ -31,6 +31,12 @@ Template.profile.onRendered(function() {
 Template.profile.helpers({
   countries: function(){
   return SuxezCountries.find({});
+ },
+  nickNames: function(){
+    return NickNames.find()
+  },
+  universities:function(){
+    return University.find()
   }
 });
 

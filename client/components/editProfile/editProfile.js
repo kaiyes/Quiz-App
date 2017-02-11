@@ -37,6 +37,14 @@ Template.editProfile.helpers({
   return SuxezCountries.find({});
 },
 
+ nickNames: function(){
+   return NickNames.find()
+},
+
+universities:function(){
+   return University.find()
+}
+
 });
 
 

@@ -70,8 +70,9 @@
                                        <div class="item-input">
                                            <select name="university" id="university" required autocomplete="off">
                                                <option value="#"> Select Your University </option>
-                                               <option value="AUST">AUST</option>
-                                               <option value="BUET">BUET</option>
+                                               {{#each universities}}
+                                                 <option value="{{name}}">{{name}}</option>
+                                               {{/each}}
                                            </select>
                                        </div>
                                    </div>
@@ -94,8 +95,9 @@
                                        <div class="item-input">
                                            <select id="nickname" placeholder="Nickname" name="nickName"  autocomplete="off">
                                                <option value="#"> Select Your Nick Name </option>
-                                               <option value="warrior">Warrior</option>
-                                               <option value="lion">Lion</option>
+                                               {{#each nickNames}}
+                                                 <option value="{{nick}}">{{nick}}</option>
+                                               {{/each}}
                                            </select>
                                        </div>
                                    </div>
