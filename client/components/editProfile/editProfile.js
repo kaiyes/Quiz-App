@@ -57,7 +57,10 @@ Template.editProfile.helpers({
 
 Template.editProfile.helpers({
     getAge(age) {
-        return moment(age, "YYYY-MM-DD").format("MMMM DD, YYYY");
+        if (age) {
+            return moment(age, "YYYY-MM-DD").format("MMMM DD, YYYY");
+        }
+        return '';
     },
     user: function() {
         return UserInformation.findOne({ createdBy: Meteor.userId() });
