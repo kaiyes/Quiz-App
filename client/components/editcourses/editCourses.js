@@ -1,11 +1,12 @@
 Template.editCourses.helpers({
     objectToPairs: function(object) {
-        return _.map(object, function(value, key) {
+        var obj = _.map(object, function(value, key) {
             return {
                 key: key,
                 value: value
             }
         })
+        return obj;
     },
     getIndex: function(obj) {
         return _.first(_.keys(obj))
@@ -14,7 +15,7 @@ Template.editCourses.helpers({
         return !_.isEmpty(_.first(_.values(obj)))
     },
     getValue: function(obj) {
-        return _.values(obj)
+        return _.first(_.values(obj))
     },
     courses: function() {
         var all_courses = Courses.find().fetch()
@@ -22,11 +23,7 @@ Template.editCourses.helpers({
         var grouped = _.chain(all_courses).groupBy(function(v) {
                 return v.courseName.substr(0, 1).toUpperCase()
             })
-            .mapValues(function(v) {
-                return _.transform(v, _.ary(_.extend, 2), {})
-            })
             .value()
-
 
         var alphabets = _(_.range(65, 91)).map(function(v) {
             return String.fromCharCode(v)
@@ -35,7 +32,6 @@ Template.editCourses.helpers({
             obj[v] = _.isUndefined(grouped[v]) ? {} : grouped[v]
             return obj
         }).value()
-
         return alphabets
     },
 
