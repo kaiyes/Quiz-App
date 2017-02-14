@@ -30,9 +30,12 @@
                 {{#with currentUser.profile}}
                    <form id="profileInfo" class="position-static" action="#" method="post">
                      <div class="eddy-profile__upload-section margin-h-30">
-                         <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                           <p class="control-label eddy-profile__pptxt">Add Profile picture</p>
-                           {{#if $neq image " "}}
+                         <div class="row">
+                             <div class="col-65">
+                                 <p class="control-label eddy-profile__pptxt">Add Profile picture</p>
+                             </div>
+                             <div class="col-35 text-center">
+                                  {{#if $neq image " "}}
                                <div class="text-center">
                                  <img class="make-round" width="85" height="85"
                                  src="
@@ -56,7 +59,9 @@
                                      <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control" accept="image/*">
                                  </div>
                              {{/if}}
+                             </div>
                          </div>
+
                      </div>
 
                      <div class="list-block">
