@@ -5,3 +5,7 @@
     max-width: 800px;
     height: auto !important;
 }
+
+.bg-grey {
+    background-color: #f3f3f3;
+}
