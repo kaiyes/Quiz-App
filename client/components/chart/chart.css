@@ -1,4 +1,7 @@
 #myChart {
-  padding-left: 30px;
-  padding-top: 10px;
+    padding-left: 20px;
+    padding-top: 10px;
+    width: calc(100% - 23px) !important;
+    max-width: 800px;
+    height: auto !important;
 }
