@@ -30,15 +30,21 @@
                 </div>
             </div>
            <div class="page-content position-static">
-             <div class="eddy-profile padding-top-20 padding-bottom-45 position-static">
+             <div class="eddy-profile padding-top-20 padding-bottom-25 position-static">
                <form id="profileInfo" class="position-static" action="#" method="post">
                  <div class="eddy-profile__upload-section margin-h-30">
-                     <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                       <p class="control-label eddy-profile__pptxt">Add Profile Picture</p>
+                     <div class="row">
+                       <div class="col-65">
+                       <p class="control-label eddy-profile__pptxt">
+                         Add Profile Picture
+                       </p>
+                     </div>
                        {{#if $neq currentUser.profile.image " "}}
-                         <div class="text-center">
+                         <div class="col-35 text-center">
                            <img class="make-round" width="85" height="85" src="{{currentUser.profile.image}}" alt="Profile photo" />
-                           <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">Remove</a>
+                           <a href="#" id="remove" class="font-size-fixed-14 display-block padding-top-5">
+                             Remove
+                           </a>
                          </div>
                           {{else}}
                             <div>
@@ -103,17 +109,17 @@
                                    </div>
                                </div>
                            </li>
-
                            <li>
                                <div class="item-content">
                                    <div class="item-inner">
-                                       <div class="item-title label eddy-profile__label">Age</div>
+                                       <div class="item-title label eddy-profile__label">Birth</div>
                                        <div class="item-input">
-                                           <input type="number" id="age"  value="{{age}}" name="age" >
+                                           <input type="text" placeholder="Select date" readonly="readonly" id="ks-calendar-date-format"/>
                                        </div>
                                    </div>
                                </div>
                            </li>
+
                            <li>
                                <div class="item-content">
                                    <div class="item-inner">

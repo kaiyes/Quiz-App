@@ -2,6 +2,13 @@
 
 Template.profile.onRendered(function() {
   let self = this;
+
+  var calendarDateFormat = myApp.calendar({
+      input: '#ks-calendar-date-format',
+      closeOnSelect: true,
+      dateFormat: 'MM dd, yyyy'
+  });
+
   self.$( "#profileInfo" ).validate({
     rules: {
       name: {
@@ -49,11 +56,11 @@ Template.profile.events({
       let university = document.querySelector("#university").value;
       let programme = document.querySelector("#programme").value;
       let nickname = document.querySelector("#nickname").value;
-      let age = document.querySelector("#age").value;
+      let age = $("#ks-calendar-date-format").val();
       let country = document.querySelector("#country").value.toLowerCase();
 
       let profile = {
-        age: age,
+        age: moment(age).format("YYYY-MM-DD"),
         country: country,
         name: name,
         university: university,
