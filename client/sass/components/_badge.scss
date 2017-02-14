@@ -1,54 +1,47 @@
 .eddy-badge {
-  display: inline-block;
-  // width: 1.5em;
-  // height: 1.5rem;
-  // border: 1px solid map-deep-get($colors, 'foreground', 'white');
-  // border-radius: 50%;
-
-  font-size: 2rem;
-  font-weight: bold;
-  text-align: center;
-  //line-height: 1.5rem;
-
-  &__primary {
-    padding-left: 0.5rem;
-    // width: 1rem;
-    // height: 1rem;
-    // border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
-    //
+    display: inline-block;
+    // width: 1.5em;
+    // height: 1.5rem;
+    // border: 1px solid map-deep-get($colors, 'foreground', 'white');
+    // border-radius: 50%;
     font-size: 2rem;
-    color: map-deep-get($colors, 'primary', 'base') !important;
-    //line-height: 1rem;
-  }
+    font-weight: bold;
+    text-align: center;
+    //line-height: 1.5rem;
+    &__primary {
+        padding-left: 0.5rem;
+        // width: 1rem;
+        // height: 1rem;
+        // border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
+        //
+        font-size: 2rem;
+        color: map-deep-get($colors, 'primary', 'base') !important;
+        //line-height: 1rem;
+    }
 }
 
 .eddy-rank {
-  //position: relative;
-
-  display: inline-block;
-  background-color: map-deep-get($colors, 'foreground', 'white');
-  width: 5.5rem;
-  height: 5.5rem;
-  border: 8px solid map-deep-get($colors, 'primary', 'base') !important;
-  border-radius: 50%;
-
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  line-height: 4rem;
-
-  &--badge {
-    position: absolute;
-    top: 65%;
-    left: 50%;
-
-    font-size: 50px;
-    color: #a9e3d5;
-
-    z-index: -1;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  }
+    //position: relative;
+    display: inline-block;
+    background-color: map-deep-get($colors, 'foreground', 'white');
+    width: 7.5rem;
+    height: 7.5rem;
+    border: 10px solid map-deep-get($colors, 'primary', 'base') !important;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 6rem;
+    &--badge {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        font-size: 50px;
+        color: #a9e3d5;
+        z-index: -1;
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
 }
