@@ -32,35 +32,41 @@ if (ifQuestionsExists===undefined) {
      if (Meteor.user().profile.sound===true) {
        Feedback.provide("somethingHappened");
      }
+     $('.question-container').find('.active-state').removeClass('active-state');
   Session.set('question', 0);
     sixSecondTimer.start(function() {
       toastr.info("question 2");
       if (Meteor.user().profile.sound===true) {
         Feedback.provide("somethingHappened");
+        $('.question-container').find('.active-state').removeClass('active-state');
       }
       Session.set('question',1);
       sixSecondTimer.start(function() {
         toastr.info("question 3");
         if (Meteor.user().profile.sound===true) {
           Feedback.provide("somethingHappened");
+          $('.question-container').find('.active-state').removeClass('active-state');
         }
         Session.set('question',2);
         sixSecondTimer.start(function() {
           toastr.info("question 4");
           if (Meteor.user().profile.sound===true) {
             Feedback.provide("somethingHappened");
+            $('.question-container').find('.active-state').removeClass('active-state');
           }
           Session.set('question',3);
             sixSecondTimer.start(function() {
               toastr.info("question 5");
               if (Meteor.user().profile.sound===true) {
                 Feedback.provide("somethingHappened");
+                $('.question-container').find('.active-state').removeClass('active-state');
               }
               Session.set('question',4);
                 sixSecondTimer.start(function() {
                   toastr.info("Last Question");
                   if (Meteor.user().profile.sound===true) {
                     Feedback.provide("somethingHappened");
+                    $('.question-container').find('.active-state').removeClass('active-state');
                   }
                   Session.set('question',5);
                     sixSecondTimer.start(function() {
