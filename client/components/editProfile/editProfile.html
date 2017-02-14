@@ -53,7 +53,7 @@
                                      <label id="label" class="eddy-profile__upload_btn font-size-fixed-30" for="profile_img">
                                        <i class="zmdi zmdi-plus"></i>
                                      </label>
-                                     <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control hide" accept="image/*">
+                                     <input name="profile_img" id="profile_img" type="file" class="cloudinary-fileupload form-control" accept="image/*">
                                  </div>
                              {{/if}}
                          </div>
@@ -115,10 +115,9 @@
                             <li>
                                 <div class="item-content">
                                     <div class="item-inner">
-                                        <div class="item-title label eddy-profile__label">Age</div>
-                                        <div class="item-input">
-                                            <!--<input type="number" id="age"  value="{{age}}" name="age" />-->
-                                            <input type="text" placeholder="Select date" readonly="readonly" id="ks-calendar-date-format"/>
+                                        <div class="item-title label eddy-profile__label">Birth</div>
+                                        <div class="item-input">                                            
+                                            <input type="text" value="{{getAge age}}" placeholder="Select date" readonly="readonly" id="ks-calendar-date-format"/>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@ Template.editProfile.onRendered(function() {
 
     var calendarDateFormat = myApp.calendar({
         input: '#ks-calendar-date-format',
+        closeOnSelect: true,
         dateFormat: 'MM dd, yyyy'
     });
 
@@ -55,6 +56,9 @@ Template.editProfile.helpers({
 
 
 Template.editProfile.helpers({
+    getAge(age) {
+        return moment(age, "YYYY-MM-DD").format("MMMM DD, YYYY");
+    },
     user: function() {
         return UserInformation.findOne({ createdBy: Meteor.userId() });
     }
