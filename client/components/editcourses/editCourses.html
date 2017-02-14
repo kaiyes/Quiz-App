@@ -18,7 +18,7 @@
                </div>
            </div>
          </div>
-         <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar searchbar-init eddy-searchbar">
+         <form data-search-list=".list-block-search" data-search-in=".course-title" class="searchbar searchbar-init eddy-searchbar">
            <div class="searchbar-input height-40">
              <input type="search" placeholder="Search" class="border-r-20 padding-5 padding-h-20">
            </div>
@@ -28,7 +28,7 @@
            <div class="content-block searchbar-not-found">
              <div class="content-block-inner">Nothing found</div>
            </div>
-           <div class="list-block contacts-block padding-bottom-60">
+           <div class="list-block contacts-block padding-bottom-60 list-block-search searchbar-found">
              <div class="list-group">
                <ul class="eddy-courses">
                  {{#each objectToPairs courses}}
@@ -46,7 +46,7 @@
                              <div class="eddy-courses__codes width-120">
                               {{number}}
                              </div>
-                             <div class="flex--1 text-ellipsis eddy-courses__name">
+                             <div class="flex--1 text-ellipsis eddy-courses__name course-title">
                                {{courseName}}
                              </div>
                            </div>
