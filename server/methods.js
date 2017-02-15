@@ -149,27 +149,41 @@ Meteor.methods({
     },
 
     likeAcomment: function ( commentData, liker ) {
-      Posts.update(
-        { _id: commentData.postId , "comments.body":commentData.body},
-        { $addToSet: {"comments.$.likes": liker }}
-       );
+      let commentArray = Posts.findOne({ _id: commentData.postId }).comments;
+      let rightComment = _.find(commentArray, ['body', commentData.body]);
+      var likerArray = rightComment.likes;
+      var likerData = _.find(likerArray, ['_id', Meteor.userId()]);
 
-       Notification.insert({
-         commentCreator: commentData.commenter.profile.name,
-         topic: commentData.topic,
-         when: new Date(),
-         type: "commentLike",
-         liker: liker,
-       });
+      if (likerData===undefined) {
+        Posts.update(
+          { _id: commentData.postId , "comments.body":commentData.body },
+          { $addToSet: {"comments.$.likes": liker }}
+         );
 
-       let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
-       Push.send({
-         text,
-         title:"Comment",
-         from:"Liker",
-         badge: 1,
-         query: { userId: commentData.commenter._id },
-       });
+         Notification.insert({
+           commentCreator: commentData.commenter.profile.name,
+           topic: commentData.topic,
+           when: new Date(),
+           type: "commentLike",
+           liker: liker,
+         });
+
+         let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
+         Push.send({
+           text,
+           title:"Comment",
+           from:"Liker",
+           badge: 1,
+           query: { userId: commentData.commenter._id },
+         });
+      } else {
+        Posts.update(
+          { _id: commentData.postId , "comments.body":commentData.body },
+          { $pull: {"comments.$.likes": liker }}
+         );
+
+      }
+
     },
 
     insertChallangeNotification: function (notificationData) {
