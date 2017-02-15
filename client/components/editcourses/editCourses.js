@@ -89,10 +89,17 @@ Template.editCourses.events({
             console.log(Session.get(`${this.courseName}`))
             Meteor.call('removeCourse', courseData, function(error, result) {
                 if (error) {
-                    toastr.warning('something went wrong')
-                    console.log(error)
+                  myApp.addNotification({
+                    title: 'Course',
+                    message: 'Something Went Wrong',
+                    hold:2000,
+                  });
                 } else {
-                    toastr.error(`removed ${courseData.courseName}`)
+                    myApp.addNotification({
+                      title: 'Course',
+                      message: `removed ${courseData.courseName}`,
+                      hold:2000,
+                    });
                 }
             })
         } else {
@@ -100,10 +107,17 @@ Template.editCourses.events({
             console.log(Session.get(`${this.courseName}`))
             Meteor.call('addCourse', courseData, function(error, result) {
                 if (error) {
-                    toastr.warning('something went wrong')
-                    console.log(error)
+                  myApp.addNotification({
+                    title: 'Course',
+                    message: 'Something Went Wrong',
+                    hold:2000,
+                  });
                 } else {
-                    toastr.success(`added ${courseData.courseName}`)
+                  myApp.addNotification({
+                    title: 'Course',
+                    message: `added ${courseData.courseName}`,
+                    hold:2000,
+                  });
                 }
             })
         }

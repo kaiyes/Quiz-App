@@ -99,10 +99,18 @@ Template.editProfile.events({
 
             Meteor.call("addToProfile", profile, function(err) {
                 if (!err) {
-                    toastr.success("profile update successfully");
+                    myApp.addNotification({
+                      title: 'Profile',
+                      message: "profile updated successfully",
+                      hold:2000,
+                    });
                     Router.go('/homePage');
                 } else {
-                    toastr.error(err);
+                  myApp.addNotification({
+                    title: 'Profile',
+                    message: err,
+                    hold:2000,
+                  });
                 }
             });
         }
@@ -115,12 +123,20 @@ Template.editProfile.events({
 
             Cloudinary.upload(file, {}, function(err, res) {
                 if (err) {
-                    toastr.error("couldn't upload your photo");
+                    myApp.addNotification({
+                      title: 'Profile Photo',
+                      message: "couldn't upload your photo",
+                      hold:2000,
+                    });
                     console.log(err);
                 }
                 if (file) {
                     console.log(res);
-                    toastr.success("Photo uploaded");
+                    myApp.addNotification({
+                      title: 'Profile Photo',
+                      message: "Profile Photo Uploaded",
+                      hold:2000,
+                    });
                     Meteor.call("addPhoto", res.url, res.public_id);
                 }
 
@@ -133,11 +149,19 @@ Template.editProfile.events({
     "click #remove": function(event, template) {
         Cloudinary.delete(this.imageId, function(err, res) {
             if (err) {
-                toastr.error("Something went wrong !!");
+                myApp.addNotification({
+                  title: 'Profile Photo',
+                  message: "Something went wrong !!",
+                  hold:2000,
+                });
             }
             if (res) {
                 Meteor.call("removePhoto");
-                toastr.success("removed your photo");
+                myApp.addNotification({
+                  title: 'Profile Photo',
+                  message: "Removed Your Photo",
+                  hold:2000,
+                });
             }
         });
     },

@@ -49,9 +49,17 @@ Template.adminCourses.events({
 
       Meteor.call("insertCourses", obj, function (err) {
         if (!err) {
-          toastr.success("Course Inserted");
+          myApp.addNotification({
+            title: 'Admin',
+            message: "Course Inserted",
+            hold:2000,
+          });
         } else {
-          toastr.error(err.reason);
+          myApp.addNotification({
+            title: 'Admin',
+            message: err.reason,
+            hold:2000,
+          });
         }
       });
 

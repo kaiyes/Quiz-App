@@ -19,9 +19,17 @@ Template.login.events({
 
     Meteor.loginWithPassword(email, password, function(error) {
       if (error) {
-        toastr.error(error.reason);
+        myApp.addNotification({
+          title: 'Login Error',
+          message: error.reason,
+          hold:2000,
+        });
       } else {
-        toastr.success("Log In Successful");
+        myApp.addNotification({
+          title: 'Login',
+          message: 'Your Login was Successful',
+          hold:2000,
+        });
         Accounts._autoLoginEnabled = true;
         Router.go('/homePage');
       }

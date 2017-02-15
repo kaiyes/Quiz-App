@@ -8,7 +8,11 @@ Template.playFirst.onRendered(function(){
 
   countdown.start(function() {
     if (Session.get('shouldTimerStart')) {
-      toastr.error("Match Failed");
+      myApp.addNotification({
+        title: 'Quiz',
+        message: "Match Failed",
+        hold:2000,
+      });
       console.log("timer in play first ended");
       Router.go('/challengeOpponent');
     } else {
@@ -72,7 +76,11 @@ Template.playFirst.events({
   },
 
   "click #cross": function(event, instance){
-     toastr.error("Match Failed");
+    myApp.addNotification({
+      title: 'Quiz',
+      message: "Match Failed",
+      hold:2000,
+    });
      Router.go('/challengeOpponent');
 
      let notificationData = Session.get('challangeNotification');

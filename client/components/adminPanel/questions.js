@@ -92,9 +92,17 @@ Template.adminQuestions.events({
 
       Meteor.call("insertQuestions", obj, function (err) {
         if (!err) {
-          toastr.success("Question Inserted");
+          myApp.addNotification({
+            title: 'Admin',
+            message: "Question Inserted",
+            hold:2000,
+          });
         } else {
-          toastr.error(err.reason);
+          myApp.addNotification({
+            title: 'Admin',
+            message: err.reason,
+            hold:2000,
+          });
         }
       });
 

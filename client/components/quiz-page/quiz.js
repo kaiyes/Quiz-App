@@ -7,14 +7,22 @@ Template.quiz.onCreated(function () {
 
   if (Meteor.userId()===quizRoom.challanger._id ){
     if (quizRoom.challangerPlayed) {
-      toastr.success("Game ended, start a new game");
+      myApp.addNotification({
+        title: 'Quiz',
+        message: "Game ended, start a new game",
+        hold:2000,
+      });
       Router.go('/challengeOpponent');
     }
   };
 
   if (Meteor.userId()===quizRoom.defender._id ){
     if (quizRoom.defenderPlayed) {
-      toastr.success("Game ended, start a new game");
+      myApp.addNotification({
+        title: 'Quiz',
+        message: "Game ended, start a new game",
+        hold:2000,
+      });
       Router.go('/challengeOpponent');
     }
   };
@@ -26,44 +34,72 @@ Template.quiz.onRendered(function(event, instance){
   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
   let ifQuestionsExists = quizRoom.questions[2];
 if (ifQuestionsExists===undefined) {
-  toastr.error("There are no questions");
+  myApp.addNotification({
+    title: 'Quiz',
+    message: "There are no questions in this category",
+    hold:2000,
+  });
  }else {
-     toastr.info("question 1");
+   myApp.addNotification({
+     title: 'Quiz',
+     message: "Question 1",
+     hold:2000,
+   });
      if (Meteor.user().profile.sound===true) {
        Feedback.provide("somethingHappened");
      }
      $('.question-container').find('.active-state').removeClass('active-state');
   Session.set('question', 0);
     sixSecondTimer.start(function() {
-      toastr.info("question 2");
+      myApp.addNotification({
+        title: 'Quiz',
+        message: "Question 2",
+        hold:2000,
+      });
       if (Meteor.user().profile.sound===true) {
         Feedback.provide("somethingHappened");
         $('.question-container').find('.active-state').removeClass('active-state');
       }
       Session.set('question',1);
       sixSecondTimer.start(function() {
-        toastr.info("question 3");
+        myApp.addNotification({
+          title: 'Quiz',
+          message: "Question 3",
+          hold:2000,
+        });
         if (Meteor.user().profile.sound===true) {
           Feedback.provide("somethingHappened");
           $('.question-container').find('.active-state').removeClass('active-state');
         }
         Session.set('question',2);
         sixSecondTimer.start(function() {
-          toastr.info("question 4");
+          myApp.addNotification({
+            title: 'Quiz',
+            message: "Question 4",
+            hold:2000,
+          });
           if (Meteor.user().profile.sound===true) {
             Feedback.provide("somethingHappened");
             $('.question-container').find('.active-state').removeClass('active-state');
           }
           Session.set('question',3);
             sixSecondTimer.start(function() {
-              toastr.info("question 5");
+              myApp.addNotification({
+                title: 'Quiz',
+                message: "Question 5",
+                hold:2000,
+              });
               if (Meteor.user().profile.sound===true) {
                 Feedback.provide("somethingHappened");
                 $('.question-container').find('.active-state').removeClass('active-state');
               }
               Session.set('question',4);
                 sixSecondTimer.start(function() {
-                  toastr.info("Last Question");
+                  myApp.addNotification({
+                    title: 'Quiz',
+                    message: "Question 6",
+                    hold:2000,
+                  });
                   if (Meteor.user().profile.sound===true) {
                     Feedback.provide("somethingHappened");
                     $('.question-container').find('.active-state').removeClass('active-state');

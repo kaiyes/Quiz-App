@@ -59,10 +59,18 @@ Template.settings.events({
 
       if (Meteor.user().profile.sound===true) {
         Meteor.call("muteSound");
-        toastr.info('Muted All Sound');
+        myApp.addNotification({
+          title: 'Settings',
+          message: "Muted All Sound",
+          hold:2000,
+        });
       } else {
         Meteor.call("turnOnSound");
-        toastr.success('Turned Sound on');
+        myApp.addNotification({
+          title: 'Settings',
+          message: "Turned Sound On",
+          hold:2000,
+        });
       }
 
   },
@@ -70,16 +78,28 @@ Template.settings.events({
   "change #notification": function(event, template){
     if (Meteor.user().profile.notification===true) {
       Meteor.call("muteNotification");
-      toastr.info('Notifications off');
+      myApp.addNotification({
+        title: 'Settings',
+        message: "Notification is Turned Off",
+        hold:2000,
+      });
     } else {
       Meteor.call("turnNotificationOn");
-      toastr.success('Notifications on');
+      myApp.addNotification({
+        title: 'Settings',
+        message: "Notification Turned Back On",
+        hold:2000,
+      });
     }
   },
 
   "click #logout": function(event, template){
     Meteor.logout(function(){
-      toastr.warning("Logged Out");
+      myApp.addNotification({
+        title: 'Logout',
+        message: "You are now logged out",
+        hold:2000,
+      });
       Router.go('/');
     });
   },

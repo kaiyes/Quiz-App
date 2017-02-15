@@ -6,9 +6,17 @@ Template.adminUniversity.events({
 
       Meteor.call("insertUniversity", universityName, function (err) {
         if (!err) {
-          toastr.success("New University Inserted");
+          myApp.addNotification({
+            title: 'Admin',
+            message: "New University Inserted",
+            hold:2000,
+          });
         } else {
-          toastr.error(err.reason);
+          myApp.addNotification({
+            title: 'Admin',
+            message: err.reason,
+            hold:2000,
+          });
         }
       });
   },

@@ -9,6 +9,10 @@ Template.forgotPass.onRendered(function() {
 Template.forgotPass.events({
   'click .eddy-password--button'(event) {
     event.preventDefault();
-    toastr.success("password is being sent");
+    myApp.addNotification({
+      title: 'Password',
+      message: "Password is being sent",
+      hold:2000,
+    });
   }
 });

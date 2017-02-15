@@ -37,14 +37,26 @@ Template.signUp.events({
 
     Loading.call("addUser", email,password, profile, function(error,result){
       if (error) {
-        toastr.error(error.reason);
+        myApp.addNotification({
+          title: 'Signup Error',
+          message: error.reason,
+          hold:2000,
+        });
       } else {
         Meteor.loginWithPassword(email, password,
           function(error) {
             if (error) {
-              toastr.error(error.reason);
+              myApp.addNotification({
+                title: 'Signup Error',
+                message: error.reason,
+                hold:2000,
+              });
             } else {
-              toastr.success("Signup Successful");
+              myApp.addNotification({
+                title: 'Signup',
+                message: 'Your Signup was Successful',
+                hold:2000,
+              });
               Router.go('/course');
             };
           });

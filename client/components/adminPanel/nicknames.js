@@ -10,9 +10,17 @@ Template.adminNickNames.events({
       console.log(nickName1);
       Meteor.call("insertNickName", nickName1, function (err) {
         if (!err) {
-          toastr.success("New Nick Name Inserted");
+          myApp.addNotification({
+            title: 'Admin',
+            message: "New Nick Name Inserted",
+            hold:2000,
+          });
         } else {
-          toastr.error(err.reason);
+          myApp.addNotification({
+            title: 'Admin',
+            message: err.reason,
+            hold:2000,
+          });
         }
       });
   },
