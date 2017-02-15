@@ -76,10 +76,10 @@
                   <div class="card-content">
 
                     {{#each postNotifications}}
-                      <div id="postNotification" class="card-content-inner padding-0 close-popup">
+                      <div class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                              <div id="postNotification" class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
                                   <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
                                   <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
@@ -102,10 +102,10 @@
                     {{/each}}
 
                     {{#each likeNotifications}}
-                      <div id="likeNotification" class="card-content-inner padding-0">
+                      <div class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                              <div id="likeNotification" class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
                                   <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
                                   <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
@@ -120,7 +120,7 @@
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                          <p id="playerAsPostLiker" class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5 close-popup">
                             {{liker.profile.name}} {{type}}d your post in {{topic}}
                           </p>
                         </div>
@@ -128,10 +128,10 @@
                     {{/each}}
 
                     {{#each likesOnComment}}
-                      <div id="likesOnComment" class="card-content-inner padding-0">
+                      <div  class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                              <div id="likesOnComment" class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
                                   <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
                                   <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
@@ -146,7 +146,7 @@
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                          <p id="playerAsLiker" class="font-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5 close-popup">
                             {{liker.profile.name}} liked your comment in {{topic}}
                           </p>
                         </div>
@@ -154,10 +154,10 @@
                     {{/each}}
 
                     {{#each commentNotification}}
-                      <div id="commentNotification" class="card-content-inner padding-0">
+                      <div  class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
                           <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center">
+                              <div id="commentNotification" class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
                                   <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
                                   <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
@@ -172,7 +172,7 @@
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
-                          <p class="ffont-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5">
+                          <p id="playerAsCommenter" class="ffont-size-fixed-12 margin-bottom-0 eddy-noti__news_content padding-left-5 close-popup">
                             {{commenter.profile.name}} {{type}}ed on your post in {{topic}}
                           </p>
                         </div>

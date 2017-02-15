@@ -70,7 +70,7 @@ Meteor.methods({
           when: new Date(),
           type: "post",
           createdBy: payload.createdBy,
-          seen:[],
+          seen:[this.userId],
         });
 
         let text =`${payload.createdBy.profile.name} posted in ${payload.topicName}` ;
@@ -96,7 +96,7 @@ Meteor.methods({
          when: new Date(),
          type: "comment",
          commenter: commentPayload.commenter,
-         seen:[],
+         seen:[this.userId],
        });
 
        let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
@@ -135,7 +135,7 @@ Meteor.methods({
           when: new Date(),
           type: "like",
           liker: liker,
-          seen:[],
+          seen:[this.userId],
         });
 
         let text =`${liker.profile.name} liked your post in ${post.topicName}`;
@@ -168,7 +168,7 @@ Meteor.methods({
            when: new Date(),
            type: "commentLike",
            liker: liker,
-           seen:[],
+           seen:[this.userId],
          });
 
          let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
