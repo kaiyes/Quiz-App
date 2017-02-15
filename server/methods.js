@@ -112,28 +112,40 @@ Meteor.methods({
 
     like: function (id,liker) {
     let likerData = { likes: liker };
-    Posts.update({ _id: id },{ $addToSet: likerData });
+    var likeArray = Posts.findOne({  _id: id  }).likes;
+    let idsInArray = _.map(likeArray, '_id');
+    let ifIncludes = _.includes( idsInArray, Meteor.userId());
 
-    let post = Posts.findOne({ _id:id });
+    if (ifIncludes) {
+      let findLiker = _.find(likeArray, ['_id', Meteor.userId()]);
+      Posts.update(
+        { _id: id },
+        { $pull: { "likes": findLiker  }}
+      )
+    } else {
+      Posts.update({ _id: id },{ $addToSet: likerData });
 
-      Notification.insert({
-        postId: id,
-        postCreator: post.createdBy.profile.name,
-        topic: post.topicName,
-        when: new Date(),
-        type: "like",
-        liker: liker,
-      });
+      let post = Posts.findOne({ _id:id });
 
-      let text =`${liker.profile.name} liked your post in ${post.topicName}`;
+        Notification.insert({
+          postId: id,
+          postCreator: post.createdBy.profile.name,
+          topic: post.topicName,
+          when: new Date(),
+          type: "like",
+          liker: liker,
+        });
 
-      Push.send({
-        text,
-        title:"Comment",
-        from:"Liker",
-        badge: 1,
-        query: { userId: post.createdBy._id },
-      });
+        let text =`${liker.profile.name} liked your post in ${post.topicName}`;
+
+        Push.send({
+          text,
+          title:"Comment",
+          from:"Liker",
+          badge: 1,
+          query: { userId: post.createdBy._id },
+        });
+     }
     },
 
     likeAcomment: function ( commentData, liker ) {

@@ -79,7 +79,7 @@
                                 {{#if $eq ranking 1 }}st  {{/if}}
                                 {{#if $eq ranking 2 }}nd  {{/if}}
                                 {{#if $eq ranking 3 }}rd  {{/if}}
-                                {{#if $gte ranking 3 }}th  {{/if}}
+                                {{#if $gt ranking 3 }}th  {{/if}}
                               </sup>
                             <p class="text-muted font-light fw-normal">
                               {{mates}} mate{{#if $gt mates 1}}s{{/if}}
