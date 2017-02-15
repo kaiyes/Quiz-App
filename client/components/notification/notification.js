@@ -11,8 +11,12 @@ Template.notification.helpers({
       let objArray = Meteor.user().profile.selectedCourses;
       let topicsChosen = _.map(objArray,'courseName');
 
-      return Notification.find({ topic: { $in: topicsChosen }, type: "post"},
-      { sort: { when: -1 }});
+      return Notification.find({
+        topic: { $in: topicsChosen },
+        seen: { $ne: Meteor.userId()},
+        type: "post"},{
+          sort: { when: -1 }
+      });
     }
   },
 
@@ -20,6 +24,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "like",
+        seen: { $ne: Meteor.userId()},
         postCreator: Meteor.user().profile.name
        }, { sort: { when: -1 }});
     }
@@ -29,6 +34,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "commentLike",
+        seen: { $ne: Meteor.userId()},
         commentCreator: Meteor.user().profile.name
        }, { sort: { when: -1 }});
     }
@@ -38,6 +44,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "comment",
+        seen: { $ne: Meteor.userId()},
         postCreator: Meteor.user(),
        }, { sort: { when: -1 }});
     }
@@ -63,7 +70,6 @@ Template.notification.events({
   },
 
   "click #likeNotification": function(event, template){
-      console.log(this);
       Session.set('topicName',this.topic);
       Router.go('/courseDetails#community');
   },
@@ -85,5 +91,29 @@ Template.notification.events({
    Session.set('player', this.challanger);
    Router.go('/player');
  },
+
+   "click #removePostNotification": function(event, template) {
+    event.preventDefault();
+    console.log(this);
+    Meteor.call("makeSeen", this);
+  },
+
+  "click #removeLikeNotification": function(event, template) {
+   event.preventDefault();
+   console.log(this);
+   Meteor.call("makeSeen", this);
+ },
+
+ "click #removeCommentsLikeNotification": function(event, template) {
+  event.preventDefault();
+  console.log(this);
+  Meteor.call("makeSeen", this);
+},
+
+"click #removeCommentsNotification": function(event, template) {
+ event.preventDefault();
+ console.log(this);
+ Meteor.call("makeSeen", this);
+},
 
 });

@@ -65,25 +65,25 @@ Meteor.methods({
 
     insertPost: function(payload){
       Posts.insert(payload);
+        Notification.insert({
+          topic: payload.topicName,
+          when: new Date(),
+          type: "post",
+          createdBy: payload.createdBy,
+          seen:[],
+        });
 
-      Notification.insert({
-        topic: payload.topicName,
-        when: new Date(),
-        type: "post",
-        createdBy: payload.createdBy,
-      });
+        let text =`${payload.createdBy.profile.name} posted in ${payload.topicName}` ;
+        let usersArray = Courses.findOne({ courseName:`${payload.topicName}` }).ranking;
+        let users = _.map(usersArray,'userId');
 
-      let text =`${payload.createdBy.profile.name} posted in ${payload.topicName}` ;
-      let usersArray = Courses.findOne({ courseName:`${payload.topicName}` }).ranking;
-      let users = _.map(usersArray,'userId');
-
-      Push.send({
-        text,
-        title:"Post",
-        from:"Poster",
-        badge: 1,
-        query: { userId: {$in: users} },
-      });
+        Push.send({
+          text,
+          title:"Post",
+          from:"Poster",
+          badge: 1,
+          query: { userId: {$in: users} },
+        });
     },
 
     insertComment: function(commentPayload){
@@ -96,6 +96,7 @@ Meteor.methods({
          when: new Date(),
          type: "comment",
          commenter: commentPayload.commenter,
+         seen:[],
        });
 
        let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
@@ -134,6 +135,7 @@ Meteor.methods({
           when: new Date(),
           type: "like",
           liker: liker,
+          seen:[],
         });
 
         let text =`${liker.profile.name} liked your post in ${post.topicName}`;
@@ -166,6 +168,7 @@ Meteor.methods({
            when: new Date(),
            type: "commentLike",
            liker: liker,
+           seen:[],
          });
 
          let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
@@ -181,9 +184,7 @@ Meteor.methods({
           { _id: commentData.postId , "comments.body":commentData.body },
           { $pull: {"comments.$.likes": liker }}
          );
-
       }
-
     },
 
     insertChallangeNotification: function (notificationData) {
@@ -226,6 +227,7 @@ Meteor.methods({
           chapter: notificationData.chapter,
           type: "challange",
           quizRoomId: quizRoom,
+          seen:[],
         });
 
         let text =`${notificationData.challanger.profile.name} Challenged you in ${notificationData.topic}`;
@@ -245,6 +247,13 @@ Meteor.methods({
         playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = notificationData.chapter;
         Meteor.users.update({ _id: this.userId },
           {  $addToSet:   playedChapters });
+    },
+
+    makeSeen:function(notificationData) {
+      Notification.update(
+        { _id: notificationData._id },
+        { $push: { seen: this.userId }}
+      )
     },
 
     updateOpponent: function (quizRoomId) {

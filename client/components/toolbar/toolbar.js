@@ -14,11 +14,11 @@ Template.toolbar.helpers({
 
       let notification = Notification.find({
         $or: [
-          { type: "challange", "defender._id": Meteor.userId(),  },
-          { type: "post", topic: { $in: topicsChosen }},
-          { type: "like", postCreator: Meteor.user().profile.name },
-          { type: "commentLike", commentCreator: Meteor.user().profile.name },
-          { type: "comment", postCreator: Meteor.user() }
+          { type: "challange", "defender._id": Meteor.userId() },
+          { type: "post", topic: { $in: topicsChosen }, seen: { $ne: Meteor.userId()} },
+          { type: "like", postCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
+          { type: "commentLike", commentCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
+          { type: "comment", postCreator: Meteor.user(), seen: { $ne: Meteor.userId()} }
         ]
       }).count();
       return notification;
