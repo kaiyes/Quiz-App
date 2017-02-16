@@ -39,6 +39,10 @@ Template.playFirst.onDestroyed(function () {
 });
 
 Template.playFirst.helpers({
+  getAge(age) {
+      return moment().diff(age, "years");
+  },
+  
   userInfo: function(){
     return Session.get('playerInfo');
   },
