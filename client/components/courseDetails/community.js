@@ -4,6 +4,11 @@ Template.registerHelper('getTimePosted', date => {
   }
 });
 
+Template.community.onCreated(function(){
+  let topicName = Session.get('topicName');
+  Meteor.subscribe("posts", topicName);
+})
+
 Template.community.onRendered(function() {
     $(document)
       .on("focus", ".eddy-community--post-area--input__reply", function(){

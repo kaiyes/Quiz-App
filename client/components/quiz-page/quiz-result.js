@@ -2,6 +2,7 @@ Template.quizResult.onCreated(function() {
 
   if (Meteor.user()) {
     let resultRoomId = Router.current().params._id;
+    Meteor.subscribe("resultRoom", resultRoomId);
     let room = PlayedSessions.findOne({ _id: resultRoomId })
 
     if (Meteor.userId()===room.challanger._id ){
@@ -136,7 +137,7 @@ Template.quizResult.helpers({
    }
    return ''
  },
- 
+
  defenderDull:function(){
    let resultRoomId = Router.current().params._id
    let room =  PlayedSessions.findOne({ _id: resultRoomId })

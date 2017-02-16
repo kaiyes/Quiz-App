@@ -1,4 +1,8 @@
-
+Template.profile.onCreated(function(){
+  Meteor.subscribe("universities");
+  Meteor.subscribe("nickNames");
+  Meteor.subscribe('countries')
+})
 
 Template.profile.onRendered(function() {
   let self = this;

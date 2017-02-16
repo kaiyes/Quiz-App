@@ -1,3 +1,6 @@
+Template.notification.onCreated(function() {
+  Meteor.subscribe("notification");
+})
 
 Template.notification.helpers({
 

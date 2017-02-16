@@ -1,3 +1,8 @@
+Template.challengeOpponent.onCreated(function() {
+  let topicName = Session.get('topicName');
+  Meteor.subscribe("users", topicName);
+})
+
 Template.challengeOpponent.onRendered(function() {
     if (Framework7.prototype.device.android) {
       $('.eddy-challenge-mrgn-top').addClass('margin-top-56');

@@ -60,7 +60,6 @@ raix:push
 chart:chart
 elevatedevdesign:feedback
 jss:flag-icon
-3stack:country-codes
 suxez:countries
 xyz:loading
 
@@ -69,7 +68,6 @@ xyz:loading
 #                To be removed in production          #
 #######################################################
 
-autopublish@1.0.7             # Publish all data to the clients (for prototyping)
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
 
 

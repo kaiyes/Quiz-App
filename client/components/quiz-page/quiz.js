@@ -3,6 +3,8 @@ var sixSecondTimer = new ReactiveCountdown(20);
 
 Template.quiz.onCreated(function () {
   let quizRoomId = Router.current().params._id;
+  Meteor.subscribe("quiz", quizRoomId);
+  Meteor.subscribe("resultRoomByOriginalId", quizRoomId);
   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
 
   if (Meteor.userId()===quizRoom.challanger._id ){

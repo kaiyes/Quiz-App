@@ -1,3 +1,7 @@
+Template.homePage.onCreated(function() {
+  Meteor.subscribe("courses");
+})
+
 Template.homePage.helpers({
     getAge(age) {
         return moment().diff(age, "years");

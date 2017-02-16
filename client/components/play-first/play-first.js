@@ -52,6 +52,7 @@ Template.playFirst.helpers({
     var notification = Notification.findOne({
       when: notificationData.when,
      });
+    Meteor.subscribe("quiz", notification.quizRoomId);
      var quizRoom = QuizRooms.findOne({
        _id: notification.quizRoomId,
       });
