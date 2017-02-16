@@ -106,4 +106,9 @@ Template.community.events({
   Router.go('/player');
  },
 
+ "click #play": function(event, template) {
+  event.preventDefault();
+  Router.go('/courseDetails');
+ },
+
 });
