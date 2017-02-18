@@ -40,8 +40,8 @@ App.launchScreens({
 
 });
 
-App.accessRule('http://*');
-App.accessRule('https://*');
+// App.accessRule('http://*');
+// App.accessRule('https://*');
 App.accessRule('*');
 
 App.appendToConfig(`
