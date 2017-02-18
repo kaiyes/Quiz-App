@@ -1,47 +1,46 @@
 .eddy-challenge {
-  &__list {
-    &:after {
-      //background-color: transparent !important;
-    }
-
-    .item-link {
-      .item-inner {
-        background-image: none !important;
-
+    &__list {
         &:after {
-          background-color: transparent !important;
+            //background-color: transparent !important;
         }
-      }
+        .item-link {
+            .item-inner {
+                background-image: none !important;
+                &:after {
+                    background-color: transparent !important;
+                }
+            }
+        }
+        li {
+            &:nth-of-type(even) {
+                background: rgba(0, 0, 0, 0.05);
+            }
+            .item-inner {
+                &:after {
+                    background-color: transparent !important;
+                }
+                &.active-state {
+                    background: rgba(0, 0, 0, 0.08)!important;
+                }
+            }
+        }
     }
-
-    li {
-      &:nth-of-type(even) {
-        background: rgba(0, 0 ,0, 0.05);
-      }
-      .item-inner {
-        &:after {
-          background-color: transparent !important;
-        }
-        &.active-state {
-          background: rgba(0, 0 ,0, 0.08)!important;
-        }
-      }
+    &__random-op-btn {
+        position: absolute;
+        //top: 44px;
+        padding: 1rem !important;
+        width: 100%;
+        background-color: map-deep-get($colors, "primary", "base");
+        z-index: 50;
     }
-  }
+    &__user-info {
+        color: map-deep-get($colors, "primary", "base");
+    }
+}
 
-  &__random-op-btn {
-    position: absolute;
-    //top: 44px;
-
-    padding: 1rem !important;
-
-    width: 100%;
-    background-color: map-deep-get($colors, "primary", "base");
-
-    z-index: 50;
-  }
-
-  &__user-info {
-    color: map-deep-get($colors, "primary", "base");
-  }
+.item-after.player {
+    height: 43px;
+    max-height: 43px;
+    line-height: 3.0em;
+    width: 42px;
 }

@@ -1,5 +1,5 @@
 Template.homePage.onCreated(function() {
-  Meteor.subscribe("courses");
+    Meteor.subscribe("courses");
 })
 
 Template.homePage.helpers({
@@ -46,10 +46,9 @@ Template.homePage.helpers({
 
 Template.homePage.events({
     "click #list": function(event, template) {
-        event.preventDefault();
-        console.log(this.courseName);
+        event.preventDefault();                
         Session.set("topicName", this.courseName);
-        Router.go('/courseDetails');
+        _.delay(function() { Router.go('/courseDetails'); }, 100);
     },
     "click #showProfileInfo": function(event, template) {
         $('.with-subnavbar').removeClass('toggle-profile');

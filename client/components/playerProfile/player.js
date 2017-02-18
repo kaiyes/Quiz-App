@@ -30,5 +30,12 @@ Template.player.events({
         event.preventDefault();
         window.history.back();
     },
+    "click .course": function(event, instance) {
+        event.preventDefault();
+        Session.set("topicName", this.courseName);
+        _.delay(function() {
+            Router.go('/courseDetails');
+        }, 100);
+    },
 
 });

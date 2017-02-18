@@ -1,8 +1,7 @@
 Template.adminUniversity.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
-      let universityName = document.querySelector("#university").value;
-      console.log(universityName);
+      let universityName = document.querySelector("#university").value;      
 
       Meteor.call("insertUniversity", universityName, function (err) {
         if (!err) {

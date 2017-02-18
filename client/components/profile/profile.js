@@ -94,8 +94,7 @@ Template.profile.events({
   },
 
     'change input[type="file"]' ( event, template ) {
-      let imageData = event.currentTarget.files[0];
-      console.log(imageData);
+      let imageData = event.currentTarget.files[0];      
 
       Resizer.resize(imageData, {width: 300, height: 300, cropSquare: true }, function(err, file) {
 
@@ -108,8 +107,7 @@ Template.profile.events({
             });
             console.log( err);
           }
-          if (file) {
-            console.log(res);
+          if (file) {            
             myApp.addNotification({
               title: 'Profile Photo',
               message: "Profile Photo Uploaded",

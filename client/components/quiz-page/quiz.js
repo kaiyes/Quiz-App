@@ -284,12 +284,10 @@ Template.quiz.events({
     var time = sixSecondTimer.get(); 
     var questionNumber = Session.get('question');
     if (thirdAnswer===rightAnswer) {
-        if (Meteor.userId()===quizRoom.challanger._id) {
-          console.log("challanger wins");
+        if (Meteor.userId()===quizRoom.challanger._id) {          
           Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
         };
-        if (Meteor.userId()===quizRoom.defender._id) {
-          console.log("defender wins");
+        if (Meteor.userId()===quizRoom.defender._id) {          
           Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber );
         };
     };
@@ -305,12 +303,10 @@ Template.quiz.events({
     var time = sixSecondTimer.get(); 
     var questionNumber = Session.get('question');
     if (fourthAnswer===rightAnswer) {
-        if (Meteor.userId()===quizRoom.challanger._id) {
-          console.log("challanger wins");
+        if (Meteor.userId()===quizRoom.challanger._id) {          
           Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber );
         };
-        if (Meteor.userId()===quizRoom.defender._id) {
-          console.log("defender wins");
+        if (Meteor.userId()===quizRoom.defender._id) {          
           Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber );
         };
     };
@@ -325,16 +321,14 @@ Template.quiz.events({
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     if (Meteor.userId()===quizRoom.challanger._id ){
       Meteor.call("endGameForChallanger", quizRoomId );
-        if ( quizRoom.defenderPlayed) {
-          console.log("logging from challenger");
+        if ( quizRoom.defenderPlayed) {          
           Meteor.call("makePlayFirstFalse",resultRoom._id);
         };
     };
 
     if (Meteor.userId()===quizRoom.defender._id ){
       Meteor.call("endGameForDefender", quizRoomId );
-        if ( quizRoom.challangerPlayed) {
-          console.log("logging from defender played");
+        if ( quizRoom.challangerPlayed) {          
           Meteor.call("makePlayFirstFalse",resultRoom._id);
         };
     };

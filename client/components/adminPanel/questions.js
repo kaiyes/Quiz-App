@@ -88,7 +88,7 @@ Template.adminQuestions.events({
       }
 
       let obj = { question, courseName, chapterName, answer1, answer2, answer3, answer4, rightAnswer, explanation }
-      console.log(obj);
+      
 
       Meteor.call("insertQuestions", obj, function (err) {
         if (!err) {

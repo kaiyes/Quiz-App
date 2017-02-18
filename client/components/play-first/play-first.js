@@ -12,11 +12,9 @@ Template.playFirst.onRendered(function(){
         title: 'Quiz',
         message: "Match Failed",
         hold:2000,
-      });
-      console.log("timer in play first ended");
+      });      
       Router.go('/challengeOpponent');
-    } else {
-      console.log("Routing Shouldn't happen");
+    } else {      
     }
   });
 
@@ -73,8 +71,7 @@ Template.playFirst.events({
 
   "click #play": function(event, instance){
     let sessionData = Session.get('challangeNotification');
-    let time = sessionData.when;
-    console.log(time);
+    let time = sessionData.when;    
     let handle = Notification.findOne({ when: time });
     Meteor.call("updatePlayFirst", handle.quizRoomId );
     Router.go(`/quiz/${handle.quizRoomId}`);

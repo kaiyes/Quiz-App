@@ -36,12 +36,20 @@
     font-size: 1.5rem;
 }
 
+.contacts-block .list-group-title+li {
+    margin-top: auto!important;
+}
+
+.contacts-block li:not(.list-group-title) {
+    padding-left: 0!important;
+}
+
 .eddy-courses {
     .item-link {
         background: #ffffff;
     }
     &__codes {
-        @include type-style($font-family-eddy-montserratbold, 700, 1rem, #595959);
+        @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #595959);
     }
     &__name {
         @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #000000);

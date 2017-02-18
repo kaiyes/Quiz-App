@@ -1,66 +1,79 @@
-.eddy-navbar {
-    &__title {
-        @include type-style($font-family-eddy-montserratbold, 700, 1.5rem, map-deep-get($colors, "primary", "base"));
-        text-transform: uppercase;
-    }
-    &:after {
-        background-color: transparent !important;
-    }
-    background-color: map-deep-get($colors, "background", "white") !important;
-    color: map-deep-get($colors, "primary", "base") !important;
-    @extend %box_shadow;
-    &--sub {
-        box-shadow: 0 1px 8px 2px map-deep-get($colors, "background", "border") !important;
-        background: map-deep-get($colors, "background", "white") !important;
-        &--item {
-            padding-top: 7px !important;
+    .eddy-navbar {
+        &__title {
+            @include type-style($font-family-eddy-montserratbold, 700, 1.5rem, map-deep-get($colors, "primary", "base"));
+            text-transform: uppercase;
+        }
+        &:after {
+            background-color: transparent !important;
+        }
+        background-color: map-deep-get($colors, "background", "white") !important;
+        color: map-deep-get($colors, "primary", "base") !important;
+        @extend %box_shadow;
+        &--sub {
+            box-shadow: 0 1px 8px 2px map-deep-get($colors, "background", "border") !important;
+            background: map-deep-get($colors, "background", "white") !important;
+            &--item {
+                padding-top: 7px !important;
+                border: none !important;
+                @include type-style($font-family-eddy-montserratlight, 400, 1.3rem, map-deep-get($colors, "foreground", "light-black"));
+                &.active {
+                    background: transparent !important;
+                    font-family: $font-family-base !important;
+                }
+                &:focus {
+                    background: transparent !important;
+                }
+                &:hover {
+                    background: transparent !important;
+                }
+                &:active {
+                    background: transparent !important;
+                }
+                &.active-state {
+                    background: white !important;
+                }
+            }
+        }
+        &--challenge {
+            box-shadow: none !important;
             border: none !important;
-            @include type-style($font-family-eddy-montserratlight, 400, 1.3rem, map-deep-get($colors, "foreground", "light-black"));
-            &.active {
-                background: transparent !important;
-                font-family: $font-family-base !important;
+            &__heading {
+                color: #51c8ac !important;
+                font-family: $font-family-eddy-montserratlight!important;
             }
-            &:focus {
-                background: transparent !important;
-            }
-            &:hover {
-                background: transparent !important;
-            }
-            &:active {
-                background: transparent !important;
-            }
-            &.active-state {
-                background: white !important;
+            &__back {
+                color: #494949 !important;
             }
         }
-    }
-    &--challenge {
-        box-shadow: none !important;
-        border: none !important;
-        &__heading {
-            color: #51c8ac !important;
-            font-family: $font-family-eddy-montserratlight!important;
+        &__profile_hide_show {
+            color: #595959 !important;
         }
-        &__back {
+        &--quiz {
+            &__heading {
+                font-family: $font-family-eddy-montserratbold !important;
+            }
+            &__close {
+                color: #494949;
+            }
+        }
+        &__noti__title {
             color: #494949 !important;
-        }
-    }
-    &__profile_hide_show {
-        color: #595959 !important;
-    }
-    &--quiz {
-        &__heading {
             font-family: $font-family-eddy-montserratbold !important;
         }
-        &__close {
+        &__noti__close {
             color: #494949;
         }
     }
-    &__noti__title {
-        color: #494949 !important;
-        font-family: $font-family-eddy-montserratbold !important;
+    
+    @media screen and (device-aspect-ratio: 40/71) {
+        .eddy-navbar {
+            &__title {
+                @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, map-deep-get($colors, "primary", "base"));
+                text-transform: uppercase;
+            }
+        }
     }
-    &__noti__close {
-        color: #494949;
+    
+    .navbar .center {
+        line-height: 45px;
     }
-}

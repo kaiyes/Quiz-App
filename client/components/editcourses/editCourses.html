@@ -37,14 +37,14 @@
                   </li>
                   {{#if hasCources value }}
                   {{#each getValue value }}
-                   <li id="course" class="cur-pointer select-course {{addedCourse}}">
+                   <li class="course cur-pointer select-course {{addedCourse}}">
                     <a class="item-link">
                      <div class="item-content">
                        <div class="item-inner padding-right-0">
                          <div class="item-title">
                            <div class="item-title flex-direction--row flex-align-items--center">
                              <div class="eddy-courses__codes width-120">
-                              {{number}}
+                              {{courseNumber}}
                              </div>
                              <div class="flex--1 text-ellipsis eddy-courses__name course-title">
                                {{courseName}}

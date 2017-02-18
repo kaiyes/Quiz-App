@@ -12,8 +12,7 @@ Template.toolbar.onCreated(function() {
         { type: "comment", postCreator: Meteor.user() }
       ]
     }).count();
-   Session.set('notificationOld', notificationCount);
-   console.log(Session.get('notificationOld'));
+   Session.set('notificationOld', notificationCount);   
  }
 });
 
@@ -39,8 +38,7 @@ Template.toolbar.onRendered(function() {
          if (notification>oldNotification) {
            if (Meteor.user().profile.sound===true) {
             Feedback.provide("somethingHappened");
-          }else {
-            console.log(notification);
+          }else {            
           }
          }
       });

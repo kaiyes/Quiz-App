@@ -16,7 +16,7 @@
         }
     }
     &__rank-list-me {
-        background-color: map-deep-get($colors, "primary", "base") !important;
+        background-color: #9e9e9e !important;
         color: map-deep-get($colors, "foreground", "white");
         cursor: pointer;
     }

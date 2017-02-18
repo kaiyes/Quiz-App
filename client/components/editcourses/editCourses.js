@@ -73,7 +73,7 @@ Template.editCourses.events({
         }
     },
 
-    'click #course': function() {
+    'click .course': function() {
         event.preventDefault()
         let selectedCourses = Meteor.user().profile.selectedCourses
         let courseData = {
@@ -86,38 +86,37 @@ Template.editCourses.events({
         }
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false)
-            console.log(Session.get(`${this.courseName}`))
+            
             Meteor.call('removeCourse', courseData, function(error, result) {
                 if (error) {
-                  myApp.addNotification({
-                    title: 'Course',
-                    message: 'Something Went Wrong',
-                    hold:2000,
-                  });
+                    myApp.addNotification({
+                        title: 'Course',
+                        message: 'Something Went Wrong',
+                        hold: 2000,
+                    });
                 } else {
                     myApp.addNotification({
-                      title: 'Course',
-                      message: `removed ${courseData.courseName}`,
-                      hold:2000,
+                        title: 'Course',
+                        message: `removed ${courseData.courseName}`,
+                        hold: 2000,
                     });
                 }
             })
         } else {
-            Session.set(`${this.courseName}`, true)
-            console.log(Session.get(`${this.courseName}`))
+            Session.set(`${this.courseName}`, true);            
             Meteor.call('addCourse', courseData, function(error, result) {
                 if (error) {
-                  myApp.addNotification({
-                    title: 'Course',
-                    message: 'Something Went Wrong',
-                    hold:2000,
-                  });
+                    myApp.addNotification({
+                        title: 'Course',
+                        message: 'Something Went Wrong',
+                        hold: 2000,
+                    });
                 } else {
-                  myApp.addNotification({
-                    title: 'Course',
-                    message: `added ${courseData.courseName}`,
-                    hold:2000,
-                  });
+                    myApp.addNotification({
+                        title: 'Course',
+                        message: `added ${courseData.courseName}`,
+                        hold: 2000,
+                    });
                 }
             })
         }

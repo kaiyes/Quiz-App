@@ -40,8 +40,7 @@ Template.courseDetails.events({
     },
 
     "click #popUpList": function(event, template) {
-        event.preventDefault();
-        console.log(this.courseName);
+        event.preventDefault();        
         Session.set("topicName", this.courseName);
         $('.eddy-courseDetails__select-topic').removeClass('opened');
         $('.pages').removeClass('opacity-50');
