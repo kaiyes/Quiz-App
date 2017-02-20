@@ -1,45 +1,42 @@
 .eddy-courseDetails {
-  &__select-topic {
-    position: absolute;
-    top: -100%;
-    width: 100%;
-    background-color: map-deep-get($colors, 'foreground', 'white');
-
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    transition: all 0.3s;
-
-    z-index: 9999;
-
-    -webkit-box-shadow: 2px 2px 5px 2px #ebebeb !important;
-    -moz-box-shadow: 2px 2px 5px 2px #ebebeb !important;
-    box-shadow: 2px 2px 5px 2px #ebebeb !important;
-
-    &.opened {
-      top: 0!important;
-
-      -webkit-transition: all 0.3s;
-      -moz-transition: all 0.3s;
-      -ms-transition: all 0.3s;
-      transition: all 0.3s;
+    &__select-topic {
+        position: absolute;
+        top: -100%;
+        width: 100%;
+        background-color: map-deep-get($colors, 'foreground', 'white');
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        transition: all 0.3s;
+        z-index: 9999;
+        -webkit-box-shadow: 2px 2px 5px 2px #ebebeb !important;
+        -moz-box-shadow: 2px 2px 5px 2px #ebebeb !important;
+        box-shadow: 2px 2px 5px 2px #ebebeb !important;
+        &.opened {
+            top: 0!important;
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -ms-transition: all 0.3s;
+            transition: all 0.3s;
+        }
+        &__lists {}
+        &__list {
+            text-transform: uppercase;
+            ;
+            @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #a7a7a7);
+            &:hover {
+                color: map-deep-get($colors, 'primary', 'base') !important;
+            }
+            &:active {
+                color: map-deep-get($colors, 'primary', 'base') !important;
+            }
+            &:focus {
+                color: map-deep-get($colors, 'primary', 'base') !important;
+            }
+        }
     }
+}
 
-    &__lists {
-
-    }
-    &__list {
-      text-transform: uppercase;;
-      @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #a7a7a7);
-      &:hover {
-        color: map-deep-get($colors, 'primary', 'base') !important;
-      }
-      &:active {
-        color: map-deep-get($colors, 'primary', 'base') !important;
-      }
-      &:focus {
-        color: map-deep-get($colors, 'primary', 'base') !important;
-      }
-    }
-  }
+.eddy-chapters .item-link {
+    border-bottom: 1px solid #DEDEDE;
 }
