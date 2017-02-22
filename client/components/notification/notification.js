@@ -59,14 +59,15 @@ Template.notification.events({
 
   "click #acceptChallange": function(event, template){
    Meteor.call("updateOpponent", this.quizRoomId);
+   Meteor.call("removeChallangeNotification", this._id);
    Router.go(`/quiz/${this.quizRoomId}`);
  },
 
  "click #denyChallange": function(event, template){
-  Meteor.call("removeChallangeNotification", this._id, this.quizRoomId);
+  Meteor.call("removeChallangeNotification", this._id);
 },
 
-"click #postNotification": function(event, template){  
+"click #postNotification": function(event, template){
   Session.set('topicName',this.topic);
   _.delay(function(){ Router.go('/courseDetails'); },100);
 },
@@ -76,12 +77,12 @@ Template.notification.events({
   _.delay(function(){ Router.go('/courseDetails'); },100);
 },
 
-"click #likesOnComment": function(event, template){  
+"click #likesOnComment": function(event, template){
   Session.set('topicName',this.topic);
   _.delay(function(){ Router.go('/courseDetails'); },100);
 },
 
-"click #commentNotification": function(event, template){  
+"click #commentNotification": function(event, template){
   Session.set('topicName',this.topic);
   _.delay(function(){ Router.go('/courseDetails'); },100);
 },
@@ -117,22 +118,22 @@ Template.notification.events({
 },
 
 "click #removePostNotification": function(event, template) {
-  event.preventDefault();    
+  event.preventDefault();
   Meteor.call("makeSeen", this);
 },
 
 "click #removeLikeNotification": function(event, template) {
-  event.preventDefault();    
+  event.preventDefault();
   Meteor.call("makeSeen", this);
 },
 
 "click #removeCommentsLikeNotification": function(event, template) {
-  event.preventDefault();    
+  event.preventDefault();
   Meteor.call("makeSeen", this);
 },
 
 "click #removeCommentsNotification": function(event, template) {
- event.preventDefault();   
+ event.preventDefault();
  Meteor.call("makeSeen", this);
 },
 

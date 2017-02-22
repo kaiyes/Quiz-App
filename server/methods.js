@@ -273,7 +273,7 @@ Meteor.methods({
          {  $addToSet:   playedChapters });
      },
 
-    removeChallangeNotification: function (notificationId,quizRoomId) {
+    removeChallangeNotification: function (notificationId) {
 
       let notification = Notification.findOne({
         _id: notificationId,
@@ -281,13 +281,6 @@ Meteor.methods({
        if (notification) {
           Notification.remove({ _id: notificationId });
        };
-
-      //  let quizRoom = QuizRooms.findOne({
-      //    _id: quizRoomId,
-      //   });
-      //   if (quizRoom) {
-      //      QuizRooms.remove({ _id: quizRoomId });
-      //   };
     },
 
     incChallangerRoomPoints: function( quizRoomId, time, questionNumber){

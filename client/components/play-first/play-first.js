@@ -12,9 +12,9 @@ Template.playFirst.onRendered(function(){
         title: 'Quiz',
         message: "Match Failed",
         hold:2000,
-      });      
+      });
       Router.go('/challengeOpponent');
-    } else {      
+    } else {
     }
   });
 
@@ -40,7 +40,7 @@ Template.playFirst.helpers({
   getAge(age) {
       return moment().diff(age, "years");
   },
-  
+
   userInfo: function(){
     return Session.get('playerInfo');
   },
@@ -71,7 +71,7 @@ Template.playFirst.events({
 
   "click #play": function(event, instance){
     let sessionData = Session.get('challangeNotification');
-    let time = sessionData.when;    
+    let time = sessionData.when;
     let handle = Notification.findOne({ when: time });
     Meteor.call("updatePlayFirst", handle.quizRoomId );
     Router.go(`/quiz/${handle.quizRoomId}`);
@@ -94,7 +94,7 @@ Template.playFirst.events({
        });
 
       if (notification && quizRoom) {
-         Meteor.call("removeChallangeNotification", notification._id,notification.quizRoomId);
+         Meteor.call("removeChallangeNotification", notification._id);
       };
 
   },
