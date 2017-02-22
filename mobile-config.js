@@ -20,11 +20,11 @@ App.icons({
   'ios_spotlight': 'public/icons/res/icons/ios/icon-40.png', // 40x40
   'ios_spotlight_2x': 'public/icons/res/icons/ios/icon-40-2x.png', // 80x80
   //android
-  'android_mdpi': 'public/icons/res/icons/android/icon-48-mdpi.png',
-  'android_hdpi': 'public/icons/res/icons/android/icon-72-hdpi.png',
-  'android_xhdpi': 'public/icons/res/icons/android/icon-96-xhdpi.png',
-  'android_xxhdpi': 'public/icons/res/icons/android/icon-144-xxhdpi.png',
-  'android_xxxhdpi': 'public/icons/res/icons/android/icon-192-xxxhdpi.png'
+  'android_mdpi': 'public/icons/res/icons/android/iconmdpi.png',
+  'android_hdpi': 'public/icons/res/icons/android/iconhdpi.png',
+  'android_xhdpi': 'public/icons/res/icons/android/iconxhdpi.png',
+  'android_xxhdpi': 'public/icons/res/icons/android/iconxxhdpi.png',
+  'android_xxxhdpi': 'public/icons/res/icons/android/iconxxxhdpi.png'
 });
 
 App.launchScreens({
@@ -34,11 +34,16 @@ App.launchScreens({
   'iphone6': 'public/splash/ios/750×1334.png',
   'iphone6p_portrait':'public/splash/ios/1242×2208.png',
   //android
-  'android_mdpi_portrait': 'public/splash/android/320x480.png',
-  'android_hdpi_portrait': 'public/splash/android/480x800.png',
-  'android_xhdpi_portrait': 'public/splash/android/720x1080.png',
+  'android_mdpi_portrait': 'public/splash/android/mdpi.png',
+  'android_hdpi_portrait': 'public/splash/android/hdpi.png',
+  'android_xhdpi_portrait': 'public/splash/android/xhdpi.png',
+  'android_xxhdpi_portrait': 'public/splash/android/xxhdpi.png',
+  'android_xxxhdpi_portrait': 'public/splash/android/xxxhdpi.png',
 
 });
+
+App.setPreference("android-targetSdkVersion", "23");
+
 
 // App.accessRule('http://*');
 // App.accessRule('https://*');
