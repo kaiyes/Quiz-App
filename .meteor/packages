@@ -69,7 +69,7 @@ xyz:loading
 #######################################################
 
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
-
+autopublish
 
 underscore@1.0.10
 erasaur:meteor-lodash
