@@ -1,6 +1,5 @@
 Template.toolbar.onCreated(function() {
-    if (Meteor.user()) {
-    Meteor.subscribe("notification");
+  Meteor.subscribe("notification");
     let objArray = Meteor.user().profile.selectedCourses;
     let topicsChosen = _.map(objArray,'courseName');
     let notificationCount = Notification.find({
@@ -12,8 +11,7 @@ Template.toolbar.onCreated(function() {
         { type: "comment", postCreator: Meteor.user() }
       ]
     }).count();
-   Session.set('notificationOld', notificationCount);   
- }
+   Session.set('notificationOld', notificationCount);
 });
 
 
@@ -38,7 +36,7 @@ Template.toolbar.onRendered(function() {
          if (notification>oldNotification) {
            if (Meteor.user().profile.sound===true) {
             Feedback.provide("somethingHappened");
-          }else {            
+          }else {
           }
          }
       });
@@ -49,7 +47,6 @@ Template.toolbar.onRendered(function() {
 
 Template.toolbar.helpers({
   notificationAll: function(){
-    if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
       let topicsChosen = _.map(objArray,'courseName');
 
@@ -63,8 +60,6 @@ Template.toolbar.helpers({
         ]
       }).count();
       return notification;
-    }
-    return {};
   },
 });
 
