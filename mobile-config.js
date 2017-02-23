@@ -37,12 +37,10 @@ App.launchScreens({
   'android_mdpi_portrait': 'public/splash/android/mdpi.png',
   'android_hdpi_portrait': 'public/splash/android/hdpi.png',
   'android_xhdpi_portrait': 'public/splash/android/xhdpi.png',
-  'android_xxhdpi_portrait': 'public/splash/android/xxhdpi.png',
-  'android_xxxhdpi_portrait': 'public/splash/android/xxxhdpi.png',
+  // 'android_xxhdpi_portrait': 'public/splash/android/xxhdpi.png',
+  // 'android_xxxhdpi_portrait': 'public/splash/android/xxxhdpi.png',
 
 });
-
-App.setPreference("android-targetSdkVersion", "23");
 
 
 // App.accessRule('http://*');

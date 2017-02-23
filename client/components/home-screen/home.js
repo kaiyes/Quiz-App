@@ -46,7 +46,7 @@ Template.homePage.helpers({
 
 Template.homePage.events({
     "click #list": function(event, template) {
-        event.preventDefault();                
+        event.preventDefault();
         Session.set("topicName", this.courseName);
         _.delay(function() { Router.go('/courseDetails'); }, 100);
     },
@@ -67,4 +67,8 @@ Template.homePage.events({
         $('.eddy-home--quizes').addClass('margin-top-90 margin-bottom-70').removeClass('margin-bottom-285 full-height');
     },
 
+    "click .needHelp": function(event, template) {
+        event.preventDefault();
+        console.log(this);
+    },
 });
