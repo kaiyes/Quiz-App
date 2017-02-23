@@ -7,7 +7,7 @@
   });
 
 
-    Push.debug = true;
+    // Push.debug = true;
 
     Push.Configure({
       apn: {

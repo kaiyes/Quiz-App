@@ -1,5 +1,4 @@
 <template name="homePage">
-  {{#if Template.subscriptionsReady}}
       <div class="views">
         <div class="view view-main">
           <div class="eddy-home--profile-info">
@@ -114,7 +113,4 @@
           {{> toolbar}}
         </div>
       </div>
-    {{else}}
-    {{>loading}}
-{{/if}}
 </template>

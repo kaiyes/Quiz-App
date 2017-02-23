@@ -12,15 +12,11 @@
       <span data-popup=".popup-notification" class="flex--1 border_none--imp eddy-toolbar--icon eddy-toolbar--icon__noti open-popup full-height flex-direction--row flex-justify-content--center flex-align-items--center">
            <div class="text-center padding-top-8">
              <span class="lnr lnr-alarm" aria-hidden="true"></span>
-            {{#if Template.subscriptionsReady}}
              {{#if $eq notificationAll 0 }}
                  <span class="eddy-toolbar--icon__noti--badge"></span>
                  {{else}}
                  <span class="eddy-toolbar--icon__noti--badge">{{notificationAll}}</span>
               {{/if}}
-               {{else}}
-                <span class="eddy-toolbar--icon__noti--badge"></span>
-            {{/if}}
            </div>
       </span>
     </div>
