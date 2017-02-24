@@ -23,8 +23,8 @@ App.icons({
   'android_mdpi': 'public/icons/res/icons/android/iconmdpi.png',
   'android_hdpi': 'public/icons/res/icons/android/iconhdpi.png',
   'android_xhdpi': 'public/icons/res/icons/android/iconxhdpi.png',
-  'android_xxhdpi': 'public/icons/res/icons/android/iconxxhdpi.png',
-  'android_xxxhdpi': 'public/icons/res/icons/android/iconxxxhdpi.png'
+  // 'android_xxhdpi': 'public/icons/res/icons/android/iconxxhdpi.png',
+  // 'android_xxxhdpi': 'public/icons/res/icons/android/iconxxxhdpi.png'
 });
 
 App.launchScreens({
@@ -37,8 +37,8 @@ App.launchScreens({
   'android_mdpi_portrait': 'public/splash/android/mdpi.png',
   'android_hdpi_portrait': 'public/splash/android/hdpi.png',
   'android_xhdpi_portrait': 'public/splash/android/xhdpi.png',
-  'android_xxhdpi_portrait': 'public/splash/android/xxhdpi.png',
-  'android_xxxhdpi_portrait': 'public/splash/android/xxxhdpi.png',
+  // 'android_xxhdpi_portrait': 'public/splash/android/xxhdpi.png',
+  // 'android_xxxhdpi_portrait': 'public/splash/android/xxxhdpi.png',
 
 });
 
