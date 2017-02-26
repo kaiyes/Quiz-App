@@ -14,20 +14,19 @@ Framework7.prototype.plugins.indexedlist = function(app, params) {
     var $ = window.Dom7;
 
 
-    function initIndexedList(page) {
-        var eventsTarget = $(page.container).find('.list-index');
+    function initIndexedList(page) {               
+        var eventsTarget = $('.iv-page').find('.list-index');
         if (eventsTarget.length === 0) return;
 
-        var pageContent = $(page.container).find('.page-content');
+        var pageContent = $('.iv-page').find('.page-content');
         buildLetters();
         var isTouched, isMoved;
         var letterToScroll;
         var elementHover;
         var fixedNavbar = pageContent.parents('.navbar-fixed').length > 0 || pageContent.parents('.navbar-through').length > 0;
-        var searchBar = $(page.container).find('.searchbar').length > 0;
+        var searchBar = $('.iv-page').find('.searchbar').length > 0;
 
-        if (searchBar) {
-            console.log(eventsTarget);
+        if (searchBar) {            
             eventsTarget.css('margin-top', '44px');
         }
 
@@ -63,7 +62,7 @@ Framework7.prototype.plugins.indexedlist = function(app, params) {
             isTouched = isMoved = false;
         }
 
-        $(page.container).on('click', '.list-index li', function(e) {
+        $('.iv-page').on('click', '.list-index li', function(e) {
             var target = $(e.target);
             if (!target.is('li')) target = target.parents('li');
             if (target.length > 0) {
@@ -75,6 +74,7 @@ Framework7.prototype.plugins.indexedlist = function(app, params) {
             var _letters = [];
             var lettersHtml = '';
             pageContent.find('.list-group').each(function() {
+                console.log('ss');
                 var _letterDiv = $(this).find('ul .list-group-title');
                 var _letter = _letterDiv.html().trim().charAt(0).toUpperCase();
                 _letterDiv.attr('data-index-letter', _letter);
@@ -96,11 +96,11 @@ Framework7.prototype.plugins.indexedlist = function(app, params) {
         eventsTarget.on(app.touchEvents.move, handleTouchMove);
         eventsTarget.on(app.touchEvents.end, handleTouchEnd);
     }
-
-
+    
     return {
         hooks: {
             pageInit: initIndexedList,
+            pageReinit: initIndexedList
         }
     };
 };

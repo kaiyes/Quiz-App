@@ -3,8 +3,10 @@ Meteor.startup(function() {
     myApp = new Framework7({
         fastClicks: true,
         statusbarOverlay: false,
-        activeState: true,
+        activeState: true
     });
+
+
     $$ = Dom7;
 
     if (typeof StatusBar !== 'undefined') {
