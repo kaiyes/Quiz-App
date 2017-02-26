@@ -74,3 +74,5 @@ autopublish
 underscore@1.0.10
 erasaur:meteor-lodash
 themeteorchef:jquery-validation
+mquandalle:bower
+saucecode:rollbar

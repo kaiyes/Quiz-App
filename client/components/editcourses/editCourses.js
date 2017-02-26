@@ -62,6 +62,7 @@ Template.editCourses.onRendered(function() {
         $('.navbar-fixed .page>.searchbar~.page-content').css('padding-top', '110px')
         $('.eddy-courses--sorting').addClass('line-height-normal height-auto padding-v-8')
     }
+
 })
 
 Template.editCourses.events({
@@ -86,7 +87,7 @@ Template.editCourses.events({
         }
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false)
-            
+
             Meteor.call('removeCourse', courseData, function(error, result) {
                 if (error) {
                     myApp.addNotification({
@@ -103,7 +104,7 @@ Template.editCourses.events({
                 }
             })
         } else {
-            Session.set(`${this.courseName}`, true);            
+            Session.set(`${this.courseName}`, true);
             Meteor.call('addCourse', courseData, function(error, result) {
                 if (error) {
                     myApp.addNotification({

@@ -2,7 +2,8 @@
   <div class="views">
    <div class="view view-main" data-page="home">
      <div class="pages navbar-fixed">
-       <div data-page="home" class="page">
+       <div data-page="home" class="page iv-page">
+         <ul class="list-index"></ul>
          <div class="navbar eddy-navbar">
            <div class="navbar-inner padding-h-0">
                <div id="back" class="left margin-right-0">
@@ -43,7 +44,7 @@
                        <div class="item-inner padding-right-0">
                          <div class="item-title">
                            <div class="item-title flex-direction--row flex-align-items--center">
-                             <div class="eddy-courses__codes width-120">
+                            <div class="eddy-courses__codes width-120">
                               {{courseNumber}}
                              </div>
                              <div class="flex--1 text-ellipsis eddy-courses__name course-title">
@@ -62,7 +63,7 @@
                </ul>
              </div>
            </div>
-         </div>
+         </div>         
        <div class="toolbar position-absolute top-initial eddy-toolbar eddy-toolbar--course">
          <div class="toolbar-inner flex-direction--row flex-justify-content--flex-end">
            <a href="{{pathFor 'homePage'}}" class="button ripple border_none--imp eddy-toolbar--course__next padding-right-15">

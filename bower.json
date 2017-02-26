@@ -1,0 +1,13 @@
+{
+    "name": "eddy",
+    "version": "0.0.1",
+    "dependencies": {
+        "framework7-indexed-list-plugin": "latest"
+    },
+    "overrides": {
+        "framework7-indexed-list-plugin": {
+            "arch": ["client"]
+        }
+    },
+    "private": true
+}
