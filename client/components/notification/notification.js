@@ -69,22 +69,22 @@ Template.notification.events({
 
 "click #postNotification": function(event, template){
   Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails'); },100);
+  _.delay(function(){ Router.go('/courseDetails#community'); },100);
 },
 
 "click #likeNotification": function(event, template){
   Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails'); },100);
+  _.delay(function(){ Router.go('/courseDetails#community'); },100);
 },
 
 "click #likesOnComment": function(event, template){
   Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails'); },100);
+  _.delay(function(){ Router.go('/courseDetails#community'); },100);
 },
 
 "click #commentNotification": function(event, template){
   Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails'); },100);
+  _.delay(function(){ Router.go('/courseDetails#community'); },100);
 },
 
 "click #player": function(event, template) {
