@@ -6,7 +6,7 @@
     </div>
 
     {{#with userInfo}}
-        <div class="padding-h-50 flex-direction--column flex-justify-content--center flex-align-items--center flex--1">
+        <div class="padding-h-50 flex-direction--column flex-justify-content--center flex-align-items--center">
             <div class="">
               <img width="100" height="100" class="make-round eddy-home--profile-photo"
               src="{{#if $neq this.profile.image " "}}
@@ -16,7 +16,7 @@
                   {{/if}}"
               alt="Profile Photo">
             </div>
-              <div class="full-width margin-top-20">
+              <div class="full-width">
                 <h3 class="margin-0 font-size-fixed-14 text-center padding-left-15 margin-top-10 eddy-home--profile-info__name_age">
                   <span class="padding-h-15">{{this.profile.name}}</span>
                   <span class="font-weight-400"> {{ getAge this.profile.age}}</span>
@@ -27,8 +27,8 @@
               </div>
         </div>
 
-        <div class="list-block eddy-home margin-top-0 margin-bottom-80">
-          <ul class="eddy-home--quizes margin-top-90 margin-bottom-70">
+        <div class="list-block eddy-home margin-top-20">
+          <ul class="eddy-home--quizes">
             {{#each this.profile.selectedCourses}}
               <li class="course swipeout eddy-home--quiz">
                <a class="item-link cur-pointer">

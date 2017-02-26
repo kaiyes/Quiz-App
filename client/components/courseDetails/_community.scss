@@ -1,108 +1,103 @@
-.eddy-community{
-  &--post-area{
-      background-color: transparent !important;
-    &:before, &:after {
-      background-color: transparent !important;
+.eddy-community {
+    &--post-area {
+        background-color: transparent !important;
+        &:before,
+        &:after {
+            background-color: transparent !important;
+        }
+        &--input {
+            padding-left: 2rem !important;
+            font-size: 1.6rem !important;
+            font-family: $font-family-eddy-montserratlight !important;
+            border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
+            &::-webkit-input-placeholder {
+                /* Chrome/Opera/Safari */
+                @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
+            }
+            &::-moz-placeholder {
+                /* Firefox 19+ */
+                @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
+            }
+            &:-ms-input-placeholder {
+                /* IE 10+ */
+                @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
+            }
+            &:-moz-placeholder {
+                /* Firefox 18- */
+                @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
+            }
+            &__reply {
+                background-color: white !important;
+                border: 1px solid map-deep-get($colors, 'app-type', 'gray') !important;
+            }
+        }
+        &--submit {
+            margin-left: 10px !important;
+            margin-bottom: 8px !important;
+            padding: 0 !important;
+            min-width: 3.6rem !important;
+            height: 3.6rem !important;
+            border: none !important;
+            border-radius: 50% !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+            font-size: 1.8rem !important;
+            i {
+                //padding-left: 15px;
+                font-size: 25px;
+                -webkit-transform: rotate(-40deg);
+                -moz-transform: rotate(-40deg);
+                -ms-transform: rotate(-40deg);
+                transform: rotate(-40deg);
+            }
+            &__reply {
+                color: #595959 !important;
+            }
+        }
     }
-
-    &--input{
-      padding-left: 2rem !important;
-
-      font-size: 1.6rem !important;
-      font-family: $font-family-eddy-montserratlight !important;
-      border: 1px solid map-deep-get($colors, 'primary', 'base') !important;
-
-      &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-        @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
-      }
-      &::-moz-placeholder { /* Firefox 19+ */
-        @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
-      }
-      &:-ms-input-placeholder { /* IE 10+ */
-        @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
-      }
-      &:-moz-placeholder { /* Firefox 18- */
-        @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, map-deep-get($colors, "primary", "base"));
-      }
-
-      &__reply{
-        background-color: white !important;
-        border: 1px solid map-deep-get($colors, 'app-type', 'gray') !important;
-      }
+    &--post {
+        .card-footer {
+            &:before {
+                //background-color: #ccc !important;
+            }
+        }
+        &__username {
+            color: #595959;
+            text-transform: uppercase;
+        }
+        &--like-cmnt-btn {
+            position: relative;
+            min-width: 36px !important;
+            border: none !important;
+            border-radius: 50% !important;
+            color: map-deep-get($colors, "foreground", "eddy-grey") !important;
+            font-size: 2rem !important;
+            overflow: visible !important;
+            span {
+                position: relative;
+                top: -8px;
+                //right: -2px;
+                color: map-deep-get($colors, "foreground", "light-black") !important;
+                font-size: 1.2rem !important;
+            }
+        }
+        &--liked {
+            color: map-deep-get($colors, "primary", "base") !important;
+        }
+        &--play-btn {
+            border: none !important;
+            color: map-deep-get($colors, "foreground", "eddy-grey") !important;
+            font-family: $font-family-eddy-montserratbold !important;
+            font-size: 1.6rem;
+        }
     }
+}
 
-    &--submit{
-      margin-left: 10px !important;
-      margin-bottom: 8px !important;
-
-      padding: 0 !important;
-
-      min-width: 3.6rem !important;
-      height: 3.6rem !important;
-      border: none !important;
-      border-radius: 50% !important;
-
-      color: map-deep-get($colors, "primary", "base") !important;
-      font-size: 1.8rem !important;
-
-      i{
-        //padding-left: 15px;
-
-        font-size: 25px;
-
-        -webkit-transform: rotate(-40deg);
-        -moz-transform: rotate(-40deg);
-        -ms-transform: rotate(-40deg);
-        transform: rotate(-40deg);
-      }
-
-      &__reply {
-        color: #595959 !important;
-      }
+.chapter-popup {
+    .choose-chapter-heading {
+        text-align: center;
     }
-  }
-
-  &--post{
-    .card-footer {
-      &:before {
-        //background-color: #ccc !important;
-      }
+    .eddy-chapters ul {
+        margin: 0;
+        border: 1px solid #DEDEDE;
     }
-
-    &__username {
-      color: #595959;
-      text-transform: uppercase;
-    }
-    &--like-cmnt-btn{
-      position: relative;
-
-      min-width: 36px !important;
-      border: none !important;
-      border-radius: 50% !important;
-
-      color: map-deep-get($colors, "foreground", "eddy-grey") !important;
-      font-size: 2rem !important;
-
-      overflow: visible !important;
-      span {
-        position: relative;
-        top: -8px;
-        //right: -2px;
-
-        color: map-deep-get($colors, "foreground", "light-black") !important;
-        font-size: 1.2rem !important;
-      }
-    }
-
-    &--liked{
-      color: map-deep-get($colors, "primary", "base") !important;
-    }
-    &--play-btn {
-      border: none !important;
-
-      color: map-deep-get($colors, "foreground", "eddy-grey") !important;
-      font-family: $font-family-eddy-montserratbold !important;
-      font-size: 1.6rem;
-    }
-  }
 }

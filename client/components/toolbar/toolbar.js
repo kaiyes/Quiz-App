@@ -1,5 +1,6 @@
 Template.toolbar.onCreated(function() {
-  Meteor.subscribe("notification");
+    if (Meteor.user()) {
+    Meteor.subscribe("notification");
     let objArray = Meteor.user().profile.selectedCourses;
     let topicsChosen = _.map(objArray,'courseName');
     let notificationCount = Notification.find({
@@ -12,6 +13,7 @@ Template.toolbar.onCreated(function() {
       ]
     }).count();
    Session.set('notificationOld', notificationCount);
+ }
 });
 
 
@@ -47,6 +49,7 @@ Template.toolbar.onRendered(function() {
 
 Template.toolbar.helpers({
   notificationAll: function(){
+    if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
       let topicsChosen = _.map(objArray,'courseName');
 
@@ -60,6 +63,7 @@ Template.toolbar.helpers({
         ]
       }).count();
       return notification;
+    }
   },
 });
 
