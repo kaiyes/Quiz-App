@@ -96,16 +96,20 @@ Template.quizResult.helpers({
 
         let resultRoomId = Router.current().params._id
         let room = PlayedSessions.findOne({ _id: resultRoomId })
-
-        if (Meteor.userId() === room.challanger._id) {
+        
+          if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
-                return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+              if (this.rightAnswer === answer) {
+                   return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+              }
             }
         }
 
         if (Meteor.userId() === room.defender._id) {
             if (this.defendersAnswer === answer) {
-                return  'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+              if (this.rightAnswer === answer) {
+                  return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+              }
             }
         }
     },
