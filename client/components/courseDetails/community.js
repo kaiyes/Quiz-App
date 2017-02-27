@@ -93,11 +93,12 @@ Template.community.events({
     },
     "click .eddy-community--post--play-btn": function(event, template) {
         event.preventDefault();
-        let topicName = Session.get('topicName');
         Session.set('playerInfo', this.createdBy);
-         _.delay(function() {
-        Router.go(`/hackChapter/${topicName}`);
+          _.delay(function() {
+            Router.go(`/hackChapter/${this.topicName}`);
         }, 100);
+
     },
+
 
 });

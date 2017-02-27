@@ -267,4 +267,20 @@ Template.quizResult.events({
         }
     },
 
+    "click .pops": function(event, template) {
+        let question = Session.get(question);
+        // let explanation = question.explanation;
+        var popupHTML = '<div class="popup chapter-popup">' +
+            '<div class="flex-direction--row flex-justify-content--flex-end cur-pointer">' +
+            '<span class="lnr lnr-cross close-popup font-size-fixed-24 padding-20 text-bold" aria-hidden="true">' +
+            '</span></div>' +
+            '<div class="content-block">' +
+            '<p class="choose-chapter-heading">Choose Chapter</p>' +
+            Session.get(question).explanation +
+            '</div>' +
+            '</div>'
+        myApp.popup(popupHTML);
+        event.preventDefault();
+    },
+
 });
