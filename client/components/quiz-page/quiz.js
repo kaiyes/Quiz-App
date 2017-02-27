@@ -176,41 +176,7 @@ Template.quiz.helpers({
       return quizRoom.questions[5];
     };
   },
-
-  rankingOfChallanger() {
-    let quizRoomId = Router.current().params._id;
-    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
-    let challanger = quizRoom.challanger._id;
-    let topicName = quizRoom.questions[0].topic;
-    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
-    let points = _.sortBy(rankingArray, ['points']);
-    let reverse = _.reverse(points);
-    let ranking = _.findIndex(reverse , {'userId': challanger });
-
-    if (ranking<=0) {
-      return 'king';
-    } else {
-      return ranking;
-    };
-  },
-
-  rankingOfDefender() {
-    let quizRoomId = Router.current().params._id;
-    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
-    let defender = quizRoom.defender._id;
-    let topicName = quizRoom.questions[0].topic;
-    let rankingArray =  Courses.findOne({ courseName: topicName }).ranking;
-    let points = _.sortBy(rankingArray, ['points']);
-    let reverse = _.reverse(points);
-    let ranking = _.findIndex(reverse , {'userId': defender });
-
-    if (ranking<=0) {
-      return 'king';
-    } else {
-      return ranking;
-    };
-  },
-
+  
 });
 
 
