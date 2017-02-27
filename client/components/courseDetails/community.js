@@ -106,4 +106,9 @@ Template.community.events({
         myApp.popup(popupHTML);
         event.preventDefault();
     },
+
+    "click .margin-0 eddy-chapters__list__name":function(){
+        event.preventDefault();
+        console.log("works");
+    }
 });
