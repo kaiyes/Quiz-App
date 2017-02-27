@@ -26,15 +26,18 @@ Template.player.helpers({
 });
 
 Template.player.events({
+
     "click #cross": function(event, instance) {
         event.preventDefault();
         window.history.back();
     },
+
     "click .course": function(event, instance) {
         event.preventDefault();
-        Session.set("topicName", this.courseName);
-        _.delay(function() {
-            Router.go('/courseDetails');
+        let player = Session.get('player');
+        Session.set('playerInfo', player);
+          _.delay(function() {
+            Router.go(`/hackChapter/${this.courseName}`);
         }, 100);
     },
 
