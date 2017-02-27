@@ -77,6 +77,7 @@ Template.profile.events({
         createdBy: Meteor.userId(),
         sound:true,
         notification:true,
+        profileCompleted:true,
       };
 
       Meteor.call("addToProfile", profile, function (err) {

@@ -33,6 +33,7 @@ Template.signUp.events({
       selectedCourses:[],
       sound:true,
       notification:true,
+      profileCompleted:false,
     };
 
     Loading.call("addUser", email,password, profile, function(error,result){
