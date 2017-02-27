@@ -517,6 +517,15 @@ Meteor.methods({
         { $set: {   "profile.notification": true }
       });
     },
+
+    updateStatus:function(topicName,helpInfo){
+      let userCourseArray = Meteor.user().profile.selectedCourses;
+      let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topicName });
+      let helpStatus = {};
+      helpStatus[`profile.selectedCourses.${thisCoursesIndex}.wantHelp`] = helpInfo;
+      Meteor.users.update({ _id: this.userId },
+        {  $set:   helpStatus });
+    },
     // .................Admin Stuff.......................
 
     insertCourses: function (obj) {

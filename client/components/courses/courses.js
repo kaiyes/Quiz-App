@@ -87,6 +87,7 @@ Template.course.events({
             playedChapters: [],
             courseNumber: this.courseNumber,
             totalChapters: this.chapters.length,
+            wantHelp:null,
         };
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false);

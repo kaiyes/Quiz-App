@@ -3,6 +3,17 @@ Template.homePage.onCreated(function() {
 })
 
 Template.homePage.helpers({
+    status(){
+       let topicName = this.courseName;
+       let courseArray = Meteor.user().profile.selectedCourses;
+       let course = _.find(courseArray, ['courseName', topicName]);
+       if(course.wantHelp===false){
+           return 'zmdi zmdi-info-outline';
+       }else{
+           return 'zmdi zmdi-help-outline'
+       }
+    },
+
     getAge(age) {
         return moment().diff(age, "years");
     },
@@ -69,6 +80,13 @@ Template.homePage.events({
 
     "click .needHelp": function(event, template) {
         event.preventDefault();
-        console.log(this);
+        console.log(this.courseName, true)
+        Meteor.call('updateStatus', this.courseName, true);
+    },
+
+     "click .canHelp": function(event, template) {
+        event.preventDefault();
+        console.log(this.courseName, false)
+        Meteor.call('updateStatus', this.courseName, false);
     },
 });

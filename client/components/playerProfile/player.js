@@ -23,6 +23,17 @@ Template.player.helpers({
         };
     },
 
+      status(){
+       let topicName = this.courseName;
+       let courseArray = Meteor.user().profile.selectedCourses;
+       let course = _.find(courseArray, ['courseName', topicName]);
+       if(course.wantHelp===false){
+           return 'zmdi zmdi-info-outline';
+       }else{
+           return 'zmdi zmdi-help-outline'
+       }
+    },
+    
 });
 
 Template.player.events({
