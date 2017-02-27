@@ -42,9 +42,42 @@ Template.stats.helpers({
         let topicName = Session.get('topicName');
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let ranking = _.sortBy(rankingArray, ['points']);
-        return _.reverse(ranking);
+        let reverseRanking = _.reverse(ranking);
+        let firstFive = _.take(reverseRanking, 5);
+        let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
+        if (ifExists===undefined) {
+          return firstFive;
+        }else {
+          return reverseRanking;
+        }
     },
 
+    exists:function(){
+      let topicName = Session.get('topicName');
+      let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
+      let ranking = _.sortBy(rankingArray, ['points']);
+      let reverseRanking = _.reverse(ranking);
+      let firstFive = _.take(reverseRanking, 5);
+      let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
+      if (ifExists===undefined) {
+        return false;
+      }else {
+        return true;
+      }
+    },
+
+    userRanking: function() {
+        let topicName = Session.get('topicName');
+        let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
+        let ranking = _.sortBy(rankingArray, ['points']);
+        let reverseRanking = _.reverse(ranking);
+        let usersIndex = _.findIndex(reverseRanking,["userId", Meteor.userId()]);
+        let newRanking=_.map(reverseRanking,function(v,usersIndex){
+          v.index=usersIndex; return v
+        });
+        let restOftheUsers = newRanking.slice(usersIndex);
+        return restOftheUsers;
+    },
 
     indexOfUser: function() {
         let topicName = Session.get('topicName');
@@ -53,7 +86,7 @@ Template.stats.helpers({
         let reverse = _.reverse(points);
         let ranking = _.findIndex(reverse, { 'userId': Meteor.userId() });
 
-        if (ranking <= 0) {            
+        if (ranking <= 0) {
             return 'king';
         } else {
             return ranking;
@@ -75,7 +108,7 @@ Template.stats.events({
         event.preventDefault();
         if (Meteor.user().profile.sound === true) {
             Feedback.provide("somethingHappened");
-        }        
+        }
     },
 
     "click #player": function(event, template) {

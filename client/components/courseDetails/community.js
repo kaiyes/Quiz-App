@@ -92,18 +92,13 @@ Template.community.events({
         }, 100);
     },
     "click .eddy-community--post--play-btn": function(event, template) {
-
-        var chapterHTML = $('.eddy-chapters').parent().html();
-        var popupHTML = '<div class="popup chapter-popup">' +
-            '<div class="flex-direction--row flex-justify-content--flex-end cur-pointer">' +
-            '<span class="lnr lnr-cross close-popup font-size-fixed-24 padding-20 text-bold" aria-hidden="true">' +
-            '</span></div>' +
-            '<div class="content-block">' +
-            '<p class="choose-chapter-heading">Choose Chapter</p>' +
-            chapterHTML +
-            '</div>' +
-            '</div>'
-        myApp.popup(popupHTML);
         event.preventDefault();
+        Session.set('playerInfo', this.createdBy);
+          _.delay(function() {
+            Router.go(`/hackChapter/${this.topicName}`);
+        }, 100);
+
     },
+
+
 });

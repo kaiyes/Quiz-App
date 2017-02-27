@@ -4,12 +4,12 @@ Template.player.onDestroyed(function() {
 
 Template.player.helpers({
     getAge(age) {
-        return moment().diff(age, "years");
+        return _.isNaN(moment().diff(age, "years")) ? "" : moment().diff(age, "years");
     },
     userInfo: function() {
         return Session.get('player');
     },
-    ranking() {
+    ranking() { 
         let topicName = this.courseName;
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let points = _.sortBy(rankingArray, ['points']);
