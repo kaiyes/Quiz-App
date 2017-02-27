@@ -69,7 +69,11 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
+              if (this.rightAnswer === answer) {
+                  return 'eddy--sqr-buttons__plan__primary'
+              }else{
                 return 'eddy--sqr-buttons__product__primary'
+              }
             } else {
                 return 'eddy--sqr-buttons__price'
             }
@@ -77,9 +81,31 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.defender._id) {
             if (this.defendersAnswer === answer) {
+              if (this.rightAnswer === answer) {
+                  return 'eddy--sqr-buttons__plan__primary'
+              }else{
                 return 'eddy--sqr-buttons__product__primary'
+              }
             } else {
                 return 'eddy--sqr-buttons__price'
+            }
+        }
+    },
+
+    returnEmoji: function(answer) {
+
+        let resultRoomId = Router.current().params._id
+        let room = PlayedSessions.findOne({ _id: resultRoomId })
+
+        if (Meteor.userId() === room.challanger._id) {
+            if (this.challangersAnswer === answer) {
+                return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+            }
+        }
+
+        if (Meteor.userId() === room.defender._id) {
+            if (this.defendersAnswer === answer) {
+                return  'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
             }
         }
     },
@@ -268,17 +294,28 @@ Template.quizResult.events({
     },
 
     "click .pops": function(event, template) {
-        let question = Session.get(question);
-        // let explanation = question.explanation;
         var popupHTML = '<div class="popup chapter-popup">' +
-            '<div class="flex-direction--row flex-justify-content--flex-end cur-pointer">' +
-            '<span class="lnr lnr-cross close-popup font-size-fixed-24 padding-20 text-bold" aria-hidden="true">' +
-            '</span></div>' +
-            '<div class="content-block">' +
-            '<p class="choose-chapter-heading">Choose Chapter</p>' +
-            Session.get(question).explanation +
-            '</div>' +
-            '</div>'
+                            '<div class="flex-direction--column full-height">' +
+                              '<div class="flex--1">'+
+
+                                ' <div id="cross" class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">'+
+                                  ' <a href="#" class="link icon-only text-center">'+
+                                    '<i class="close-popup zmdi zmdi-close eddy-result-exp__close font-size-fixed-24 margin-top-10"></i>'+
+                                  ' </a>'+
+                                  '</div>'+
+
+                                  '<div class="eddy-result-exp margin-top-60 padding-h-30">'+
+                                    '<h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">'+
+                                      this.question+
+                                    '</h4>'+
+                                    '<p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">'+
+                                      this.explanation+
+                                    '</p>'+
+                                  '</div>'+
+
+                                '</div>'+
+                              '</div>'+
+                          '</div>'
         myApp.popup(popupHTML);
         event.preventDefault();
     },

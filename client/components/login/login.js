@@ -1,3 +1,12 @@
+
+Template.login.onCreated(function() {
+  if (Meteor.userId()) {
+      Router.go('/homePage');
+    }
+  });
+
+
+
 Template.login.onRendered(function() {
    $('.eddy-form--lists .item-input:nth-of-type(1)').click(function() {
      $(".page-content").animate({
