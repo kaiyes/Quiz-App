@@ -10,7 +10,7 @@ Template.chart.onRendered(function () {
     labels: label,
     datasets: [{
           label: 'My First dataset',
-          fillColor: "rgba(22, 222, 102, 0.2)",
+          fillColor: "#51c8ac",
           strokeColor: "rgba(223, 219, 219, 1)",
           pointColor: "rgba(105, 98, 98, 1)",
           pointStrokeColor: "#fff",
