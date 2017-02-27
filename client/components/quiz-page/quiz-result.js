@@ -69,7 +69,11 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
+              if (this.rightAnswer === answer) {
+                  return 'eddy--sqr-buttons__plan__primary'
+              }else{
                 return 'eddy--sqr-buttons__product__primary'
+              }
             } else {
                 return 'eddy--sqr-buttons__price'
             }
@@ -77,9 +81,31 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.defender._id) {
             if (this.defendersAnswer === answer) {
+              if (this.rightAnswer === answer) {
+                  return 'eddy--sqr-buttons__plan__primary'
+              }else{
                 return 'eddy--sqr-buttons__product__primary'
+              }
             } else {
                 return 'eddy--sqr-buttons__price'
+            }
+        }
+    },
+
+    returnEmoji: function(answer) {
+
+        let resultRoomId = Router.current().params._id
+        let room = PlayedSessions.findOne({ _id: resultRoomId })
+
+        if (Meteor.userId() === room.challanger._id) {
+            if (this.challangersAnswer === answer) {
+                return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+            }
+        }
+
+        if (Meteor.userId() === room.defender._id) {
+            if (this.defendersAnswer === answer) {
+                return  'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
             }
         }
     },

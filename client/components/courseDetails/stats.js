@@ -104,13 +104,6 @@ Template.stats.helpers({
 
 Template.stats.events({
 
-    "click #4": function(event, template) {
-        event.preventDefault();
-        if (Meteor.user().profile.sound === true) {
-            Feedback.provide("somethingHappened");
-        }
-    },
-
     "click #player": function(event, template) {
         event.preventDefault();
         Session.set('player', this.user);

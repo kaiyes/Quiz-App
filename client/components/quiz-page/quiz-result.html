@@ -168,20 +168,31 @@
                           </div>
                           <div class="padding-h-5 padding-bottom-20">
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
-                            {{rightAnswer this.firstAnswer}} {{usersAnswer this.firstAnswer}}">{{this.firstAnswer}}</a>
+                           {{usersAnswer this.firstAnswer}} {{rightAnswer this.firstAnswer}}">
+                            {{this.firstAnswer}}
+
+                            </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
-                            {{rightAnswer this.secondAnswer}} {{usersAnswer this.secondAnswer}}">{{this.secondAnswer}}</a>
+                            {{usersAnswer this.secondAnswer}} {{rightAnswer this.secondAnswer}}">
+                            {{this.secondAnswer}}
+                            </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
-                            {{rightAnswer this.thirdAnswer}} {{usersAnswer this.thirdAnswer}}">{{this.thirdAnswer}}</a>
+                             {{usersAnswer this.thirdAnswer}} {{rightAnswer this.thirdAnswer}}">
+                             {{this.thirdAnswer}}
+                            <i class="{{returnEmoji this.thirdAnswer}}"></i>
+                            </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
-                            {{rightAnswer this.fourthAnswer}} {{usersAnswer this.fourthAnswer}}">{{this.fourthAnswer}}</a>
+                             {{usersAnswer this.fourthAnswer}} {{rightAnswer this.fourthAnswer}}">
+                            {{this.fourthAnswer}}
+                            </a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <a href="#" data-popup=".popup-explanation" class="pops link text-bold text-center display-block padding-top-8 padding-bottom-16 open-popup eddy-result-exp__poptxt">
+                  <a href="#" data-popup=".popup-explanation"
+                  class="pops link text-bold text-center display-block padding-top-8 padding-bottom-16 open-popup eddy-result-exp__poptxt">
                     explanation
                   </a>
                   {{/with}}
