@@ -15,6 +15,7 @@ Framework7.prototype.plugins.indexedlist = function(app, params) {
 
 
     function initIndexedList(page) {
+        console.log(page.container);
         var eventsTarget = $(page.container).find('.list-index');
         if (eventsTarget.length === 0) return;
 
