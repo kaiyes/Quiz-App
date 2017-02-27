@@ -24,16 +24,17 @@ Template.player.helpers({
     },
 
       status(){
+       let userData = Session.get('player');
        let topicName = this.courseName;
-       let courseArray = Meteor.user().profile.selectedCourses;
+       let courseArray = userData.profile.selectedCourses;
        let course = _.find(courseArray, ['courseName', topicName]);
        if(course.wantHelp===false){
            return 'zmdi zmdi-info-outline';
-       }else{
+       }else if (course.wantHelp===true){
            return 'zmdi zmdi-help-outline'
        }
     },
-    
+
 });
 
 Template.player.events({
