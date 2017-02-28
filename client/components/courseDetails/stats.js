@@ -21,18 +21,30 @@ Template.stats.onCreated(function() {
 });
 
 Template.stats.onRendered(function() {
-    $(document).ready(function() {
-        $(function() {
-            var $ppc = $('.eddy-progress--wrapper'),
-                percent = parseInt($ppc.data('percent')),
-                deg = 360 * percent / 100;
-            if (percent > 50) {
-                $ppc.addClass('gt-50');
-            }
-            $('.eddy-progress--bar--fill').css('transform', 'rotate(' + deg + 'deg)');
-            $('.eddy-progress--percents span').html(percent + ' %');
-        });
-    });
+
+      var topicName = Session.get('topicName');
+      var array = Meteor.user().profile.selectedCourses;
+      var course = _.find(array, { 'courseName': topicName });
+      var accuracyArray = course.accuracy;
+      var accuracy = _.mean(accuracyArray);
+      var isAccuracyNaN = _.isNaN(accuracy);
+
+        if (isAccuracyNaN) {
+            Session.set('percent', 0);
+        } else {
+            Session.set('percent', accuracy);
+        }
+
+        var $ppc = $('.eddy-progress--wrapper'),
+            percent = parseInt($ppc.data('percent')),
+            deg = 360 * percent / 100;
+        if (percent > 50) {
+            $ppc.addClass('gt-50');
+        }
+
+      $('.eddy-progress--bar--fill').css('transform', 'rotate(' + deg + 'deg)');
+      $('.eddy-progress--percents span').html(percent + ' %');
+
 });
 
 

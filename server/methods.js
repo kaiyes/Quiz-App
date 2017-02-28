@@ -386,6 +386,7 @@ Meteor.methods({
 
         Meteor.users.update({ _id: this.userId },
           {  $addToSet:   addAccuracy });
+          console.log("message",  accuracy);
     },
 
     updateDefendersAccuracy:function (resultRoomId, accuracy) {
