@@ -71,4 +71,8 @@ Template.toolbar.events({
   "click #home": function(event, template){
     Router.go('/homePage');
   },
+  "click .eddy-toolbar--icon__noti": function(event, template) {
+   event.preventDefault();
+   Meteor.call("makeSeen");
+  },
 });

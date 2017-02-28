@@ -137,9 +137,4 @@ Template.notification.events({
  Meteor.call("delete", this);
 },
 
-"click .eddy-toolbar--icon__noti": function(event, template) {
- event.preventDefault();
- Meteor.call("makeSeen");
-},
-
 });
