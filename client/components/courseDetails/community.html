@@ -35,7 +35,12 @@
                       {{else}}
                           /assets/generic_800.png
                       {{/if}}" alt="profile photo">
-                    <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">{{createdBy.profile.name}}</h4>
+                    <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">
+                      {{createdBy.profile.name}}
+                        <span class="eddy-badge eddy-badge__primary">
+                            <i class="{{status}}"></i>
+                         </span>
+                     </h4>
                   </div>
                   <div class="">
                     <span class="font-size-fixed-12 opacity-60">{{getTimePosted createdAt}} ago</span>
@@ -68,7 +73,7 @@
                     {{/if}}
                 </button>
               </div>
-              <div clas="play">
+              <div class="play">
                 <button type="button" class="button button eddy-community--post--play-btn">
                     <span>PLAY</span>
                 </button>
@@ -89,7 +94,12 @@
                                   /assets/generic_800.png
                               {{/if}}"
                             alt="profile photo">
-                            <h4 class="margin-0 eddy-community--post__username font-size-fixed-16 padding-left-10">{{commenter.profile.name}}</h4>
+                            <h4 class="margin-0 eddy-community--post__username font-size-fixed-16 padding-left-10">
+                              {{commenter.profile.name}}
+                              </h4>
+                             <span class="eddy-badge eddy-badge__primary">
+                                 <i class="{{commenterStatus}}"></i>
+                             </span>
                           </div>
                           <div class="">
                             <span class="font-size-fixed-14 opacity-60">{{getTimePosted createdAt}}</span>

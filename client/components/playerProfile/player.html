@@ -41,12 +41,12 @@
                         <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                           {{courseNumber}}
                           <span class="eddy-badge eddy-badge__primary">
-                            <i class="zmdi zmdi-help-outline"></i>
+                            <i class="{{status}}"></i>
                           </span>
                         </h4>
                         <h5 class="margin-0 font-size-fixed-12 opacity-80 eddy-home--quiz__topic">{{courseName}}</h5>
-
                     </div>
+
                     <div class="item-after eddy-home--quiz--rank">
                       <span>
                           {{#if $eq ranking 'king' }}
@@ -60,13 +60,10 @@
                         {{#if $eq ranking 3 }}rd  {{/if}}
                         {{#if $gte ranking 3 }}th  {{/if}}
                       </sup>
-
                     </span>
-
                     </div>
                   </div>
                 </div>
-
                </a>
               </li>
             {{/each}}

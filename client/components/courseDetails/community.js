@@ -30,6 +30,27 @@ Template.community.helpers({
             }
         });
     },
+
+    status(){
+        let poster = Meteor.users.findOne({ _id: this.createdBy._id });
+        let course = _.find(this.createdBy.profile.selectedCourses, ['courseName', this.topicName]);
+         if(course.wantHelp===false){
+           return 'zmdi zmdi-info-outline';
+         }else if(course.wantHelp===true){
+           return 'zmdi zmdi-help-outline'
+         } 
+    },
+    
+    commenterStatus(){
+    let poster = Meteor.users.findOne({ _id: this.commenter._id });
+    let course = _.find(this.commenter.profile.selectedCourses, ['courseName', this.topic]);
+        if(course.wantHelp===false){
+        return 'zmdi zmdi-info-outline';
+        }else if(course.wantHelp===true){
+        return 'zmdi zmdi-help-outline'
+        } 
+    },
+    
 });
 Template.community.events({
     "submit  #post": function(event, template) {
@@ -90,23 +111,15 @@ Template.community.events({
         _.delay(function() {
             Router.go('/player');
         }, 100);
-    },    
-    "click .eddy-community--post--play-btn": function(event, template) {
-
-        var chapterHTML = $('.eddy-chapters').parent().html();
-        var popupHTML = '<div class="popup chapter-popup">' +
-            '<div class="flex-direction--row flex-justify-content--flex-end cur-pointer">' +
-            '<span class="lnr lnr-cross close-popup font-size-fixed-24 padding-20 text-bold" aria-hidden="true">' +
-            '</span></div>' +
-            '<div class="content-block">' +
-            '<p class="choose-chapter-heading">Choose Chapter</p>' +
-            chapterHTML +
-            '</div>' +
-            '</div>'
-        myApp.popup(popupHTML);
-        event.preventDefault();
     },
-    "click .chapter-popup .item-link" : function(event,template){
-        console.log("ss");
-    }
+    "click .eddy-community--post--play-btn": function(event, template) {
+        event.preventDefault();
+        Session.set('playerInfo', this.createdBy);
+          _.delay(function() {
+            Router.go(`/hackChapter/${this.topicName}`);
+        }, 100);
+
+    },
+
+
 });

@@ -83,7 +83,8 @@ Template.editCourses.events({
             courseNumber: this.courseNumber,
             accuracy: [],
             playedChapters: [],
-            totalChapters: this.chapters.length
+            totalChapters: this.chapters.length,
+            wantHelp:null,
         }
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false)

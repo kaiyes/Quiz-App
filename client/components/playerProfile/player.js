@@ -23,18 +23,33 @@ Template.player.helpers({
         };
     },
 
+      status(){
+       let userData = Session.get('player');
+       let topicName = this.courseName;
+       let courseArray = userData.profile.selectedCourses;
+       let course = _.find(courseArray, ['courseName', topicName]);
+       if(course.wantHelp===false){
+           return 'zmdi zmdi-info-outline';
+       }else if (course.wantHelp===true){
+           return 'zmdi zmdi-help-outline'
+       }
+    },
+
 });
 
 Template.player.events({
+
     "click #cross": function(event, instance) {
         event.preventDefault();
         window.history.back();
     },
+
     "click .course": function(event, instance) {
         event.preventDefault();
-        Session.set("topicName", this.courseName);
-        _.delay(function() {
-            Router.go('/courseDetails');
+        let player = Session.get('player');
+        Session.set('playerInfo', player);
+          _.delay(function() {
+            Router.go(`/hackChapter/${this.courseName}`);
         }, 100);
     },
 

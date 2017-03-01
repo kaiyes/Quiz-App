@@ -94,6 +94,7 @@ Template.editProfile.events({
                 imageId: Meteor.user().profile.imageId,
                 createdAt: new Date(),
                 createdBy: Meteor.userId(),
+                profileCompleted:true,
             };
 
             Meteor.call("addToProfile", profile, function(err) {
@@ -128,7 +129,7 @@ Template.editProfile.events({
                     });
                     console.log(err);
                 }
-                if (file) {                    
+                if (file) {
                     myApp.addNotification({
                       title: 'Profile Photo',
                       message: "Profile Photo Uploaded",

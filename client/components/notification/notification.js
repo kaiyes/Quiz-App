@@ -16,7 +16,7 @@ Template.notification.helpers({
 
       return Notification.find({
         topic: { $in: topicsChosen },
-        seen: { $ne: Meteor.userId()},
+        deleted: { $ne: Meteor.userId()},
         type: "post"},{
           sort: { when: -1 }
         });
@@ -27,7 +27,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "like",
-        seen: { $ne: Meteor.userId()},
+        deleted: { $ne: Meteor.userId()},
         postCreator: Meteor.user().profile.name
       }, { sort: { when: -1 }});
     }
@@ -37,7 +37,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "commentLike",
-        seen: { $ne: Meteor.userId()},
+        deleted: { $ne: Meteor.userId()},
         commentCreator: Meteor.user().profile.name
       }, { sort: { when: -1 }});
     }
@@ -47,7 +47,7 @@ Template.notification.helpers({
     if (Meteor.user()) {
       return Notification.find({
         type: "comment",
-        seen: { $ne: Meteor.userId()},
+        deleted: { $ne: Meteor.userId()},
         postCreator: Meteor.user(),
       }, { sort: { when: -1 }});
     }
@@ -119,22 +119,22 @@ Template.notification.events({
 
 "click #removePostNotification": function(event, template) {
   event.preventDefault();
-  Meteor.call("makeSeen", this);
+  Meteor.call("delete", this);
 },
 
 "click #removeLikeNotification": function(event, template) {
   event.preventDefault();
-  Meteor.call("makeSeen", this);
+  Meteor.call("delete", this);
 },
 
 "click #removeCommentsLikeNotification": function(event, template) {
   event.preventDefault();
-  Meteor.call("makeSeen", this);
+  Meteor.call("delete", this);
 },
 
 "click #removeCommentsNotification": function(event, template) {
  event.preventDefault();
- Meteor.call("makeSeen", this);
+ Meteor.call("delete", this);
 },
 
 });
