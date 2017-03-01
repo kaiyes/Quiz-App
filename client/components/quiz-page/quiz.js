@@ -304,9 +304,6 @@ Template.quiz.events({
 Template.quiz.onDestroyed(function () {
 
   let quizRoomId = Session.get('routerId');
-  console.log(quizRoomId);
-
-  // let quizRoomId = Router.current().params._id;
   let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
 
   if (Meteor.userId() === quizRoom.challanger._id) {
@@ -319,5 +316,6 @@ Template.quiz.onDestroyed(function () {
   Session.set('challangeNotification', null);
   Session.set('didAccept', null);
   Session.set('question',null);
+  console.log("accuracy method called");
 
 });

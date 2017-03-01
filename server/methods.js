@@ -221,7 +221,8 @@ Meteor.methods({
              defendersPoint:0,
              challangersRightAnswer:0,
              defendersRightAnswer:0,
-             accuracy:0,
+             challangersAccuracy:0,
+             defendersAccuracy:0,
              playfirst:false,
              challangerPlayed:false,
              defenderPlayed:false,
@@ -387,34 +388,40 @@ Meteor.methods({
     updateChallangersAccuracy:function (quizRoomId) {
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
         let number = (quizRoom.challangersRightAnswer / 6) * 100;
-        let accuracy = Math.round(number);
+        let roundedNumber = Math.round(number);
         let topic = quizRoom.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
-        let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+        let  accuracy = _.find(userCourseArray, { 'courseName': topic });
+        accuracy.accuracy.push(roundedNumber);
+        let  index = _.findIndex(userCourseArray, { 'courseName': topic });
 
         let addAccuracy = {};
-        addAccuracy[`profile.selectedCourses.${thisCoursesIndex}.accuracy`] = accuracy;
-        Meteor.users.update({ _id: this.userId },
-          {  $addToSet:   addAccuracy });
-          console.log("message",  accuracy);
+        addAccuracy[`profile.selectedCourses.${index}`] = accuracy;
 
-        QuizRooms.update({ _id: quizRoomId }, { $set: { challangersAccuracy:  accuracy }});
+        Meteor.users.update({ _id: this.userId },
+          {  $set:   addAccuracy });
+
+        QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  roundedNumber }});
     },
 
     updateDefendersAccuracy:function (quizRoomId) {
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
         let number = (quizRoom.defendersRightAnswer / 6) * 100;
-        let accuracy = Math.round(number);
+        let roundedNumber = Math.round(number);
         let topic = quizRoom.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
-        let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+        let  accuracy = _.find(userCourseArray, { 'courseName': topic });
+        accuracy.accuracy.push(roundedNumber);
+        let  index = _.findIndex(userCourseArray, { 'courseName': topic });
+
         let addAccuracy = {};
-        addAccuracy[`profile.selectedCourses.${thisCoursesIndex}.accuracy`] = accuracy;
+        addAccuracy[`profile.selectedCourses.${index}`] = accuracy;
 
         Meteor.users.update({ _id: this.userId },
-          {  $addToSet:   addAccuracy });
+          {  $set:   addAccuracy });
 
-        QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  accuracy }});
+        QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  roundedNumber }});
+
     },
 
     endGameForChallanger:function(quizRoomId){

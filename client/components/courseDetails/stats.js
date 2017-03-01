@@ -92,22 +92,6 @@ Template.stats.helpers({
         return _.find(array, { 'courseName': topicName });
     },
 
-    sessionData:function () {
-      var topicName = Session.get('topicName');
-      var array = Meteor.user().profile.selectedCourses;
-      var course = _.find(array, { 'courseName': topicName });
-      var accuracyArray = course.accuracy;
-      var accuracy = _.mean(accuracyArray);
-      var isAccuracyNaN = _.isNaN(accuracy);
-
-      if (isAccuracyNaN===true) {
-          Session.set('progressPercent', 0);
-      } else {
-          Session.set('progressPercent', accuracy);
-          console.log(Session.get('progressPercent'));
-
-      }
-    },
 
 });
 
