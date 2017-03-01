@@ -5,48 +5,77 @@ Feedback.profiles = {
 };
 
 
-Template.stats.onCreated(function() {
-    let topicName = Session.get('topicName');
-    let array = Meteor.user().profile.selectedCourses;
-    let course = _.find(array, { 'courseName': topicName });
-    let accuracyArray = course.accuracy;
-    let accuracy = _.mean(accuracyArray);
-    let isAccuracyNaN = _.isNaN(accuracy);
+// Template.stats.onCreated(function() {
+//     let topicName = Session.get('topicName');
+//     let array = Meteor.user().profile.selectedCourses;
+//     let course = _.find(array, { 'courseName': topicName });
+//     let accuracyArray = course.accuracy;
+//     let accuracy = _.mean(accuracyArray);
+//     let isAccuracyNaN = _.isNaN(accuracy);
+//
+//     if (isAccuracyNaN) {
+//         Session.set('percent', 0);
+//     } else {
+//         Session.set('percent', accuracy);
+//     }
+// });
 
-    if (isAccuracyNaN) {
-        Session.set('percent', 0);
-    } else {
-        Session.set('percent', accuracy);
-    }
-});
+// Template.stats.onRendered(function() {
+//
+//       this.autorun(function(){
+//         var topicName = Session.get('topicName');
+//
+//       Tracker.afterFlush(function(){
+//         var topicName = Session.get('topicName');
+//         var array = Meteor.user().profile.selectedCourses;
+//         var course = _.find(array, { 'courseName': topicName });
+//         var accuracyArray = course.accuracy;
+//         var accuracy = _.mean(accuracyArray);
+//         var isAccuracyNaN = _.isNaN(accuracy);
+//
+//         if (isAccuracyNaN===true) {
+//             Session.set('percent', 0);
+//         } else {
+//             Session.set('percent', accuracy);
+//         }
+//
+//         var $ppc = $('.eddy-progress--wrapper'),
+//             percent = parseInt($ppc.data('percent')),
+//             deg = 360 * percent / 100;
+//         if (percent > 50) {
+//             $ppc.addClass('gt-50');
+//         }
+//
+//       $('.eddy-progress--bar--fill').css('transform', 'rotate(' + deg + 'deg)');
+//       $('.eddy-progress--percents span').html(percent + ' %');
+//
+//     });
+//
+//   });
+//
+// });
 
 Template.stats.onRendered(function() {
+  this.autorun(function(){
+    var topicName = Session.get('topicName');
+    var array = Meteor.user().profile.selectedCourses;
+    var course = _.find(array, { 'courseName': topicName });
+    var accuracyArray = course.accuracy;
+    var accuracy = _.mean(accuracyArray);
+    var isAccuracyNaN = _.isNaN(accuracy);
 
-      var topicName = Session.get('topicName');
-      var array = Meteor.user().profile.selectedCourses;
-      var course = _.find(array, { 'courseName': topicName });
-      var accuracyArray = course.accuracy;
-      var accuracy = _.mean(accuracyArray);
-      var isAccuracyNaN = _.isNaN(accuracy);
 
-        if (isAccuracyNaN) {
-            Session.set('percent', 0);
-        } else {
-            Session.set('percent', accuracy);
-        }
-
-        var $ppc = $('.eddy-progress--wrapper'),
-            percent = parseInt($ppc.data('percent')),
-            deg = 360 * percent / 100;
-        if (percent > 50) {
-            $ppc.addClass('gt-50');
-        }
-
-      $('.eddy-progress--bar--fill').css('transform', 'rotate(' + deg + 'deg)');
-      $('.eddy-progress--percents span').html(percent + ' %');
+    Tracker.afterFlush(function(){
+      if (isAccuracyNaN===true) {
+          Session.set('progressPercent', 0);
+      } else {
+          Session.set('progressPercent', accuracy);
+          console.log(Session.get('progressPercent'));
+      }
+    });
+  });
 
 });
-
 
 Template.stats.helpers({
 
@@ -111,6 +140,22 @@ Template.stats.helpers({
         return _.find(array, { 'courseName': topicName });
     },
 
+    sessionData:function () {
+      var topicName = Session.get('topicName');
+      var array = Meteor.user().profile.selectedCourses;
+      var course = _.find(array, { 'courseName': topicName });
+      var accuracyArray = course.accuracy;
+      var accuracy = _.mean(accuracyArray);
+      var isAccuracyNaN = _.isNaN(accuracy);
+
+      if (isAccuracyNaN===true) {
+          Session.set('progressPercent', 0);
+      } else {
+          Session.set('progressPercent', accuracy);
+          console.log(Session.get('progressPercent'));
+
+      }
+    },
 
 });
 

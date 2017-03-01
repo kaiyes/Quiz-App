@@ -59,7 +59,7 @@ Template.homePage.events({
     "click #list": function(event, template) {
         event.preventDefault();
         Session.set("topicName", this.courseName);
-        _.delay(function() { Router.go('/courseDetails'); }, 100);
+        Router.go('/courseDetails'); 
     },
     "click #showProfileInfo": function(event, template) {
         $('.with-subnavbar').removeClass('toggle-profile');
