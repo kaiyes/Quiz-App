@@ -48,7 +48,7 @@ Template.notification.helpers({
       return Notification.find({
         type: "comment",
         deleted: { $ne: Meteor.userId()},
-        "postCreator._id": Meteor.userId(),
+        postCreator: Meteor.user(),
       }, { sort: { when: -1 }});
     }
   },

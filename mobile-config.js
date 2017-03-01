@@ -8,17 +8,17 @@ App.info({
 
 App.icons({
   //iphone
-  'iphone_2x': 'public/icons/res/icons/ios/icon-60-2x.png', // 120x120
-  'iphone_3x': 'public/icons/res/icons/ios/icon-60-3x.png', // 180x180
+  'iphone_2x': 'public/icons/res/icons/ios/120.png', // 120x120
+  'iphone_3x': 'public/icons/res/icons/ios/180.png', // 180x180
   //ipad
-  'ipad':  'public/icons/res/icons/ios/icon-76.png',// 76x76
-  'ipad_2x': 'public/icons/res/icons/ios/icon-76-2x.png', // 152x152
-  'ipad_pro': 'public/icons/res/icons/ios/icon-83.png',//167*167
+  'ipad':  'public/icons/res/icons/ios/76.png',// 76x76
+  'ipad_2x': 'public/icons/res/icons/ios/152.png', // 152x152
+  'ipad_pro': 'public/icons/res/icons/ios/167.png',//167*167
   //ipad settings
-  'ios_settings': 'public/icons/res/icons/ios/icon-small.png', // 29x29
-  'ios_settings_2x': 'public/icons/res/icons/ios/icon-small-2x.png', // 58x58
-  'ios_spotlight': 'public/icons/res/icons/ios/icon-40.png', // 40x40
-  'ios_spotlight_2x': 'public/icons/res/icons/ios/icon-40-2x.png', // 80x80
+  'ios_settings': 'public/icons/res/icons/ios/29.png', // 29x29
+  'ios_settings_2x': 'public/icons/res/icons/ios/58.png', // 58x58
+  'ios_spotlight': 'public/icons/res/icons/ios/40.png', // 40x40
+  'ios_spotlight_2x': 'public/icons/res/icons/ios/80.png', // 80x80
   //android
   'android_mdpi': 'public/icons/res/icons/android/iconmdpi.png',
   'android_hdpi': 'public/icons/res/icons/android/iconhdpi.png',
