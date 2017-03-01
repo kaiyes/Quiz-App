@@ -8,12 +8,10 @@ Template.quizResult.onCreated(function() {
         if (Meteor.userId() === room.challanger._id) {
             let accuracy = (room.challangersRightAnswer / 6) * 100
             Session.set('percent', accuracy)
-            Meteor.call("updateChallangersAccuracy", resultRoomId, accuracy)
         }
         if (Meteor.userId() === room.defender._id) {
             let accuracy = (room.defendersRightAnswer / 6) * 100
             Session.set('percent', accuracy)
-            Meteor.call("updateDefendersAccuracy", resultRoomId, accuracy)
         }
         Session.set('question', room.questions[0])
         Session.set('number', 1)
@@ -96,7 +94,7 @@ Template.quizResult.helpers({
 
         let resultRoomId = Router.current().params._id
         let room = PlayedSessions.findOne({ _id: resultRoomId })
-        
+
           if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
               if (this.rightAnswer === answer) {
@@ -152,9 +150,11 @@ Template.quizResult.helpers({
                 } else {
                     return 'you won :D'
                 }
-            };
+            } else if (room.challangersPoint === room.defendersPoint) {
+                  return 'It is a draw'
         }
-    },
+    }
+  },
 
     challengerDull: function() {
         let resultRoomId = Router.current().params._id

@@ -206,6 +206,10 @@ Meteor.methods({
            defenderStarted: false,
            challangerPlayed:false,
            defenderPlayed:false,
+           challangersRightAnswer:0,
+           defendersRightAnswer:0,
+           challangersAccuracy:0,
+           defendersAccuracy:0,
          });
 
          PlayedSessions.insert({
@@ -314,7 +318,9 @@ Meteor.methods({
           var points = 10
         }
       }
-      QuizRooms.update({ _id:  quizRoomId }, { $inc:{ challangerRoomPoints:points } });
+      QuizRooms.update({ _id:  quizRoomId },
+        { $inc:{ challangerRoomPoints:points, challangersRightAnswer:1 }
+      });
 
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
         $inc: { challangersPoint: points, challangersRightAnswer:1 }
@@ -354,7 +360,9 @@ Meteor.methods({
           var points = 10
         }
       }
-      QuizRooms.update({ _id: quizRoomId }, { $inc:{ defenderRoomPoints:10 } });
+      QuizRooms.update({ _id: quizRoomId },
+        { $inc:{ defenderRoomPoints:points,  defendersRightAnswer:1 }
+      });
 
         PlayedSessions.update({ originalRoomId: quizRoomId }, {
           $inc: { defendersPoint: points, defendersRightAnswer:1 }
@@ -376,22 +384,28 @@ Meteor.methods({
         Courses.update({ courseName: topic }, {  $inc:   increaseCoursePoints });
     },
 
-    updateChallangersAccuracy:function (resultRoomId, accuracy) {
-        let resultRoom = PlayedSessions.findOne({_id: resultRoomId });
-        let topic = resultRoom.questions[0].topic;
+    updateChallangersAccuracy:function (quizRoomId) {
+        let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+        let number = (quizRoom.challangersRightAnswer / 6) * 100;
+        let accuracy = Math.round(number);
+        let topic = quizRoom.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
         let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
+
         let addAccuracy = {};
         addAccuracy[`profile.selectedCourses.${thisCoursesIndex}.accuracy`] = accuracy;
-
         Meteor.users.update({ _id: this.userId },
           {  $addToSet:   addAccuracy });
           console.log("message",  accuracy);
+
+        QuizRooms.update({ _id: quizRoomId }, { $set: { challangersAccuracy:  accuracy }});
     },
 
-    updateDefendersAccuracy:function (resultRoomId, accuracy) {
-        let resultRoom = PlayedSessions.findOne({_id: resultRoomId });
-        let topic = resultRoom.questions[0].topic;
+    updateDefendersAccuracy:function (quizRoomId) {
+        let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+        let number = (quizRoom.defendersRightAnswer / 6) * 100;
+        let accuracy = Math.round(number);
+        let topic = quizRoom.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
         let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
         let addAccuracy = {};
@@ -399,6 +413,8 @@ Meteor.methods({
 
         Meteor.users.update({ _id: this.userId },
           {  $addToSet:   addAccuracy });
+
+        QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  accuracy }});
     },
 
     endGameForChallanger:function(quizRoomId){
