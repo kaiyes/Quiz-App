@@ -90,7 +90,7 @@ Template.community.events({
         _.delay(function() {
             Router.go('/player');
         }, 100);
-    },
+    },    
     "click .eddy-community--post--play-btn": function(event, template) {
 
         var chapterHTML = $('.eddy-chapters').parent().html();
@@ -106,4 +106,7 @@ Template.community.events({
         myApp.popup(popupHTML);
         event.preventDefault();
     },
+    "click .chapter-popup .item-link" : function(event,template){
+        console.log("ss");
+    }
 });
