@@ -2,10 +2,14 @@ Template.course.onCreated(function() {
     Meteor.subscribe("courses");
 });
 
+Template.course.onDestroyed(function() {
+    console.log("unhide");
+});
+
 
 Template.course.onRendered(function() {
     var mySearchbar = myApp.searchbar('.searchbar', {
-        searchList: '.list-block-search',
+        searchList: '.list-block-semyApp.addNotificationarch',
         searchIn: '.course-title'
     });
     if (Framework7.prototype.device.android) {
@@ -64,6 +68,9 @@ Template.course.helpers({
     },
 });
 
+Template.splashModal.onRendered(function() {
+    console.log("ss");
+});
 
 
 
@@ -76,6 +83,9 @@ Template.course.events({
             $(event.target).parents('.select-course').toggleClass('eddy-courses--selected')
         }
     },
+    'popup:closed .popup-splash': function() {
+        console.log("closed")
+    },
 
     "click .course": function() {
         event.preventDefault();
@@ -87,7 +97,7 @@ Template.course.events({
             playedChapters: [],
             courseNumber: this.courseNumber,
             totalChapters: this.chapters.length,
-            wantHelp:null,
+            wantHelp: null,
         };
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false);
@@ -115,7 +125,7 @@ Template.course.events({
                         title: 'Course',
                         message: 'Something Went Wrong',
                         hold: 2000,
-                    });                    
+                    });
                 } else {
                     myApp.addNotification({
                         title: 'Course',
