@@ -13,7 +13,8 @@ Template.stats.onRendered(function() {
       var array = Meteor.user().profile.selectedCourses;
       var course = _.find(array, { 'courseName': topicName });
       var accuracyArray = course.accuracy;
-      var accuracy = _.mean(accuracyArray);
+      var accuracyNotRound = _.mean(accuracyArray);
+      var accuracy = Math.round(accuracyNotRound);
       var isAccuracyNaN = _.isNaN(accuracy);
 
       if (isAccuracyNaN===true) {
