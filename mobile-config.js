@@ -5,6 +5,7 @@ App.info({
   email: 'kaiyes.ansary@gmail.com',
   website: 'https://www.ivivelabs.com/'
 });
+App.setPreference("android-targetSdkVersion", "23")
 
 App.icons({
   //iphone
