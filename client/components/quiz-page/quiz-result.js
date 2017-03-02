@@ -1,38 +1,29 @@
 Template.quizResult.onCreated(function() {
+  this.autorun(function(){
+    var resultRoomId = Router.current().params._id;
+    Meteor.subscribe("resultRoom", resultRoomId);
+    var room = PlayedSessions.findOne({ _id: resultRoomId })
+    console.log(room);
 
-    if (Meteor.user()) {
-        let resultRoomId = Router.current().params._id;
-        Meteor.subscribe("resultRoom", resultRoomId);
-        let room = PlayedSessions.findOne({ _id: resultRoomId })
+    var topicName = room.questions[0].topic;
+    Session.set('question', room.questions[0]);
+    Session.set('number', 1);
 
-        if (Meteor.userId() === room.challanger._id) {
-            let accuracy = (room.challangersRightAnswer / 6) * 100
-            Session.set('percent', accuracy)
-        }
-        if (Meteor.userId() === room.defender._id) {
-            let accuracy = (room.defendersRightAnswer / 6) * 100
-            Session.set('percent', accuracy)
-        }
-        Session.set('question', room.questions[0])
-        Session.set('number', 1)
-    }
-});
+    Tracker.afterFlush(function(){
+      var challangersAccuracy = room.challangersAccuracy;
+      var defendersAccuracy = room.defendersAccuracy;
 
+      if (Meteor.userId() === room.challanger._id) {
+        Session.set('progress', challangersAccuracy);
+        Session.set('progressTx', `${challangersAccuracy}`);
+      }
+      if (Meteor.userId() === room.defender._id) {
+        Session.set('progress', defendersAccuracy);
+        Session.set('progressTx', `${defendersAccuracy}`);
+      }
+    });
+  });
 
-Template.quizResult.onRendered(function() {
-
-    $(document).ready(function() {
-        $(function() {
-            var $ppc = $('.eddy-progress--wrapper'),
-                accuracy = parseInt($ppc.data('percent')),
-                deg = 360 * accuracy / 100
-            if (accuracy > 50) {
-                $ppc.addClass('gt-50')
-            }
-            $('.eddy-progress--bar--fill').css('transform', 'rotate(' + deg + 'deg)')
-            $('.eddy-progress--percents span').html(accuracy + ' %')
-        })
-    })
 
 });
 

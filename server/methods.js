@@ -118,7 +118,6 @@ Meteor.methods({
     var likeArray = Posts.findOne({  _id: id  }).likes;
     let idsInArray = _.map(likeArray, '_id');
     let ifIncludes = _.includes( idsInArray, Meteor.userId());
-
     if (ifIncludes) {
       let findLiker = _.find(likeArray, ['_id', Meteor.userId()]);
       Posts.update(
@@ -127,9 +126,7 @@ Meteor.methods({
       )
     } else {
       Posts.update({ _id: id },{ $addToSet: likerData });
-
       let post = Posts.findOne({ _id:id });
-
         Notification.insert({
           postId: id,
           postCreator: post.createdBy.profile.name,
@@ -140,7 +137,6 @@ Meteor.methods({
           seen:[this.userId],
           deleted:[this.userId],
         });
-
         let text =`${liker.profile.name} liked your post in ${post.topicName}`;
 
         Push.send({
@@ -158,13 +154,11 @@ Meteor.methods({
       let rightComment = _.find(commentArray, ['body', commentData.body]);
       var likerArray = rightComment.likes;
       var likerData = _.find(likerArray, ['_id', Meteor.userId()]);
-
       if (likerData===undefined) {
         Posts.update(
           { _id: commentData.postId , "comments.body":commentData.body },
           { $addToSet: {"comments.$.likes": liker }}
          );
-
          Notification.insert({
            commentCreator: commentData.commenter.profile.name,
            topic: commentData.topic,
@@ -174,7 +168,6 @@ Meteor.methods({
            seen:[this.userId],
            deleted:[this.userId],
          });
-
          let text =`${liker.profile.name} liked your comment in ${commentData.topic}`;
          Push.send({
            text,
@@ -248,11 +241,8 @@ Meteor.methods({
           badge: 1,
           query: { userId: notificationData.defender._id },
         });
-
-
         let userCourseArray = Meteor.user().profile.selectedCourses;
         let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': notificationData.topic });
-
         let playedChapters = {};
         playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = notificationData.chapter;
         Meteor.users.update({ _id: this.userId },
@@ -279,20 +269,9 @@ Meteor.methods({
          { _id:quizRoomId },
          { $set:{ defenderStarted: true }}
        );
-
-       let chapter = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].chapter;
-       let topic = QuizRooms.findOne({ "_id": quizRoomId }).questions[0].topic;
-       let userCourseArray = Meteor.user().profile.selectedCourses;
-       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topic });
-
-       let playedChapters = {};
-       playedChapters[`profile.selectedCourses.${thisCoursesIndex}.playedChapters`] = chapter;
-       Meteor.users.update({ _id: this.userId },
-         {  $addToSet:   playedChapters });
      },
 
     removeChallangeNotification: function (notificationId) {
-
       let notification = Notification.findOne({
         _id: notificationId,
        });
@@ -322,11 +301,9 @@ Meteor.methods({
       QuizRooms.update({ _id:  quizRoomId },
         { $inc:{ challangerRoomPoints:points, challangersRightAnswer:1 }
       });
-
       PlayedSessions.update({ originalRoomId: quizRoomId }, {
         $inc: { challangersPoint: points, challangersRightAnswer:1 }
       });
-
         let room = QuizRooms.findOne({ _id:  quizRoomId });
         let topic = room.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
@@ -335,7 +312,6 @@ Meteor.methods({
         increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = points;
         Meteor.users.update({ _id: this.userId },
           {  $inc:   increasePoints });
-
         let userArray = Courses.findOne({ courseName: topic }).ranking;
         let usersIndexinCourse = _.findIndex(userArray, { 'userId': this.userId });
         let increaseCoursePoints = {};
@@ -363,12 +339,10 @@ Meteor.methods({
       }
       QuizRooms.update({ _id: quizRoomId },
         { $inc:{ defenderRoomPoints:points,  defendersRightAnswer:1 }
-      });
-
+        });
         PlayedSessions.update({ originalRoomId: quizRoomId }, {
           $inc: { defendersPoint: points, defendersRightAnswer:1 }
         });
-
         let room = QuizRooms.findOne({ _id:  quizRoomId });
         let topic = room.questions[0].topic;
         let userCourseArray = Meteor.user().profile.selectedCourses;
@@ -377,7 +351,6 @@ Meteor.methods({
         increasePoints[`profile.selectedCourses.${thisCoursesIndex}.points`] = points;
         Meteor.users.update({ _id: this.userId },
           {  $inc:   increasePoints });
-
         let userArray = Courses.findOne({ courseName: topic }).ranking;
         let usersIndexinCourse = _.findIndex(userArray, { 'userId': this.userId });
         let increaseCoursePoints = {};
@@ -394,14 +367,12 @@ Meteor.methods({
         let  accuracy = _.find(userCourseArray, { 'courseName': topic });
         accuracy.accuracy.push(roundedNumber);
         let  index = _.findIndex(userCourseArray, { 'courseName': topic });
-
         let addAccuracy = {};
         addAccuracy[`profile.selectedCourses.${index}`] = accuracy;
-
         Meteor.users.update({ _id: this.userId },
           {  $set:   addAccuracy });
-
-        QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  roundedNumber }});
+        QuizRooms.update({ _id: quizRoomId }, { $set: { challangersAccuracy:  roundedNumber }});
+        PlayedSessions.update({ originalRoomId: quizRoomId }, { $set: { challangersAccuracy:  roundedNumber }});
     },
 
     updateDefendersAccuracy:function (quizRoomId) {
@@ -421,7 +392,7 @@ Meteor.methods({
           {  $set:   addAccuracy });
 
         QuizRooms.update({ _id: quizRoomId }, { $set: { defendersAccuracy:  roundedNumber }});
-
+        PlayedSessions.update({ originalRoomId: quizRoomId }, { $set: { defendersAccuracy:  roundedNumber }});
     },
 
     endGameForChallanger:function(quizRoomId){
