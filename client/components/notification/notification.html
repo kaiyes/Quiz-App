@@ -24,7 +24,8 @@
         <div class="pages">
           <div class="page-1">
             <div class="page-content">
-              <div class="card margin-0 margin-top-70">
+              {{#if challangeNotifications.count }}
+              <div class="card margin-0 margin-top-50">
                   <div class="card-header padding-0 border-bottom">
                     <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
                       CHALLENGES
@@ -67,30 +68,31 @@
                       </div>
                   </div>
               </div>
-              <div class="card margin-0 margin-top-20">
+              {{/if}}
+              <div class="card margin-0 margin-top">
                   <div class="card-header padding-0 border-bottom">
                     <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
                       NEWS
                     </h4>
                   </div>
                   <div class="card-content">
-
+                    {{#if postNotifications.count}}
                     {{#each postNotifications}}
-                      <div class="card-content-inner padding-0">
+                        <div class="card-content-inner padding-0">
                         <div class="border-bottom padding-left-15 padding-right-20 padding-v-10">
-                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                              <div id="postNotification" data-notif-id="{{_id}}" class="item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
+                          <div class="flex-direction--row flex-justify-content--space-between flex-align-items--center row">
+                              <div id="postNotification" data-notif-id="{{_id}}" class="col-50 item-media eddy-home--quiz--icon-wrap flex-direction--row flex-align-items--center close-popup">
                                   <img class="eddy-home--quiz--icon" height="55" src="/assets/icon_2.png" alt="icon">
                                   <h4 class="margin-0 font-size-fixed-12 eddy-home--quiz--number">
                                     {{topic}}
                                   </h4>
                               </div>
-                              <div id="removePostNotification" class="right">
+                              <div id="removePostNotification" class="right col-20 text-center">
                                 <a href="#" class="link icon-only">
                                   <i class="zmdi zmdi-close font-size-fixed-20 eddy-navbar__noti__close"></i>
                                 </a>
                               </div>
-                              <div class="opacity-70 eddy-noti__news_time">
+                              <div class="opacity-70 eddy-noti__news_time col-30">
                                 {{getTimePosted when}} ago
                               </div>
                           </div>
@@ -99,7 +101,9 @@
                           </p>
                         </div>
                       </div>
+
                     {{/each}}
+                    {{/if}}
 
                     {{#each likeNotifications}}
                       <div class="card-content-inner padding-0">
