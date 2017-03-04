@@ -14,12 +14,13 @@ Template.notification.helpers({
       let objArray = Meteor.user().profile.selectedCourses;
       let topicsChosen = _.map(objArray,'courseName');
 
-      return Notification.find({
+      let notifications = Notification.find({
         topic: { $in: topicsChosen },
         deleted: { $ne: Meteor.userId()},
         type: "post"},{
           sort: { when: -1 }
-        });
+        });        
+      return notifications;
     }
   },
 
@@ -68,6 +69,7 @@ Template.notification.events({
 },
 
 "click #postNotification": function(event, template){
+  console.log(event);
   Session.set('topicName',this.topic);
   _.delay(function(){ Router.go('/courseDetails#community'); },100);
 },
