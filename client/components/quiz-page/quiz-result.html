@@ -1,5 +1,4 @@
 <template name="quizResult">
-  {{> resultExplanation}}
   <div class="views">
     <div class="view view-main">
       <div class="navbar eddy-navbar eddy-navbar--quiz">
@@ -41,7 +40,9 @@
                                     /assets/generic_800.png
                                 {{/if}}"
                               alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">{{challanger.profile.name}}</p>
+                              <p class="eddy-quiz-result__player-name">
+                                {{challanger.profile.name}}
+                              </p>
                             </div>
                             <div class="text-center">
                               <img class="make-round eddy-quiz-result--player-photo{{defenderDull}}" width="85" height="85"
@@ -51,13 +52,21 @@
                                   /assets/generic_800.png
                               {{/if}}"
                               alt="Player photo" />
-                              <p class="eddy-quiz-result__player-name">{{defender.profile.name}}</p>
+                              <p class="eddy-quiz-result__player-name">
+                                {{defender.profile.name}}
+                              </p>
                             </div>
                           </div>
                           <div class="flex-direction--row flex-justify-content--space-between padding-h-25 padding-bottom-15">
-                            <h3 class="margin-0 eddy-quiz-result__player-score">{{challangersPoint}}</h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">:</h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">{{defendersPoint}}</h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                              {{challangersPoint}}
+                            </h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                              :
+                            </h3>
+                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                              {{defendersPoint}}
+                            </h3>
                           </div>
                         </div>
                     </div>
@@ -68,16 +77,7 @@
                             <div class="flex-direction--row flex-justify-content--space-between">
                               <div class="text-center">
                                 <h4 class="margin-0 padding-bottom-10 eddy-stats__title">ACCURACY</h4>
-                                <div class="eddy-progress--wrapper" data-percent="{{$.Session.get 'percent'}}">
-                                  <div class="eddy-progress--bar">
-                                    <div class="eddy-progress--bar--fill"></div>
-                                  </div>
-                                  <div class="eddy-progress--percents">
-                                    <div class="eddy-progress--percents--wrapper">
-                                      <span>%</span>
-                                    </div>
-                                  </div>
-                                </div>
+                                  {{> circularProgress containerId="container2" sessionValueKey="progress"  sessionTextKey="progressTx" canvasSize=85 outerPadding=0 spacer=0 outerDivClass='#51c8ac'}}
                               </div>
                               <div class="text-center">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">QUESTIONS</h4>
