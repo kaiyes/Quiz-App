@@ -32,6 +32,11 @@ Template.adminCourses.onRendered(function() {
 
 });
 
+Template.adminCourses.helpers({
+  courses: function(){
+    return Courses.find();
+  }
+});
 
 Template.adminCourses.events({
   'click .submit-profile' (event, instance) {
@@ -44,7 +49,7 @@ Template.adminCourses.events({
       let chapter1 = document.querySelector("#chapter1").value;
       let chapters = [chapter1,chapter2,chapter3];
       let removeEmptyStuff = _.remove(chapters, function(x) { return x == "" });
-      let obj = { courseName, chapters, courseNumber }      
+      let obj = { courseName, chapters, courseNumber }
 
       Meteor.call("insertCourses", obj, function (err) {
         if (!err) {

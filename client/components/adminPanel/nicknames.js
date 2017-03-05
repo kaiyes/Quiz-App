@@ -6,7 +6,7 @@ Template.adminNickNames.events({
       // let nickName3 = document.querySelector("#nickName3").value;
       // let nickName4 = document.querySelector("#nickName4").value;
       // let nickNames = [nickName1,nickName2,nickName3, nickName4];
-      // let removeEmptyStuff = _.remove(nickNames, function(x) { return x === "" });      
+      // let removeEmptyStuff = _.remove(nickNames, function(x) { return x === "" });
       Meteor.call("insertNickName", nickName1, function (err) {
         if (!err) {
           myApp.addNotification({
@@ -55,4 +55,11 @@ Template.adminNickNames.events({
             },"slow");
     },
 
+});
+
+
+Template.adminNickNames.helpers({
+  nicks: function(){
+    return NickNames.find();
+  }
 });
