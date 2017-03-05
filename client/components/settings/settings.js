@@ -27,6 +27,10 @@ Template.settings.events({
     Router.go('/adminCourses');
   },
 
+  "click #tell": function(event, template){
+    Router.go('/tell');
+  },
+
   "click #adminUniversity": function(event, template){
     Router.go('/adminUniversity');
   },
