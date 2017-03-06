@@ -17,3 +17,17 @@
     @include type-style($font-family-eddy-montserratlight, 400, 1.4rem, #494949);
   }
 }
+
+.list-block .item-after{
+  max-height: 35px!important;
+
+  .denyChallange{
+    width: 50px;    
+    padding: 4px 17px;
+  }
+  .acceptChallange{
+    width: 50px;    
+    padding: 4px 17px;
+    margin-left: 10px;
+  }
+}
