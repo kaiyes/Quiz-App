@@ -88,7 +88,8 @@ Template.community.events({
     },
     "click #openCommenting": function(event, template) {
         event.preventDefault();
-        $('#post-' + this._id).find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').toggle();
+        // $('#post-' + this._id).find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').toggle();
+        $('#post-' + this._id).find('.eddy-community--post--comments--reply').toggle();
     },
     "click #like": function(event, template) {
         event.preventDefault();
