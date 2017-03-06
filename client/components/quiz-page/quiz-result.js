@@ -1,28 +1,28 @@
 Template.quizResult.onCreated(function() {
-  this.autorun(function(){
-    var resultRoomId = Router.current().params._id;
-    Meteor.subscribe("resultRoom", resultRoomId);
-    var room = PlayedSessions.findOne({ _id: resultRoomId })
-    console.log(room);
+    this.autorun(function() {
+        var resultRoomId = Router.current().params._id;
+        Meteor.subscribe("resultRoom", resultRoomId);
+        var room = PlayedSessions.findOne({ _id: resultRoomId })
+        console.log(room);
 
-    var topicName = room.questions[0].topic;
-    Session.set('question', room.questions[0]);
-    Session.set('number', 1);
+        var topicName = room.questions[0].topic;
+        Session.set('question', room.questions[0]);
+        Session.set('number', 1);
 
-    Tracker.afterFlush(function(){
-      var challangersAccuracy = room.challangersAccuracy;
-      var defendersAccuracy = room.defendersAccuracy;
+        Tracker.afterFlush(function() {
+            var challangersAccuracy = room.challangersAccuracy;
+            var defendersAccuracy = room.defendersAccuracy;
 
-      if (Meteor.userId() === room.challanger._id) {
-        Session.set('progress', challangersAccuracy);
-        Session.set('progressTx', `${challangersAccuracy}`);
-      }
-      if (Meteor.userId() === room.defender._id) {
-        Session.set('progress', defendersAccuracy);
-        Session.set('progressTx', `${defendersAccuracy}`);
-      }
+            if (Meteor.userId() === room.challanger._id) {
+                Session.set('progress', challangersAccuracy);
+                Session.set('progressTx', `${challangersAccuracy}`);
+            }
+            if (Meteor.userId() === room.defender._id) {
+                Session.set('progress', defendersAccuracy);
+                Session.set('progressTx', `${defendersAccuracy}`);
+            }
+        });
     });
-  });
 
 
 });
@@ -58,11 +58,11 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
-              if (this.rightAnswer === answer) {
-                  return 'eddy--sqr-buttons__plan__primary'
-              }else{
-                return 'eddy--sqr-buttons__product__primary'
-              }
+                if (this.rightAnswer === answer) {
+                    return 'eddy--sqr-buttons__plan__primary'
+                } else {
+                    return 'eddy--sqr-buttons__product__primary'
+                }
             } else {
                 return 'eddy--sqr-buttons__price'
             }
@@ -70,11 +70,11 @@ Template.quizResult.helpers({
 
         if (Meteor.userId() === room.defender._id) {
             if (this.defendersAnswer === answer) {
-              if (this.rightAnswer === answer) {
-                  return 'eddy--sqr-buttons__plan__primary'
-              }else{
-                return 'eddy--sqr-buttons__product__primary'
-              }
+                if (this.rightAnswer === answer) {
+                    return 'eddy--sqr-buttons__plan__primary'
+                } else {
+                    return 'eddy--sqr-buttons__product__primary'
+                }
             } else {
                 return 'eddy--sqr-buttons__price'
             }
@@ -86,19 +86,19 @@ Template.quizResult.helpers({
         let resultRoomId = Router.current().params._id
         let room = PlayedSessions.findOne({ _id: resultRoomId })
 
-          if (Meteor.userId() === room.challanger._id) {
+        if (Meteor.userId() === room.challanger._id) {
             if (this.challangersAnswer === answer) {
-              if (this.rightAnswer === answer) {
-                   return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
-              }
+                if (this.rightAnswer === answer) {
+                    return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+                }
             }
         }
 
         if (Meteor.userId() === room.defender._id) {
             if (this.defendersAnswer === answer) {
-              if (this.rightAnswer === answer) {
-                  return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
-              }
+                if (this.rightAnswer === answer) {
+                    return 'zmdi zmdi-assignment-check font-size-fixed-30 full-width text-center'
+                }
             }
         }
     },
@@ -142,10 +142,10 @@ Template.quizResult.helpers({
                     return 'you won :D'
                 }
             } else if (room.challangersPoint === room.defendersPoint) {
-                  return 'It is a draw'
+                return 'It is a draw'
+            }
         }
-    }
-  },
+    },
 
     challengerDull: function() {
         let resultRoomId = Router.current().params._id
@@ -290,27 +290,27 @@ Template.quizResult.events({
 
     "click .pops": function(event, template) {
         var popupHTML = '<div class="popup chapter-popup">' +
-                            '<div class="flex-direction--column full-height">' +
-                              '<div class="flex--1">'+
+            '<div class="flex-direction--column full-height">' +
+            '<div class="flex--1">' +
 
-                                ' <div id="cross" class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">'+
-                                  ' <a href="#" class="link icon-only text-center">'+
-                                    '<i class="close-popup zmdi zmdi-close eddy-result-exp__close font-size-fixed-24 margin-top-10"></i>'+
-                                  ' </a>'+
-                                  '</div>'+
+            ' <div id="cross" class="flex-direction--row flex-justify-content--flex-end padding-top-10 padding-right-10">' +
+            ' <a href="#" class="close-popup link icon-only text-center padding-h-10">' +
+            '<i class="zmdi zmdi-close eddy-result-exp__close font-size-fixed-24 margin-top-10"></i>' +
+            ' </a>' +
+            '</div>' +
 
-                                  '<div class="eddy-result-exp margin-top-60 padding-h-30">'+
-                                    '<h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">'+
-                                      this.question+
-                                    '</h4>'+
-                                    '<p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">'+
-                                      this.explanation+
-                                    '</p>'+
-                                  '</div>'+
+            '<div class="eddy-result-exp margin-top-60 padding-h-30">' +
+            '<h4 class="eddy-result-exp__title font-size-fixed-14 margin-0 text-center">' +
+            this.question +
+            '</h4>' +
+            '<p class="font-size-fixed-12 line-height-bigger eddy-result-exp__content margin-top-30">' +
+            this.explanation +
+            '</p>' +
+            '</div>' +
 
-                                '</div>'+
-                              '</div>'+
-                          '</div>'
+            '</div>' +
+            '</div>' +
+            '</div>'
         myApp.popup(popupHTML);
         event.preventDefault();
     },

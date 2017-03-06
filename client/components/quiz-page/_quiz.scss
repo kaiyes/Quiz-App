@@ -1,72 +1,66 @@
 %player_rank {
-  position: absolute;
-  right: -8px;
-  top: -2px;
-
-  @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #fff);
-}
-.eddy-quiz {
-  z-index: 1;
-
-  &__vs{
-    background-color: map-deep-get($colors, 'primary', 'base');
-  }
-
-  &__question {
-    @include type-style($font-family-eddy-montserratlight, 400, 2.2rem, #494949);
-  }
-  &--option-btn{
-    color: map-deep-get($colors, 'foreground', 'white');
-  }
-  &--option {
     position: absolute;
-    top: -100%;
+    right: -8px;
+    top: -2px;
+    @include type-style($font-family-eddy-montserratbold, 700, 1.6rem, #fff);
+}
 
-    width: 100%;
-    background-color: map-deep-get($colors, 'primary', 'base');
-    color: map-deep-get($colors, 'foreground', 'white');
-
-    z-index: 2;
-
-    -webkit-transition: all 0.3s;
-    -moz-transition: all 0.3s;
-    -ms-transition: all 0.3s;
-    transition: all 0.3s;
-  }
-  &--level{    
-    margin:0 auto;
-    bottom: 1rem;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 50%;
-    border: 8px solid map-deep-get($colors, 'foreground', 'white');
-
-    line-height: 3.6rem;
-    text-align: center;
-    @include type-style($font-family-eddy-montserratbold, 400, 1.6rem, #fff);
-  }
-  &--players{
-    color: map-deep-get($colors, 'foreground', 'white');
-
-    &--profile-img {
-      box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
+.eddy-quiz {
+    z-index: 1;
+    #surrender {
+        margin-left: 8px;
+        width: 55px;
+        padding: 0px 18px;
     }
-
-    &--me {
-
+    .question {
+        font-size: 1.5rem;
     }
-    &--opponent {
-
+    &__vs {
+        background-color: map-deep-get($colors, 'primary', 'base');
     }
-    &--rank {
-      @extend %player_rank;
-
-      &__opponent {
-        @extend %player_rank;
-
-        right: inherit !important;
-        left: -8px !important;
-      }
+    &__question {
+        @include type-style($font-family-eddy-montserratlight, 400, 2.2rem, #494949);
     }
-  }
+    &--option-btn {
+        color: map-deep-get($colors, 'foreground', 'white');
+    }
+    &--option {
+        position: absolute;
+        top: -100%;
+        width: 100%;
+        background-color: map-deep-get($colors, 'primary', 'base');
+        color: map-deep-get($colors, 'foreground', 'white');
+        z-index: 2;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -ms-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+    &--level {
+        margin: 0 auto;
+        bottom: 1rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        border: 8px solid map-deep-get($colors, 'foreground', 'white');
+        line-height: 3.6rem;
+        text-align: center;
+        @include type-style($font-family-eddy-montserratbold, 400, 1.6rem, #fff);
+    }
+    &--players {
+        color: map-deep-get($colors, 'foreground', 'white');
+        &--profile-img {
+            box-shadow: -10px 1px 20px -5px rgba(0, 0, 0, 0.10);
+        }
+        &--me {}
+        &--opponent {}
+        &--rank {
+            @extend %player_rank;
+            &__opponent {
+                @extend %player_rank;
+                right: inherit !important;
+                left: -8px !important;
+            }
+        }
+    }
 }
