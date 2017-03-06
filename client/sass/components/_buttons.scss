@@ -1,308 +1,238 @@
-%button-common{
+%button-common {
     //padding-left: 2rem !important;
     //padding-right: 2rem !important;
-
-    background-color:  map-deep-get($colors, "buttons", "white") !important;
-
+    background-color: map-deep-get($colors, "buttons", "white") !important;
     border: 1px solid map-deep-get($colors, "primary", "base") !important;
     outline: none;
-
     @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
-
     cursor: pointer;
 }
 
-%button-revert{
+%button-revert {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-left: 2rem !important;
     padding-right: 2rem !important;
-
-    background:  map-deep-get($colors, "primary", "base") !important;
-
+    background: map-deep-get($colors, "primary", "base") !important;
     border: 1px solid map-deep-get($colors, "primary", "base") !important;
     outline: none;
-
     @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "buttons", "white"));
 }
 
-%button-secondary{
+%button-secondary {
     @extend %button-common;
-
-    background-color:  map-deep-get($colors, "buttons", "white") !important;
+    background-color: map-deep-get($colors, "buttons", "white") !important;
     border: 1px solid map-deep-get($colors, "buttons", "dark-red") !important;
-
     @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "buttons", "dark-red"));
 }
 
-.eddy{
-    &--primary-button{
-        @extend  %button-common;
-
+.eddy {
+    &--primary-button {
+        @extend %button-common;
+        &:hover {}
+        &:active {}
+        &:focus {}
+        &__white-color {
+            padding-top: 1.4rem;
+            padding-bottom: 1.4rem;
+            padding-left: 2rem !important;
+            padding-right: 2rem !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+            text-align: center;
+            display: block;
+            border: 2px solid map-deep-get($colors, "primary", "base") !important;
+            &.active-state {
+                background: #d9d9d9 !important;
+            }
+            &--challenge {
+                padding: 1.2rem 2rem !important;
+                &:hover {
+                    border: 1px solid #fff !important;
+                }
+                &:focus {
+                    border: 1px solid #fff !important;
+                }
+                &:active {
+                    border: 1px solid #fff !important;
+                }
+                &.active-state {
+                    background: #d9d9d9 !important;
+                }
+            }
+        }
+    }
+    &--login-button {
+        background-color: map-deep-get($colors, "buttons", "white") !important;
+        border: 1px solid map-deep-get($colors, "primary", "base") !important;
+        outline: none;
+        @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
+        cursor: pointer;
+        font-size: 12px;
+        margin: 5px;
         &:hover {
             //background:  map-deep-get($colors, "primary", "base") !important;
-            //color: map-deep-get($colors, "buttons", "white") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
         }
-
         &:active {
-          //  background:  map-deep-get($colors, "primary", "base") !important;
-          //  color: map-deep-get($colors, "buttons", "white") !important;
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
         }
-
         &:focus {
-          //  background:  map-deep-get($colors, "primary", "base") !important;
-          //  color: map-deep-get($colors, "buttons", "white") !important;
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
         }
-
-        &__white-color {
-          padding-top: 1.4rem;
-          padding-bottom: 1.4rem;
-          padding-left: 2rem !important;
-          padding-right: 2rem !important;
-
-          color: map-deep-get($colors, "primary", "base") !important;
-          text-align: center;
-
-          display: block;
-          border: 2px solid map-deep-get($colors, "primary", "base") !important;
-
-          &.active-state {
+        &.active-state {
             background: #d9d9d9 !important;
-          }
-
-          &--challenge {
-            padding: 1.2rem 2rem !important;
-
-            &:hover {
-              border: 1px solid #fff !important;
+        }
+    }
+    &--single-login-button {
+        background-color: map-deep-get($colors, "buttons", "white") !important;
+        border: 1px solid map-deep-get($colors, "primary", "base") !important;
+        outline: none;
+        @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
+        cursor: pointer;
+        font-size: 12px;
+        margin: 5px;
+        &:hover {
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+        }
+        &:active {
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+        }
+        &:focus {
+            //background:  map-deep-get($colors, "primary", "base") !important;
+            color: map-deep-get($colors, "primary", "base") !important;
+        }
+        &.active-state {
+            background: #d9d9d9 !important;
+        }
+    }
+    &--primary-button-revert {
+        @extend %button-revert;
+        &:hover {
+            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
+            color: map-deep-get($colors, "buttons", "white") !important;
+        }
+        &:active {
+            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
+            color: map-deep-get($colors, "buttons", "white") !important;
+        }
+        &:focus {
+            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
+            color: map-deep-get($colors, "buttons", "white") !important;
+        }
+        &.active-state {
+            background: rgba(81, 200, 172, 0.5) !important;
+        }
+    }
+    &--secondary-button {
+        @extend %button-secondary;
+        &:hover {
+            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
+        }
+        &:active {
+            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
+            color: map-deep-get($colors, "buttons", "white") !important;
+        }
+        &:focus {
+            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
+            color: map-deep-get($colors, "buttons", "white") !important;
+        }
+    }
+    &--sqr-buttons {
+        padding-top: 1.5rem;
+        padding-bottom: 1.1rem;
+        display: block !important;
+        background: map-deep-get($colors, "background", "border") !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .12) !important;
+        border-radius: 0 !important;
+        @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #494949);
+        text-align: center;
+        cursor: pointer;
+        &__price {
+            &.active-state {
+                background: #d9d9d9 !important;
+            }
+            &:focus {}
+            &:active {}
+            &:hover {}
+        }
+        &__plan {
+            &.active-state {
+                //background: rgba(81, 200, 172, 0.5) !important;
+            }
+            &__primary {
+                background-color: map-deep-get($colors, "primary", "base") !important;
+                color: map-deep-get($colors, "foreground", "white") !important;
+                &.active-state {
+                    background: rgba(81, 200, 172, 0.5) !important;
+                }
             }
             &:focus {
-              border: 1px solid #fff !important;
+                //background-color: map-deep-get($colors, "primary", "base") !important;
+                color: map-deep-get($colors, "foreground", "white") !important;
             }
             &:active {
-              border: 1px solid #fff !important;
+                //background-color: map-deep-get($colors, "primary", "base") !important;
+                color: map-deep-get($colors, "foreground", "white") !important;
             }
-
+            &:hover {
+                //background-color: map-deep-get($colors, "primary", "base") !important;
+            }
+        }
+        &__place {
             &.active-state {
-              background: #d9d9d9 !important;
+                background: #d9d9d9 !important;
             }
-          }
+            &:focus {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
+            &:active {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
+            &:hover {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
         }
-    }
-    &--login-button{
-      background-color:  map-deep-get($colors, "buttons", "white") !important;
-
-      border: 1px solid map-deep-get($colors, "primary", "base") !important;
-      outline: none;
-
-      @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
-
-      cursor: pointer;
-
-      font-size: 12px;
-      margin: 5px;
-
-      &:hover {
-          //background:  map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "primary", "base") !important;
-      }
-
-      &:active {
-        //background:  map-deep-get($colors, "primary", "base") !important;
-        color: map-deep-get($colors, "primary", "base") !important;
-      }
-
-      &:focus {
-        //background:  map-deep-get($colors, "primary", "base") !important;
-        color: map-deep-get($colors, "primary", "base") !important;
-      }
-      &.active-state {
-        background: #d9d9d9 !important;
-      }
-    }
-    &--single-login-button{
-      background-color:  map-deep-get($colors, "buttons", "white") !important;
-
-      border: 1px solid map-deep-get($colors, "primary", "base") !important;
-      outline: none;
-
-      @include type-style($font-family-eddy-montserratbold, 700, '', map-deep-get($colors, "foreground", "light-black"));
-
-      cursor: pointer;
-      font-size: 12px;
-      margin: 5px;
-
-      &:hover {
-        //background:  map-deep-get($colors, "primary", "base") !important;
-        color: map-deep-get($colors, "primary", "base") !important;
-      }
-
-      &:active {
-        //background:  map-deep-get($colors, "primary", "base") !important;
-        color: map-deep-get($colors, "primary", "base") !important;
-      }
-
-      &:focus {
-        //background:  map-deep-get($colors, "primary", "base") !important;
-        color: map-deep-get($colors, "primary", "base") !important;
-      }
-      &.active-state {
-        background: #d9d9d9 !important;
-      }
-    }
-	&--primary-button-revert{
-        @extend  %button-revert;
-
-        &:hover {
-            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
-            color: map-deep-get($colors, "buttons", "white") !important;
+        &__product {
+            &.active-state {
+                background: #d9d9d9 !important;
+            }
+            &__primary {
+                background-color: #b03939 !important;
+                color: #ffffff !important;
+                &.active-state {
+                    background: rgba(73, 73, 73, 00.5) !important;
+                }
+                &:focus {
+                    //background-color: #494949 !important;
+                    color: map-deep-get($colors, "foreground", "white") !important;
+                }
+                &:active {
+                    //background-color: #494949 !important;
+                    color: map-deep-get($colors, "foreground", "white") !important;
+                }
+                &:hover {
+                    //background-color: #494949 !important;
+                }
+            }
+            &:focus {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
+            &:active {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
+            &:hover {
+                //background-color: #494949 !important;
+                //color: map-deep-get($colors, "foreground", "white") !important;
+            }
         }
-
-        &:active {
-            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
-            color: map-deep-get($colors, "buttons", "white") !important;
-        }
-
-        &:focus {
-            @include mix-bg( map-deep-get($colors, "primary", "base"), 'black-mix', 90%);
-	          color: map-deep-get($colors, "buttons", "white") !important;
-        }
-
-        &.active-state {
-          background: rgba(81, 200, 172, 0.5) !important;
-        }
-    }
-    &--secondary-button{
-        @extend  %button-secondary;
-
-        &:hover {
-            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
-        }
-
-        &:active {
-            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
-            color: map-deep-get($colors, "buttons", "white") !important;
-        }
-
-        &:focus {
-            @include mix-bg( map-deep-get($colors, "buttons", "dark-red"), 'black-mix', 90%);
-            color: map-deep-get($colors, "buttons", "white") !important;
-        }
-    }
-
-    &--sqr-buttons{
-      padding-top: 1.5rem;
-      padding-bottom: 1.1rem;
-
-      display: block !important;
-      background: map-deep-get($colors, "background", "border") !important;
-      box-shadow: 0 1px 2px rgba(0,0,0,.12) !important;
-      border-radius: 0 !important;
-
-      @include type-style($font-family-eddy-montserratbold, 700, 1.4rem, #494949);
-      text-align: center;
-
-      cursor: pointer;
-
-      &__price {
-        &.active-state {
-          background: #d9d9d9 !important;
-        }
-        &:focus {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:active {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:hover {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-      }
-      &__plan {
-        &.active-state {
-          //background: rgba(81, 200, 172, 0.5) !important;
-        }
-
-        &__primary {
-          background-color: map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
-
-          &.active-state {
-            background: rgba(81, 200, 172, 0.5) !important;
-          }
-        }
-
-        &:focus {
-          //background-color: map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:active {
-          //background-color: map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:hover {
-          //background-color: map-deep-get($colors, "primary", "base") !important;
-          color: map-deep-get($colors, "foreground", "white") !important;
-        }
-      }
-      &__place {
-        &.active-state {
-          background: #d9d9d9 !important;
-        }
-        &:focus {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:active {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:hover {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-      }
-      &__product {
-        &.active-state {
-          background: #d9d9d9 !important;
-        }
-        &__primary {
-          background-color: #b03939 !important;
-          color: #ffffff !important;
-
-          &.active-state {
-            background: rgba(73, 73, 73, 00.5) !important;
-          }
-
-          &:focus {
-            //background-color: #494949 !important;
-            color: map-deep-get($colors, "foreground", "white") !important;
-          }
-          &:active {
-            //background-color: #494949 !important;
-            color: map-deep-get($colors, "foreground", "white") !important;
-          }
-          &:hover {
-            //background-color: #494949 !important;
-            color: map-deep-get($colors, "foreground", "white") !important;
-          }
-        }
-
-        &:focus {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:active {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-        &:hover {
-          //background-color: #494949 !important;
-          //color: map-deep-get($colors, "foreground", "white") !important;
-        }
-      }
     }
 }
