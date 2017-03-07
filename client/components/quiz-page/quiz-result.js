@@ -1,3 +1,9 @@
+Template.quizResult.onRendered(function() {    
+    var mySwiper = myApp.swiper('.swiper-container', {    
+    nextButton: '.swiper-button-next',
+    prevButton: '.swiper-button-prev',
+    });
+});
 Template.quizResult.onCreated(function() {
   this.autorun(function(){
     var resultRoomId = Router.current().params._id;
