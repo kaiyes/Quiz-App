@@ -55,7 +55,7 @@ Template.quiz.onRendered(function(event, instance) {
         $('.question-container').find('.active-state').removeClass('active-state');
         Session.set('question', 0);
         sixSecondTimer.start(function() {
-            $.unblockUI();
+            $(".question-container").unblock();
             myApp.addNotification({
                 title: 'Quiz',
                 message: "Question 2",
@@ -68,7 +68,7 @@ Template.quiz.onRendered(function(event, instance) {
             }
             Session.set('question', 1);
             sixSecondTimer.start(function() {
-                $.unblockUI();
+                $(".question-container").unblock();
                 myApp.addNotification({
                     title: 'Quiz',
                     message: "Question 3",
@@ -80,7 +80,7 @@ Template.quiz.onRendered(function(event, instance) {
                 }
                 Session.set('question', 2);
                 sixSecondTimer.start(function() {
-                    $.unblockUI();
+                    $(".question-container").unblock();
                     myApp.addNotification({
                         title: 'Quiz',
                         message: "Question 4",
@@ -92,7 +92,7 @@ Template.quiz.onRendered(function(event, instance) {
                     }
                     Session.set('question', 3);
                     sixSecondTimer.start(function() {
-                        $.unblockUI();
+                        $(".question-container").unblock();
                         myApp.addNotification({
                             title: 'Quiz',
                             message: "Question 5",
@@ -104,7 +104,7 @@ Template.quiz.onRendered(function(event, instance) {
                         }
                         Session.set('question', 4);
                         sixSecondTimer.start(function() {
-                            $.unblockUI();
+                            $(".question-container").unblock();
                             myApp.addNotification({
                                 title: 'Quiz',
                                 message: "Question 6",
@@ -116,7 +116,7 @@ Template.quiz.onRendered(function(event, instance) {
                             }
                             Session.set('question', 5);
                             sixSecondTimer.start(function() {
-                                $.unblockUI();
+                                $(".question-container").unblock();
                                 let quizRoomId = Router.current().params._id;
                                 let resultRoom = PlayedSessions.findOne({ originalRoomId: quizRoomId });
                                 let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
@@ -226,7 +226,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $.blockUI();
+         $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
     "click .eddy--sqr-buttons__plan": function(event, template) {
         event.preventDefault();
@@ -247,7 +247,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber)
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $.blockUI();
+        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
     "click .eddy--sqr-buttons__place": function(event, template) {
         event.preventDefault();
@@ -268,7 +268,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $.blockUI();
+        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
     "click .eddy--sqr-buttons__product": function(event, template) {
         event.preventDefault();
@@ -289,7 +289,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $.blockUI();
+        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
 
     'click #surrender': function(event, template) {
