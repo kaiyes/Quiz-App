@@ -19,7 +19,7 @@ Meteor.startup(function() {
 
 
     $.cloudinary.config({
-        cloud_name: 'jahanara',
+        cloud_name: 'dwrbzqaol',
     });
 
 

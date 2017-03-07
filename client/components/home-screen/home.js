@@ -3,15 +3,15 @@ Template.homePage.onCreated(function() {
 })
 
 Template.homePage.helpers({
-    status(){
-       let topicName = this.courseName;
-       let courseArray = Meteor.user().profile.selectedCourses;
-       let course = _.find(courseArray, ['courseName', topicName]);
-       if(course.wantHelp===false){
-           return 'zmdi zmdi-info-outline';
-       }else if(course.wantHelp===true){
-           return 'zmdi zmdi-help-outline'
-       }
+    status() {
+        let topicName = this.courseName;
+        let courseArray = Meteor.user().profile.selectedCourses;
+        let course = _.find(courseArray, ['courseName', topicName]);
+        if (course.wantHelp === false) {
+            return 'zmdi zmdi-info-outline';
+        } else if (course.wantHelp === true) {
+            return 'zmdi zmdi-help-outline'
+        }
     },
 
     getAge(age) {
@@ -56,10 +56,10 @@ Template.homePage.helpers({
 });
 
 Template.homePage.events({
-    "click #list": function(event, template) {
+    "click .item-content": function(event, template) {
         event.preventDefault();
         Session.set("topicName", this.courseName);
-        Router.go('/courseDetails'); 
+        Router.go('/courseDetails');
     },
     "click #showProfileInfo": function(event, template) {
         $('.with-subnavbar').removeClass('toggle-profile');
@@ -84,7 +84,7 @@ Template.homePage.events({
         Meteor.call('updateStatus', this.courseName, true);
     },
 
-     "click .canHelp": function(event, template) {
+    "click .canHelp": function(event, template) {
         event.preventDefault();
         console.log(this.courseName, false)
         Meteor.call('updateStatus', this.courseName, false);

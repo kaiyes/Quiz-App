@@ -5,7 +5,9 @@ Template.notification.onCreated(function() {
 Template.notification.helpers({
 
   challangeNotifications: function(){
-    return Notification.find({ "defender._id": Meteor.userId()},
+    return Notification.find({
+      "defender._id": Meteor.userId(),
+      deleted: { $ne: Meteor.userId()},},
       { sort: { when: -1 }} );
   },
 
@@ -19,7 +21,7 @@ Template.notification.helpers({
         deleted: { $ne: Meteor.userId()},
         type: "post"},{
           sort: { when: -1 }
-        });        
+        });
       return notifications;
     }
   },
@@ -60,12 +62,12 @@ Template.notification.events({
 
   "click #acceptChallange": function(event, template){
    Meteor.call("updateOpponent", this.quizRoomId);
-   Meteor.call("removeChallangeNotification", this._id);
+   Meteor.call("defenderDeleted", this._id);
    Router.go(`/quiz/${this.quizRoomId}`);
  },
 
  "click #denyChallange": function(event, template){
-  Meteor.call("removeChallangeNotification", this._id);
+  Meteor.call("defenderDeleted", this._id);
 },
 
 "click #postNotification": function(event, template){

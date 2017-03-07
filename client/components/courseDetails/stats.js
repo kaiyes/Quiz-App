@@ -23,7 +23,6 @@ Template.stats.onRendered(function() {
       } else {
           Session.set('progressPercent', accuracy);
           Session.set('progressText', `${accuracy}`);
-          console.log(Session.get('progressPercent'));
       }
     });
   });

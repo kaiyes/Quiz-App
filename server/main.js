@@ -1,9 +1,9 @@
 
 
   Cloudinary.config({
-    cloud_name: 'jahanara',
-    api_key: '546448433889532',
-    api_secret: 'O2OXTDPOSmJZOZecrPYsxh9KVT0'
+    cloud_name: 'dwrbzqaol',
+    api_key: '249474546974792',
+    api_secret: 'X2R09A7OsUwEuVWv9gsLabFqr-w'
   });
 
 
