@@ -42,6 +42,7 @@ Template.quiz.onRendered(function(event, instance) {
             message: "There are no questions in this category",
             hold: 2000,
         });
+        Router.go('/challengeOpponent');
     } else {
         myApp.addNotification({
             title: 'Quiz',
