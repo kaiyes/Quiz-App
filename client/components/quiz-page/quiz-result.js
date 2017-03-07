@@ -3,7 +3,6 @@ Template.quizResult.onCreated(function() {
         var resultRoomId = Router.current().params._id;
         Meteor.subscribe("resultRoom", resultRoomId);
         var room = PlayedSessions.findOne({ _id: resultRoomId })
-        console.log(room);
 
         var topicName = room.questions[0].topic;
         Session.set('question', room.questions[0]);

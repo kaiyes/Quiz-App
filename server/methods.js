@@ -257,6 +257,20 @@ Meteor.methods({
       );
     },
 
+    defenderSeen:function(notificationId) {
+      Notification.update(
+        { _id: notificationId },
+        { $addToSet: { seen: this.userId }},
+      );
+    },
+
+    defenderDeleted:function(notificationId) {
+      Notification.update(
+        { _id: notificationId },
+        { $push: { deleted: this.userId }}
+      );
+    },
+
     delete:function(notificationData) {
       Notification.update(
         { _id: notificationData._id },
