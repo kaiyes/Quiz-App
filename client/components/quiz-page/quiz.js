@@ -55,61 +55,68 @@ Template.quiz.onRendered(function(event, instance) {
         $('.question-container').find('.active-state').removeClass('active-state');
         Session.set('question', 0);
         sixSecondTimer.start(function() {
+            $.unblockUI();
             myApp.addNotification({
                 title: 'Quiz',
                 message: "Question 2",
                 hold: 2000,
             });
+            $('.question-container').find('.active-state').removeClass('active-state');
+
             if (Meteor.user().profile.sound === true) {
                 Feedback.provide("somethingHappened");
-                $('.question-container').find('.active-state').removeClass('active-state');
             }
             Session.set('question', 1);
             sixSecondTimer.start(function() {
+                $.unblockUI();
                 myApp.addNotification({
                     title: 'Quiz',
                     message: "Question 3",
                     hold: 2000,
                 });
+                $('.question-container').find('.active-state').removeClass('active-state');
                 if (Meteor.user().profile.sound === true) {
                     Feedback.provide("somethingHappened");
-                    $('.question-container').find('.active-state').removeClass('active-state');
                 }
                 Session.set('question', 2);
                 sixSecondTimer.start(function() {
+                    $.unblockUI();
                     myApp.addNotification({
                         title: 'Quiz',
                         message: "Question 4",
                         hold: 2000,
                     });
+                    $('.question-container').find('.active-state').removeClass('active-state');
                     if (Meteor.user().profile.sound === true) {
                         Feedback.provide("somethingHappened");
-                        $('.question-container').find('.active-state').removeClass('active-state');
                     }
                     Session.set('question', 3);
                     sixSecondTimer.start(function() {
+                        $.unblockUI();
                         myApp.addNotification({
                             title: 'Quiz',
                             message: "Question 5",
                             hold: 2000,
                         });
+                        $('.question-container').find('.active-state').removeClass('active-state');
                         if (Meteor.user().profile.sound === true) {
                             Feedback.provide("somethingHappened");
-                            $('.question-container').find('.active-state').removeClass('active-state');
                         }
                         Session.set('question', 4);
                         sixSecondTimer.start(function() {
+                            $.unblockUI();
                             myApp.addNotification({
                                 title: 'Quiz',
                                 message: "Question 6",
                                 hold: 2000,
                             });
+                            $('.question-container').find('.active-state').removeClass('active-state');
                             if (Meteor.user().profile.sound === true) {
                                 Feedback.provide("somethingHappened");
-                                $('.question-container').find('.active-state').removeClass('active-state');
                             }
                             Session.set('question', 5);
                             sixSecondTimer.start(function() {
+                                $.unblockUI();
                                 let quizRoomId = Router.current().params._id;
                                 let resultRoom = PlayedSessions.findOne({ originalRoomId: quizRoomId });
                                 let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
@@ -219,6 +226,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
+        $.blockUI();
     },
     "click .eddy--sqr-buttons__plan": function(event, template) {
         event.preventDefault();
@@ -238,7 +246,8 @@ Template.quiz.events({
         }
         Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber)
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
-        sixSecondTimer.remove(time)
+        sixSecondTimer.remove(time);
+        $.blockUI();
     },
     "click .eddy--sqr-buttons__place": function(event, template) {
         event.preventDefault();
@@ -259,6 +268,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
+        $.blockUI();
     },
     "click .eddy--sqr-buttons__product": function(event, template) {
         event.preventDefault();
@@ -279,6 +289,7 @@ Template.quiz.events({
         Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
+        $.blockUI();
     },
 
     'click #surrender': function(event, template) {
