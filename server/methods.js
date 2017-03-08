@@ -544,6 +544,15 @@ Meteor.methods({
       Meteor.users.update({ _id: this.userId },
         {  $set:   helpStatus });
     },
+
+    sendEmail: function () {
+      Email.send({
+        to: 'kaiyes.ansary@gmail.com',
+        from: "eddy",
+        subject: "horiya",
+        text: "hey hey "
+      });
+    },
     // .................Admin Stuff.......................
 
     insertCourses: function (obj) {
@@ -585,6 +594,4 @@ Meteor.methods({
             explanation:obj.explanation,
           });
         },
-
-
 });

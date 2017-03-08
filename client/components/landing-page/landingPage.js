@@ -10,8 +10,8 @@ Template.landingPage.events({
   },
 });
 
-Template.landingPage.onCreated(function() {
-  if (Meteor.userId()) {
-      Router.go('/homePage');
-    }
-  });
+// Template.landingPage.onCreated(function() {
+//   if (Meteor.userId()) {
+//       Router.go('/homePage');
+//     }
+//   });
