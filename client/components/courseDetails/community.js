@@ -31,26 +31,26 @@ Template.community.helpers({
         });
     },
 
-    status(){
+    status() {
         let poster = Meteor.users.findOne({ _id: this.createdBy._id });
         let course = _.find(this.createdBy.profile.selectedCourses, ['courseName', this.topicName]);
-         if(course.wantHelp===false){
-           return 'zmdi zmdi-info-outline';
-         }else if(course.wantHelp===true){
-           return 'zmdi zmdi-help-outline'
-         } 
+        if (course.wantHelp === false) {
+            return 'zmdi zmdi-info-outline';
+        } else if (course.wantHelp === true) {
+            return 'zmdi zmdi-help-outline'
+        }
     },
-    
-    commenterStatus(){
-    let poster = Meteor.users.findOne({ _id: this.commenter._id });
-    let course = _.find(this.commenter.profile.selectedCourses, ['courseName', this.topic]);
-        if(course.wantHelp===false){
-        return 'zmdi zmdi-info-outline';
-        }else if(course.wantHelp===true){
-        return 'zmdi zmdi-help-outline'
-        } 
+
+    commenterStatus() {
+        let poster = Meteor.users.findOne({ _id: this.commenter._id });
+        let course = _.find(this.commenter.profile.selectedCourses, ['courseName', this.topic]);
+        if (course.wantHelp === false) {
+            return 'zmdi zmdi-info-outline';
+        } else if (course.wantHelp === true) {
+            return 'zmdi zmdi-help-outline'
+        }
     },
-    
+
 });
 Template.community.events({
     "submit  #post": function(event, template) {
@@ -82,14 +82,18 @@ Template.community.events({
             topic: topicName,
         };
         Meteor.call('insertComment', commentPayload);
-        $('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').hide();
-        $('#post-' + this._id).find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').show();
         $('[name="comment"]').val('');
+        let that = this;
+        _.delay(function() {
+            $('#post-' + that._id).find('.eddy-community--post--comment-section').show();
+        }, 1500);
+
     },
     "click #openCommenting": function(event, template) {
         event.preventDefault();
         // $('#post-' + this._id).find('.eddy-community--post--comments--reply, .eddy-community--post--comment-section').toggle();
         $('#post-' + this._id).find('.eddy-community--post--comments--reply').toggle();
+        $('#post-' + this._id).find('.eddy-community--post--comment-section').toggle();
     },
     "click #like": function(event, template) {
         event.preventDefault();
@@ -116,7 +120,7 @@ Template.community.events({
     "click .eddy-community--post--play-btn": function(event, template) {
         event.preventDefault();
         Session.set('playerInfo', this.createdBy);
-          _.delay(function() {
+        _.delay(function() {
             Router.go(`/hackChapter/${this.topicName}`);
         }, 100);
 
