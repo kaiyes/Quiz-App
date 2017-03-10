@@ -46,16 +46,20 @@
                                       </div>
                                   </div>
                               </li>
+
                               <li>
                                   <div class="item-content">
                                       <div class="item-inner">
-                                          <div class="item-title label eddy-profile__label">
-                                            Course Name
+                                          <div class="item-title label eddy-profile__label">Course Name
                                             <span class="imp">*</span>
                                           </div>
                                           <div class="item-input">
-                                              <input type="text" placeholder="Scienece / Art...."
-                                              id="courseName"  name="courseName" />
+                                              <select name="courses" id="courseName" required autocomplete="off">
+                                                   <option value="#"> Select Course </option>
+                                                  {{#each courses}}
+                                                    <option value="{{name}}">{{courseName}}</option>
+                                                  {{/each}}
+                                              </select>
                                           </div>
                                       </div>
                                   </div>
@@ -65,12 +69,16 @@
                                   <div class="item-content">
                                       <div class="item-inner">
                                           <div class="item-title label eddy-profile__label">
-                                            Chapter Name
+                                              Chapter Name
                                             <span class="imp">*</span>
                                           </div>
                                           <div class="item-input">
-                                              <input type="text" placeholder="Maths / Biology......"
-                                              id="chapterName"  name="chapterName" />
+                                              <select name="chapterName" id="chapterName" required autocomplete="off">
+                                                   <option value="#"> Select chapter </option>
+                                                  {{#each chapters}}
+                                                    <option value="{{name}}">{{this}}</option>
+                                                  {{/each}}
+                                              </select>
                                           </div>
                                       </div>
                                   </div>

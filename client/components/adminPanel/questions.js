@@ -88,7 +88,7 @@ Template.adminQuestions.events({
       }
 
       let obj = { question, courseName, chapterName, answer1, answer2, answer3, answer4, rightAnswer, explanation }
-      
+
 
       Meteor.call("insertQuestions", obj, function (err) {
         if (!err) {
@@ -140,4 +140,22 @@ Template.adminQuestions.events({
             },"slow");
     },
 
+    "change #courseName": function(event, template) {
+      let topic = document.querySelector("#courseName").value;
+      let chapters = Courses.findOne({ courseName: topic }).chapters;
+      Session.set('chapters', chapters);
+      console.log(Session.get('chapters'));
+
+    },
+
+
+});
+
+Template.adminQuestions.helpers({
+  courses: function(){
+    return Courses.find();
+  },
+  chapters: function () {
+    return Session.get('chapters');
+  }
 });
