@@ -26,8 +26,9 @@ Template.challengeOpponent.helpers({
 });
 
 Template.challengeOpponent.events({
-    "click .player": function(event, template) {
+    "click .item-content": function(event, template) {
         event.preventDefault();
+        event.stopPropagation();
         Session.set('playerInfo', this);
 
         let notificationData = {
@@ -45,6 +46,7 @@ Template.challengeOpponent.events({
 
     "click #playerIcon": function(event, template) {
         event.preventDefault();
+        event.stopPropagation();
         Session.set('player', this);
         Router.go('/player');
     },

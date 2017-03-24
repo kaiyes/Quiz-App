@@ -34,6 +34,7 @@
               <div class="list-block flex--1">
                 <ul class="eddy-challenge__list">
                   {{#each players}}
+                   {{#if profile.name}}
                     <li class="item-content padding-left-0 cur-pointer">
                       <div class="item-inner padding-h-20">
                         <div class="item-title">
@@ -62,6 +63,7 @@
                         </div>
                       </div>
                     </li>
+                    {{/if}}
                     {{/each}}
                 </ul>
               </div>
