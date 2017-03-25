@@ -4,6 +4,7 @@ var sixSecondTimer = new ReactiveCountdown(20);
 Template.quiz.onCreated(function() {
     let quizRoomId = Router.current().params._id;
     Session.set('routerId', quizRoomId);
+    Session.set('greenAnswer', null);
     Meteor.subscribe("quiz", quizRoomId);
     Meteor.subscribe("resultRoomByOriginalId", quizRoomId);
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
@@ -54,6 +55,7 @@ Template.quiz.onRendered(function(event, instance) {
         }
         $('.question-container').find('.active-state').removeClass('active-state');
         Session.set('question', 0);
+        Session.set('greenAnswer', null);
         sixSecondTimer.start(function() {
             $(".question-container").unblock();
             myApp.addNotification({
@@ -62,11 +64,11 @@ Template.quiz.onRendered(function(event, instance) {
                 hold: 2000,
             });
             $('.question-container').find('.active-state').removeClass('active-state');
-
             if (Meteor.user().profile.sound === true) {
                 Feedback.provide("somethingHappened");
             }
             Session.set('question', 1);
+            Session.set('greenAnswer', null);
             sixSecondTimer.start(function() {
                 $(".question-container").unblock();
                 myApp.addNotification({
@@ -79,6 +81,7 @@ Template.quiz.onRendered(function(event, instance) {
                     Feedback.provide("somethingHappened");
                 }
                 Session.set('question', 2);
+                Session.set('greenAnswer', null);
                 sixSecondTimer.start(function() {
                     $(".question-container").unblock();
                     myApp.addNotification({
@@ -91,6 +94,7 @@ Template.quiz.onRendered(function(event, instance) {
                         Feedback.provide("somethingHappened");
                     }
                     Session.set('question', 3);
+                    Session.set('greenAnswer', null);
                     sixSecondTimer.start(function() {
                         $(".question-container").unblock();
                         myApp.addNotification({
@@ -103,6 +107,7 @@ Template.quiz.onRendered(function(event, instance) {
                             Feedback.provide("somethingHappened");
                         }
                         Session.set('question', 4);
+                        Session.set('greenAnswer', null);
                         sixSecondTimer.start(function() {
                             $(".question-container").unblock();
                             myApp.addNotification({
@@ -115,6 +120,7 @@ Template.quiz.onRendered(function(event, instance) {
                                 Feedback.provide("somethingHappened");
                             }
                             Session.set('question', 5);
+                            Session.set('greenAnswer', null);
                             sixSecondTimer.start(function() {
                                 $(".question-container").unblock();
                                 let quizRoomId = Router.current().params._id;
@@ -181,6 +187,12 @@ Template.quiz.helpers({
         };
     },
 
+    rightAnswer: function(answer) {
+        if (this.rightAnswer === answer) {
+            return 'eddy--sqr-buttons__plan__primary'
+        }
+    },
+
 });
 
 
@@ -207,8 +219,9 @@ Template.quiz.events({
         $('.toggle-opacity').removeClass('opacity-20');
     },
 
-    "click .eddy--sqr-buttons__price": function(event, template) {
+    "click .button1": function(event, template) {
         event.preventDefault();
+        Session.set('greenAnswer', 'value');
         let quizRoomId = Router.current().params._id;
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
         let firstAnswer = this.firstAnswer;
@@ -228,8 +241,9 @@ Template.quiz.events({
         sixSecondTimer.remove(time);
          $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
-    "click .eddy--sqr-buttons__plan": function(event, template) {
+    "click .button2": function(event, template) {
         event.preventDefault();
+        Session.set('greenAnswer', 'value');
         let quizRoomId = Router.current().params._id
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId })
         let secondAnswer = this.secondAnswer
@@ -243,14 +257,15 @@ Template.quiz.events({
             if (Meteor.userId() === quizRoom.defender._id) {
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber)
             }
-        }
+        };
         Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber)
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
         $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
-    "click .eddy--sqr-buttons__place": function(event, template) {
+    "click .button3": function(event, template) {
         event.preventDefault();
+        Session.set('greenAnswer', 'value');
         let quizRoomId = Router.current().params._id;
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
         let thirdAnswer = this.thirdAnswer;
@@ -265,13 +280,15 @@ Template.quiz.events({
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
         };
+
         Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
         $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
     },
-    "click .eddy--sqr-buttons__product": function(event, template) {
+    "click .button4": function(event, template) {
         event.preventDefault();
+        Session.set('greenAnswer', 'value');
         let quizRoomId = Router.current().params._id;
         let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
         let fourthAnswer = this.fourthAnswer;
