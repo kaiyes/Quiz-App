@@ -8,6 +8,7 @@ Template.community.onCreated(function () {
     Meteor.subscribe("posts", topicName);
 })
 Template.community.onRendered(function () {
+    console.log("community view render called");
     $(document).on("focus", ".eddy-community--post-area--input__reply", function () {
         var outerHeight = 0;
         $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().prevAll('.eddy-community--post').each(function () {
@@ -18,8 +19,10 @@ Template.community.onRendered(function () {
             scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
         }, "slow");
     });
+    
     var jumpto = Session.get('jumpto');    
     if (!_.isUndefined(jumpto) && !_.isEmpty(jumpto)) {
+        $("#post-" + jumpto).removeClass("highlighted");
         /**
          * jump to the element with the post id. 
          */
@@ -28,12 +31,12 @@ Template.community.onRendered(function () {
             $('.page-content:last').animate({
                 scrollTop: $("#post-" + jumpto).offset().top - 100
             }, 200);
-        }, 500);
+        }, 100);
 
         _.delay(function () {
             $(".highlighted").removeClass("highlighted");
             Session.delete('jumpto');
-        }, 3000);            
+        }, 2000);            
     }
 });
 Template.community.helpers({

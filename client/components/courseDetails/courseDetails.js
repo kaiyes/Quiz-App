@@ -1,5 +1,4 @@
-Template.courseDetails.onRendered(function() {
-
+Template.courseDetails.onRendered(function() {    
     if (!_.isEmpty(window.location.hash) && window.location.hash !== $(".subnavbar .active").attr("href")) {
         myApp.showTab(window.location.hash);
     }

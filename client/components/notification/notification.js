@@ -89,6 +89,16 @@ Template.notification.helpers({
 
 });
 
+function altRoute() {
+  _.delay(function () {
+    if (Router.current().url.indexOf("courseDetailsJump") >= 0) {
+      Router.go('/courseDetails#community');
+    } else {
+      Router.go('/courseDetailsJump/' + moment.now() + '#community');
+    }
+  }, 100);
+}
+
 Template.notification.events({
 
   "click #acceptChallange": function (event, template) {
@@ -105,40 +115,28 @@ Template.notification.events({
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #likeNotification": function (event, template) {
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #likesOnComment": function (event, template) {
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #commentNotification": function (event, template) {
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #player": function (event, template) {
@@ -155,10 +153,7 @@ Template.notification.events({
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #playerAsCommenter": function (event, template) {
@@ -175,20 +170,14 @@ Template.notification.events({
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community');
-    }, 100);
+    altRoute();
   },
 
   "click #playerAsPoster": function (event, template) {
     event.preventDefault();
     Session.set('jumpto', this.postId);
     Session.set('topicName', this.topic);
-
-    _.delay(function () {
-      Router.go('/courseDetails#community/'+moment.now());
-    }, 100);
+    altRoute();
   },
 
   "click #removePostNotification": function (event, template) {
