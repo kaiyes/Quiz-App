@@ -1,32 +1,50 @@
 Template.chart.onRendered(function () {
 
-  this.autorun(function(){
+  this.autorun(function () {
     let ctx = document.getElementById("myChart").getContext("2d");
     let courseName = Session.get('topicName');
-    let playerCourses =  Meteor.user().profile.selectedCourses;
+    let playerCourses = Meteor.user().profile.selectedCourses;
     let course = _.find(playerCourses, ['courseName', courseName]);
     let label = Object.keys(course.accuracy);
 
-    let data = {
-      labels: label,
-      datasets: [{
-            label: 'My First dataset',
-            fillColor: "#51c8ac",
-            strokeColor: "rgba(223, 219, 219, 1)",
-            pointColor: "rgba(105, 98, 98, 1)",
-            pointStrokeColor: "#fff",
-            pointHighlightFill: "#e4ecc5",
-            pointHighlightStroke: "rgba(220,220,220,1)",
+    Tracker.afterFlush(function () {      
+      var myLineChart = new Chart(ctx, {
+        type: 'line',
+        options: {
+          pointRadius:0,
+          responsive : true,
+          elements: {
+            point : {
+              radius : 0,
+              borderWidth: 10
+            },
+            line: {
+              tension: .02
+            }
+          },
+          legend: {
+            display: false
+          },
+          scales: {
+            yAxes: [{
+              display: false
+            }],
+            xAxes: [{
+              display: false
+            }]
+          }
+        },
+        data: {
+          labels: course.accuracy,
+          datasets: [{
+            pointRadius: 0,
+            borderWidth: 0,
+            borderColor: '#54c5ac',
             data: course.accuracy,
-          }],
-    };
-
-    var options = {
-      scaleShowLabels: false,
-    };
-
-    Tracker.afterFlush(function(){
-      let myLineChart = new Chart(ctx).Line(data, options);
+            backgroundColor: "rgba(255,255,255,1)"
+          }]
+        }
+      });      
     });
 
 
