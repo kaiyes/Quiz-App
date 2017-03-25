@@ -30,6 +30,25 @@ Meteor.methods({
       );
     },
 
+    addRanking: function(){
+        let objArray = Meteor.user().profile.selectedCourses;
+        let topicsChosen = _.map(objArray,'courseName');
+
+        let userData = {
+          user: Meteor.user(),
+          points: 0,
+          userId: this.userId,
+          name: Meteor.user().profile.name,
+          image:Meteor.user().profile.image,
+        };
+
+       topicsChosen.forEach(function(q){
+         Courses.update (
+           { courseName: q },
+            { $addToSet: { ranking: userData  }});
+       });
+    },
+
     updateCourseAdd:function (courseData) {
       Meteor.users.update(
         { _id: this.userId },
@@ -40,6 +59,7 @@ Meteor.methods({
         points: 0,
         userId: this.userId,
         name: Meteor.user().profile.name,
+        image:Meteor.user().profile.image,
       };
        Courses.update (
          { courseName: courseData.courseName },
@@ -63,23 +83,19 @@ Meteor.methods({
        );
     },
 
-    addRanking: function(){
+    updateRanking: function(){
         let objArray = Meteor.user().profile.selectedCourses;
         let topicsChosen = _.map(objArray,'courseName');
 
-        let userData = {
-          user: Meteor.user(),
-          points: 0,
-          userId: this.userId,
-          name: Meteor.user().profile.name,
-        };
-
        topicsChosen.forEach(function(q){
          Courses.update (
-           { courseName: q },
-            { $addToSet: { ranking: userData  }});
+           { courseName: q, 'ranking.image': all },
+            { $set: { 'ranking.$.image': Meteor.user().profile.image }}
+          );
        });
     },
+
+
 
 
     addPhoto:function(url, id){

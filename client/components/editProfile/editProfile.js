@@ -1,5 +1,5 @@
 Template.editProfile.onRendered(function() {
-    let self = this;    
+    let self = this;
     self.autorun(function() {
         let user = Meteor.users.find({}).fetch();
         Tracker.afterFlush(function() {
@@ -36,7 +36,7 @@ Template.editProfile.helpers({
     countries: function() {
         return SuxezCountries.find({});
     },
-    
+
     birthYears : function(){
         return _.range(1980,moment().format("YYYY")-10);
     },
@@ -54,11 +54,11 @@ Template.editProfile.helpers({
 
 Template.editProfile.helpers({
     getAge(age) {
-        return parseInt(moment(Meteor.user().profile.age, "YYYY-MM-DD").format("YYYY"),10);        
+        return parseInt(moment(Meteor.user().profile.age, "YYYY-MM-DD").format("YYYY"),10);
     },
     getYear(age) {
-        if (age) {            
-            return parseInt(moment(age, "YYYY-MM-DD").format("YYYY"),10);            
+        if (age) {
+            return parseInt(moment(age, "YYYY-MM-DD").format("YYYY"),10);
         }
         return '';
     },
@@ -99,6 +99,7 @@ Template.editProfile.events({
 
             Meteor.call("addToProfile", profile, function(err) {
                 if (!err) {
+                  Meteor.call('updateRanking');
                     myApp.addNotification({
                       title: 'Profile',
                       message: "profile updated successfully",

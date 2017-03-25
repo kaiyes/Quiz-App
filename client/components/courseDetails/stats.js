@@ -68,8 +68,13 @@ Template.stats.helpers({
         let newRanking=_.map(reverseRanking,function(v,usersIndex){
           v.index=usersIndex; return v
         });
-        let restOftheUsers = _.take(newRanking.slice(usersIndex),1);        
+        let restOftheUsers = _.take(newRanking.slice(usersIndex),1);
         return restOftheUsers;
+    },
+
+    userPhoto: function(userId) {
+      console.log(Meteor.users.findOne({ _id: userId }).profile.image);
+      return Meteor.users.findOne({ _id: userId }).profile.image;
     },
 
     indexOfUser: function() {
