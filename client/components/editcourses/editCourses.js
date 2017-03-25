@@ -89,7 +89,7 @@ Template.editCourses.events({
         if (Session.get(`${this.courseName}`) === true) {
             Session.set(`${this.courseName}`, false)
 
-            Meteor.call('removeCourse', courseData, function(error, result) {
+            Meteor.call('updateCourseRemove', courseData, function(error, result) {
                 if (error) {
                     myApp.addNotification({
                         title: 'Course',
@@ -106,7 +106,7 @@ Template.editCourses.events({
             })
         } else {
             Session.set(`${this.courseName}`, true);
-            Meteor.call('addCourse', courseData, function(error, result) {
+            Meteor.call('updateCourseAdd', courseData, function(error, result) {
                 if (error) {
                     myApp.addNotification({
                         title: 'Course',

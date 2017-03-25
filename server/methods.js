@@ -30,6 +30,39 @@ Meteor.methods({
       );
     },
 
+    updateCourseAdd:function (courseData) {
+      Meteor.users.update(
+        { _id: this.userId },
+        { $addToSet: { "profile.selectedCourses": courseData  }}
+      );
+      let userData = {
+        user: Meteor.user(),
+        points: 0,
+        userId: this.userId,
+        name: Meteor.user().profile.name,
+      };
+       Courses.update (
+         { courseName: courseData.courseName },
+          { $addToSet: { ranking: userData }
+        });
+    },
+
+    updateCourseRemove:function (courseData) {
+      let courses = Meteor.user().profile.selectedCourses;
+      let courseToBeRemoved = _.find(courses, ['courseName', courseData.courseName]);
+      Meteor.users.update(
+        { _id: this.userId },
+        { $pull: { "profile.selectedCourses": courseToBeRemoved  }}
+      );
+
+      let rankingArray = Courses.findOne({ courseName: courseData.courseName }).ranking;
+      let rankingToBeRemoved = _.find(rankingArray, ['userId', this.userId])
+      Courses.update (
+        { courseName: courseData.courseName },
+        { $pull: { ranking: rankingToBeRemoved  }}
+       );
+    },
+
     addRanking: function(){
         let objArray = Meteor.user().profile.selectedCourses;
         let topicsChosen = _.map(objArray,'courseName');
@@ -538,7 +571,7 @@ Meteor.methods({
       });
     },
 
-    updateStatus:function(topicName,helpInfo){      
+    updateStatus:function(topicName,helpInfo){
       let userCourseArray = Meteor.user().profile.selectedCourses;
       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topicName });
       let helpStatus = {};
