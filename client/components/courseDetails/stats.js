@@ -36,7 +36,7 @@ Template.stats.helpers({
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let ranking = _.sortBy(rankingArray, ['points']);
         let reverseRanking = _.reverse(ranking);
-        let firstFive = _.take(reverseRanking, 5);
+        let firstFive = _.take(reverseRanking, 9);
         let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
         if (ifExists===undefined) {
           return firstFive;
@@ -50,7 +50,7 @@ Template.stats.helpers({
       let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
       let ranking = _.sortBy(rankingArray, ['points']);
       let reverseRanking = _.reverse(ranking);
-      let firstFive = _.take(reverseRanking, 5);
+      let firstFive = _.take(reverseRanking, 10);
       let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
       if (ifExists===undefined) {
         return false;
@@ -68,7 +68,7 @@ Template.stats.helpers({
         let newRanking=_.map(reverseRanking,function(v,usersIndex){
           v.index=usersIndex; return v
         });
-        let restOftheUsers = newRanking.slice(usersIndex);
+        let restOftheUsers = _.take(newRanking.slice(usersIndex),1);        
         return restOftheUsers;
     },
 
