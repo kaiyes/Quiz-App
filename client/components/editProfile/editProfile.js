@@ -1,12 +1,5 @@
 Template.editProfile.onRendered(function() {
-    let self = this;
-
-    var calendarDateFormat = myApp.calendar({
-        input: '#ks-calendar-date-format',
-        closeOnSelect: true,
-        dateFormat: 'MM dd, yyyy'
-    });
-
+    let self = this;    
     self.autorun(function() {
         let user = Meteor.users.find({}).fetch();
         Tracker.afterFlush(function() {
@@ -43,6 +36,10 @@ Template.editProfile.helpers({
     countries: function() {
         return SuxezCountries.find({});
     },
+    
+    birthYears : function(){
+        return _.range(1980,moment().format("YYYY")-10);
+    },
 
     nickNames: function() {
         return NickNames.find()
@@ -57,8 +54,11 @@ Template.editProfile.helpers({
 
 Template.editProfile.helpers({
     getAge(age) {
-        if (age) {
-            return moment(age, "YYYY-MM-DD").format("MMMM DD, YYYY");
+        return parseInt(moment(Meteor.user().profile.age, "YYYY-MM-DD").format("YYYY"),10);        
+    },
+    getYear(age) {
+        if (age) {            
+            return parseInt(moment(age, "YYYY-MM-DD").format("YYYY"),10);            
         }
         return '';
     },
@@ -79,7 +79,7 @@ Template.editProfile.events({
             let university = document.querySelector("#university").value;
             let programme = document.querySelector("#programme").value;
             let nickname = document.querySelector("#nickname").value;
-            let age = $("#ks-calendar-date-format").val();
+            let age =  $("#birthYear").val()+"-01-01";     //$("#ks-calendar-date-format").val();
             let country = document.querySelector("#country").value.toLowerCase();
 
             let profile = {
