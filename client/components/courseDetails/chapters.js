@@ -50,6 +50,12 @@ Template.hackChapter.helpers({
 });
 
 Template.hackChapter.events({
+    "click .back-link" : function(){
+         Session.set('player', Session.get('playerInfo'));
+        _.delay(function () {
+            history.back();
+        }, 100);
+    },
     "click #list": function(event, template) {        
         event.preventDefault();
 

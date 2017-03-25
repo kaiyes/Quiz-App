@@ -538,7 +538,7 @@ Meteor.methods({
       });
     },
 
-    updateStatus:function(topicName,helpInfo){
+    updateStatus:function(topicName,helpInfo){      
       let userCourseArray = Meteor.user().profile.selectedCourses;
       let thisCoursesIndex = _.findIndex(userCourseArray, { 'courseName': topicName });
       let helpStatus = {};

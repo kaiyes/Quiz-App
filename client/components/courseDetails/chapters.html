@@ -22,7 +22,16 @@
 
 <template name="hackChapter">  
   <div class="eddy-chapters text-center">
-    <ul>
+        <div class="navbar eddy-navbar">
+        <div class="navbar-inner padding-h-0">
+            <div class="left">
+                <a href="javascript:;" class="link icon-only back-link">
+                    <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
+                </a>
+            </div>                       
+        </div>        
+      </div>
+    <ul class="margin-top-0">
       {{#each  $mapped chapters}}
       <li id="list" class="eddy-chapters{{hasPlayed}} cur-pointer">
         <a class="item-link display-block">

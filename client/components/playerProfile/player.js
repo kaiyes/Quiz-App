@@ -47,9 +47,10 @@ Template.player.events({
     "click .course": function(event, instance) {
         event.preventDefault();
         let player = Session.get('player');
+        let that = this;
         Session.set('playerInfo', player);
           _.delay(function() {
-            Router.go(`/hackChapter/${this.courseName}`);
+            Router.go('/hackChapter/'+that.courseName);
         }, 100);
     },
 
