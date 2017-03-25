@@ -31,8 +31,8 @@
                 <div class="card margin-h-0">
                     <div class="card-content">
                         <div class="card-content-inner">
-                          <div class="flex-direction--row flex-justify-content--space-between margin-top-60">
-                            <div class="text-center">
+                          <div class="margin-top-60 row">                            
+                            <div class="text-center col-40">
                               <img class="make-round eddy-quiz-result--player-photo{{challengerDull}}" width="85" height="85"
                               src="{{#if $neq challanger.profile.image " "}}
                                     {{challanger.profile.image}}
@@ -44,7 +44,8 @@
                                 {{challanger.profile.name}}
                               </p>
                             </div>
-                            <div class="text-center">
+                            <div class="col-20"></div>
+                            <div class="text-center col-40">
                               <img class="make-round eddy-quiz-result--player-photo{{defenderDull}}" width="85" height="85"
                               src="{{#if $neq defender.profile.image " "}}
                                   {{defender.profile.image}}
@@ -57,29 +58,38 @@
                               </p>
                             </div>
                           </div>
-                          <div class="flex-direction--row flex-justify-content--space-between padding-h-25 padding-bottom-15">
-                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                          <div class="row">
+                            <div class="col-40">
+                            <h3 class="margin-0 eddy-quiz-result__player-score text-center">
                               {{challangersPoint}}
                             </h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                            </div>
+                            <div class="col-20">
+
+                            <h3 class="margin-0 eddy-quiz-result__player-score text-center">
                               :
                             </h3>
-                            <h3 class="margin-0 eddy-quiz-result__player-score">
+                            </div>
+                            <div class="col-40">
+
+                            <h3 class="margin-0 eddy-quiz-result__player-score text-center">
                               {{defendersPoint}}
                             </h3>
+                            </div>
                           </div>
                         </div>
                     </div>
                 </div>
                 <div class="card margin-h-0">
                     <div class="card-content">
-                        <div class="card-content-inner padding-h-35 padding-bottom-50">
-                            <div class="flex-direction--row flex-justify-content--space-between">
-                              <div class="text-center">
+                        <div class="card-content-inner padding-bottom-50">
+                            <div class="row">
+                              <div class="text-center col-40">
                                 <h4 class="margin-0 padding-bottom-10 eddy-stats__title">ACCURACY</h4>
                                   {{> circularProgress containerId="container2" sessionValueKey="progress"  sessionTextKey="progressTx" canvasSize=85 outerPadding=0 spacer=0 outerDivClass='#51c8ac'}}
                               </div>
-                              <div class="text-center">
+                              <div class="col-20"></div>
+                              <div class="text-center col-40">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">QUESTIONS</h4>
                                 <h3 class="margin-0 eddy-stats__points">
                                   {{#if $eq currentUser._id challanger._id}}
@@ -92,8 +102,8 @@
                                 </h3>
                               </div>
                             </div>
-                            <div class="flex-direction--row flex-justify-content--space-between padding-top-20">
-                              <div class="text-center">
+                            <div class="row padding-top-20">
+                              <div class="text-center col-40">
                                 <h4 class="margin-0 padding-bottom-15 eddy-stats__title">NEW POINTS</h4>
                                 <h3 class="margin-0 eddy-stats__points">
                                   {{#with indexOfTopic}}
@@ -101,7 +111,8 @@
                                   {{/with}}
                                 </h3>
                               </div>
-                              <div class="eddy-quiz-result--rank text-center">
+                              <div class="col-20"></div>
+                              <div class="eddy-quiz-result--rank text-center col-40">
                                 <h4 class="margin-0 eddy-stats__title">NEW RANK</h4>
                                 <div class="eddy-rank margin-top-10">
                                   <span> {{ranking}} </span>
@@ -169,23 +180,19 @@
                           <div class="padding-h-5 padding-bottom-20">
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                            {{usersAnswer this.firstAnswer}} {{rightAnswer this.firstAnswer}}">
-                            {{this.firstAnswer}}
-                            <i class="{{returnEmoji this.firstAnswer}}"></i>
+                            {{this.firstAnswer}}                            
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                             {{usersAnswer this.secondAnswer}} {{rightAnswer this.secondAnswer}}">
-                            {{this.secondAnswer}}
-                             <i class="{{returnEmoji this.secondAnswer}}"></i>
+                            {{this.secondAnswer}}                             
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                              {{usersAnswer this.thirdAnswer}} {{rightAnswer this.thirdAnswer}}">
-                             {{this.thirdAnswer}}
-                            <i class="{{returnEmoji this.thirdAnswer}}"></i>
+                             {{this.thirdAnswer}}                            
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                              {{usersAnswer this.fourthAnswer}} {{rightAnswer this.fourthAnswer}}">
-                            {{this.fourthAnswer}}
-                             <i class="{{returnEmoji this.fourthAnswer}}"></i>
+                            {{this.fourthAnswer}}                             
                             </a>
                           </div>
                         </div>
