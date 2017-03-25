@@ -64,8 +64,9 @@ Meteor.methods({
     },
 
     insertPost: function(payload){
-      Posts.insert(payload);
+      let post=Posts.insert(payload);
         Notification.insert({
+          postId : post,
           topic: payload.topicName,
           when: new Date(),
           type: "post",
@@ -92,6 +93,7 @@ Meteor.methods({
          { $addToSet: { comments: commentPayload }});
 
        Notification.insert({
+         postId : commentPayload.postId,
          postCreator: commentPayload.postCreator,
          topic: commentPayload.topic,
          when: new Date(),

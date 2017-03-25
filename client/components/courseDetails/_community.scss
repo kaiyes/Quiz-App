@@ -90,6 +90,12 @@
             font-size: 1.6rem;
         }
     }
+    &--post.highlighted{
+        .card{
+            background-color: #ffee95;            
+            transition: 2s linear all;
+        }
+    }
 }
 
 .chapter-popup {

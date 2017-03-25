@@ -1,58 +1,89 @@
-Template.notification.onCreated(function() {
+Template.notification.onCreated(function () {
   Meteor.subscribe("notification");
 })
 
 Template.notification.helpers({
 
-  challangeNotifications: function(){
+  challangeNotifications: function () {
     return Notification.find({
       "defender._id": Meteor.userId(),
-      deleted: { $ne: Meteor.userId()},},
-      { sort: { when: -1 }} );
+      deleted: {
+        $ne: Meteor.userId()
+      },
+    }, {
+      sort: {
+        when: -1
+      }
+    });
   },
 
-  postNotifications: function(){
+  postNotifications: function () {
     if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
-      let topicsChosen = _.map(objArray,'courseName');
+      let topicsChosen = _.map(objArray, 'courseName');
 
       let notifications = Notification.find({
-        topic: { $in: topicsChosen },
-        deleted: { $ne: Meteor.userId()},
-        type: "post"},{
-          sort: { when: -1 }
-        });
+        topic: {
+          $in: topicsChosen
+        },
+        deleted: {
+          $ne: Meteor.userId()
+        },
+        type: "post"
+      }, {
+        sort: {
+          when: -1
+        }
+      });
       return notifications;
     }
   },
 
-  likeNotifications: function(){
+  likeNotifications: function () {
     if (Meteor.user()) {
       return Notification.find({
         type: "like",
-        deleted: { $ne: Meteor.userId()},
+        deleted: {
+          $ne: Meteor.userId()
+        },
         postCreator: Meteor.user().profile.name
-      }, { sort: { when: -1 }});
+      }, {
+        sort: {
+          when: -1
+        }
+      });
     }
   },
 
-  likesOnComment: function(){
+  likesOnComment: function () {
     if (Meteor.user()) {
       return Notification.find({
         type: "commentLike",
-        deleted: { $ne: Meteor.userId()},
+        deleted: {
+          $ne: Meteor.userId()
+        },
         commentCreator: Meteor.user().profile.name
-      }, { sort: { when: -1 }});
+      }, {
+        sort: {
+          when: -1
+        }
+      });
     }
   },
 
-  commentNotification: function(){
+  commentNotification: function () {
     if (Meteor.user()) {
       return Notification.find({
         type: "comment",
-        deleted: { $ne: Meteor.userId()},
+        deleted: {
+          $ne: Meteor.userId()
+        },
         postCreator: Meteor.user(),
-      }, { sort: { when: -1 }});
+      }, {
+        sort: {
+          when: -1
+        }
+      });
     }
   },
 
@@ -60,85 +91,124 @@ Template.notification.helpers({
 
 Template.notification.events({
 
-  "click #acceptChallange": function(event, template){
-   Meteor.call("updateOpponent", this.quizRoomId);
-   Meteor.call("defenderDeleted", this._id);
-   Router.go(`/quiz/${this.quizRoomId}`);
- },
+  "click #acceptChallange": function (event, template) {
+    Meteor.call("updateOpponent", this.quizRoomId);
+    Meteor.call("defenderDeleted", this._id);
+    Router.go(`/quiz/${this.quizRoomId}`);
+  },
 
- "click #denyChallange": function(event, template){
-  Meteor.call("defenderDeleted", this._id);
-},
+  "click #denyChallange": function (event, template) {
+    Meteor.call("defenderDeleted", this._id);
+  },
 
-"click #postNotification": function(event, template){
-  console.log(event);
-  Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails#community'); },100);
-},
+  "click #postNotification": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #likeNotification": function(event, template){
-  Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails#community'); },100);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #likesOnComment": function(event, template){
-  Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails#community'); },100);
-},
+  "click #likeNotification": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #commentNotification": function(event, template){
-  Session.set('topicName',this.topic);
-  _.delay(function(){ Router.go('/courseDetails#community'); },100);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #player": function(event, template) {
- event.preventDefault();
- Session.set('player', this.challanger);
- _.delay(function(){ Router.go('/player'); },100);
-},
+  "click #likesOnComment": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #playerAsLiker": function(event, template) {
-  event.preventDefault();
-  Session.set('player', this.liker);
-  _.delay(function(){ Router.go('/player'); },100);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #playerAsCommenter": function(event, template) {
-  event.preventDefault();
-  Session.set('player', this.commenter);
-  _.delay(function(){ Router.go('/player'); },100);
-},
+  "click #commentNotification": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #playerAsPostLiker": function(event, template) {
- event.preventDefault();
- Session.set('player', this.liker);
- _.delay(function(){ Router.go('/player'); },100);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #playerAsPoster": function(event, template) {
-  event.preventDefault();
-  Session.set('player', this.createdBy);
-  _.delay(function(){ Router.go('/player'); },100);
-},
+  "click #player": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #removePostNotification": function(event, template) {
-  event.preventDefault();
-  Meteor.call("delete", this);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #removeLikeNotification": function(event, template) {
-  event.preventDefault();
-  Meteor.call("delete", this);
-},
+  "click #playerAsLiker": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
 
-"click #removeCommentsLikeNotification": function(event, template) {
-  event.preventDefault();
-  Meteor.call("delete", this);
-},
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
 
-"click #removeCommentsNotification": function(event, template) {
- event.preventDefault();
- Meteor.call("delete", this);
-},
+  "click #playerAsCommenter": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
+
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
+
+  "click #playerAsPostLiker": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
+
+    _.delay(function () {
+      Router.go('/courseDetails#community');
+    }, 100);
+  },
+
+  "click #playerAsPoster": function (event, template) {
+    event.preventDefault();
+    Session.set('jumpto', this.postId);
+    Session.set('topicName', this.topic);
+
+    _.delay(function () {
+      Router.go('/courseDetails#community/'+moment.now());
+    }, 100);
+  },
+
+  "click #removePostNotification": function (event, template) {
+    event.preventDefault();
+    Meteor.call("delete", this);
+  },
+
+  "click #removeLikeNotification": function (event, template) {
+    event.preventDefault();
+    Meteor.call("delete", this);
+  },
+
+  "click #removeCommentsLikeNotification": function (event, template) {
+    event.preventDefault();
+    Meteor.call("delete", this);
+  },
+
+  "click #removeCommentsNotification": function (event, template) {
+    event.preventDefault();
+    Meteor.call("delete", this);
+  },
 
 });
