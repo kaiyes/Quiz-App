@@ -56,6 +56,10 @@ Template.quiz.onRendered(function(event, instance) {
         $('.question-container').find('.active-state').removeClass('active-state');
         Session.set('question', 0);
         Session.set('greenAnswer', null);
+        Session.set('firstAnswer', null);
+        Session.set('secondAnswer', null);
+        Session.set('thirdAnswer', null);
+        Session.set('fourthAnswer', null);
         sixSecondTimer.start(function() {
             $(".question-container").unblock();
             myApp.addNotification({
@@ -69,6 +73,10 @@ Template.quiz.onRendered(function(event, instance) {
             }
             Session.set('question', 1);
             Session.set('greenAnswer', null);
+            Session.set('firstAnswer', null);
+            Session.set('secondAnswer', null);
+            Session.set('thirdAnswer', null);
+            Session.set('fourthAnswer', null);
             sixSecondTimer.start(function() {
                 $(".question-container").unblock();
                 myApp.addNotification({
@@ -82,6 +90,10 @@ Template.quiz.onRendered(function(event, instance) {
                 }
                 Session.set('question', 2);
                 Session.set('greenAnswer', null);
+                Session.set('firstAnswer', null);
+                Session.set('secondAnswer', null);
+                Session.set('thirdAnswer', null);
+                Session.set('fourthAnswer', null);
                 sixSecondTimer.start(function() {
                     $(".question-container").unblock();
                     myApp.addNotification({
@@ -95,6 +107,10 @@ Template.quiz.onRendered(function(event, instance) {
                     }
                     Session.set('question', 3);
                     Session.set('greenAnswer', null);
+                    Session.set('firstAnswer', null);
+                    Session.set('secondAnswer', null);
+                    Session.set('thirdAnswer', null);
+                    Session.set('fourthAnswer', null);
                     sixSecondTimer.start(function() {
                         $(".question-container").unblock();
                         myApp.addNotification({
@@ -108,6 +124,10 @@ Template.quiz.onRendered(function(event, instance) {
                         }
                         Session.set('question', 4);
                         Session.set('greenAnswer', null);
+                        Session.set('firstAnswer', null);
+                        Session.set('secondAnswer', null);
+                        Session.set('thirdAnswer', null);
+                        Session.set('fourthAnswer', null);
                         sixSecondTimer.start(function() {
                             $(".question-container").unblock();
                             myApp.addNotification({
@@ -121,6 +141,10 @@ Template.quiz.onRendered(function(event, instance) {
                             }
                             Session.set('question', 5);
                             Session.set('greenAnswer', null);
+                            Session.set('firstAnswer', null);
+                            Session.set('secondAnswer', null);
+                            Session.set('thirdAnswer', null);
+                            Session.set('fourthAnswer', null);
                             sixSecondTimer.start(function() {
                                 $(".question-container").unblock();
                                 let quizRoomId = Router.current().params._id;
@@ -192,7 +216,6 @@ Template.quiz.helpers({
             return 'eddy--sqr-buttons__plan__primary'
         }
     },
-
 });
 
 
@@ -229,12 +252,15 @@ Template.quiz.events({
         var time = sixSecondTimer.get();         
         var questionNumber = Session.get('question');               
         if (firstAnswer === rightAnswer) {
+          Session.set('firstAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
             if (Meteor.userId() === quizRoom.defender._id) {
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
+        } else {
+          Session.set('firstAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
@@ -251,12 +277,15 @@ Template.quiz.events({
         var time = sixSecondTimer.get() 
         var questionNumber = Session.get('question');
         if (secondAnswer === rightAnswer) {
+           Session.set('secondAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber)
             }
             if (Meteor.userId() === quizRoom.defender._id) {
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber)
             }
+        } else {
+          Session.set('secondAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber)
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
@@ -273,12 +302,15 @@ Template.quiz.events({
         var time = sixSecondTimer.get(); 
         var questionNumber = Session.get('question');
         if (thirdAnswer === rightAnswer) {
+           Session.set('thirdAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
             if (Meteor.userId() === quizRoom.defender._id) {
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
+        } else {
+          Session.set('thirdAnswer', 'eddy--sqr-buttons__product__primary');
         };
 
         Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
@@ -296,12 +328,15 @@ Template.quiz.events({
         var time = sixSecondTimer.get(); 
         var questionNumber = Session.get('question');
         if (fourthAnswer === rightAnswer) {
+         Session.set('fourthAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
             if (Meteor.userId() === quizRoom.defender._id) {
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
+        } else {
+          Session.set('fourthAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");

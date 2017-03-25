@@ -77,6 +77,7 @@
 								class="button1 eddy--sqr-buttons margin-top-15
 								{{#if $.Session.get 'greenAnswer'}}
 									{{rightAnswer firstAnswer}}
+									{{$.Session.get 'firstAnswer'}}
 								{{/if}}">
                         {{firstAnswer}}
                       </a>
@@ -84,6 +85,7 @@
 								class="button2 eddy--sqr-buttons margin-top-15
 								{{#if $.Session.get 'greenAnswer'}}
 									{{rightAnswer secondAnswer}}
+									{{$.Session.get 'secondAnswer'}}
 								{{/if}}">
                         {{secondAnswer}}
                       </a>
@@ -91,6 +93,7 @@
 								class="button3 eddy--sqr-buttons margin-top-15
 								{{#if $.Session.get 'greenAnswer'}}
 								 {{rightAnswer thirdAnswer}}
+								 {{$.Session.get 'thirdAnswer'}}
 								{{/if}}">
                     {{thirdAnswer}}
                   </a>
@@ -98,6 +101,7 @@
 								class="button4 eddy--sqr-buttons margin-top-15
 								{{#if $.Session.get 'greenAnswer'}}
 								 {{rightAnswer fourthAnswer}}
+								 {{$.Session.get 'fourthAnswer'}}
 								{{/if}}">
                     {{fourthAnswer}}
                   </a>
