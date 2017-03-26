@@ -88,10 +88,19 @@ Meteor.methods({
         let topicsChosen = _.map(objArray,'courseName');
 
        topicsChosen.forEach(function(q){
+         let rankingArray = Courses.findOne({ courseName: q }).ranking;
+         let rankObject = _.find(rankingArray, ['userId', Meteor.userId()]);
+         
          Courses.update (
-           { courseName: q, 'ranking.image': all },
-            { $set: { 'ranking.$.image': Meteor.user().profile.image }}
+           { courseName: q },
+            { $pull: { ranking: rankObject  }}
           );
+
+          rankObject.image = Meteor.user().profile.image;
+          Courses.update (
+            { courseName: q },
+             { $addToSet: { ranking: rankObject  }}
+           );
        });
     },
 
