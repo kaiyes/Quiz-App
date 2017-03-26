@@ -48,6 +48,9 @@
                             alt="Player Photo" />
                             <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
                             {{profile.name}}
+                            <span class="eddy-badge eddy-badge__primary">
+                              <i class="{{status _id}}"></i>
+                            </span>
                             </p>
                           </div>
                         </div>
@@ -57,9 +60,8 @@
 
                              </i>
                           </span>
-                          <!-- <i class="zmdi zmdi-play-circle-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
-                          <!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
-                          <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> -->
+                           {{!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                          <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> --}}
                         </div>
                       </div>
                     </li>
