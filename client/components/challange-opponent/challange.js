@@ -22,7 +22,19 @@ Template.challengeOpponent.helpers({
             'profile.selectedCourses.courseName': topicName,
             _id: { $ne: Meteor.userId() }
         });
-    }
+    },
+
+    status(_id){
+       let topicName = Session.get('topicName');
+       let user = Meteor.users.findOne( _id );
+       let courseArray = user.profile.selectedCourses;
+       let course = _.find(courseArray, ['courseName', topicName]);
+       if(course.wantHelp===false){
+           return 'zmdi zmdi-info-outline';
+       }else if (course.wantHelp===true){
+           return 'zmdi zmdi-help-outline'
+       }
+    },
 });
 
 Template.challengeOpponent.events({
