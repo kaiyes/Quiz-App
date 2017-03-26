@@ -1,6 +1,38 @@
 Template.homePage.onCreated(function() {
     Meteor.subscribe("courses");
-})
+    if (_.isUndefined(Session.get('last_shown')) || moment.duration(moment(moment.now()).diff(moment(Session.get('last_shown').ts))).asMinutes() > 3) {
+        showLoadingScreen();
+    }
+});
+
+var loadingScreenMessages = [
+    "<h3>SUCCESS IS THE SUM OF SMALL EFFORTS., REPEATED DAY-IN AND DAY OUT</h3><p>Robert Collier</p>",
+    "<h3>DID YOU KNOW THAT UQ WAS ESTABLISHED IN 1909?</h3>"
+];
+
+function showLoadingScreen(htmlOrStr, closeTimeout) {
+    var message = loadingScreenMessages[Math.floor(Math.random() * loadingScreenMessages.length)];
+    var timer = !_.isUndefined(closeTimeout) || 3000;
+    Session.set('last_shown', { page: 'home', ts: moment.now() });
+    $.blockUI({
+        "message": message,
+        css: {
+            border: 0,
+            color: '#51c6ac',
+            width: '80%',
+            left: '10%',
+            zIndex: 5050,
+        },
+        overlayCSS: {
+            opacity: 1.0,
+            backgroundColor: '#FFF',
+            zIndex: 5000
+        }
+    });
+    _.delay(function() {
+        $.unblockUI();
+    }, timer);
+}
 
 Template.homePage.helpers({
     status() {
