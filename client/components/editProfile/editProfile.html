@@ -145,15 +145,16 @@
                                             <div class="item-content">
                                                 <div class="item-inner">
                                                     <div class="item-title label eddy-profile__label">Country</div>
-                                                    <div class="item-input">
+                                                    <div class="item-input">                                                                           
                                                         <select id="country" placeholder="Country" name="country" autocomplete="off">
-                                            <option value="{{country}}"> {{country}} </option>
-                                             {{#each countries}}
-                                               <option value="{{cn_iso_2}}">
-                                                 {{cn_short_en}}
-                                               </option>
-                                             {{/each}}
-                                          </select>
+                                                            {{#each countries}}
+                                                            {{#if $eq getCountry cn_iso_2}}
+                                                            <option value="{{cn_iso_2}}" selected>{{cn_short_en}}</option>
+                                                            {{else}}
+                                                            <option value="{{cn_iso_2}}">{{cn_short_en}}</option>
+                                                            {{/if}}
+                                                            {{/each}}
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

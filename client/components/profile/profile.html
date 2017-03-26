@@ -112,10 +112,20 @@
                            <li>
                                <div class="item-content">
                                    <div class="item-inner">
-                                       <div class="item-title label eddy-profile__label">Birth</div>
-                                       <div class="item-input">
-                                           <input type="text" placeholder="Select date" readonly="readonly" id="ks-calendar-date-format"/>
-                                       </div>
+                                    <div class="item-title label eddy-profile__label">Year of Birth</div>
+                                            <div class="item-input">                                                        
+                                            <select id="birthYear" placeholder="Year of Birth" name="birthYear" autocomplete="off">
+                                            <option value="">Select ..</option>
+                                            {{#each birthYears}}                                                                                                                   
+                                            {{#if $eq this getAge }}
+                                                <option value="{{this}}" selected>{{this}}</option>
+                                                {{else}}
+                                                <option value="{{this}}">{{this}}</option>
+                                            {{/if}}
+                                            {{/each}}
+                                            
+                                            </select>                                                       
+                                        </div>
                                    </div>
                                </div>
                            </li>

@@ -37,8 +37,8 @@ Template.editProfile.helpers({
         return SuxezCountries.find({});
     },
 
-    birthYears : function(){
-        return _.range(1980,moment().format("YYYY")-10);
+    birthYears: function() {
+        return _.range(1980, moment().format("YYYY") - 10);
     },
 
     nickNames: function() {
@@ -47,18 +47,18 @@ Template.editProfile.helpers({
 
     universities: function() {
         return University.find()
-    }
+    },
 
-});
+    getCountry: function() {
+        return Meteor.user().profile.country.toUpperCase();
+    },
 
-
-Template.editProfile.helpers({
     getAge(age) {
-        return parseInt(moment(Meteor.user().profile.age, "YYYY-MM-DD").format("YYYY"),10);
+        return parseInt(moment(Meteor.user().profile.age, "YYYY-MM-DD").format("YYYY"), 10);
     },
     getYear(age) {
         if (age) {
-            return parseInt(moment(age, "YYYY-MM-DD").format("YYYY"),10);
+            return parseInt(moment(age, "YYYY-MM-DD").format("YYYY"), 10);
         }
         return '';
     },
@@ -79,7 +79,7 @@ Template.editProfile.events({
             let university = document.querySelector("#university").value;
             let programme = document.querySelector("#programme").value;
             let nickname = document.querySelector("#nickname").value;
-            let age =  $("#birthYear").val()+"-01-01";     //$("#ks-calendar-date-format").val();
+            let age = $("#birthYear").val() + "-01-01"; //$("#ks-calendar-date-format").val();
             let country = document.querySelector("#country").value.toLowerCase();
 
             let profile = {
@@ -94,24 +94,24 @@ Template.editProfile.events({
                 imageId: Meteor.user().profile.imageId,
                 createdAt: new Date(),
                 createdBy: Meteor.userId(),
-                profileCompleted:true,
+                profileCompleted: true,
             };
 
             Meteor.call("addToProfile", profile, function(err) {
                 if (!err) {
-                  Meteor.call('updateRanking');
+                    Meteor.call('updateRanking');
                     myApp.addNotification({
-                      title: 'Profile',
-                      message: "profile updated successfully",
-                      hold:2000,
+                        title: 'Profile',
+                        message: "profile updated successfully",
+                        hold: 2000,
                     });
                     Router.go('/homePage');
                 } else {
-                  myApp.addNotification({
-                    title: 'Profile',
-                    message: err,
-                    hold:2000,
-                  });
+                    myApp.addNotification({
+                        title: 'Profile',
+                        message: err,
+                        hold: 2000,
+                    });
                 }
             });
         }
@@ -124,17 +124,17 @@ Template.editProfile.events({
             Cloudinary.upload(file, {}, function(err, res) {
                 if (err) {
                     myApp.addNotification({
-                      title: 'Profile Photo',
-                      message: "couldn't upload your photo",
-                      hold:2000,
+                        title: 'Profile Photo',
+                        message: "couldn't upload your photo",
+                        hold: 2000,
                     });
                     console.log(err);
                 }
                 if (file) {
                     myApp.addNotification({
-                      title: 'Profile Photo',
-                      message: "Profile Photo Uploaded",
-                      hold:2000,
+                        title: 'Profile Photo',
+                        message: "Profile Photo Uploaded",
+                        hold: 2000,
                     });
                     Meteor.call("addPhoto", res.url, res.public_id);
                 }
@@ -149,17 +149,17 @@ Template.editProfile.events({
         Cloudinary.delete(this.imageId, function(err, res) {
             if (err) {
                 myApp.addNotification({
-                  title: 'Profile Photo',
-                  message: "Something went wrong !!",
-                  hold:2000,
+                    title: 'Profile Photo',
+                    message: "Something went wrong !!",
+                    hold: 2000,
                 });
             }
             if (res) {
                 Meteor.call("removePhoto");
                 myApp.addNotification({
-                  title: 'Profile Photo',
-                  message: "Removed Your Photo",
-                  hold:2000,
+                    title: 'Profile Photo',
+                    message: "Removed Your Photo",
+                    hold: 2000,
                 });
             }
         });
