@@ -1,32 +1,53 @@
 Feedback.profiles = {
     "somethingHappened": {
-        sound: "/sounds/ting.mp3",
-    }
+        sound: "/sounds/Notification.wav",
+    },
+    "click": {
+        sound: "/sounds/Clicking.aiff",
+    },
+    "send": {
+        sound: "/sounds/send.mp3",
+    },
+    "correct": {
+        sound: "/sounds/correct.mp3",
+    },
+    "wrong": {
+        sound: "/sounds/wrong.aiff",
+    },
+    "winning": {
+        sound: "/sounds/winning.wav",
+    },
+    "losing": {
+        sound: "/sounds/loosing.wav",
+    },
+    "waiting": {
+        sound: "/sounds/send.mp3",
+    },
+    "gameStart": {
+        sound: "/sounds/gameStart.mp3",
+    },
 };
-
 
 Template.stats.onRendered(function() {
   this.autorun(function(){
-    var topicName = Session.get('topicName');
+        var topicName = Session.get('topicName');
+        Tracker.afterFlush(function(){
+          var array = Meteor.user().profile.selectedCourses;
+          var course = _.find(array, { 'courseName': topicName });
+          var accuracyArray = course.accuracy;
+          var accuracyNotRound = _.mean(accuracyArray);
+          var accuracy = Math.round(accuracyNotRound);
+          var isAccuracyNaN = _.isNaN(accuracy);
 
-    Tracker.afterFlush(function(){
-      var array = Meteor.user().profile.selectedCourses;
-      var course = _.find(array, { 'courseName': topicName });
-      var accuracyArray = course.accuracy;
-      var accuracyNotRound = _.mean(accuracyArray);
-      var accuracy = Math.round(accuracyNotRound);
-      var isAccuracyNaN = _.isNaN(accuracy);
-
-      if (isAccuracyNaN===true) {
-          Session.set('progressPercent', 0);
-          Session.set('progressText', "0");
-      } else {
-          Session.set('progressPercent', accuracy);
-          Session.set('progressText', `${accuracy}`);
-      }
-    });
-  });
-
+          if (isAccuracyNaN===true) {
+              Session.set('progressPercent', 0);
+              Session.set('progressText', "0");
+          } else {
+              Session.set('progressPercent', accuracy);
+              Session.set('progressText', `${accuracy}`);
+          }
+        });
+   });
 });
 
 Template.stats.helpers({
@@ -107,6 +128,7 @@ Template.stats.events({
         Session.set('player', this.user);
         _.delay(function() { Router.go('/player') }, 100);
     },
+
 
 
 });

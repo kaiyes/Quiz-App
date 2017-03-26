@@ -132,18 +132,30 @@ Template.quizResult.helpers({
         let room = PlayedSessions.findOne({ _id: resultRoomId })
 
         if (room.playfirst) {
+            if (Meteor.user().profile.sound === true) {
+                Feedback.provide("waiting");
+            }
             return 'Waiting for opponent'
         } else {
             if (room.challangersPoint > room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
+                    if (Meteor.user().profile.sound === true) {
+                        Feedback.provide("winning");
+                    }
                     return 'you won :D'
                 } else {
+                    if (Meteor.user().profile.sound === true) {
+                        Feedback.provide("losing");
+                    }
                     return 'you lost :('
                 }
             } else if (room.challangersPoint < room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
                     return 'you lost :('
                 } else {
+                    if (Meteor.user().profile.sound === true) {
+                        Feedback.provide("winning");
+                    }
                     return 'you won :D'
                 }
             } else if (room.challangersPoint === room.defendersPoint) {
@@ -183,7 +195,12 @@ Template.quizResult.events({
 
     "click #community": function(event, template) {
         event.preventDefault();
-        Router.go('/courseDetails#community');
+        let resultRoomId = Router.current().params._id
+        let room = PlayedSessions.findOne({ _id: resultRoomId })
+        let topic = room.questions[0].topic;
+        Session.set('topicName', topic );
+        console.log(Session.get('topicName'));
+        _.delay(function(){ Router.go('/courseDetails#community');}, 100);
     },
 
     "click #playAgain": function(event, template) {

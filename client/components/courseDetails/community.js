@@ -19,15 +19,15 @@ Template.community.onRendered(function () {
             scrollTop: outerHeight + $(this).parent().parent().parent().parent().parent().parent().parent().parent().parent().parent().height()
         }, "slow");
     });
-    
-    var jumpto = Session.get('jumpto');    
+
+    var jumpto = Session.get('jumpto');
     if (!_.isUndefined(jumpto) && !_.isEmpty(jumpto)) {
         $("#post-" + jumpto).removeClass("highlighted");
         /**
-         * jump to the element with the post id. 
+         * jump to the element with the post id.
          */
         $("#post-" + jumpto).addClass("highlighted");
-        _.delay(function () {            
+        _.delay(function () {
             $('.page-content:last').animate({
                 scrollTop: $("#post-" + jumpto).offset().top - 100
             }, 200);
@@ -36,7 +36,7 @@ Template.community.onRendered(function () {
         _.delay(function () {
             $(".highlighted").removeClass("highlighted");
             Session.delete('jumpto');
-        }, 2000);            
+        }, 2000);
     }
 });
 Template.community.helpers({
@@ -79,6 +79,9 @@ Template.community.helpers({
 Template.community.events({
     "submit  #post": function (event, template) {
         event.preventDefault();
+        if (Meteor.user().profile.sound === true) {
+          Feedback.provide("send");
+        }
         let text = event.target.text.value;
         let topicName = Session.get('topicName');
         let payload = {
@@ -94,6 +97,9 @@ Template.community.events({
     },
     "submit #commentForm": function (event, template) {
         event.preventDefault();
+        if (Meteor.user().profile.sound === true) {
+              Feedback.provide("send");
+        }
         let comment = event.target.comment.value;
         let topicName = Session.get('topicName');
         let commentPayload = {
