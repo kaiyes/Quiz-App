@@ -72,7 +72,7 @@ Template.hackChapter.events({
         };
 
         Session.set('challangeNotification', notificationData);
-        Meteor.call("insertChallangeNotification", notificationData);
+        _.delay(function() { Meteor.call("insertChallangeNotification", notificationData); }, 100);
         _.delay(function() { Router.go('/playFirst') }, 100);
     }
 });

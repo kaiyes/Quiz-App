@@ -79,12 +79,12 @@ Template.homePage.events({
     },
 
     "click .needHelp": function(event, template) {
-        event.preventDefault();        
+        event.preventDefault();
         Meteor.call('updateStatus', this.courseName, true);
     },
 
     "click .canHelp": function(event, template) {
-        event.preventDefault();        
+        event.preventDefault();
         Meteor.call('updateStatus', this.courseName, false);
     },
 });

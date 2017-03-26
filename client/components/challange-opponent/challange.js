@@ -52,7 +52,8 @@ Template.challengeOpponent.events({
         };
 
         Session.set('challangeNotification', notificationData);
-        Meteor.call("insertChallangeNotification", notificationData);
+        // Meteor.call("insertChallangeNotification", notificationData);
+        _.delay(function() { Meteor.call("insertChallangeNotification", notificationData); }, 100);
         _.delay(function() { Router.go('/playFirst') }, 100);
     },
 
@@ -87,11 +88,14 @@ Template.challengeOpponent.events({
         };
 
         Session.set('challangeNotification', notificationData);
-        Meteor.call("insertChallangeNotification", notificationData, function(err) {
-            if (!err) {
-                Router.go('/playFirst');
-            }
-        });
+        _.delay(function() {
+          Meteor.call("insertChallangeNotification", notificationData, function(err) {
+              if (!err) {
+                  Router.go('/playFirst');
+              }
+          });
+        }, 100);
+
     },
 
 });

@@ -90,7 +90,7 @@ Meteor.methods({
        topicsChosen.forEach(function(q){
          let rankingArray = Courses.findOne({ courseName: q }).ranking;
          let rankObject = _.find(rankingArray, ['userId', Meteor.userId()]);
-         
+
          Courses.update (
            { courseName: q },
             { $pull: { ranking: rankObject  }}
@@ -150,9 +150,16 @@ Meteor.methods({
       Posts.update({ _id: commentPayload.postId },
          { $addToSet: { comments: commentPayload }});
 
+       let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
+       let comments = Posts.findOne({ _id: commentPayload.postId }).comments;
+       let commenters = _.map(comments,'commenter._id');
+       let postCreator = commentPayload.postCreator._id;
+       commenters.push(postCreator);
+
        Notification.insert({
          postId : commentPayload.postId,
          postCreator: commentPayload.postCreator,
+         commenters,
          topic: commentPayload.topic,
          when: new Date(),
          type: "comment",
@@ -161,15 +168,12 @@ Meteor.methods({
          deleted:[this.userId],
        });
 
-       let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
-       let userId = commentPayload.postCreator._id;
-
        Push.send({
          text,
          title:"Comment",
          from:"commenter",
          badge: 1,
-         query: { userId: userId },
+         query: { userId: {$in: commenters}},
        });
     },
 

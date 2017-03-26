@@ -9,13 +9,12 @@ Template.toolbar.onCreated(function() {
         { type: "post", topic: { $in: topicsChosen }, seen: { $ne: Meteor.userId()} },
         { type: "like", postCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
         { type: "commentLike", commentCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
-        { type: "comment", postCreator: Meteor.user(), seen: { $ne: Meteor.userId()} }
+        { type: "comment",  postCreator: Meteor.user(), seen: { $ne: Meteor.userId()} }
       ]
     }).count();
    Session.set('notificationOld', notificationCount);
  }
 });
-
 
 Template.toolbar.onRendered(function() {
   this.autorun(function(){
