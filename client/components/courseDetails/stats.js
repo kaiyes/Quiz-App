@@ -3,7 +3,7 @@ Feedback.profiles = {
         sound: "/sounds/Notification.wav",
     },
     "click": {
-        sound: "/sounds/Clicking.aiff",
+        sound: "/sounds/Clicking.mp3",
     },
     "send": {
         sound: "/sounds/send.mp3",
@@ -12,7 +12,7 @@ Feedback.profiles = {
         sound: "/sounds/correct.mp3",
     },
     "wrong": {
-        sound: "/sounds/wrong.aiff",
+        sound: "/sounds/wrong.mp3",
     },
     "winning": {
         sound: "/sounds/winning.wav",
