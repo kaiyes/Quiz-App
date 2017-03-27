@@ -39,7 +39,7 @@ Template.login.events({
           message: 'Your Login was Successful',
           hold:2000,
         });
-        Accounts._autoLoginEnabled = true;
+        //Accounts._autoLoginEnabled = true;
         Router.go('/homePage');
       }
     });

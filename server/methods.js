@@ -150,7 +150,7 @@ Meteor.methods({
       Posts.update({ _id: commentPayload.postId },
          { $addToSet: { comments: commentPayload }});
 
-       let text =`${commentPayload.commenter.profile.name} commented on your post in ${commentPayload.topic}`;
+
        let comments = Posts.findOne({ _id: commentPayload.postId }).comments;
        let commenters = _.map(comments,'commenter._id');
        let postCreator = commentPayload.postCreator._id;
@@ -168,6 +168,14 @@ Meteor.methods({
          deleted:[this.userId],
        });
 
+       if (commentPayload.commenter._id===commentPayload.postCreator._id) {
+         var postOrComment = 'post';
+         var replyOrComment = 'commented on';
+       }else {
+          var postOrComment = 'comment';
+          var replyOrComment = 'replied to';
+       }
+       let text =`${commentPayload.commenter.profile.name} ${replyOrComment} your ${postOrComment} in ${commentPayload.topic}`;
        Push.send({
          text,
          title:"Comment",

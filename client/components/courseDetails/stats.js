@@ -21,7 +21,7 @@ Feedback.profiles = {
         sound: "/sounds/loosing.wav",
     },
     "waiting": {
-        sound: "/sounds/send.mp3",
+        sound: "/sounds/ting.mp3",
     },
     "gameStart": {
         sound: "/sounds/gameStart.mp3",
@@ -127,6 +127,14 @@ Template.stats.events({
         event.preventDefault();
         Session.set('player', this.user);
         _.delay(function() { Router.go('/player') }, 100);
+    },
+
+    "click #4": function(event, template) {
+        event.preventDefault();
+        if (Meteor.user().profile.sound === true) {
+            console.log(Meteor.user().profile.sound);
+            Feedback.provide("send");
+        }
     },
 
 
