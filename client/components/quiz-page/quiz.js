@@ -53,9 +53,6 @@ Template.quiz.onRendered(function(event, instance) {
             message: "Question 1",
             hold: 2000,
         });
-        if (Meteor.user().profile.sound === true) {
-            Feedback.provide("somethingHappened");
-        }
         $('.question-container').find('.active-state').removeClass('active-state');
         Session.set('question', 0);
         Session.set('greenAnswer', null);
@@ -71,9 +68,6 @@ Template.quiz.onRendered(function(event, instance) {
                 hold: 2000,
             });
             $('.question-container').find('.active-state').removeClass('active-state');
-            if (Meteor.user().profile.sound === true) {
-                Feedback.provide("somethingHappened");
-            }
             Session.set('question', 1);
             Session.set('greenAnswer', null);
             Session.set('firstAnswer', null);
@@ -88,9 +82,6 @@ Template.quiz.onRendered(function(event, instance) {
                     hold: 2000,
                 });
                 $('.question-container').find('.active-state').removeClass('active-state');
-                if (Meteor.user().profile.sound === true) {
-                    Feedback.provide("somethingHappened");
-                }
                 Session.set('question', 2);
                 Session.set('greenAnswer', null);
                 Session.set('firstAnswer', null);
@@ -105,9 +96,6 @@ Template.quiz.onRendered(function(event, instance) {
                         hold: 2000,
                     });
                     $('.question-container').find('.active-state').removeClass('active-state');
-                    if (Meteor.user().profile.sound === true) {
-                        Feedback.provide("somethingHappened");
-                    }
                     Session.set('question', 3);
                     Session.set('greenAnswer', null);
                     Session.set('firstAnswer', null);
@@ -122,9 +110,6 @@ Template.quiz.onRendered(function(event, instance) {
                             hold: 2000,
                         });
                         $('.question-container').find('.active-state').removeClass('active-state');
-                        if (Meteor.user().profile.sound === true) {
-                            Feedback.provide("somethingHappened");
-                        }
                         Session.set('question', 4);
                         Session.set('greenAnswer', null);
                         Session.set('firstAnswer', null);
@@ -139,9 +124,6 @@ Template.quiz.onRendered(function(event, instance) {
                                 hold: 2000,
                             });
                             $('.question-container').find('.active-state').removeClass('active-state');
-                            if (Meteor.user().profile.sound === true) {
-                                Feedback.provide("somethingHappened");
-                            }
                             Session.set('question', 5);
                             Session.set('greenAnswer', null);
                             Session.set('firstAnswer', null);
