@@ -5,9 +5,6 @@ Template.playFirst.onCreated(function() {
     if (_.isUndefined(Session.get('last_shown_opponent')) || moment.duration(moment(moment.now()).diff(moment(Session.get('last_shown_opponent').ts))).asMinutes() > 3) {
         showLoadingScreen();
     }
-    // if (Meteor.user().profile.sound === true) {
-    //       Feedback.provide("waiting");
-    // }
 });
 
 var loadingScreenMessages = [

@@ -58,11 +58,20 @@ momentjs:moment
 raix:handlebar-helpers
 flyandi:reactive-countdown
 raix:push
-elevatedevdesign:feedback
 jss:flag-icon
 suxez:countries
 xyz:loading
 benjaminrh:jquery-blockui
+
+
+#######################################################
+#                sound          #
+#######################################################
+elevatedevdesign:feedback  # works in localhost ios Device and in browser
+
+
+
+
 
 #######################################################
 #                To be removed in production          #

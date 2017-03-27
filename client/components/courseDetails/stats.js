@@ -1,32 +1,4 @@
-Feedback.profiles = {
-    "somethingHappened": {
-        sound: "/sounds/Notification.wav",
-    },
-    "click": {
-        sound: "/sounds/Clicking.mp3",
-    },
-    "send": {
-        sound: "/sounds/send.mp3",
-    },
-    "correct": {
-        sound: "/sounds/correct.mp3",
-    },
-    "wrong": {
-        sound: "/sounds/wrong.mp3",
-    },
-    "winning": {
-        sound: "/sounds/winning.wav",
-    },
-    "losing": {
-        sound: "/sounds/loosing.wav",
-    },
-    "waiting": {
-        sound: "/sounds/ting.mp3",
-    },
-    "gameStart": {
-        sound: "/sounds/gameStart.mp3",
-    },
-};
+
 
 Template.stats.onRendered(function() {
   this.autorun(function(){
@@ -133,7 +105,7 @@ Template.stats.events({
         event.preventDefault();
         if (Meteor.user().profile.sound === true) {
             console.log(Meteor.user().profile.sound);
-            Feedback.provide("send");
+            new Audio('gameStart.mp3').play();
         }
     },
 

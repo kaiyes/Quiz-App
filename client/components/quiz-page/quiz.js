@@ -3,7 +3,7 @@ var sixSecondTimer = new ReactiveCountdown(20);
 
 Template.quiz.onCreated(function() {
     if (Meteor.user().profile.sound === true) {
-          Feedback.provide("gameStart");
+        new Audio('gameStart.mp3').play();
     }
     let quizRoomId = Router.current().params._id;
     Session.set('routerId', quizRoomId);
@@ -238,7 +238,7 @@ Template.quiz.events({
         var questionNumber = Session.get('question');               
         if (firstAnswer === rightAnswer) {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("correct");
+              new Audio('correct.mp3').play();
           }
           Session.set('firstAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
@@ -249,7 +249,7 @@ Template.quiz.events({
             };
         } else {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("wrong");
+              new Audio('wrong.mp3').play();
           }
           Session.set('firstAnswer', 'eddy--sqr-buttons__product__primary');
         };
@@ -269,7 +269,7 @@ Template.quiz.events({
         var questionNumber = Session.get('question');
         if (secondAnswer === rightAnswer) {
             if (Meteor.user().profile.sound === true) {
-                Feedback.provide("correct");
+              new Audio('correct.mp3').play();
             }
            Session.set('secondAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
@@ -280,7 +280,7 @@ Template.quiz.events({
             }
         } else {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("wrong");
+              new Audio('wrong.mp3').play();
           }
           Session.set('secondAnswer', 'eddy--sqr-buttons__product__primary');
         };
@@ -300,7 +300,7 @@ Template.quiz.events({
         var questionNumber = Session.get('question');
         if (thirdAnswer === rightAnswer) {
             if (Meteor.user().profile.sound === true) {
-                Feedback.provide("correct");
+                new Audio('correct.mp3').play();
             }
            Session.set('thirdAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
@@ -311,7 +311,7 @@ Template.quiz.events({
             };
         } else {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("wrong");
+              new Audio('wrong.mp3').play();
           }
           Session.set('thirdAnswer', 'eddy--sqr-buttons__product__primary');
         };
@@ -332,7 +332,7 @@ Template.quiz.events({
         var questionNumber = Session.get('question');
         if (fourthAnswer === rightAnswer) {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("correct");
+              new Audio('correct.mp3').play();
           }
          Session.set('fourthAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
@@ -343,7 +343,7 @@ Template.quiz.events({
             };
         } else {
           if (Meteor.user().profile.sound === true) {
-              Feedback.provide("wrong");
+              new Audio('wrong.mp3').play();
           }
           Session.set('fourthAnswer', 'eddy--sqr-buttons__product__primary');
         };

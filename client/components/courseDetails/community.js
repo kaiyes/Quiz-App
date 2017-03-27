@@ -80,7 +80,7 @@ Template.community.events({
     "submit  #post": function (event, template) {
         event.preventDefault();
         if (Meteor.user().profile.sound === true) {
-          Feedback.provide("send");
+          new Audio('send.mp3').play();
         }
         let text = event.target.text.value;
         let topicName = Session.get('topicName');
@@ -98,7 +98,7 @@ Template.community.events({
     "submit #commentForm": function (event, template) {
         event.preventDefault();
         if (Meteor.user().profile.sound === true) {
-              Feedback.provide("send");
+          new Audio('send.mp3').play();
         }
         let comment = event.target.comment.value;
         let topicName = Session.get('topicName');

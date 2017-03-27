@@ -6,7 +6,6 @@ Meteor.startup(function() {
         activeState: true
     });
 
-
     $$ = Dom7;
 
     if (typeof StatusBar !== 'undefined') {
