@@ -237,10 +237,10 @@ Template.quiz.events({
         var time = sixSecondTimer.get();         
         var questionNumber = Session.get('question');               
         if (firstAnswer === rightAnswer) {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('correct.mp3').play();
-          }
-          Session.set('firstAnswer', 'eddy--sqr-buttons__plan__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#correct-answer").get(0).play();
+            }
+            Session.set('firstAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
@@ -248,15 +248,15 @@ Template.quiz.events({
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
         } else {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('wrong.mp3').play();
-          }
-          Session.set('firstAnswer', 'eddy--sqr-buttons__product__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#wrong-answer").get(0).play();
+            }
+            Session.set('firstAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-         $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
+        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });
     },
     "click .button2": function(event, template) {
         event.preventDefault();
@@ -269,9 +269,9 @@ Template.quiz.events({
         var questionNumber = Session.get('question');
         if (secondAnswer === rightAnswer) {
             if (Meteor.user().profile.sound === true) {
-              new Audio('correct.mp3').play();
+                $("#correct-answer").get(0).play();
             }
-           Session.set('secondAnswer', 'eddy--sqr-buttons__plan__primary');
+            Session.set('secondAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber)
             }
@@ -279,15 +279,15 @@ Template.quiz.events({
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber)
             }
         } else {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('wrong.mp3').play();
-          }
-          Session.set('secondAnswer', 'eddy--sqr-buttons__product__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#wrong-answer").get(0).play();
+            }
+            Session.set('secondAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.secondAnswer, questionNumber)
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
+        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });
     },
     "click .button3": function(event, template) {
         event.preventDefault();
@@ -300,9 +300,9 @@ Template.quiz.events({
         var questionNumber = Session.get('question');
         if (thirdAnswer === rightAnswer) {
             if (Meteor.user().profile.sound === true) {
-                new Audio('correct.mp3').play();
+                $("#correct-answer").get(0).play();
             }
-           Session.set('thirdAnswer', 'eddy--sqr-buttons__plan__primary');
+            Session.set('thirdAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
@@ -310,16 +310,16 @@ Template.quiz.events({
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
         } else {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('wrong.mp3').play();
-          }
-          Session.set('thirdAnswer', 'eddy--sqr-buttons__product__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#wrong-answer").get(0).play();
+            }
+            Session.set('thirdAnswer', 'eddy--sqr-buttons__product__primary');
         };
 
         Meteor.call("updateSessionData", quizRoomId, this.thirdAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
+        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });
     },
     "click .button4": function(event, template) {
         event.preventDefault();
@@ -331,10 +331,10 @@ Template.quiz.events({
         var time = sixSecondTimer.get(); 
         var questionNumber = Session.get('question');
         if (fourthAnswer === rightAnswer) {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('correct.mp3').play();
-          }
-         Session.set('fourthAnswer', 'eddy--sqr-buttons__plan__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#correct-answer").get(0).play();
+            }
+            Session.set('fourthAnswer', 'eddy--sqr-buttons__plan__primary');
             if (Meteor.userId() === quizRoom.challanger._id) {
                 Meteor.call("incChallangerRoomPoints", quizRoomId, time, questionNumber);
             };
@@ -342,15 +342,15 @@ Template.quiz.events({
                 Meteor.call("incdefenderRoomPoints", quizRoomId, time, questionNumber);
             };
         } else {
-          if (Meteor.user().profile.sound === true) {
-              new Audio('wrong.mp3').play();
-          }
-          Session.set('fourthAnswer', 'eddy--sqr-buttons__product__primary');
+            if (Meteor.user().profile.sound === true) {
+                $("#wrong-answer").get(0).play();
+            }
+            Session.set('fourthAnswer', 'eddy--sqr-buttons__product__primary');
         };
         Meteor.call("updateSessionData", quizRoomId, this.fourthAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $(".question-container").block({"message":null, overlayCSS:  { backgroundColor: '#FFF'}});
+        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });
     },
 
     'click #surrender': function(event, template) {
