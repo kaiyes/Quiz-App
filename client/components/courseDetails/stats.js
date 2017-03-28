@@ -101,13 +101,12 @@ Template.stats.events({
         _.delay(function() { Router.go('/player') }, 100);
     },
 
-    "click #4": function(event, template) {
-        event.preventDefault();
-        if (Meteor.user().profile.sound === true) {
-            console.log(Meteor.user().profile.sound);
-            new Audio('gameStart.mp3').play();
-        }
-    },
+    // "click #4": function(event, template) {
+    //     event.preventDefault();
+    //     if (Meteor.user().profile.sound === true) {
+    //         $("#test-sound").get(0).play();
+    //     }
+    // },
 
 
 

@@ -133,37 +133,37 @@ Template.quizResult.helpers({
 
         if (room.playfirst) {
             if (Meteor.user().profile.sound === true) {
-                new Audio('wrong.mp3').play();
+              $("#waiting-sound").get(0).play();
             }
             return 'Waiting for opponent'
         } else {
             if (room.challangersPoint > room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
                     if (Meteor.user().profile.sound === true) {
-                      new Audio('winning.wav').play();
+                      $("#winning-sound").get(0).play();
                     }
                     return 'you won :D'
                 } else {
                     if (Meteor.user().profile.sound === true) {
-                        new Audio('loosing.wav').play();
+                        $("#loosing-sound").get(0).play();
                     }
                     return 'you lost :('
                 }
             } else if (room.challangersPoint < room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
                     if (Meteor.user().profile.sound === true) {
-                        new Audio('loosing.wav').play();
+                        $("#loosing-sound").get(0).play();
                     }
                     return 'you lost :('
                 } else {
                     if (Meteor.user().profile.sound === true) {
-                        new Audio('winning.wav').play();
+                        $("#winning-sound").get(0).play();
                     }
                     return 'you won :D'
                 }
             } else if (room.challangersPoint === room.defendersPoint) {
                 if (Meteor.user().profile.sound === true) {
-                    new Audio('wrong.mp3').play();
+                    $("#Waiting-sound").get(0).play();
                 }
                 return 'It is a draw'
             }

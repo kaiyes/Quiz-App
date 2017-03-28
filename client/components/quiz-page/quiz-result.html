@@ -1,4 +1,13 @@
 <template name="quizResult">
+  <audio id="winning-sound" preload="auto" controls="false">
+    <source src="/winning.wav" />
+  </audio>
+   <audio id="loosing-sound" preload="auto" controls="false">
+    <source src="/loosing.wav" />
+  </audio>
+  <audio id="waiting-sound" preload="auto" controls="false">
+   <source src="/send.mp3" />
+ </audio>
   <div class="views">
     <div class="view view-main">
       <div class="navbar eddy-navbar eddy-navbar--quiz">
@@ -31,7 +40,7 @@
                 <div class="card margin-h-0">
                     <div class="card-content">
                         <div class="card-content-inner">
-                          <div class="margin-top-60 row">                            
+                          <div class="margin-top-60 row">
                             <div class="text-center col-40">
                               <img class="make-round eddy-quiz-result--player-photo{{challengerDull}}" width="85" height="85"
                               src="{{#if $neq challanger.profile.image " "}}
@@ -152,7 +161,7 @@
                     </div>
                 </div>
 
-                
+
                 <div class="eddy-quiz-result--questions">
                 {{#with question}}
                   <div class="flex-direction--row flex-justify-content--space-between padding-v-15" style="padding:0 15px 0 15px">
@@ -180,19 +189,19 @@
                           <div class="padding-h-5 padding-bottom-20">
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                            {{usersAnswer this.firstAnswer}} {{rightAnswer this.firstAnswer}}">
-                            {{this.firstAnswer}}                            
+                            {{this.firstAnswer}}
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                             {{usersAnswer this.secondAnswer}} {{rightAnswer this.secondAnswer}}">
-                            {{this.secondAnswer}}                             
+                            {{this.secondAnswer}}
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                              {{usersAnswer this.thirdAnswer}} {{rightAnswer this.thirdAnswer}}">
-                             {{this.thirdAnswer}}                            
+                             {{this.thirdAnswer}}
                             </a>
                             <a href="#" class="eddy--sqr-buttons  margin-top-15
                              {{usersAnswer this.fourthAnswer}} {{rightAnswer this.fourthAnswer}}">
-                            {{this.fourthAnswer}}                             
+                            {{this.fourthAnswer}}
                             </a>
                           </div>
                         </div>
