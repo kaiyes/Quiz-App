@@ -8,7 +8,7 @@ Template.playFirst.onCreated(function() {
 });
 
 var loadingScreenMessages = [
-    "<h3>SUCCESS IS THE SUM OF SMALL EFFORTS., REPEATED DAY-IN AND DAY OUT</h3><p>Robert Collier</p>",
+    "<h3>SUCCESS IS THE SUM OF SMALL EFFORTS, REPEATED DAY-IN AND DAY OUT</h3><i>Robert Collier</i>",
     "<h3>DID YOU KNOW THAT UQ WAS ESTABLISHED IN 1909?</h3>"
 ];
 
@@ -22,6 +22,7 @@ function showLoadingScreen(htmlOrStr, closeTimeout) {
             border: 0,
             color: '#51c6ac',
             width: '80%',
+            top : '30%',
             left: '10%',
             zIndex: 5050,
         },

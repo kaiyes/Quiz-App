@@ -75,7 +75,7 @@ Template.challengeOpponent.events({
         let playerInfo = Meteor.users.findOne({
             'profile.selectedCourses.courseName': topicName,
             _id: { $ne: Meteor.userId() }
-        }, { skip: parseInt(Math.random() * totalUser) });
+        }, { skip: parseInt(Math.floor(Math.random() * totalUser),10) });
 
         Session.set('playerInfo', playerInfo);
 
