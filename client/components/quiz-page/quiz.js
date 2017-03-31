@@ -253,11 +253,11 @@ Template.quiz.events({
                 $("#wrong-answer").get(0).play();
             }
             Session.set('firstAnswer', 'eddy--sqr-buttons__product__primary');
-        };        
+        };
         Meteor.call("updateSessionData", quizRoomId, this.firstAnswer, questionNumber);
         $$(".question-container").find(".eddy--sqr-buttons").removeClass("active-state");
         sixSecondTimer.remove(time);
-        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });        
+        $(".question-container").block({ "message": null, overlayCSS: { backgroundColor: '#FFF' } });
     },
     "click .button2": function(event, template) {
         event.preventDefault();
