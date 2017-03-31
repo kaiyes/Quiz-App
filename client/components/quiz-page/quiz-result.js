@@ -133,32 +133,38 @@ Template.quizResult.helpers({
 
         if (room.playfirst) {
             if (Meteor.user().profile.sound === true) {
-                Feedback.provide("waiting");
+              $("#waiting-sound").get(0).play();
             }
             return 'Waiting for opponent'
         } else {
             if (room.challangersPoint > room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
                     if (Meteor.user().profile.sound === true) {
-                        Feedback.provide("winning");
+                      $("#winning-sound").get(0).play();
                     }
                     return 'you won :D'
                 } else {
                     if (Meteor.user().profile.sound === true) {
-                        Feedback.provide("losing");
+                        $("#loosing-sound").get(0).play();
                     }
                     return 'you lost :('
                 }
             } else if (room.challangersPoint < room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
+                    if (Meteor.user().profile.sound === true) {
+                        $("#loosing-sound").get(0).play();
+                    }
                     return 'you lost :('
                 } else {
                     if (Meteor.user().profile.sound === true) {
-                        Feedback.provide("winning");
+                        $("#winning-sound").get(0).play();
                     }
                     return 'you won :D'
                 }
             } else if (room.challangersPoint === room.defendersPoint) {
+                if (Meteor.user().profile.sound === true) {
+                    $("#Waiting-sound").get(0).play();
+                }
                 return 'It is a draw'
             }
         }
@@ -199,8 +205,10 @@ Template.quizResult.events({
         let room = PlayedSessions.findOne({ _id: resultRoomId })
         let topic = room.questions[0].topic;
         Session.set('topicName', topic );
-        console.log(Session.get('topicName'));
-        _.delay(function(){ Router.go('/courseDetails#community');}, 100);
+        _.delay(function(){ 
+            //Router.go('/courseDetails#community');}, 
+            Router.go('/courseDetailsJump/' + moment.now() + '#community')
+        },100);
     },
 
     "click #playAgain": function(event, template) {

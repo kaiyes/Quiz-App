@@ -5,9 +5,6 @@ Template.playFirst.onCreated(function() {
     if (_.isUndefined(Session.get('last_shown_opponent')) || moment.duration(moment(moment.now()).diff(moment(Session.get('last_shown_opponent').ts))).asMinutes() > 3) {
         showLoadingScreen();
     }
-    // if (Meteor.user().profile.sound === true) {
-    //       Feedback.provide("waiting");
-    // }
 });
 
 var loadingScreenMessages = [
@@ -72,7 +69,7 @@ Template.playFirst.onDestroyed(function() {
 
 Template.playFirst.helpers({
     getAge(age) {
-        return moment().diff(age, "years");
+        return !_.isNaN(moment().diff(age, "years")) ? moment().diff(age, "years") : '';
     },
 
     userInfo: function() {
@@ -87,8 +84,10 @@ Template.playFirst.helpers({
         var notificationData = Session.get('challangeNotification');
         var notification = Notification.findOne({
             when: notificationData.when,
-        });
-        Meteor.subscribe("quiz", notification.quizRoomId);
+        });        
+        if(!_.isUndefined(notification)){
+            Meteor.subscribe("quiz", notification.quizRoomId);
+        };
         var quizRoom = QuizRooms.findOne({
             _id: notification.quizRoomId,
         });

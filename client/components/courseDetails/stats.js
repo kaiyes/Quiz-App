@@ -1,36 +1,5 @@
-Feedback.profiles = {
-    "somethingHappened": {
-        sound: "/sounds/Notification.wav",
-    },
-    "click": {
-        sound: "/sounds/Clicking.mp3",
-    },
-    "send": {
-        sound: "/sounds/send.mp3",
-    },
-    "correct": {
-        sound: "/sounds/correct.mp3",
-    },
-    "wrong": {
-        sound: "/sounds/wrong.mp3",
-    },
-    "winning": {
-        sound: "/sounds/winning.wav",
-    },
-    "losing": {
-        sound: "/sounds/loosing.wav",
-    },
-    "waiting": {
-        sound: "/sounds/send.mp3",
-    },
-    "gameStart": {
-        sound: "/sounds/gameStart.mp3",
-    },
-};
-
-
 Handlebars.registerHelper ('truncate', function (str, len) {
-    if (str.length > len && str.length > 0) {
+    if (!_.isUndefined(str) && str.length > len && str.length > 0) {
         var new_str = str + " ";
         new_str = str.substr (0, len);
         new_str = str.substr (0, new_str.lastIndexOf(" "));
@@ -70,13 +39,9 @@ Template.stats.helpers({
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let ranking = _.sortBy(rankingArray, ['points']);
         let reverseRanking = _.reverse(ranking);
-        let firstFive = _.take(reverseRanking, 9);
-        let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
-        if (ifExists===undefined) {
-          return firstFive;
-        }else {
-          return reverseRanking;
-        }
+        let firstTen = _.take(reverseRanking, 10);
+        return firstTen;
+
     },
 
     exists:function(){
@@ -84,8 +49,8 @@ Template.stats.helpers({
       let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
       let ranking = _.sortBy(rankingArray, ['points']);
       let reverseRanking = _.reverse(ranking);
-      let firstFive = _.take(reverseRanking, 10);
-      let ifExists = _.find(firstFive,["userId", Meteor.userId()]);
+      let firstTen = _.take(reverseRanking, 10);
+      let ifExists = _.find(firstTen,["userId", Meteor.userId()]);
       if (ifExists===undefined) {
         return false;
       }else {
@@ -141,6 +106,13 @@ Template.stats.events({
         Session.set('player', this.user);
         _.delay(function() { Router.go('/player') }, 100);
     },
+
+    // "click #4": function(event, template) {
+    //     event.preventDefault();
+    //     if (Meteor.user().profile.sound === true) {
+    //         $("#test-sound").get(0).play();
+    //     }
+    // },
 
 
 

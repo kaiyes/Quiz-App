@@ -17,6 +17,7 @@ Template.toolbar.onCreated(function() {
 });
 
 Template.toolbar.onRendered(function() {
+  $("#notification-sound").hide();
   this.autorun(function(){
     if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
@@ -36,7 +37,7 @@ Template.toolbar.onRendered(function() {
      Tracker.afterFlush(function() {
          if (notification>oldNotification) {
            if (Meteor.user().profile.sound===true) {
-            Feedback.provide("somethingHappened");
+             $("#notification-sound").get(0).play();
           }else {
           }
          }
