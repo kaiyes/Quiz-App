@@ -1,12 +1,9 @@
-Template.registerHelper('getTimePosted', date => {
-    if (date) {
-        return moment(new Date(date)).fromNow(true);
-    }
-});
+
 Template.community.onCreated(function () {
     let topicName = Session.get('topicName');
     Meteor.subscribe("posts", topicName);
 })
+
 Template.community.onRendered(function () {
     console.log("community view render called");
     $(document).on("focus", ".eddy-community--post-area--input__reply", function () {

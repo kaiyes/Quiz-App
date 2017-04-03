@@ -30,11 +30,7 @@
               <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                   <div id="player" class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                     <img width="45" height="45" class="make-round"
-                    src="{{#if $neq createdBy.profile.image " "}}
-                          {{createdBy.profile.image}}
-                      {{else}}
-                          /assets/generic_800.png
-                      {{/if}}" alt="profile photo">
+                    src="{{photo createdBy._id}}" alt="profile photo">
                     <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">
                       {{createdBy.profile.name}}
                         <span class="eddy-badge eddy-badge__primary">

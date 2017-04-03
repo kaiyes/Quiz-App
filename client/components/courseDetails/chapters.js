@@ -1,10 +1,3 @@
-Handlebars.registerHelper("inc", function(value, options) {
-    return parseInt(value) + 1;
-});
-
-Handlebars.registerHelper('selected', function(foo, bar) {
-    return foo == bar ? ' selected' : '';
-});
 
 Template.chapters.helpers({
     chapters() {

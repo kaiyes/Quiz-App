@@ -1,14 +1,4 @@
-Handlebars.registerHelper ('truncate', function (str, len) {
-    if (!_.isUndefined(str) && str.length > len && str.length > 0) {
-        var new_str = str + " ";
-        new_str = str.substr (0, len);
-        new_str = str.substr (0, new_str.lastIndexOf(" "));
-        new_str = (new_str.length > 0) ? new_str : str.substr (0, len);
 
-        return new Handlebars.SafeString ( new_str +'...' ); 
-    }
-    return str;
-});
 
 Template.stats.onRendered(function() {
   this.autorun(function(){
@@ -39,7 +29,7 @@ Template.stats.helpers({
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let ranking = _.sortBy(rankingArray, ['points']);
         let reverseRanking = _.reverse(ranking);
-        let firstTen = _.take(reverseRanking, 10);
+        let firstTen = _.take(reverseRanking, 11);
         return firstTen;
 
     },
@@ -49,7 +39,7 @@ Template.stats.helpers({
       let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
       let ranking = _.sortBy(rankingArray, ['points']);
       let reverseRanking = _.reverse(ranking);
-      let firstTen = _.take(reverseRanking, 10);
+      let firstTen = _.take(reverseRanking, 11);
       let ifExists = _.find(firstTen,["userId", Meteor.userId()]);
       if (ifExists===undefined) {
         return false;
