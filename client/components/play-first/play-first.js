@@ -38,7 +38,6 @@ function showLoadingScreen(htmlOrStr, closeTimeout) {
 }
 
 Template.playFirst.onRendered(function() {
-
     countdown.start(function() {
         if (Session.get('shouldTimerStart')) {
             myApp.addNotification({
