@@ -1,4 +1,7 @@
 <template name="playFirst">
+  <audio id="gameStart-sound" preload="auto" controls="false">
+   <source src="/gameStart.mp3" />
+ </audio>
   <div class="full-height flex-direction--column">
     <div class="flex-direction--row flex-justify-content--flex-end cur-pointer">
       <span id="cross" class="lnr lnr-cross font-size-fixed-24 padding-20 text-bold" aria-hidden="true">
@@ -23,7 +26,7 @@
               <div class="full-width margin-top-20">
                 <h3 class="margin-0 font-size-fixed-14 text-center margin-top-10 eddy-home--profile-info__name_age">
                   <span class="padding-h-15">{{this.profile.name}}&nbsp; <span class="font-weight-400"> {{ getAge this.profile.age}}</span></span>
-                  
+
                 </h3>
                 <h5 class="margin-0 text-center eddy-home--profile-info__nickname padding-v-5">{{this.profile.nickName}}</h5>
                 <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center eddy-home--profile-info__programme">{{this.profile.programme}}</h5>

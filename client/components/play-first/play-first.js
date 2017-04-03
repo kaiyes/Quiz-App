@@ -8,7 +8,7 @@ Template.playFirst.onCreated(function() {
 });
 
 var loadingScreenMessages = [
-    "<h3>SUCCESS IS THE SUM OF SMALL EFFORTS, REPEATED DAY-IN AND DAY OUT</h3><i>Robert Collier</i>",
+    "<h3>SUCCESS IS THE SUM OF SMALL EFFORTS, REPEATED DAY-IN AND DAY-OUT</h3><i>Robert Collier</i>",
     "<h3>DID YOU KNOW THAT UQ WAS ESTABLISHED IN 1909?</h3>"
 ];
 
@@ -85,7 +85,7 @@ Template.playFirst.helpers({
         var notificationData = Session.get('challangeNotification');
         var notification = Notification.findOne({
             when: notificationData.when,
-        });        
+        });
         if(!_.isUndefined(notification)){
             Meteor.subscribe("quiz", notification.quizRoomId);
         };
@@ -108,6 +108,9 @@ Template.playFirst.events({
         let time = sessionData.when;
         let handle = Notification.findOne({ when: time });
         Meteor.call("updatePlayFirst", handle.quizRoomId);
+        if (Meteor.user().profile.sound === true) {
+            new Audio('gameStart.mp3').play();
+        };
         Router.go(`/quiz/${handle.quizRoomId}`);
     },
 

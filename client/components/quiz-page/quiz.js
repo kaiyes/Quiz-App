@@ -2,9 +2,6 @@ var sixSecondTimer = new ReactiveCountdown(20);
 
 
 Template.quiz.onCreated(function() {
-    if (Meteor.user().profile.sound === true) {
-        new Audio('gameStart.mp3').play();
-    }
     let quizRoomId = Router.current().params._id;
     Session.set('routerId', quizRoomId);
     Session.set('greenAnswer', null);
@@ -37,7 +34,6 @@ Template.quiz.onCreated(function() {
 });
 
 Template.quiz.onRendered(function(event, instance) {
-      $("#gameStart-sound").get(0).play();
     let quizRoomId = Router.current().params._id;
     let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     let ifQuestionsExists = quizRoom.questions[2];
