@@ -39,11 +39,7 @@
 										</span>
 										<img width="55" height="55"
 										class="make-round eddy-quiz--players--profile-img"
-										src="{{#if $neq challanger.profile.image " "}}
-                            {{challanger.profile.image}}
-                          {{else}}
-                            /assets/generic_800.png
-                          {{/if}}" alt="Profile Photo">
+										src="{{photo challanger._id}}" alt="Profile Photo">
 									</div>
 								</div>
 								<div class="col-33">
@@ -56,11 +52,8 @@
 										<span class="eddy-quiz--players--rank__opponent">
 											{{defenderRoomPoints}}
 										</span>
-										<img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img" src="{{#if $neq defender.profile.image " "}}
-                            {{defender.profile.image}}
-                          {{else}}
-                            /assets/generic_800.png
-                          {{/if}}" alt="Profile Photo">
+										<img width="55" height="55" class="make-round eddy-home--profile-photo eddy-quiz--players--profile-img"
+										src="{{photo defender._id}}" alt="Profile Photo">
 									</div>
 								</div>
 							</div>

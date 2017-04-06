@@ -9,16 +9,11 @@
         <div class="padding-h-50 flex-direction--column flex-justify-content--center flex-align-items--center">
             <div class="">
               <img width="100" height="100" class="make-round eddy-home--profile-photo"
-              src="{{#if $neq this.profile.image " "}}
-                    {{this.profile.image}}
-                  {{else}}
-                      /assets/generic_800.png
-                  {{/if}}"
-              alt="Profile Photo">
+              src="{{photo this._id}}" alt="Profile Photo">
             </div>
               <div class="full-width">
                 <h3 class="margin-0 font-size-fixed-14 text-center margin-top-10 eddy-home--profile-info__name_age">
-                  <span class="padding-h-15">{{this.profile.name}} &nbsp; <span class="font-weight-400"> {{ getAge this.profile.age}}</span></span>                  
+                  <span class="padding-h-15">{{this.profile.name}} &nbsp; <span class="font-weight-400"> {{ getAge this.profile.age}}</span></span>
                 </h3>
                 <h5 class="margin-0 text-center eddy-home--profile-info__nickname padding-v-5">{{this.profile.nickName}}</h5>
                 <h5 class="margin-0 font-size-fixed-12 font-weight-400 text-center eddy-home--profile-info__programme">{{this.profile.programme}}</h5>
@@ -47,7 +42,7 @@
                     </div>
 
                     <div class="item-after eddy-home--quiz--rank">
-                    
+
                     </div>
                   </div>
                 </div>

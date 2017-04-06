@@ -43,11 +43,7 @@
                           <div class="margin-top-60 row">
                             <div class="text-center col-40">
                               <img class="make-round eddy-quiz-result--player-photo{{challengerDull}}" width="85" height="85"
-                              src="{{#if $neq challanger.profile.image " "}}
-                                    {{challanger.profile.image}}
-                                {{else}}
-                                    /assets/generic_800.png
-                                {{/if}}"
+                              src="{{photo challanger._id}}"
                               alt="Player photo" />
                               <p class="eddy-quiz-result__player-name">
                                 {{challanger.profile.name}}
@@ -56,11 +52,7 @@
                             <div class="col-20"></div>
                             <div class="text-center col-40">
                               <img class="make-round eddy-quiz-result--player-photo{{defenderDull}}" width="85" height="85"
-                              src="{{#if $neq defender.profile.image " "}}
-                                  {{defender.profile.image}}
-                              {{else}}
-                                  /assets/generic_800.png
-                              {{/if}}"
+                              src="{{photo defender._id}}"
                               alt="Player photo" />
                               <p class="eddy-quiz-result__player-name">
                                 {{defender.profile.name}}
