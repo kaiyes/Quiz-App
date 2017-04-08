@@ -495,6 +495,30 @@ Meteor.methods({
           { originalRoomId: quizRoomId },
           { $set:{ defenderPlayed: true }}
         );
+        let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+        let resultRoomId = PlayedSessions.findOne({ originalRoomId : quizRoomId })._id;
+
+        Notification.insert({
+          challanger: quizRoom.challanger,
+          defender: quizRoom.defender,
+          when: quizRoom.createdAt,
+          topic: quizRoom.questions[0].topic,
+          chapter: quizRoom.questions[0].chapter,
+          type: "challangerFinished",
+          quizRoomId: quizRoomId,
+          seen:[this.userId],
+          deleted:[this.userId],
+          resultRoomId,
+        });
+
+        // let text =`${notificationData.challanger.profile.name} Challenged you in ${notificationData.topic}`;
+        // Push.send({
+        //   text,
+        //   title:"Challenge",
+        //   from:"Challenger",
+        //   badge: 1,
+        //   query: { userId: notificationData.defender._id },
+        // });
     },
 
     updatePlayFirst: function (quizRoomId) {

@@ -17,6 +17,20 @@ Template.notification.helpers({
     });
   },
 
+  gameEndedNotifications: function () {
+    return Notification.find({
+      "challanger._id": Meteor.userId(),
+      deleted: {
+        $ne: Meteor.userId()
+      },
+      type:"challangerFinished",
+    }, {
+      sort: {
+        when: -1
+      }
+    });
+  },
+
   postNotifications: function () {
     if (Meteor.user()) {
       let objArray = Meteor.user().profile.selectedCourses;
@@ -109,6 +123,15 @@ Template.notification.events({
 
   "click #denyChallange": function (event, template) {
     Meteor.call("defenderDeleted", this._id);
+  },
+
+  "click #deleteNoti": function (event, template) {
+    Meteor.call("removeChallangeNotification", this._id);
+  },
+
+  "click #gameEnded": function (event, template) {
+    event.preventDefault();
+    Router.go(`/quizResult/${this.resultRoomId}`);
   },
 
   "click #postNotification": function (event, template) {

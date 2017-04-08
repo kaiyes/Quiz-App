@@ -25,13 +25,14 @@
           <div class="page-1">
             <div class="page-content">
 
-              {{#if challangeNotifications.count }}
               <div class="card margin-0 margin-top-50">
                   <div class="card-header padding-0 border-bottom">
                     <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
                       CHALLENGES
                     </h4>
                   </div>
+
+                {{#if challangeNotifications.count }}
                   <div class="card-content">
                       <div class="card-content-inner">
                       {{#each challangeNotifications}}
@@ -42,12 +43,7 @@
                                 <div id="player" class="item-title close-popup">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
                                     <img class="make-round" width="45" height="45"
-                                    src="{{#if $neq challanger.profile.image " "}}
-                                          {{challanger.profile.image}}
-                                      {{else}}
-                                          /assets/generic_800.png
-                                      {{/if}}"
-                                    alt="Player Photo" />
+                                    src="{{photo challanger._id}}" alt="Player Photo" />
                                     <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{challanger.profile.name}}
                                     </p>
@@ -68,8 +64,40 @@
                       {{/each}}
                       </div>
                   </div>
+                {{/if}}
+
+                {{#if gameEndedNotifications.count }}
+                  <div class="card-content">
+                      <div class="card-content-inner">
+                      {{#each gameEndedNotifications}}
+                        <div class="list-block">
+                          <ul>
+                            <li class="item-content padding-left-0">
+                              <div class="item-inner padding-h-20 padding-v-20">
+                                <div id="gameEnded" class="item-title close-popup">
+                                  <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                                    <img class="make-round" width="45" height="45"
+                                    src="{{photo defender._id}}" alt="Player Photo" />
+                                    <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
+                                    {{defender.profile.name}} has finished playing
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="item-after">
+                                  <span id="deleteNoti" class="denyChallange">
+                                    <i class="zmdi zmdi-close font-size-fixed-24 cur-pointer margin-right-30 eddy-noti__challenge__acpt-deny"></i>
+                                  </span>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      {{/each}}
+                      </div>
+                  </div>
+                {{/if}}
               </div>
-              {{/if}}
+
               <div class="card margin-0 margin-top">
                   <div class="card-header padding-0 border-bottom">
                     <h4 class="padding-h-20 margin-0 eddy-noti__cat_heading">
