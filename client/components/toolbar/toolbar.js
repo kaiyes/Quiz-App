@@ -6,6 +6,7 @@ Template.toolbar.onCreated(function() {
     let notificationCount = Notification.find({
       $or: [
         { type: "challange", "defender._id": Meteor.userId(), seen: { $ne: Meteor.userId()} },
+        { type: "challangerFinished", "challanger._id": Meteor.userId(), seen: { $ne: Meteor.userId()} },
         { type: "post", topic: { $in: topicsChosen }, seen: { $ne: Meteor.userId()} },
         { type: "like", postCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
         { type: "commentLike", commentCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
@@ -25,6 +26,7 @@ Template.toolbar.onRendered(function() {
       let notification = Notification.find({
         $or: [
           { type: "challange", "defender._id": Meteor.userId(), seen: { $ne: Meteor.userId()} },
+          { type: "challangerFinished", "challanger._id": Meteor.userId(), seen: { $ne: Meteor.userId()} },
           { type: "post", topic: { $in: topicsChosen }, seen: { $ne: Meteor.userId()} },
           { type: "like", postCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
           { type: "commentLike", commentCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
@@ -56,6 +58,7 @@ Template.toolbar.helpers({
       let notification = Notification.find({
         $or: [
           { type: "challange", "defender._id": Meteor.userId(), seen: { $ne: Meteor.userId()}},
+          { type: "challangerFinished", "challanger._id": Meteor.userId(), seen: { $ne: Meteor.userId()} },
           { type: "post", topic: { $in: topicsChosen }, seen: { $ne: Meteor.userId()} },
           { type: "like", postCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
           { type: "commentLike", commentCreator: Meteor.user().profile.name, seen: { $ne: Meteor.userId()} },
