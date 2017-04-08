@@ -511,14 +511,14 @@ Meteor.methods({
           resultRoomId,
         });
 
-        // let text =`${notificationData.challanger.profile.name} Challenged you in ${notificationData.topic}`;
-        // Push.send({
-        //   text,
-        //   title:"Challenge",
-        //   from:"Challenger",
-        //   badge: 1,
-        //   query: { userId: notificationData.defender._id },
-        // });
+        let text =`${quizRoom.defender.profile.name} has finished playing`;
+        Push.send({
+          text,
+          title:"ChallengeEnded",
+          from:"Defender",
+          badge: 1,
+          query: { userId: quizRoom.challanger._id },
+        });
     },
 
     updatePlayFirst: function (quizRoomId) {
