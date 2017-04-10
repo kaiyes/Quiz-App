@@ -117,6 +117,7 @@ Template.notification.events({
 
   "click #acceptChallange": function (event, template) {
     Meteor.call("updateOpponent", this.quizRoomId);
+    console.log(this.quizRoomId);
     Meteor.call("defenderDeleted", this._id);
     Router.go(`/quiz/${this.quizRoomId}`);
   },
@@ -126,11 +127,12 @@ Template.notification.events({
   },
 
   "click #deleteNoti": function (event, template) {
-    Meteor.call("removeChallangeNotification", this._id);
+    Meteor.call("defenderDeleted", this._id);
   },
 
   "click #gameEnded": function (event, template) {
     event.preventDefault();
+    Meteor.call("defenderDeleted", this._id);
     Router.go(`/quizResult/${this.resultRoomId}`);
   },
 

@@ -3,40 +3,45 @@ var sixSecondTimer = new ReactiveCountdown(20);
 
 Template.quiz.onCreated(function() {
     let quizRoomId = Router.current().params._id;
-    Session.set('routerId', quizRoomId);
-    Session.set('greenAnswer', null);
     Meteor.subscribe("quiz", quizRoomId);
     Meteor.subscribe("resultRoomByOriginalId", quizRoomId);
-    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    Session.set('routerId', quizRoomId);
+    Session.set('greenAnswer', null);
 
-    if (Meteor.userId() === quizRoom.challanger._id) {
-        if (quizRoom.challangerPlayed) {
-            myApp.addNotification({
-                title: 'Quiz',
-                message: "Game ended, start a new game",
-                hold: 2000,
-            });
-            Router.go('/challengeOpponent');
-        }
-    };
+    _.delay(function () {
+      var quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+      if (Meteor.userId() === quizRoom.challanger._id) {
+          if (quizRoom.challangerPlayed) {
+              myApp.addNotification({
+                  title: 'Quiz',
+                  message: "Game ended, start a new game",
+                  hold: 2000,
+              });
+              Router.go('/challengeOpponent');
+          }
+      };
 
-    if (Meteor.userId() === quizRoom.defender._id) {
-        if (quizRoom.defenderPlayed) {
-            myApp.addNotification({
-                title: 'Quiz',
-                message: "Game ended, start a new game",
-                hold: 2000,
-            });
-            Router.go('/challengeOpponent');
-        }
-    };
+      if (Meteor.userId() === quizRoom.defender._id) {
+          if (quizRoom.defenderPlayed) {
+              myApp.addNotification({
+                  title: 'Quiz',
+                  message: "Game ended, start a new game",
+                  hold: 2000,
+              });
+              Router.go('/challengeOpponent');
+          }
+      };
+    }, 100);
 
 });
 
 Template.quiz.onRendered(function(event, instance) {
-    let quizRoomId = Router.current().params._id;
-    let quizRoom = QuizRooms.findOne({ _id: quizRoomId });
-    let ifQuestionsExists = quizRoom.questions[2];
+
+  _.delay(function () {
+    var quizRoomId = Router.current().params._id;
+    var quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+    var ifQuestionsExists = quizRoom.questions[2];
+    console.log(ifQuestionsExists);
     if (ifQuestionsExists === undefined) {
         myApp.addNotification({
             title: 'Quiz',
@@ -154,6 +159,7 @@ Template.quiz.onRendered(function(event, instance) {
             });
         });
     }
+  }, 300);
 });
 
 
