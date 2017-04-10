@@ -118,10 +118,7 @@ Template.notification.events({
   "click #acceptChallange": function (event, template) {
     Meteor.call("updateOpponent", this.quizRoomId);
     Meteor.call("defenderDeleted", this._id);
-    _.delay(function () {
-      Router.go(`/quiz/${this.quizRoomId}`);
-    }, 200);
-
+    Router.go(`/quiz/${this.quizRoomId}`);
   },
 
   "click #denyChallange": function (event, template) {
