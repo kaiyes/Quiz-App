@@ -34,39 +34,37 @@
               <div class="list-block flex--1">
                 <ul class="eddy-challenge__list">
                   {{#each players}}
-                   {{#if profile.name}}
-                    <li class="item-content padding-left-0 cur-pointer">
-                      <div class="item-inner padding-h-20">
-                        <div class="item-title">
-                          <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
-                            <img id="playerIcon" class="make-round" width="45" height="45"
-                            src="{{#if $neq profile.image " "}}
-                                  {{profile.image}}
-                              {{else}}
-                                  /assets/generic_800.png
-                              {{/if}}"
-                            alt="Player Photo" />
-                            <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
-                            {{profile.name}}
-                            <span class="eddy-badge eddy-badge__primary">
-                              <i class="{{status _id}}"></i>
-                            </span>
-                            </p>
-                          </div>
-                        </div>
-                        <div class="item-after player">
-                            <span>
-                              <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5">
+                   {{#if user.profile.name}}
+                    {{#if $neq user.profile.name currentUser.profile.name}}
+                          <li class="item-content padding-left-0 cur-pointer">
+                            <div class="item-inner padding-h-20">
+                              <div class="item-title">
+                                <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
+                                  <img id="playerIcon" class="make-round" width="45" height="45"
+                                  src="{{photo user._id}}"
+                                  alt="Player Photo" />
+                                  <p class="font-size-fixed-16 padding-left-10 margin-0 eddy-community--post__username">
+                                  {{user.profile.name}}
+                                  <span class="eddy-badge eddy-badge__primary">
+                                    <i class="{{status _id}}"></i>
+                                  </span>
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="item-after player">
+                                  <span>
+                                    <i class="zmdi zmdi-play-circle-outline font-size-fixed-20 eddy-challenge__user-info padding-left-5">
 
-                             </i>
-                          </span>
-                           {{!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
-                          <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> --}}
-                        </div>
-                      </div>
-                    </li>
+                                   </i>
+                                </span>
+                                 {{!-- <i class="zmdi zmdi-info-outline font-size-fixed-18 eddy-challenge__user-info"></i>
+                                <i class="zmdi zmdi-help-outline font-size-fixed-18 eddy-challenge__user-info"></i> --}}
+                              </div>
+                            </div>
+                          </li>
+                       {{/if}}
                     {{/if}}
-                    {{/each}}
+                  {{/each}}
                 </ul>
               </div>
             </div>

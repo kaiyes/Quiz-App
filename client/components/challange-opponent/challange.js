@@ -1,6 +1,7 @@
 Template.challengeOpponent.onCreated(function() {
     let topicName = Session.get('topicName');
     Meteor.subscribe("users", topicName);
+    Meteor.subscribe("course", topicName);
 })
 
 Template.challengeOpponent.onRendered(function() {
@@ -18,10 +19,7 @@ Template.challengeOpponent.onRendered(function() {
 Template.challengeOpponent.helpers({
     players: function() {
         let topicName = Session.get('topicName');
-        return Meteor.users.find({
-            'profile.selectedCourses.courseName': topicName,
-            _id: { $ne: Meteor.userId() }
-        });
+        return Courses.findOne({ courseName: topicName }).ranking;
     },
 
     status(_id){
@@ -41,7 +39,7 @@ Template.challengeOpponent.events({
     "click .item-content": function(event, template) {
         event.preventDefault();
         event.stopPropagation();
-        Session.set('playerInfo', this);
+        Session.set('playerInfo', this.user);
 
         let notificationData = {
             challanger: Meteor.user(),
@@ -60,7 +58,7 @@ Template.challengeOpponent.events({
     "click #playerIcon": function(event, template) {
         event.preventDefault();
         event.stopPropagation();
-        Session.set('player', this);
+        Session.set('player', this.user);
         Router.go('/player');
     },
 
