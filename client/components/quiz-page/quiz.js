@@ -41,7 +41,6 @@ Template.quiz.onRendered(function(event, instance) {
     var quizRoomId = Router.current().params._id;
     var quizRoom = QuizRooms.findOne({ _id: quizRoomId });
     var ifQuestionsExists = quizRoom.questions[2];
-    console.log(ifQuestionsExists);
     if (ifQuestionsExists === undefined) {
         myApp.addNotification({
             title: 'Quiz',
@@ -149,6 +148,7 @@ Template.quiz.onRendered(function(event, instance) {
                                     Meteor.call("endGameForDefender", quizRoomId);
                                     if (quizRoom.challangerPlayed) {
                                         Meteor.call("makePlayFirstFalse", resultRoom._id);
+                                        Meteor.call("playfirstNotificationForDefender", quizRoomId);
                                     };
                                 };
                                 Router.go(`/quizResult/${resultRoom._id}`);
@@ -372,6 +372,7 @@ Template.quiz.events({
             Meteor.call("endGameForDefender", quizRoomId);
             if (quizRoom.challangerPlayed) {
                 Meteor.call("makePlayFirstFalse", resultRoom._id);
+                Meteor.call("playfirstNotificationForDefender", quizRoomId);
             };
         };
         sixSecondTimer.stop();
@@ -396,6 +397,5 @@ Template.quiz.onDestroyed(function() {
     Session.set('challangeNotification', null);
     Session.set('didAccept', null);
     Session.set('question', null);
-    console.log("accuracy method called");
 
 });
