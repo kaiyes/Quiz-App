@@ -7,7 +7,7 @@ Template.quizResult.onCreated(function() {
         _.delay(function(){
             var topicName = room.questions[0].topic;
             Meteor.subscribe("users", topicName);
-            Meteor.subscribe("courses");
+            Meteor.subscribe("course", topicName);
             Session.set('question', room.questions[0]);
             Session.set('number', 1);
 

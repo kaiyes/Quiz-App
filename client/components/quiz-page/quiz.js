@@ -10,6 +10,7 @@ Template.quiz.onCreated(function() {
 
     _.delay(function () {
       var quizRoom = QuizRooms.findOne({ _id: quizRoomId });
+      Meteor.subscribe("users", quizRoom.questions[2].topic);
       if (Meteor.userId() === quizRoom.challanger._id) {
           if (quizRoom.challangerPlayed) {
               myApp.addNotification({

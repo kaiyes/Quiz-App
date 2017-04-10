@@ -1,5 +1,5 @@
 Template.homePage.onCreated(function() {
-    Meteor.subscribe("courses");
+    Meteor.subscribe("courseForUser");
     if (_.isUndefined(Session.get('last_shown')) || moment.duration(moment(moment.now()).diff(moment(Session.get('last_shown').ts))).asMinutes() > 3) {
         showLoadingScreen();
     }
@@ -21,7 +21,7 @@ function showLoadingScreen(htmlOrStr, closeTimeout) {
             color: '#51c6ac',
             width: '80%',
             top : '30%',
-            left: '10%',            
+            left: '10%',
             zIndex: 5050,
         },
         overlayCSS: {

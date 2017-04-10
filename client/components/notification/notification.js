@@ -1,4 +1,4 @@
-Template.notification.onCreated(function () {
+Template.notification.onRendered(function () {
   Meteor.subscribe("notification");
 })
 
@@ -117,7 +117,6 @@ Template.notification.events({
 
   "click #acceptChallange": function (event, template) {
     Meteor.call("updateOpponent", this.quizRoomId);
-    console.log(this.quizRoomId);
     Meteor.call("defenderDeleted", this._id);
     Router.go(`/quiz/${this.quizRoomId}`);
   },
