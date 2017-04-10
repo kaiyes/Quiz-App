@@ -1,6 +1,7 @@
 var countdown = new ReactiveCountdown(120);
 
 Template.playFirst.onCreated(function() {
+    Meteor.subscribe("notifyWhen");
     Session.set('shouldTimerStart', true);
     if (_.isUndefined(Session.get('last_shown_opponent')) || moment.duration(moment(moment.now()).diff(moment(Session.get('last_shown_opponent').ts))).asMinutes() > 3) {
         showLoadingScreen();
@@ -55,7 +56,6 @@ Template.playFirst.onRendered(function() {
             countdown.stop();
             Router.go(`/quiz/${router}`);
         }
-
     });
 
 });
@@ -105,7 +105,7 @@ Template.playFirst.events({
     "click #play": function(event, instance) {
         let sessionData = Session.get('challangeNotification');
         let time = sessionData.when;
-        let handle = Notification.findOne({ when: time });
+        var handle = Notification.findOne({ when: time });
         Meteor.call("updatePlayFirst", handle.quizRoomId);
         if (Meteor.user().profile.sound === true) {
             new Audio('gameStart.mp3').play();

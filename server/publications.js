@@ -81,3 +81,12 @@ Meteor.publish("notification", function(){
     ]
   });
 });
+
+Meteor.publish("notifyWhen", function () {
+  return Notification.find({
+    $or: [
+      { type: "challange", "defender._id": this.userId },
+      { type: "challange", "challanger._id": this.userId },
+    ]
+   });
+});

@@ -301,6 +301,7 @@ Meteor.methods({
           chapter: notificationData.chapter,
           type: "challange",
           quizRoomId: quizRoom,
+          randomHelper: notificationData.randomHelper,
           seen:[],
           deleted:[],
         });

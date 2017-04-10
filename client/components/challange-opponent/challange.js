@@ -49,12 +49,12 @@ Template.challengeOpponent.events({
             when: new Date(),
             topic: Session.get('topicName'),
             chapter: Session.get('chapter'),
+            randomHelper: Math.random(),
         };
 
         Session.set('challangeNotification', notificationData);
-        // Meteor.call("insertChallangeNotification", notificationData);
         _.delay(function() { Meteor.call("insertChallangeNotification", notificationData); }, 100);
-        _.delay(function() { Router.go('/playFirst') }, 100);
+        _.delay(function() { Router.go('/playFirst') }, 300);
     },
 
     "click #playerIcon": function(event, template) {
@@ -85,6 +85,7 @@ Template.challengeOpponent.events({
             when: new Date(),
             topic: Session.get('topicName'),
             chapter: Session.get('chapter'),
+            randomHelper: Math.random(),
         };
 
         Session.set('challangeNotification', notificationData);
@@ -94,7 +95,7 @@ Template.challengeOpponent.events({
                   Router.go('/playFirst');
               }
           });
-        }, 100);
+        }, 300);
 
     },
 
