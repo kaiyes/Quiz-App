@@ -1,16 +1,12 @@
-Template.quizResult.onRendered(function() {
-    var mySwiper = myApp.swiper('.swiper-container', {
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-    });
-});
+
 Template.quizResult.onCreated(function() {
     this.autorun(function() {
         var resultRoomId = Router.current().params._id;
         Meteor.subscribe("resultRoom", resultRoomId);
-        var room = PlayedSessions.findOne({ _id: resultRoomId })
+        var room = PlayedSessions.findOne({ _id: resultRoomId });
         _.delay(function(){
             var topicName = room.questions[0].topic;
+            Meteor.subscribe("users", topicName);
             Session.set('question', room.questions[0]);
             Session.set('number', 1);
 
@@ -28,8 +24,13 @@ Template.quizResult.onCreated(function() {
             });
         }, 100);
     });
+});
 
-
+Template.quizResult.onRendered(function() {
+    var mySwiper = myApp.swiper('.swiper-container', {
+        nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
+    });
 });
 
 Template.quizResult.helpers({
@@ -205,8 +206,8 @@ Template.quizResult.events({
         let room = PlayedSessions.findOne({ _id: resultRoomId })
         let topic = room.questions[0].topic;
         Session.set('topicName', topic );
-        _.delay(function(){ 
-            //Router.go('/courseDetails#community');}, 
+        _.delay(function(){
+            //Router.go('/courseDetails#community');},
             Router.go('/courseDetailsJump/' + moment.now() + '#community')
         },100);
     },

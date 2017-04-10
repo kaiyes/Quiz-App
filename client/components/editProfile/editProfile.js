@@ -34,6 +34,7 @@ Template.editProfile.onRendered(function() {
 
 Template.editProfile.helpers({
     countries: function() {
+        Meteor.subscribe("countries");
         return SuxezCountries.find({});
     },
 
@@ -42,11 +43,13 @@ Template.editProfile.helpers({
     },
 
     nickNames: function() {
-        return NickNames.find()
+      Meteor.subscribe("nickNames");
+      return NickNames.find()
     },
 
     universities: function() {
-        return University.find()
+      Meteor.subscribe("universities");
+      return University.find()
     },
 
     getCountry: function() {

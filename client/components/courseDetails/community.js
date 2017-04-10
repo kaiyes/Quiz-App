@@ -1,7 +1,7 @@
-
 Template.community.onCreated(function () {
     let topicName = Session.get('topicName');
     Meteor.subscribe("posts", topicName);
+    Meteor.subscribe("users", topicName);
 })
 
 Template.community.onRendered(function () {

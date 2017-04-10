@@ -43,7 +43,11 @@
                                 <div id="player" class="item-title close-popup">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
                                     <img class="make-round" width="45" height="45"
-                                    src="{{photo challanger._id}}" alt="Player Photo" />
+                                    src="{{#if $neq challanger.profile.image " "}}
+                                          {{challanger.profile.image}}
+                                      {{else}}
+                                          /assets/generic_800.png
+                                      {{/if}}" alt="Player Photo" />
                                     <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{challanger.profile.name}}
                                     </p>
@@ -77,7 +81,11 @@
                                 <div id="gameEnded" class="item-title close-popup">
                                   <div class="flex-direction--row flex-justify-content--flex-start flex-align-items--center">
                                     <img class="make-round" width="45" height="45"
-                                    src="{{photo defender._id}}" alt="Player Photo" />
+                                    src="{{#if $neq defender.profile.image " "}}
+                                          {{defender.profile.image}}
+                                      {{else}}
+                                          /assets/generic_800.png
+                                      {{/if}}" alt="Player Photo" />
                                     <p  class="font-size-fixed-12 padding-left-10 margin-0 eddy-noti__challenge__username">
                                     {{defender.profile.name}} has finished playing
                                     </p>
