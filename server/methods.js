@@ -302,8 +302,8 @@ Meteor.methods({
           type: "challange",
           quizRoomId: quizRoom,
           randomHelper: notificationData.randomHelper,
-          seen:[],
-          deleted:[],
+          seen:[this.userId],
+          deleted:[this.userId],
         });
 
         let text =`${notificationData.challanger.profile.name} Challenged you in ${notificationData.topic}`;

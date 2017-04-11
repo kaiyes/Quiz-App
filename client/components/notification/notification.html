@@ -32,7 +32,7 @@
                     </h4>
                   </div>
 
-                {{#if challangeNotifications.count }}
+                {{#if $gt challangeNotifications.count 0 }}
                   <div class="card-content">
                       <div class="card-content-inner">
                       {{#each challangeNotifications}}
