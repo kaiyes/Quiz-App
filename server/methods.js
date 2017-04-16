@@ -643,6 +643,12 @@ Meteor.methods({
       helpStatus[`profile.selectedCourses.${thisCoursesIndex}.wantHelp`] = helpInfo;
       Meteor.users.update({ _id: this.userId },
         {  $set:   helpStatus });
+
+      let userArray = Courses.findOne({ courseName: topicName }).ranking;
+      let user = _.find(userArray, { 'userId': this.userId });
+      Courses.update({ courseName: topicName }, { $pull:{ ranking: user }});
+      user.wantHelp = helpInfo;
+      Courses.update({ courseName: topicName }, { $push:{ ranking: user }});
     },
 
     sendEmail: function () {

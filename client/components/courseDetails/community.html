@@ -34,7 +34,7 @@
                     <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">
                       {{createdBy.profile.name}}
                         <span class="eddy-badge eddy-badge__primary">
-                            <i class="{{status createdBy._id $.Session.get 'topicName'}}"></i>
+                            <i class="{{status}}"></i>
                          </span>
                      </h4>
                   </div>
@@ -90,7 +90,7 @@
                               {{commenter.profile.name}}
                               </h4>
                              <span class="eddy-badge eddy-badge__primary">
-                                 <i class="{{status commenter._id $.Session.get 'topicName'}}"></i>
+                                 <i class="{{commenterStatus}}"></i>
                              </span>
                           </div>
                           <div class="">

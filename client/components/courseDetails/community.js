@@ -48,17 +48,17 @@ Template.community.helpers({
         });
     },
 
-    // status() {
-    //     let poster = Meteor.users.findOne({
-    //         _id: this.createdBy._id
-    //     });
-    //     let course = _.find(this.createdBy.profile.selectedCourses, ['courseName', this.topicName]);
-    //     if (course.wantHelp === false) {
-    //         return 'zmdi zmdi-info-outline';
-    //     } else if (course.wantHelp === true) {
-    //         return 'zmdi zmdi-help-outline'
-    //     }
-    // },
+    status() {
+        let poster = Meteor.users.findOne({
+            _id: this.createdBy._id
+        });
+        let course = _.find(this.createdBy.profile.selectedCourses, ['courseName', this.topicName]);
+        if (course.wantHelp === false) {
+            return 'zmdi zmdi-info-outline';
+        } else if (course.wantHelp === true) {
+            return 'zmdi zmdi-help-outline'
+        }
+    },
 
     commenterStatus() {
         let poster = Meteor.users.findOne({

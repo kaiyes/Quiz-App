@@ -22,14 +22,14 @@ Template.challengeOpponent.helpers({
         return Courses.findOne({ courseName: topicName }).ranking;
     },
 
-    status(_id){
+    status(userId){
        let topicName = Session.get('topicName');
-       let user = Meteor.users.findOne( _id );
-       let courseArray = user.profile.selectedCourses;
-       let course = _.find(courseArray, ['courseName', topicName]);
-       if(course.wantHelp===false){
+       let courses =  Meteor.users.findOne({ _id: userId }).profile.selectedCourses;
+       let thisCourse = _.find(courses, ['courseName', topicName]);
+       let status = thisCourse.wantHelp;
+       if (status === false) {
            return 'zmdi zmdi-info-outline';
-       }else if (course.wantHelp===true){
+       } else if (status === true) {
            return 'zmdi zmdi-help-outline'
        }
     },
