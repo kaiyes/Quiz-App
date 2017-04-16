@@ -34,7 +34,7 @@
                     <h4 class="eddy-community--post__username margin-0 font-size-fixed-16 padding-left-10">
                       {{createdBy.profile.name}}
                         <span class="eddy-badge eddy-badge__primary">
-                            <i class="{{status}}"></i>
+                            <i class="{{status createdBy._id $.Session.get 'topicName'}}"></i>
                          </span>
                      </h4>
                   </div>
@@ -84,17 +84,13 @@
                       <div class="full-width flex-direction--row flex-justify-content--space-between flex-align-items--center">
                           <div id="commenter" class="flex-direction--row lex-justify-content--flex-start flex-align-items--center">
                             <img width="45" height="45"  class="make-round"
-                            src="{{#if $neq commenter.profile.image " "}}
-                                  {{commenter.profile.image}}
-                              {{else}}
-                                  /assets/generic_800.png
-                              {{/if}}"
+                            src="{{photo commenter._id}}"
                             alt="profile photo">
                             <h4 class="margin-0 eddy-community--post__username font-size-fixed-16 padding-left-10">
                               {{commenter.profile.name}}
                               </h4>
                              <span class="eddy-badge eddy-badge__primary">
-                                 <i class="{{commenterStatus}}"></i>
+                                 <i class="{{status commenter._id $.Session.get 'topicName'}}"></i>
                              </span>
                           </div>
                           <div class="">

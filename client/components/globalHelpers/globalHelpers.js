@@ -33,4 +33,15 @@ Template.registerHelper('photo', userId => {
     } else {
       return photo;
     }
+});
+
+Template.registerHelper('status', (courseName, userId) => {
+    let courses =  Meteor.users.findOne({ _id: userId }).profile.selectedCourses;
+    let thisCourse = _.find(courses, ['courseName', courseName]);
+    let status = thisCourse.wantHelp;
+    if (status === false) {
+        return 'zmdi zmdi-info-outline';
+    } else if (status === true) {
+        return 'zmdi zmdi-help-outline'
+    }
 })
