@@ -59,6 +59,7 @@ Template.challengeOpponent.events({
         event.preventDefault();
         event.stopPropagation();
         Session.set('player', this.user);
+        Session.set('playerStatus', this);
         Router.go('/player');
     },
 

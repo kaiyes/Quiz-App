@@ -1,5 +1,7 @@
+
 Template.player.onDestroyed(function() {
     Session.set('player', null);
+    Session.set('playerStatus', null);
 });
 
 Template.player.helpers({
@@ -9,7 +11,7 @@ Template.player.helpers({
     userInfo: function() {
         return Session.get('player');
     },
-    ranking() { 
+    ranking() {
         let topicName = this.courseName;
         let rankingArray = Courses.findOne({ courseName: topicName }).ranking;
         let points = _.sortBy(rankingArray, ['points']);
@@ -24,13 +26,11 @@ Template.player.helpers({
     },
 
       status(){
-       let userData = Session.get('player');
-       let topicName = this.courseName;
-       let courseArray = userData.profile.selectedCourses;
-       let course = _.find(courseArray, ['courseName', topicName]);
-       if(course.wantHelp===false){
+       let data = Session.get('playerStatus');
+       let status = data.wantHelp;
+       if (status === false) {
            return 'zmdi zmdi-info-outline';
-       }else if (course.wantHelp===true){
+       } else if (status === true) {
            return 'zmdi zmdi-help-outline'
        }
     },
