@@ -42,6 +42,8 @@
       </div>
 
       <!-- .......................ranking....................... -->
+
+
       <div class="card margin-0 border-r-0 eddy-stats__ranking">
           <div class="card-header padding-0">
             <div class="card margin-0 full-width">
@@ -71,6 +73,19 @@
                           <img class="make-round" width="45" height="45" src="{{photo user._id}}" alt="Player Photo" />
                           <p class="eddy-stats__ranking__username padding-left-5 margin-0">
                             {{user.profile.name}}
+                            <span class="eddy-badge eddy-badge__primary">
+                              <i class="
+                               {{#if $eq wantHelp null}}
+
+                               {{/if}}
+                               {{#if $eq wantHelp true}}
+                                zmdi zmdi-help-outline
+                               {{/if}}
+                               {{#if $eq wantHelp false}}
+                                 zmdi zmdi-info-outline
+                               {{/if}}">
+                               </i>
+                            </span>
                           </p>
                         </div>
                         <div class="">
