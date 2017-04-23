@@ -94,6 +94,7 @@ Template.stats.events({
     "click #player": function(event, template) {
         event.preventDefault();
         Session.set('player', this.user);
+        Session.set('playerStatus', this);
         _.delay(function() { Router.go('/player') }, 100);
     },
 
