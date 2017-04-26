@@ -1,4 +1,5 @@
 <template name="community">
+
   <div class="eddy-community">
     <div class="list-block">
       <div class="card margin-0">
@@ -124,25 +125,7 @@
           <div class="card margin-0 eddy-community--post--comments--reply hide overlay-5 {{$.Session.get 'showComments'}}">
             <div class="card-content">
                 <div class="card-content-inner">
-                  <ul class="eddy-community--post-area">
-                    <li>
-                      <div class="item-content padding-left-0">
-                        <div class="item-inner padding-right-0">
-                          <div class="item-input">
-                              <form id="commentForm" class="flex-direction--row flex-justify-content--space-between flex-align-items--center">
-                                  <input required class="eddy-community--post-area--input eddy-community--post-area--input__reply border-r-25 padding-10 height-auto"
-                                    type="text"
-                                    name="comment">
-                                  <button type="submit"
-                                          class="button eddy-community--post-area--submit eddy-community--post-area--submit__reply">
-                                      <i class="zmdi zmdi-mail-send"></i>
-                                  </button>
-                              </form>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+                  <a href="#" id="commentpost-{{_id}}" class="link reply-link" >Reply</a>
                 </div>
             </div>
           </div>

@@ -1,10 +1,9 @@
-
 Template.quizResult.onCreated(function() {
     this.autorun(function() {
         var resultRoomId = Router.current().params._id;
         Meteor.subscribe("resultRoom", resultRoomId);
         var room = PlayedSessions.findOne({ _id: resultRoomId });
-        _.delay(function(){
+        _.delay(function() {
             var topicName = room.questions[0].topic;
             Meteor.subscribe("users", topicName);
             Meteor.subscribe("course", topicName);
@@ -135,14 +134,14 @@ Template.quizResult.helpers({
 
         if (room.playfirst) {
             if (Meteor.user().profile.sound === true) {
-              $("#waiting-sound").get(0).play();
+                $("#waiting-sound").get(0).play();
             }
             return 'Waiting for opponent'
         } else {
             if (room.challangersPoint > room.defendersPoint) {
                 if (Meteor.userId() === room.challanger._id) {
                     if (Meteor.user().profile.sound === true) {
-                      $("#winning-sound").get(0).play();
+                        $("#winning-sound").get(0).play();
                     }
                     return 'you won :D'
                 } else {
@@ -206,11 +205,11 @@ Template.quizResult.events({
         let resultRoomId = Router.current().params._id
         let room = PlayedSessions.findOne({ _id: resultRoomId })
         let topic = room.questions[0].topic;
-        Session.set('topicName', topic );
-        _.delay(function(){
+        Session.set('topicName', topic);
+        _.delay(function() {
             //Router.go('/courseDetails#community');},
             Router.go('/courseDetailsJump/' + moment.now() + '#community')
-        },100);
+        }, 100);
     },
 
     "click #playAgain": function(event, template) {
@@ -235,7 +234,7 @@ Template.quizResult.events({
 
         Session.set('challangeNotification', notificationData);
         _.delay(function() { Meteor.call("insertChallangeNotification", notificationData); }, 100);
-        _.delay(function() {   Router.go('/playFirst');}, 100);
+        _.delay(function() { Router.go('/playFirst'); }, 100);
 
     },
 

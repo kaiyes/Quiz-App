@@ -23,7 +23,7 @@ function showLoadingScreen(htmlOrStr, closeTimeout) {
             border: 0,
             color: '#51c6ac',
             width: '80%',
-            top : '30%',
+            top: '30%',
             left: '10%',
             zIndex: 5050,
         },
@@ -85,7 +85,7 @@ Template.playFirst.helpers({
         var notification = Notification.findOne({
             when: notificationData.when,
         });
-        if(!_.isUndefined(notification)){
+        if (!_.isUndefined(notification)) {
             Meteor.subscribe("quiz", notification.quizRoomId);
         };
         var quizRoom = QuizRooms.findOne({
