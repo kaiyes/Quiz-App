@@ -118,4 +118,20 @@ Template.adminCourses.events({
             },"slow");
     },
 
+    'click #del' (event, instance) {
+      event.preventDefault();
+      Courses.remove({ _id: this._id });
+    }
+
+});
+
+
+Template.adminCourses.helpers({
+  courses: function(){
+    Meteor.subscribe('courses');
+    return Courses.find();
+  },
+  chapters: function () {
+    return Session.get('chapters');
+  }
 });

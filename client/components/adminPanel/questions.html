@@ -178,6 +178,39 @@
                        </div>
                      </form>
 
+                     <div class="list-block">
+                        <ul>
+                          {{#each questions}}
+                                 <li>
+                                     <div class="item-content">
+                                         <div class="item-inner">
+                                             <div class="item-title label eddy-profile__label">
+                                               {{question}}
+                                               <br>
+                                               Topic: {{topic}}
+                                               <br>
+                                               Chapter:{{chapter}}
+                                               <br>
+                                               1. {{firstAnswer}}
+                                               <br>
+                                               2. {{secondAnswer}}
+                                               <br>
+                                               3. {{thirdAnswer}}
+                                               <br>
+                                               4. {{fourthAnswer}}
+                                               <br>
+                                               Correct Answer: {{rightAnswer}}
+                                               <br>
+                                               Explanation:{{explanation}}
+                                             </div>
+                                            <i id="del" class="zmdi zmdi-delete padding-right-20"></i>
+                                         </div>
+                                     </div>
+                                 </li>
+                           {{/each}}
+                       </ul>
+                     </div>
+
                </div>
              </div>
           </div>

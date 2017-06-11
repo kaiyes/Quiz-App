@@ -12,6 +12,10 @@ Meteor.publish("courseForUser", function(){
   return Courses.find({ courseName: { $in: topicsChosen }});
 });
 
+Meteor.publish("questions", function(){
+   return QuestionBank.find({ });
+});
+
 Meteor.publish("universities", function(){
   return University.find();
 });

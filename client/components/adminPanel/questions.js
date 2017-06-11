@@ -148,14 +148,16 @@ Template.adminQuestions.events({
 
     },
 
+    'click #del' (event, instance) {
+      event.preventDefault();
+      QuestionBank.remove({ _id: this._id });
+    }
 
 });
 
 Template.adminQuestions.helpers({
-  courses: function(){
-    return Courses.find();
-  },
-  chapters: function () {
-    return Session.get('chapters');
+  questions: function(){
+    Meteor.subscribe('questions');
+    return QuestionBank.find();
   }
 });

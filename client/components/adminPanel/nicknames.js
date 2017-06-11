@@ -23,43 +23,16 @@ Template.adminNickNames.events({
         }
       });
   },
-
-    "click .p-form:nth-of-type(1)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(1)').height() + 15
-            },"slow");
-    },
-    "click .p-form:nth-of-type(2)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(2)').height() * 2
-            },"slow");
-    },
-    "click .p-form:nth-of-type(3)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(3)').height() * 3 + 15
-            },"slow");
-    },
-    "click .p-form:nth-of-type(4)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(4)').height() * 4 + 15
-            },"slow");
-    },
-    "click .p-form:nth-of-type(5)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(5)').height() * 5 + 15
-            },"slow");
-    },
-    "click .p-form:nth-of-type(6)": function(event, template) {
-        $(".page-content").animate({
-              scrollTop: $('.p-form:nth-of-type(6)').height() * 6 + 15
-            },"slow");
-    },
-
+  'click #del' (event, instance) {
+    event.preventDefault();
+    NickNames.remove({ _id: this._id });
+  }
 });
 
 
 Template.adminNickNames.helpers({
   nicks: function(){
+    Meteor.subscribe('nickNames');
     return NickNames.find();
   }
 });
