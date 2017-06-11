@@ -121,6 +121,10 @@ Template.adminCourses.events({
     'click #del' (event, instance) {
       event.preventDefault();
       Courses.remove({ _id: this._id });
+    },
+    'click #edit' (event, instance) {
+      event.preventDefault();
+      console.log("edit");
     }
 
 });

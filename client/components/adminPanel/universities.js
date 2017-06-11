@@ -23,6 +23,10 @@ Template.adminUniversity.events({
   'click #del' (event, instance) {
     event.preventDefault();
     University.remove({ _id: this._id });
+  },
+  'click #edit' (event, instance) {
+    event.preventDefault();
+    console.log("edit");
   }
 
 });
