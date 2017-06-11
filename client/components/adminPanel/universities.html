@@ -52,19 +52,20 @@
                    </form>
 
                    <div class="list-block">
-                      <ul>
-                    {{#each uni}}
-                           <li>
-                               <div class="item-content">
-                                   <div class="item-inner">
-                                       <div class="item-title label eddy-profile__label">
-                                         {{name}}
-                                       </div>
-                                   </div>
-                               </div>
-                           </li>
-                     {{/each}}
-                   </ul>
+                     <ul>
+                       {{#each uni}}
+                          <li>
+                              <div class="item-content">
+                                  <div class="item-inner">
+                                      <div class="item-title label eddy-profile__label">
+                                        {{name}}
+                                      </div>
+                                      <i id="del" class="zmdi zmdi-delete padding-right-20"></i>
+                                  </div>
+                              </div>
+                          </li>
+                         {{/each}}
+                      </ul>
                    </div>
              </div>
            </div>

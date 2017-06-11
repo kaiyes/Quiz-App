@@ -62,7 +62,7 @@ jss:flag-icon
 suxez:countries
 xyz:loading
 benjaminrh:jquery-blockui
-
+babrahams:editable-text
 
 #######################################################
 #                sound          #
@@ -76,7 +76,7 @@ elevatedevdesign:feedback  # works in localhost ios Device and in browser
 #######################################################
 
 insecure@1.0.7                # Allow all DB writes from clients (for prototyping)
-
+#autopublish
 underscore@1.0.10
 erasaur:meteor-lodash
 themeteorchef:jquery-validation

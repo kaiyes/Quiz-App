@@ -77,7 +77,7 @@ Meteor.publish("notification", function(){
       { type: "post", topic: { $in: topicsChosen }, deleted: { $ne: this.userId } },
       { type: "like", postCreator: username, deleted: { $ne: this.userId} },
       { type: "commentLike", commentCreator: username, deleted: { $ne: this.userId} },
-      { type: "comment",  postCreator: this.userId, deleted: { $ne: this.userId} }
+      { type: "comment",  postCreator: this.userId, deleted: { $ne: this.userId} },
     ]
   });
 });
