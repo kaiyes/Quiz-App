@@ -44,7 +44,7 @@
                                             {{#if $neq image " "}}
                                             <div class="text-center">
                                                 <img class="make-round" width="85" height="85" src="
-                                 {{#if $neq image " "}}
+                                 {{#if $neq image ""}}
                                     {{image}}
                                   {{else}}
                                       {{#if $.Session.get 'image'}}
@@ -73,7 +73,9 @@
                                         <li>
                                             <div class="item-content">
                                                 <div class="item-inner">
-                                                    <div class="item-title label eddy-profile__label">Name <span class="imp">*</span></div>
+                                                    <div class="item-title label eddy-profile__label">
+                                                      Name <span class="imp">*</span>
+                                                    </div>
                                                     <div class="item-input">
                                                         <input type="text" placeholder="Your name" id="name" value="{{name}}" name="name" />
                                                     </div>
@@ -125,18 +127,18 @@
                                             <div class="item-content">
                                                 <div class="item-inner">
                                                     <div class="item-title label eddy-profile__label">Year of Birth</div>
-                                                    <div class="item-input">                                                        
+                                                    <div class="item-input">
                                                         <select id="birthYear" placeholder="Year of Birth" name="birthYear" autocomplete="off">
                                                         <option value="">Select ..</option>
-                                                        {{#each birthYears}}                                                                                                                   
+                                                        {{#each birthYears}}
                                                         {{#if $eq this getAge }}
                                                             <option value="{{this}}" selected>{{this}}</option>
                                                             {{else}}
                                                             <option value="{{this}}">{{this}}</option>
                                                         {{/if}}
                                                         {{/each}}
-                                                        
-                                                        </select>                                                       
+
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,7 +147,7 @@
                                             <div class="item-content">
                                                 <div class="item-inner">
                                                     <div class="item-title label eddy-profile__label">Country</div>
-                                                    <div class="item-input">                                                                           
+                                                    <div class="item-input">
                                                         <select id="country" placeholder="Country" name="country" autocomplete="off">
                                                             {{#each countries}}
                                                             {{#if $eq getCountry cn_iso_2}}

@@ -77,21 +77,21 @@ Template.editProfile.onDestroyed(function() {
 Template.editProfile.events({
     'click .submit-profile' (event, instance) {
         event.preventDefault();
-        if (instance.$("#profileInfo").valid()) {
-            let name = document.querySelector("#name").value;
-            let university = document.querySelector("#university").value;
-            let programme = document.querySelector("#programme").value;
-            let nickname = document.querySelector("#nickname").value;
+        if (instance.$("#profileInfo").valid().trim()) {
+            let name = document.querySelector("#name").value.trim();
+            let university = document.querySelector("#university").value.trim();
+            let programme = document.querySelector("#programme").value.trim();
+            let nickname = document.querySelector("#nickname").value.trim();
             let age = $("#birthYear").val() + "-01-01"; //$("#ks-calendar-date-format").val();
-            let country = document.querySelector("#country").value.toLowerCase();
+            let country = document.querySelector("#country").value.toLowerCase().trim();
 
             let profile = {
                 age: moment(age).format("YYYY-MM-DD"),
-                country: country,
-                name: name,
-                university: university,
-                nickName: nickname,
-                programme: programme,
+                country,
+                name,
+                university,
+                nickName,
+                programme,
                 selectedCourses: Meteor.user().profile.selectedCourses,
                 image: Meteor.user().profile.image,
                 imageId: Meteor.user().profile.imageId,

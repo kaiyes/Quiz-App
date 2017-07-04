@@ -700,4 +700,20 @@ Meteor.methods({
             explanation:obj.explanation,
           });
         },
+        editQuestions: function (obj) {
+          QuestionBank.update({ _id : obj.id },{
+            $set: {
+              question: obj.question,
+              rightAnswer: obj.rightAnswer,
+              firstAnswer:obj.answer1,
+              secondAnswer:obj.answer2,
+              thirdAnswer:obj.answer3,
+              fourthAnswer:obj.answer4,
+              chapter:obj.chapterName,
+              topic:obj.courseName,
+              explanation:obj.explanation,
+            }
+           });
+           console.log(obj.id);
+         },
 });

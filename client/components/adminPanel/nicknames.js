@@ -1,7 +1,7 @@
 Template.adminNickNames.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
-      let nickName1 = document.querySelector("#nickName1").value;
+      let nickName1 = document.querySelector("#nickName1").value.trim();
       // let nickName2 = document.querySelector("#nickName2").value;
       // let nickName3 = document.querySelector("#nickName3").value;
       // let nickName4 = document.querySelector("#nickName4").value;

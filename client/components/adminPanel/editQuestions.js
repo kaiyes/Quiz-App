@@ -1,7 +1,11 @@
-Template.adminQuestions.onRendered(function() {
+Template.editQuestions.onRendered(function() {
   let self = this;
   self.autorun(function () {
     let user = Meteor.users.find({}).fetch();
+    let id = Router.current().params._id;
+    Meteor.subscribe('singleQuestion', id);
+    let thisQuestion =  QuestionBank.findOne();
+    Session.set('thisQuestion', thisQuestion);
     Tracker.afterFlush(function () {
       self.$( "#profileInfo" ).validate({
         rules: {
@@ -63,7 +67,7 @@ Template.adminQuestions.onRendered(function() {
 });
 
 
-Template.adminQuestions.events({
+Template.editQuestions.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
     if (instance.$( "#profileInfo" ).valid()) {
@@ -76,6 +80,7 @@ Template.adminQuestions.events({
       let answer4 = document.querySelector("#answer4").value.trim();
       let explanation = document.querySelector("#explanation").value.trim();
       var rightAnswer = document.querySelector("#rightAnswer").value.trim();
+      let id = Router.current().params._id;
 
       if (rightAnswer==="1") {
         rightAnswer = answer1
@@ -87,14 +92,14 @@ Template.adminQuestions.events({
         rightAnswer= answer4
       }
 
-      let obj = { question, courseName, chapterName, answer1, answer2, answer3, answer4, rightAnswer, explanation }
+      let obj = { question, courseName, chapterName, answer1, answer2, answer3, answer4, rightAnswer, explanation, id }
+      console.log(obj);
 
-
-      Meteor.call("insertQuestions", obj, function (err) {
+      Meteor.call("editQuestions", obj, function (err) {
         if (!err) {
           myApp.addNotification({
             title: 'Admin',
-            message: "Question Inserted",
+            message: "Question Edited",
             hold:2000,
           });
         } else {
@@ -145,24 +150,32 @@ Template.adminQuestions.events({
       let chapters = Courses.findOne({ courseName: topic }).chapters;
       Session.set('chapters', chapters);
       console.log(Session.get('chapters'));
-
     },
 
-    'click #del' (event, instance) {
-      event.preventDefault();
-      QuestionBank.remove({ _id: this._id });
+    "click #backButton": function(event, template) {
+        event.preventDefault();
+        window.history.back();
     },
-    'click #edit' (event, instance) {
-      event.preventDefault();
-      console.log(this._id);
-      Router.go(`/editQuestions/${this._id}`);
-    }
+
 
 });
 
-Template.adminQuestions.helpers({
-  questions: function(){
-    Meteor.subscribe('questions');
-    return QuestionBank.find();
-  }
+
+Template.editQuestions.helpers({
+  question: function(){
+    let id = Router.current().params._id;
+    Meteor.subscribe('singleQuestion', id);
+    return QuestionBank.findOne();
+  },
+
+   courses: function(){
+    Meteor.subscribe('courses');
+    return Courses.find();
+  },
+
+  chapters: function(){
+   Meteor.subscribe('courses');
+   return Courses.find();
+ },
+
 });

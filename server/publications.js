@@ -16,6 +16,10 @@ Meteor.publish("questions", function(){
    return QuestionBank.find({ });
 });
 
+Meteor.publish("singleQuestion", function(id){
+   return QuestionBank.find({ _id: id });
+});
+
 Meteor.publish("universities", function(){
   return University.find();
 });

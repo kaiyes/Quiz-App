@@ -42,22 +42,22 @@ Template.adminCourses.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
     if (instance.$( "#profileInfo" ).valid()) {
-      let courseName = document.querySelector("#courseName").value;
-      let courseNumber = document.querySelector("#courseNumber").value;
-      let chapter1 = document.querySelector("#chapter1").value;
-      let chapter2 = document.querySelector("#chapter2").value;
-      let chapter3 = document.querySelector("#chapter3").value;
-      let chapter4 = document.querySelector("#chapter4").value;
-      let chapter5 = document.querySelector("#chapter5").value;
-      let chapter6 = document.querySelector("#chapter6").value;
-      let chapter7 = document.querySelector("#chapter7").value;
-      let chapter8 = document.querySelector("#chapter8").value;
-      let chapter9 = document.querySelector("#chapter9").value;
-      let chapter10 = document.querySelector("#chapter10").value;
-      let chapter11 = document.querySelector("#chapter11").value;
-      let chapter12 = document.querySelector("#chapter12").value;
-      let chapter13 = document.querySelector("#chapter13").value;
-      let chapter14 = document.querySelector("#chapter14").value;
+      let courseName = document.querySelector("#courseName").value.trim();
+      let courseNumber = document.querySelector("#courseNumber").value.trim();
+      let chapter1 = document.querySelector("#chapter1").value.trim();
+      let chapter2 = document.querySelector("#chapter2").value.trim();
+      let chapter3 = document.querySelector("#chapter3").value.trim();
+      let chapter4 = document.querySelector("#chapter4").value.trim();
+      let chapter5 = document.querySelector("#chapter5").value.trim();
+      let chapter6 = document.querySelector("#chapter6").value.trim();
+      let chapter7 = document.querySelector("#chapter7").value.trim();
+      let chapter8 = document.querySelector("#chapter8").value.trim();
+      let chapter9 = document.querySelector("#chapter9").value.trim();
+      let chapter10 = document.querySelector("#chapter10").value.trim();
+      let chapter11 = document.querySelector("#chapter11").value.trim();
+      let chapter12 = document.querySelector("#chapter12").value.trim();
+      let chapter13 = document.querySelector("#chapter13").value.trim();
+      let chapter14 = document.querySelector("#chapter14").value.trim();
 
 
       let chapters = [
