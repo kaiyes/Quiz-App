@@ -164,5 +164,12 @@ Template.adminQuestions.helpers({
   questions: function(){
     Meteor.subscribe('questions');
     return QuestionBank.find();
-  }
+  },
+  courses: function(){
+    Meteor.subscribe('courses');
+    return Courses.find();
+  },
+  chapters: function () {
+    return Session.get('chapters');
+  },
 });
