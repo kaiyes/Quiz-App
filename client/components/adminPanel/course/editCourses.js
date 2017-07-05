@@ -71,7 +71,7 @@ Template.editCourse.events({
             message: "Course Inserted",
             hold:2000,
           });
-          Router.go('/adminCourses');
+          Router.go('/courseList');
         } else {
           myApp.addNotification({
             title: 'Admin',
