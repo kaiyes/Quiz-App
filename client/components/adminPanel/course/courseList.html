@@ -1,0 +1,48 @@
+<template name="courseList">
+  <div class="views layout-white">
+    <div class="view view-main layout-white">
+      <div class="pages navbar-fixed">
+        <div data-page="admin-courses" class="page">
+            <div class="navbar eddy-navbar">
+                <div class="navbar-inner padding-h-0">
+                  <div class="left">
+                      <a href="{{pathFor 'homePage'}}" class="link icon-only">
+                          <i class="zmdi zmdi-chevron-left font-size-fixed-40 full-width text-center"></i>
+                      </a>
+                  </div>
+                  <div class="center full-width text-center">
+                    <h2 class="margin-0 full-width eddy-navbar__title">List of All Courses</h2>
+                  </div>
+                  <div class="right">
+                    <a href="#" class="open-panel link icon-only"></a>
+                  </div>
+                </div>
+            </div>
+
+            <div class="page-content position-static">
+             <div class="list-block">
+                <ul>
+              {{#each courses}}
+                     <li>
+                         <div class="item-content">
+                             <div class="item-inner">
+                                 <div class="item-title label eddy-profile__label">
+                                   {{courseName}}
+                                   <br>
+                                   {{courseNumber}}
+                                 </div>
+                                <i id="del" class="zmdi zmdi-delete"></i>
+                                <i id="edit" class="zmdi zmdi-edit"></i>
+                             </div>
+                         </div>
+                     </li>
+               {{/each}}
+             </ul>
+             </div>
+
+           </div>
+        </div>
+       </div>
+    </div>
+  </div>
+</template>

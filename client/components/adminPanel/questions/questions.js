@@ -156,8 +156,11 @@ Template.adminQuestions.events({
       event.preventDefault();
       console.log(this._id);
       Router.go(`/editQuestions/${this._id}`);
-    }
-
+    },
+    'click #list' (event, instance) {
+      event.preventDefault();
+      Router.go('/questionList');
+    },
 });
 
 Template.adminQuestions.helpers({

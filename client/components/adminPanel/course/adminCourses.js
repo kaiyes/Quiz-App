@@ -119,7 +119,11 @@ Template.adminCourses.events({
     'click #edit' (event, instance) {
       event.preventDefault();
       Router.go(`/editCourse/${this.courseName}`);
-    }
+    },
+    'click #list' (event, instance) {
+      event.preventDefault();
+      Router.go('/courseList');
+    },
 
 });
 
@@ -132,4 +136,5 @@ Template.adminCourses.helpers({
   chapters: function () {
     return Session.get('chapters');
   },
+
 });

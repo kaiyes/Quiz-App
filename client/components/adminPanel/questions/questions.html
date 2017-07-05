@@ -179,37 +179,9 @@
                      </form>
 
                      <div class="list-block">
-                        <ul>
-                          {{#each questions}}
-                                 <li>
-                                     <div class="item-content">
-                                         <div class="item-inner">
-                                             <div class="item-title label eddy-profile__label">
-                                               {{question}}
-                                               <br>
-                                               Topic: {{topic}}
-                                               <br>
-                                               Chapter:{{chapter}}
-                                               <br>
-                                               1. {{firstAnswer}}
-                                               <br>
-                                               2. {{secondAnswer}}
-                                               <br>
-                                               3. {{thirdAnswer}}
-                                               <br>
-                                               4. {{fourthAnswer}}
-                                               <br>
-                                               Correct Answer: {{rightAnswer}}
-                                               <br>
-                                               Explanation:{{explanation}}
-                                             </div>
-                                            <i id="del" class="zmdi zmdi-delete"></i>
-                                            <i id="edit" class="zmdi zmdi-edit"></i>
-                                         </div>
-                                     </div>
-                                 </li>
-                           {{/each}}
-                       </ul>
+                        <button  id="list" type="button" class="eddy--primary-button eddy--primary-button__white-color eddy--primary-button__white-color--challenge border-r-25 font-size-fixed-14">
+                            List of All questions
+                        </button>
                      </div>
 
                </div>
