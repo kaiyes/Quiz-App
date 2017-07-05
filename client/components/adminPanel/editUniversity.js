@@ -1,15 +1,16 @@
-Template.adminUniversity.events({
+Template.editUniversity.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
       let universityName = document.querySelector("#university").value.trim();
-
-      Meteor.call("insertUniversity", universityName, function (err) {
+      let routerName = Router.current().params.name;
+      Meteor.call("editUniversity", universityName, routerName, function (err) {
         if (!err) {
           myApp.addNotification({
             title: 'Admin',
             message: "New University Inserted",
             hold:2000,
           });
+          Router.go('/adminUniversity');
         } else {
           myApp.addNotification({
             title: 'Admin',
@@ -20,22 +21,18 @@ Template.adminUniversity.events({
       });
   },
 
-  'click #del' (event, instance) {
-    event.preventDefault();
-    University.remove({ _id: this._id });
+  "click #backButton": function(event, template) {
+      event.preventDefault();
+      window.history.back();
   },
-  'click #edit' (event, instance) {
-    event.preventDefault();
-    Router.go(`/editUniversity/${this.name}`)
-  }
 
 });
 
 
 
-Template.adminUniversity.helpers({
+Template.editUniversity.helpers({
   uni: function(){
-    Meteor.subscribe('universities');
-    return University.find();
-  }
+    let uni = Router.current().params.name;
+    return uni;
+  },
 });

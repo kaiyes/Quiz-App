@@ -1,4 +1,4 @@
-Template.adminCourses.onRendered(function() {
+Template.editCourse.onRendered(function() {
   let self = this;
   self.autorun(function () {
     let user = Meteor.users.find({}).fetch();
@@ -32,7 +32,8 @@ Template.adminCourses.onRendered(function() {
 
 });
 
-Template.adminCourses.events({
+
+Template.editCourse.events({
   'click .submit-profile' (event, instance) {
     event.preventDefault();
     if (instance.$( "#profileInfo" ).valid()) {
@@ -60,15 +61,17 @@ Template.adminCourses.events({
         chapter11,chapter12,chapter13,chapter14];
 
       let removeEmptyStuff = _.remove(chapters, function(x) { return x == "" });
-      let obj = { courseName, chapters, courseNumber }
+      let routerCourse = Router.current().params.courseName;
+      let obj = { courseName, chapters, courseNumber, routerCourse };
 
-      Meteor.call("insertCourses", obj, function (err) {
+      Meteor.call("editCourses", obj, function (err) {
         if (!err) {
           myApp.addNotification({
             title: 'Admin',
             message: "Course Inserted",
             hold:2000,
           });
+          Router.go('/adminCourses');
         } else {
           myApp.addNotification({
             title: 'Admin',
@@ -118,18 +121,21 @@ Template.adminCourses.events({
     },
     'click #edit' (event, instance) {
       event.preventDefault();
-      Router.go(`/editCourse/${this.courseName}`);
-    }
+      console.log("edit");
+    },
+
+    "click #backButton": function(event, template) {
+        event.preventDefault();
+        window.history.back();
+    },
 
 });
 
 
-Template.adminCourses.helpers({
-  courses: function(){
+Template.editCourse.helpers({
+  course: function(){
     Meteor.subscribe('courses');
-    return Courses.find();
-  },
-  chapters: function () {
-    return Session.get('chapters');
+    let course = Router.current().params.courseName;
+    return Courses.findOne({ courseName: course });
   },
 });

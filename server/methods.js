@@ -673,11 +673,19 @@ Meteor.methods({
       }
      },
 
+     editCourses: function (obj) {
+       Courses.update({ courseName: obj.routerCourse }, { $set: { chapters: obj.chapters  }});
+      },
+
      insertNickName: function (nickName) {
        let ifNickExists = NickNames.findOne({ nick: nickName });
        if (!ifNickExists) {
-        NickNames.insert({ nick: nickName })
+        NickNames.insert({ nick: nickName });
        }
+      },
+
+      editNickName:function(nickName,routerName){
+        NickNames.update({ nick: routerName }, { $set: { nick: nickName  }});
       },
 
       insertUniversity: function (universityName) {
@@ -686,6 +694,10 @@ Meteor.methods({
          University.insert({ name : universityName })
         }
        },
+
+       editUniversity: function (universityName, routerName) {
+         University.update({ name: routerName }, { $set: { name: universityName  }});
+        },
 
        insertQuestions: function (obj) {
          QuestionBank.insert({

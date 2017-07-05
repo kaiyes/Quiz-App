@@ -102,6 +102,7 @@ Template.editQuestions.events({
             message: "Question Edited",
             hold:2000,
           });
+          Router.go('/adminQuestions');
         } else {
           myApp.addNotification({
             title: 'Admin',

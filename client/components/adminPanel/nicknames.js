@@ -29,7 +29,8 @@ Template.adminNickNames.events({
   },
   'click #edit' (event, instance) {
     event.preventDefault();
-    console.log("edit");
+    Router.go(`/editNames/${this.nick}`);
+    console.log(this);
   }
 });
 
